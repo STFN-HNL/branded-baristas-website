@@ -1,0 +1,10 @@
+{
+  "common": {
+    "siteName": "Branded Baristas",
+    "quoteCta": "Request a quote"
+  },
+  "home": {
+    "title": "Welcome to Branded Baristas",
+    "lead": "Baristas, mobile bars and coffee experiences for events and in-company."
+  }
+}
