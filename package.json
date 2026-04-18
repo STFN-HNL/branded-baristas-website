@@ -13,7 +13,9 @@
     "test:e2e": "playwright test",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md,css}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md,css}\"",
-    "i18n:check": "tsx scripts/i18n-check.ts"
+    "i18n:check": "tsx scripts/i18n-check.ts",
+    "sanity:extract": "sanity schema extract --path .sanity/schema.json",
+    "sanity:types": "pnpm sanity:extract && sanity typegen generate"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.0",
@@ -37,6 +39,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@playwright/test": "^1.59.1",
+    "@sanity/cli": "^6.3.2",
     "@tailwindcss/postcss": "^4",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
