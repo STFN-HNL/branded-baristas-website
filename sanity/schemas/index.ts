@@ -14,6 +14,7 @@ import { brandingOption } from "./brandingOption";
 import { pricingTier } from "./pricingTier";
 import { concept } from "./concept";
 import { caseStudy } from "./case";
+import { post } from "./post";
 
 export const schemaTypes: SchemaTypeDefinition[] = [
   // objects
@@ -33,4 +34,5 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   pricingTier,
   concept,
   caseStudy,
+  post,
 ];
