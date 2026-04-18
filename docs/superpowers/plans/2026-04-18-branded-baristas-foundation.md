@@ -1911,44 +1911,43 @@ Expected: GitHub Actions tab shows jobs running; all green.
 
 - Create: `railway.json` (optional — for env mapping)
 
-- [ ] **Step 1: Create Railway project via CLI**
+- [x] **Step 1: Create Railway project via CLI**
 
 ```bash
 pnpm dlx @railway/cli@latest login
 pnpm dlx @railway/cli@latest init   # create new project, link to current dir
 ```
 
-- [ ] **Step 2: Connect GitHub repo in Railway dashboard**
+- [x] **Step 2: Connect GitHub repo in Railway dashboard**
 
 In Railway UI → Settings → Service → Source: link to `branded-baristas-website` repo → main branch. Enable "PR Preview Environments".
 
-- [ ] **Step 3: Set env vars in Railway**
+- [x] **Step 3: Set env vars in Railway**
 
 In Railway → Service → Variables, add each var from `.env.example` with **production** values. For preview environments, Railway allows variable overrides; set Sanity dataset to `staging` for previews if/when that dataset exists.
 
-- [ ] **Step 4: Generate public domain**
+- [x] **Step 4: Generate public domain**
 
 Railway → Service → Settings → Networking → "Generate Domain". Note the URL.
 
-- [ ] **Step 5: Trigger deploy**
+- [x] **Step 5: Trigger deploy**
 
 Push an empty commit or redeploy in Railway UI.
 
-- [ ] **Step 6: Verify**
+- [x] **Step 6: Verify**
 
 Open the Railway URL. Expected: `https://<subdomain>.up.railway.app/` redirects to `/nl/`; page loads; `/studio` loads.
 
-- [ ] **Step 7: Document in ADR**
+Verified 2026-04-18 at `https://branded-baristas-website-production.up.railway.app`:
+`/` → 307 → `/nl`, `/nl` → 200, `/en` → 200, `/studio` → 200, `/coffee-concepts/piaggio-tuk-tuk` → 301.
+
+- [x] **Step 7: Document in ADR**
 
 (Done in Task 21.)
 
-- [ ] **Step 8: Commit any config**
+- [x] **Step 8: Commit any config**
 
-```bash
-git add .
-git commit -m "chore: railway deploy config" --allow-empty
-git push
-```
+No new files required — Dockerfile and GitHub integration were sufficient. Railway builder uses Dockerfile directly.
 
 ---
 
@@ -2226,23 +2225,23 @@ git push
 
 **Files:** None (verification only — no new files.)
 
-- [ ] **Step 1: Run the full verification list from the top of this plan**
+- [x] **Step 1: Run the full verification list from the top of this plan**
 
 Work through the 10 items under "Verification" and tick each:
 
-1. `pnpm dev` → `/` redirects to `/nl/`.
-2. `/en/` works.
-3. `/coffee-concepts/piaggio-tuk-tuk` → 301 → `/nl/diensten/events/piaggio-tuk-tuk`.
-4. `pnpm test` passes.
-5. `pnpm test:e2e` passes.
-6. `pnpm typecheck` + `pnpm lint` pass.
-7. `pnpm build` succeeds.
-8. `/studio` loads, can create + publish `settings` doc.
-9. GitHub push → CI green.
-10. Railway URL serves the app.
-11. Remove `RESEND_API_KEY` from `.env.local`, restart → server refuses with clear error.
+1. [x] `pnpm dev` → `/` redirects to `/nl/`.
+2. [x] `/en/` works.
+3. [x] `/coffee-concepts/piaggio-tuk-tuk` → 301 → `/nl/diensten/events/piaggio-tuk-tuk`.
+4. [x] `pnpm test` passes.
+5. [x] `pnpm test:e2e` passes.
+6. [x] `pnpm typecheck` + `pnpm lint` pass.
+7. [x] `pnpm build` succeeds.
+8. [x] `/studio` loads, can create + publish `settings` doc.
+9. [x] GitHub push → CI green.
+10. [x] Railway URL serves the app. Verified 2026-04-18 on `branded-baristas-website-production.up.railway.app`.
+11. [x] Remove `RESEND_API_KEY` from `.env.local`, restart → server refuses with clear error.
 
-- [ ] **Step 2: Tag release**
+- [x] **Step 2: Tag release**
 
 ```bash
 git tag v0.1.0-foundation
