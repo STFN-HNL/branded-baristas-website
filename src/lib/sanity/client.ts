@@ -1,5 +1,5 @@
 import { createClient } from "next-sanity";
-import imageUrlBuilder from "@sanity/image-url";
+import { createImageUrlBuilder } from "@sanity/image-url";
 import { env } from "@/lib/env";
 
 export const sanityClient = createClient({
@@ -10,5 +10,5 @@ export const sanityClient = createClient({
   token: env.SANITY_API_READ_TOKEN,
 });
 
-const builder = imageUrlBuilder(sanityClient);
+const builder = createImageUrlBuilder(sanityClient);
 export const urlFor = (source: Parameters<typeof builder.image>[0]) => builder.image(source);
