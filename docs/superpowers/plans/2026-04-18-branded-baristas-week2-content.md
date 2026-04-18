@@ -1554,7 +1554,7 @@ Run: `pnpm dev`. Visit `http://localhost:3000/studio`. Create one of each: conce
 
 Delete test docs before stopping the server.
 
-- [ ] **Step 6: Push**
+- [x] **Step 6: Push**
 
 ```bash
 git push
@@ -1562,7 +1562,7 @@ git push
 
 Watch CI go green on GitHub Actions.
 
-- [ ] **Step 7: Tag**
+- [x] **Step 7: Tag**
 
 ```bash
 git tag v0.2.0-content
