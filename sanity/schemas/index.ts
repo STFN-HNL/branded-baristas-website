@@ -9,6 +9,9 @@ import { settings } from "./settings";
 import { page } from "./page";
 import { author } from "./author";
 import { category } from "./category";
+import { testimonial } from "./testimonial";
+import { brandingOption } from "./brandingOption";
+import { pricingTier } from "./pricingTier";
 
 export const schemaTypes: SchemaTypeDefinition[] = [
   // objects
@@ -23,4 +26,7 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   page,
   author,
   category,
+  testimonial,
+  brandingOption,
+  pricingTier,
 ];
