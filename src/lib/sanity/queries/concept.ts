@@ -4,9 +4,9 @@ export const CONCEPTS_QUERY = defineQuery(`
   *[_type == "concept" && (!defined($category) || category == $category)] | order(title.nl asc) {
     _id,
     category,
-    "title": title,
-    "slug": slug,
-    "shortDescription": shortDescription,
+    title,
+    slug,
+    shortDescription,
     "hero": { "url": hero.asset->url, "alt": hero.alt }
   }
 `);
