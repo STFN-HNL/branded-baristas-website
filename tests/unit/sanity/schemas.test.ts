@@ -14,6 +14,7 @@ describe("sanity schema registry", () => {
     "testimonial",
     "brandingOption",
     "pricingTier",
+    "concept",
   ])("registers type %s", (name) => {
     expect(names).toContain(name);
   });

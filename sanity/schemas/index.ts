@@ -12,6 +12,7 @@ import { category } from "./category";
 import { testimonial } from "./testimonial";
 import { brandingOption } from "./brandingOption";
 import { pricingTier } from "./pricingTier";
+import { concept } from "./concept";
 
 export const schemaTypes: SchemaTypeDefinition[] = [
   // objects
@@ -29,4 +30,5 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   testimonial,
   brandingOption,
   pricingTier,
+  concept,
 ];
