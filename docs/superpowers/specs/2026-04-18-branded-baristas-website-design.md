@@ -57,21 +57,21 @@ Cloudflare (CDN + cache + DNS)
 
 ### Beslissingen
 
-| Area | Keuze | Reden |
-|---|---|---|
-| Framework | Next.js 15 (App Router, RSC) | SEO, ISR, image opt, Stefan's stack |
-| Language | TypeScript strict | Type safety, CMS type generation |
-| Styling | Tailwind + shadcn/ui | Design system baseline, Figma compatible |
-| CMS | Sanity v3 | Beste i18n, wekelijks blog vereist goede editor-UX |
-| App DB | Supabase (Postgres) | Leads + eventueel nieuwsbrief; Stefan's stack |
-| Email | Resend | Transactional mail (lead notify + bevestiging) |
-| i18n | next-intl | Mature, Sanity i18n compatible, RSC-ready |
-| Hosting | Railway | Stefan's stack consistency |
-| CDN | Cloudflare | Voor Railway; GA/Cloudflare naast Sanity CDN |
-| Design-to-code | Figma MCP | Is al ingesteld |
-| Analytics | GA4 + GTM | Google Ads compat (geplande F2 ads) |
-| Cookie consent | Cookiebot of eigen | AVG vereist |
-| Monitoring | Sentry (errors) + Railway logs + GA4 + Search Console | Dekking errors, performance, rankings |
+| Area           | Keuze                                                 | Reden                                              |
+| -------------- | ----------------------------------------------------- | -------------------------------------------------- |
+| Framework      | Next.js 15 (App Router, RSC)                          | SEO, ISR, image opt, Stefan's stack                |
+| Language       | TypeScript strict                                     | Type safety, CMS type generation                   |
+| Styling        | Tailwind + shadcn/ui                                  | Design system baseline, Figma compatible           |
+| CMS            | Sanity v3                                             | Beste i18n, wekelijks blog vereist goede editor-UX |
+| App DB         | Supabase (Postgres)                                   | Leads + eventueel nieuwsbrief; Stefan's stack      |
+| Email          | Resend                                                | Transactional mail (lead notify + bevestiging)     |
+| i18n           | next-intl                                             | Mature, Sanity i18n compatible, RSC-ready          |
+| Hosting        | Railway                                               | Stefan's stack consistency                         |
+| CDN            | Cloudflare                                            | Voor Railway; GA/Cloudflare naast Sanity CDN       |
+| Design-to-code | Figma MCP                                             | Is al ingesteld                                    |
+| Analytics      | GA4 + GTM                                             | Google Ads compat (geplande F2 ads)                |
+| Cookie consent | Cookiebot of eigen                                    | AVG vereist                                        |
+| Monitoring     | Sentry (errors) + Railway logs + GA4 + Search Console | Dekking errors, performance, rankings              |
 
 ---
 
@@ -128,6 +128,7 @@ branded-baristas-website/
 ```
 
 **Belangrijke conventies:**
+
 - Één repo, geen monorepo
 - Sanity schemas in `/sanity/`, niet in `/src/`
 - `messages/` = UI-strings; redactionele content komt uit Sanity
@@ -140,25 +141,25 @@ branded-baristas-website/
 
 ### Publieke routes (bilingual)
 
-| Functie | NL | EN |
-|---|---|---|
-| Home | `/nl/` | `/en/` |
-| Diensten overview | `/nl/diensten` | `/en/services` |
-| Event — Mobile Coffee Bar | `/nl/diensten/events/mobile-coffee-bar` | `/en/services/events/mobile-coffee-bar` |
-| Event — Coffee Truck | `/nl/diensten/events/coffee-truck` | `/en/services/events/coffee-truck` |
-| Event — Piaggio Tuk-Tuk | `/nl/diensten/events/piaggio-tuk-tuk` | `/en/services/events/piaggio-tuk-tuk` |
-| Event — Barista Service | `/nl/diensten/events/barista` | `/en/services/events/barista` |
-| In-Company — Espresso Bar | `/nl/diensten/in-company/espresso-bar` | `/en/services/in-company/espresso-bar` |
-| In-Company — Pop-up | `/nl/diensten/in-company/pop-up` | `/en/services/in-company/pop-up` |
-| In-Company — Executive | `/nl/diensten/in-company/executive` | `/en/services/in-company/executive` |
-| Branding | `/nl/branding` | `/en/branding` |
-| Over ons | `/nl/over-ons` | `/en/about` |
-| Cases | `/nl/cases` (+ `?type=events\|in-company`) | `/en/cases` |
-| Case detail | `/nl/cases/[slug]` | `/en/cases/[slug]` |
-| Offerte | `/nl/offerte` | `/en/quote` |
-| Blog | `/nl/blog` | `/en/blog` |
-| Blog post | `/nl/blog/[slug]` | `/en/blog/[slug]` |
-| Contact | `/nl/contact` | `/en/contact` |
+| Functie                   | NL                                         | EN                                      |
+| ------------------------- | ------------------------------------------ | --------------------------------------- |
+| Home                      | `/nl/`                                     | `/en/`                                  |
+| Diensten overview         | `/nl/diensten`                             | `/en/services`                          |
+| Event — Mobile Coffee Bar | `/nl/diensten/events/mobile-coffee-bar`    | `/en/services/events/mobile-coffee-bar` |
+| Event — Coffee Truck      | `/nl/diensten/events/coffee-truck`         | `/en/services/events/coffee-truck`      |
+| Event — Piaggio Tuk-Tuk   | `/nl/diensten/events/piaggio-tuk-tuk`      | `/en/services/events/piaggio-tuk-tuk`   |
+| Event — Barista Service   | `/nl/diensten/events/barista`              | `/en/services/events/barista`           |
+| In-Company — Espresso Bar | `/nl/diensten/in-company/espresso-bar`     | `/en/services/in-company/espresso-bar`  |
+| In-Company — Pop-up       | `/nl/diensten/in-company/pop-up`           | `/en/services/in-company/pop-up`        |
+| In-Company — Executive    | `/nl/diensten/in-company/executive`        | `/en/services/in-company/executive`     |
+| Branding                  | `/nl/branding`                             | `/en/branding`                          |
+| Over ons                  | `/nl/over-ons`                             | `/en/about`                             |
+| Cases                     | `/nl/cases` (+ `?type=events\|in-company`) | `/en/cases`                             |
+| Case detail               | `/nl/cases/[slug]`                         | `/en/cases/[slug]`                      |
+| Offerte                   | `/nl/offerte`                              | `/en/quote`                             |
+| Blog                      | `/nl/blog`                                 | `/en/blog`                              |
+| Blog post                 | `/nl/blog/[slug]`                          | `/en/blog/[slug]`                       |
+| Contact                   | `/nl/contact`                              | `/en/contact`                           |
 
 - `/` → 301 naar `/nl/` (primaire markt)
 - Taaldetectie: `accept-language` met header-override knop
@@ -173,6 +174,7 @@ branded-baristas-website/
 5. Ontbrekende URLs → 404 met nette pagina die naar home/diensten stuurt
 
 Voorbeeld mappings:
+
 ```
 /coffee-concepts/piaggio-tuk-tuk   → /nl/diensten/events/piaggio-tuk-tuk
 /coffee-concepts/mobile-coffee-bar → /nl/diensten/events/mobile-coffee-bar
@@ -203,6 +205,7 @@ Voorbeeld mappings:
 - **brandingOption** — title, description, image, priceModifier (voor quote calculator)
 
 **Validation rules:**
+
 - `seo.title` required, 30–60 chars, beide talen
 - `seo.description` required, 120–155 chars, beide talen
 - `slug` uniek per taal, kebab-case, auto-generated
@@ -240,6 +243,7 @@ leads (
 ## 6. Quote calculator logica
 
 Stappen:
+
 1. **Service kiezen** — Events of In-Company (bepaalt welke concepten beschikbaar zijn)
 2. **Event details** — type, datum, locatie, gastenaantal
 3. **Concepten selecteren** — multi-select (bv. truck + barista)
@@ -283,6 +287,7 @@ beter", schrijf eerst een ADR in `docs/decisions/`.
 CI faalt als een route in één taal bestaat en in de andere niet.
 
 **SEO is een feature.** Elke publieke route heeft:
+
 - `generateMetadata` met title, description, og, canonical, hreflang
 - Server-rendered of ISR (nooit pure client-rendering voor indexeerbaar)
 - Structured data waar van toepassing
@@ -300,11 +305,11 @@ CI faalt als een route in één taal bestaat en in de andere niet.
 
 ## Commands
 
-- `pnpm dev`           — Next + Sanity Studio op :3000/studio
-- `pnpm typecheck`     — tsc noEmit
-- `pnpm lint`          — eslint + prettier
-- `pnpm test`          — vitest + playwright
-- `pnpm sanity:types`  — regen types uit Sanity schemas
+- `pnpm dev` — Next + Sanity Studio op :3000/studio
+- `pnpm typecheck` — tsc noEmit
+- `pnpm lint` — eslint + prettier
+- `pnpm test` — vitest + playwright
+- `pnpm sanity:types` — regen types uit Sanity schemas
 
 ## Niet doen
 
@@ -360,6 +365,7 @@ CI faalt als een route in één taal bestaat en in de andere niet.
 ### Content-level SEO
 
 Sanity verplichte velden per entry:
+
 - `seoTitle` (30–60 chars, gevalideerd)
 - `seoDescription` (120–155 chars)
 - `ogImage` (fallback naar cover)
@@ -497,6 +503,7 @@ Railway deployt alleen bij groen CI op main.
 Niet publiek gefaseerd, maar intern werkvolgorde voor dev:
 
 **Week 1 — Fundament**
+
 - Repo + `.claude/` setup, CLAUDE.md, ADR's 0001-0005
 - Next.js + TS + Tailwind + shadcn init
 - next-intl routing, `[locale]` segment, middleware
@@ -505,12 +512,14 @@ Niet publiek gefaseerd, maar intern werkvolgorde voor dev:
 - Railway project + preview env werkend
 
 **Week 2 — Content infrastructure**
+
 - Alle Sanity schemas (concept, case, post, author, category, pricingTier, testimonial, brandingOption)
 - Studio embedded op `/studio`
 - Queries + type generation
 - Revalidation webhook
 
 **Week 3 — Pagina's (Figma → code)**
+
 - Home
 - Diensten overview + 7 concept detail pages
 - Branding
@@ -521,12 +530,14 @@ Niet publiek gefaseerd, maar intern werkvolgorde voor dev:
 - 404 + error pages
 
 **Week 4 — Conversie + lead flow**
+
 - Quote calculator (alle stappen + validaties)
 - `/api/quote` endpoint + Resend templates
 - Supabase tabel + RLS
 - Contact form
 
 **Week 5 — SEO + polish**
+
 - Alle `generateMetadata` functies
 - Sitemap, robots, hreflang, structured data
 - Redirect map volledig (uit Search Console)
@@ -535,6 +546,7 @@ Niet publiek gefaseerd, maar intern werkvolgorde voor dev:
 - E2E test suite groen
 
 **Week 6 — Content migratie + soft launch**
+
 - Huidige content (5 oude concepten) naar Sanity — in beide talen
 - Eerste 2-3 cases gepubliceerd
 - Eerste 2 blog posts gepubliceerd (voor SEO baseline)

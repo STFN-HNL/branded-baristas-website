@@ -140,6 +140,7 @@ After all tasks complete:
 ### Task 1: Initialize git repo, connect to GitHub
 
 **Files:**
+
 - Create: `.gitignore`
 - Create: `README.md`
 - Create: `.editorconfig`
@@ -200,12 +201,13 @@ pnpm-debug.log*
 
 Write `README.md`:
 
-```markdown
+````markdown
 # Branded Baristas Website
 
 Next.js 15 marketing + lead-gen website for Branded Baristas, bilingual (NL/EN).
 
 ## Stack
+
 Next.js 15 · TypeScript · Tailwind 4 · shadcn/ui · Sanity · Supabase · Resend · Railway
 
 ## Getting started
@@ -217,15 +219,18 @@ pnpm install
 cp .env.example .env.local   # fill in secrets
 pnpm dev
 ```
+````
 
 Visit `http://localhost:3000/`. Sanity Studio lives at `/studio`.
 
 ## Docs
+
 - Spec: `docs/superpowers/specs/2026-04-18-branded-baristas-website-design.md`
 - Architecture: `docs/architecture.md`
 - Conventions: `docs/conventions.md`
 - Decisions (ADRs): `docs/decisions/`
-```
+
+````
 
 - [ ] **Step 4: Create `.editorconfig`**
 
@@ -244,7 +249,7 @@ trim_trailing_whitespace = true
 
 [*.md]
 trim_trailing_whitespace = false
-```
+````
 
 - [ ] **Step 5: Create GitHub repo (private) + connect**
 
@@ -267,6 +272,7 @@ git push -u origin main
 ### Task 2: Scaffold Next.js 15 + TypeScript + Tailwind
 
 **Files:**
+
 - Create: via `create-next-app` — `package.json`, `next.config.ts`, `tsconfig.json`, `src/app/layout.tsx`, `src/app/page.tsx`, `src/app/globals.css`, `postcss.config.mjs`, `.eslintrc.cjs`, `public/`
 - Modify: `package.json` (add scripts)
 - Modify: `tsconfig.json` (strict, path aliases)
@@ -371,6 +377,7 @@ git commit -m "feat: scaffold Next.js 15 + TS strict + Tailwind"
 ### Task 3: Configure Prettier + ESLint
 
 **Files:**
+
 - Create: `.prettierrc`
 - Create: `.prettierignore`
 - Modify: `.eslintrc.cjs` (or `eslint.config.mjs` depending on Next.js version)
@@ -441,6 +448,7 @@ git commit -m "chore: add prettier + eslint config"
 ### Task 4: Install and init shadcn/ui
 
 **Files:**
+
 - Create: `components.json`
 - Create: `src/components/ui/` (populated by shadcn)
 - Modify: `src/app/globals.css` (adds CSS variables)
@@ -486,6 +494,7 @@ git commit -m "feat: init shadcn/ui with core primitives"
 ### Task 5: Set up Vitest
 
 **Files:**
+
 - Create: `vitest.config.ts`
 - Create: `tests/unit/sanity.test.ts` (sanity check for Vitest itself)
 - Modify: `package.json` (devDependencies)
@@ -552,6 +561,7 @@ git commit -m "test: set up vitest with sanity test"
 ### Task 6: Create env validator with zod (TDD)
 
 **Files:**
+
 - Create: `src/lib/env.ts`
 - Create: `tests/unit/env.test.ts`
 - Create: `.env.example`
@@ -707,6 +717,7 @@ git commit -m "feat: add zod-validated env with tests"
 ### Task 7: Set up Playwright for E2E
 
 **Files:**
+
 - Create: `playwright.config.ts`
 - Create: `tests/e2e/smoke.spec.ts` (sanity E2E)
 
@@ -734,9 +745,7 @@ export default defineConfig({
     baseURL: "http://localhost:3000",
     trace: "on-first-retry",
   },
-  projects: [
-    { name: "chromium", use: { ...devices["Desktop Chrome"] } },
-  ],
+  projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
   webServer: {
     command: "pnpm dev",
     url: "http://localhost:3000",
@@ -791,6 +800,7 @@ git commit -m "test: set up playwright with skipped smoke test"
 ### Task 8: Install and configure next-intl
 
 **Files:**
+
 - Create: `src/lib/i18n/routing.ts`
 - Create: `src/lib/i18n/request.ts`
 - Create: `messages/nl.json`
@@ -820,8 +830,7 @@ export const routing = defineRouting({
 
 export type Locale = (typeof routing.locales)[number];
 
-export const { Link, redirect, usePathname, useRouter, getPathname } =
-  createNavigation(routing);
+export const { Link, redirect, usePathname, useRouter, getPathname } = createNavigation(routing);
 ```
 
 - [ ] **Step 3: Create request config**
@@ -889,9 +898,7 @@ const withNextIntl = createNextIntlPlugin("./src/lib/i18n/request.ts");
 const nextConfig: NextConfig = {
   output: "standalone",
   images: {
-    remotePatterns: [
-      { protocol: "https", hostname: "cdn.sanity.io" },
-    ],
+    remotePatterns: [{ protocol: "https", hostname: "cdn.sanity.io" }],
   },
 };
 
@@ -918,6 +925,7 @@ git commit -m "feat: install next-intl with nl+en routing config"
 ### Task 9: Create [locale] routing structure
 
 **Files:**
+
 - Delete: `src/app/page.tsx` (moves into [locale])
 - Create: `src/app/[locale]/layout.tsx`
 - Create: `src/app/[locale]/page.tsx`
@@ -1042,6 +1050,7 @@ git commit -m "feat: create [locale] routing with nl+en layouts"
 ### Task 10: Implement middleware (locale + redirect map foundation)
 
 **Files:**
+
 - Create: `src/lib/redirects.ts`
 - Create: `src/middleware.ts`
 - Create: `tests/unit/redirects.test.ts`
@@ -1101,11 +1110,31 @@ export type RedirectMapping = {
 };
 
 export const redirects: RedirectMapping[] = [
-  { source: "/coffee-concepts/piaggio-tuk-tuk", destination: "/nl/diensten/events/piaggio-tuk-tuk", permanent: true },
-  { source: "/coffee-concepts/mobile-coffee-bar", destination: "/nl/diensten/events/mobile-coffee-bar", permanent: true },
-  { source: "/coffee-concepts/vintage-coffee-truck", destination: "/nl/diensten/events/coffee-truck", permanent: true },
-  { source: "/coffee-concepts/barista-hire", destination: "/nl/diensten/events/barista", permanent: true },
-  { source: "/coffee-concepts/beverage-catering", destination: "/nl/diensten/events/barista", permanent: true },
+  {
+    source: "/coffee-concepts/piaggio-tuk-tuk",
+    destination: "/nl/diensten/events/piaggio-tuk-tuk",
+    permanent: true,
+  },
+  {
+    source: "/coffee-concepts/mobile-coffee-bar",
+    destination: "/nl/diensten/events/mobile-coffee-bar",
+    permanent: true,
+  },
+  {
+    source: "/coffee-concepts/vintage-coffee-truck",
+    destination: "/nl/diensten/events/coffee-truck",
+    permanent: true,
+  },
+  {
+    source: "/coffee-concepts/barista-hire",
+    destination: "/nl/diensten/events/barista",
+    permanent: true,
+  },
+  {
+    source: "/coffee-concepts/beverage-catering",
+    destination: "/nl/diensten/events/barista",
+    permanent: true,
+  },
   { source: "/offerte-aanvragen", destination: "/nl/offerte", permanent: true },
   { source: "/contact", destination: "/nl/contact", permanent: true },
 ];
@@ -1147,11 +1176,7 @@ export default function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: [
-    "/",
-    "/(nl|en)/:path*",
-    "/((?!api|studio|_next|_vercel|.*\\..*).*)",
-  ],
+  matcher: ["/", "/(nl|en)/:path*", "/((?!api|studio|_next|_vercel|.*\\..*).*)"],
 };
 ```
 
@@ -1197,6 +1222,7 @@ git commit -m "feat: add middleware with locale routing + wordpress redirect map
 ### Task 11: i18n-check script + CI guardrail
 
 **Files:**
+
 - Create: `scripts/i18n-check.ts`
 - Create: `tests/unit/i18n-check.test.ts`
 
@@ -1310,6 +1336,7 @@ git commit -m "feat: add i18n parity checker + CLI script"
 ### Task 12: Initialize Sanity in the Next.js project
 
 **Files:**
+
 - Create: `sanity.config.ts`
 - Create: `sanity/schemas/index.ts`
 - Create: `src/lib/sanity/client.ts`
@@ -1382,8 +1409,7 @@ export const sanityClient = createClient({
 });
 
 const builder = imageUrlBuilder(sanityClient);
-export const urlFor = (source: Parameters<typeof builder.image>[0]) =>
-  builder.image(source);
+export const urlFor = (source: Parameters<typeof builder.image>[0]) => builder.image(source);
 ```
 
 - [ ] **Step 6: Typecheck**
@@ -1406,6 +1432,7 @@ git commit -m "feat: add sanity config + typed client"
 ### Task 13: Create settings + page schemas
 
 **Files:**
+
 - Create: `sanity/schemas/settings.ts`
 - Create: `sanity/schemas/page.ts`
 - Create: `sanity/schemas/objects/seo.ts`
@@ -1424,7 +1451,12 @@ export const localeString = defineType({
   type: "object",
   title: "Localized string",
   fields: [
-    defineField({ name: "nl", type: "string", title: "Nederlands", validation: (r) => r.required() }),
+    defineField({
+      name: "nl",
+      type: "string",
+      title: "Nederlands",
+      validation: (r) => r.required(),
+    }),
     defineField({ name: "en", type: "string", title: "English", validation: (r) => r.required() }),
   ],
 });
@@ -1560,6 +1592,7 @@ git commit -m "feat: add localeString, seo, settings, page sanity schemas"
 ### Task 14: Embed Sanity Studio at /studio
 
 **Files:**
+
 - Create: `src/app/studio/[[...tool]]/page.tsx`
 - Create: `src/app/studio/[[...tool]]/layout.tsx`
 
@@ -1618,6 +1651,7 @@ git commit -m "feat: embed sanity studio at /studio"
 ### Task 15: First end-to-end Sanity fetch
 
 **Files:**
+
 - Create: `src/lib/sanity/queries/settings.ts`
 - Modify: `src/app/[locale]/page.tsx` (read siteName from Sanity)
 
@@ -1690,6 +1724,7 @@ git commit -m "feat: fetch settings from sanity in home page"
 ### Task 16: Create Dockerfile for Railway
 
 **Files:**
+
 - Create: `Dockerfile`
 - Create: `.dockerignore`
 
@@ -1771,6 +1806,7 @@ git commit -m "feat: add dockerfile with multi-stage build for railway"
 ### Task 17: GitHub Actions CI
 
 **Files:**
+
 - Create: `.github/workflows/ci.yml`
 
 - [ ] **Step 1: Create workflow**
@@ -1872,6 +1908,7 @@ Expected: GitHub Actions tab shows jobs running; all green.
 ### Task 18: Railway deploy + preview environments
 
 **Files:**
+
 - Create: `railway.json` (optional — for env mapping)
 
 - [ ] **Step 1: Create Railway project via CLI**
@@ -1918,6 +1955,7 @@ git push
 ### Task 19: Write ADRs 0001–0005
 
 **Files:**
+
 - Create: `docs/decisions/0001-why-sanity.md`
 - Create: `docs/decisions/0002-why-railway.md`
 - Create: `docs/decisions/0003-bilingual-url-strategy.md`
@@ -1933,15 +1971,19 @@ Each ADR follows the MADR-lite template:
 **Date:** 2026-04-18
 
 ## Context
+
 <What situation prompted this decision?>
 
 ## Decision
+
 <What we picked.>
 
 ## Consequences
+
 <Positive, negative, and neutral consequences.>
 
 ## Alternatives considered
+
 <What we rejected and why.>
 ```
 
@@ -1977,6 +2019,7 @@ git commit -m "docs: add ADRs 0001-0005"
 ### Task 20: Write CLAUDE.md + docs/architecture.md + docs/conventions.md
 
 **Files:**
+
 - Create: `CLAUDE.md`
 - Create: `docs/architecture.md`
 - Create: `docs/conventions.md`
@@ -2004,6 +2047,7 @@ beter", schrijf eerst een ADR in `docs/decisions/`.
 CI faalt als een route in één taal bestaat en in de andere niet.
 
 **SEO is een feature.** Elke publieke route heeft:
+
 - `generateMetadata` met title, description, og, canonical, hreflang
 - Server-rendered of ISR (nooit pure client-rendering voor indexeerbaar)
 - Structured data waar van toepassing
@@ -2021,12 +2065,12 @@ CI faalt als een route in één taal bestaat en in de andere niet.
 
 ## Commands
 
-- `pnpm dev`           — Next + Sanity Studio op :3000/studio
-- `pnpm typecheck`     — tsc noEmit
-- `pnpm lint`          — eslint + prettier
-- `pnpm test`          — vitest
-- `pnpm test:e2e`      — playwright
-- `pnpm i18n:check`    — verify NL/EN message key parity
+- `pnpm dev` — Next + Sanity Studio op :3000/studio
+- `pnpm typecheck` — tsc noEmit
+- `pnpm lint` — eslint + prettier
+- `pnpm test` — vitest
+- `pnpm test:e2e` — playwright
+- `pnpm i18n:check` — verify NL/EN message key parity
 
 ## Niet doen
 
@@ -2043,6 +2087,7 @@ Recap the architecture diagram from spec §2 + reference spec for deeper detail.
 - [ ] **Step 3: Write `docs/conventions.md`**
 
 Concrete patterns:
+
 - Component file layout
 - Sanity query location (`src/lib/sanity/queries/`)
 - Query result typing (zod parse at boundary or derived TS types)
@@ -2060,9 +2105,11 @@ This document defines NL + EN voice for Branded Baristas content.
 To be written in Week 1 of content work (pre-week 3 page builds).
 
 ## NL
+
 TBD — core vocabulary, formality level, signature phrases.
 
 ## EN
+
 TBD — core vocabulary, formality level, signature phrases.
 ```
 
@@ -2078,6 +2125,7 @@ git commit -m "docs: add CLAUDE.md, architecture, conventions, tone-of-voice pla
 ### Task 21: Configure .claude/ (settings + slash commands)
 
 **Files:**
+
 - Create: `.claude/settings.json`
 - Create: `.claude/commands/new-blog.md`
 - Create: `.claude/commands/new-case.md`
@@ -2099,10 +2147,7 @@ git commit -m "docs: add CLAUDE.md, architecture, conventions, tone-of-voice pla
       "Bash(git push:*)",
       "Bash(curl:*)"
     ],
-    "deny": [
-      "Bash(rm -rf *)",
-      "Bash(git push --force*)"
-    ]
+    "deny": ["Bash(rm -rf *)", "Bash(git push --force*)"]
   },
   "hooks": {
     "PostToolUse": [
