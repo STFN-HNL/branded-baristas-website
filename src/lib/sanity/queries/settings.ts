@@ -11,5 +11,14 @@ export type Settings = {
 };
 
 export async function getSettings(): Promise<Settings | null> {
-  return sanityClient.fetch<Settings | null>(SETTINGS_QUERY, {}, { next: { tags: ["settings"] } });
+  try {
+    return await sanityClient.fetch<Settings | null>(
+      SETTINGS_QUERY,
+      {},
+      { next: { tags: ["settings"] } },
+    );
+  } catch (error) {
+    console.error("[getSettings] Sanity fetch failed:", error);
+    return null;
+  }
 }
