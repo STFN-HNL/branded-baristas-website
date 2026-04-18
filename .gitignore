@@ -1,6 +1,13 @@
 # Dependencies
 node_modules/
 .pnpm-store/
+.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
 
 # Next.js
 .next/
@@ -33,3 +40,12 @@ test-results/
 *.log
 npm-debug.log*
 pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Misc
+*.pem
+*.tsbuildinfo
+
+# Vercel
+.vercel
