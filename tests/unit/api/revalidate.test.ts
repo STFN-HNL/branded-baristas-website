@@ -48,7 +48,7 @@ describe("POST /api/revalidate", () => {
 
     const res = await POST(req);
     expect(res.status).toBe(200);
-    expect(revalidateTag).toHaveBeenCalledWith("post");
+    expect(revalidateTag).toHaveBeenCalledWith("post", "max");
   });
 
   it("also revalidates per-slug tag when slug is present", async () => {
@@ -58,7 +58,7 @@ describe("POST /api/revalidate", () => {
 
     const res = await POST(req);
     expect(res.status).toBe(200);
-    expect(revalidateTag).toHaveBeenCalledWith("case");
-    expect(revalidateTag).toHaveBeenCalledWith("case:akzonobel-event");
+    expect(revalidateTag).toHaveBeenCalledWith("case", "max");
+    expect(revalidateTag).toHaveBeenCalledWith("case:akzonobel-event", "max");
   });
 });

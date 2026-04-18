@@ -1,9 +1,6 @@
-import { revalidateTag as _revalidateTag } from "next/cache";
+import { revalidateTag } from "next/cache";
 import { isValidSignature, SIGNATURE_HEADER_NAME } from "@sanity/webhook";
 import { env } from "@/lib/env";
-
-// Next.js 16 changed the signature to require a profile; cast to the standard 1-arg form.
-const revalidateTag = _revalidateTag as (tag: string) => void;
 
 type Payload = {
   _type?: string;
@@ -38,9 +35,9 @@ export async function POST(req: Request) {
     payload.slug?.current,
   ].filter((s): s is string => typeof s === "string" && s.length > 0);
 
-  revalidateTag(type);
+  revalidateTag(type, "max");
   for (const slug of slugs) {
-    revalidateTag(`${type}:${slug}`);
+    revalidateTag(`${type}:${slug}`, "max");
   }
 
   return Response.json({ revalidated: true, type, slugs });
