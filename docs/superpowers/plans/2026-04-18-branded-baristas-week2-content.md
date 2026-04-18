@@ -1,6 +1,6 @@
 # Week 2 — Content Infrastructure Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** All Sanity content schemas, per-type GROQ queries with typed results, Studio desk structure grouping the types, and a signed `/api/revalidate` webhook so editor publishes instantly refresh the site.
 
@@ -75,7 +75,7 @@
 - Modify: `sanity/schemas/index.ts` (register new objects)
 - Test: `tests/unit/sanity/schemas.test.ts` (new)
 
-- [ ] **Step 1: Write failing schema-registration test**
+- [x] **Step 1: Write failing schema-registration test**
 
 Create `tests/unit/sanity/schemas.test.ts`:
 
@@ -97,12 +97,12 @@ describe("sanity schema registry", () => {
 });
 ```
 
-- [ ] **Step 2: Run test, expect FAIL**
+- [x] **Step 2: Run test, expect FAIL**
 
 Run: `pnpm test -- schemas`
 Expected: FAIL with "expected [...] to contain 'bilingualSlug'".
 
-- [ ] **Step 3: Implement bilingualSlug**
+- [x] **Step 3: Implement bilingualSlug**
 
 Create `sanity/schemas/objects/bilingualSlug.ts`:
 
@@ -132,7 +132,7 @@ export const bilingualSlug = defineType({
 });
 ```
 
-- [ ] **Step 4: Implement localeText**
+- [x] **Step 4: Implement localeText**
 
 Create `sanity/schemas/objects/localeText.ts`:
 
@@ -162,7 +162,7 @@ export const localeText = defineType({
 });
 ```
 
-- [ ] **Step 5: Implement localeBlocks**
+- [x] **Step 5: Implement localeBlocks**
 
 Create `sanity/schemas/objects/localeBlocks.ts`:
 
@@ -218,7 +218,7 @@ export const localeBlocks = defineType({
 });
 ```
 
-- [ ] **Step 6: Implement imageWithAlt**
+- [x] **Step 6: Implement imageWithAlt**
 
 Create `sanity/schemas/objects/imageWithAlt.ts`:
 
@@ -242,7 +242,7 @@ export const imageWithAlt = defineType({
 });
 ```
 
-- [ ] **Step 7: Register objects in index**
+- [x] **Step 7: Register objects in index**
 
 Replace `sanity/schemas/index.ts`:
 
@@ -271,12 +271,12 @@ export const schemaTypes: SchemaTypeDefinition[] = [
 ];
 ```
 
-- [ ] **Step 8: Run test, expect PASS**
+- [x] **Step 8: Run test, expect PASS**
 
 Run: `pnpm test -- schemas`
 Expected: PASS (4 cases).
 
-- [ ] **Step 9: Typecheck + commit**
+- [x] **Step 9: Typecheck + commit**
 
 ```bash
 pnpm typecheck
@@ -294,7 +294,7 @@ git commit -m "feat(sanity): shared bilingual object types"
 - Modify: `sanity/schemas/index.ts`
 - Modify: `tests/unit/sanity/schemas.test.ts` (extend)
 
-- [ ] **Step 1: Extend schema registry test**
+- [x] **Step 1: Extend schema registry test**
 
 Replace the `it.each` block in `tests/unit/sanity/schemas.test.ts` with the full expected set (keep existing — append `author`, `category`):
 
@@ -311,12 +311,12 @@ it.each([
 });
 ```
 
-- [ ] **Step 2: Run test, expect FAIL**
+- [x] **Step 2: Run test, expect FAIL**
 
 Run: `pnpm test -- schemas`
 Expected: FAIL on `author`.
 
-- [ ] **Step 3: Implement author**
+- [x] **Step 3: Implement author**
 
 Create `sanity/schemas/author.ts`:
 
@@ -339,7 +339,7 @@ export const author = defineType({
 });
 ```
 
-- [ ] **Step 4: Implement category**
+- [x] **Step 4: Implement category**
 
 Create `sanity/schemas/category.ts`:
 
@@ -362,7 +362,7 @@ export const category = defineType({
 });
 ```
 
-- [ ] **Step 5: Register in index**
+- [x] **Step 5: Register in index**
 
 Add imports + entries to `sanity/schemas/index.ts`:
 
@@ -380,12 +380,12 @@ And append to the exported array after `page`:
   category,
 ```
 
-- [ ] **Step 6: Run test, expect PASS**
+- [x] **Step 6: Run test, expect PASS**
 
 Run: `pnpm test -- schemas`
 Expected: PASS (6 cases).
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 pnpm typecheck
@@ -404,16 +404,16 @@ git commit -m "feat(sanity): author and blog category documents"
 - Modify: `sanity/schemas/index.ts`
 - Modify: `tests/unit/sanity/schemas.test.ts`
 
-- [ ] **Step 1: Extend schema registry test**
+- [x] **Step 1: Extend schema registry test**
 
 Append `"testimonial"`, `"brandingOption"`, `"pricingTier"` to the `it.each` list in `tests/unit/sanity/schemas.test.ts`.
 
-- [ ] **Step 2: Run test, expect FAIL**
+- [x] **Step 2: Run test, expect FAIL**
 
 Run: `pnpm test -- schemas`
 Expected: FAIL on `testimonial`.
 
-- [ ] **Step 3: Implement testimonial**
+- [x] **Step 3: Implement testimonial**
 
 Create `sanity/schemas/testimonial.ts`:
 
@@ -437,7 +437,7 @@ export const testimonial = defineType({
 });
 ```
 
-- [ ] **Step 4: Implement brandingOption**
+- [x] **Step 4: Implement brandingOption**
 
 Create `sanity/schemas/brandingOption.ts`:
 
@@ -464,7 +464,7 @@ export const brandingOption = defineType({
 });
 ```
 
-- [ ] **Step 5: Implement pricingTier**
+- [x] **Step 5: Implement pricingTier**
 
 Create `sanity/schemas/pricingTier.ts`:
 
@@ -522,7 +522,7 @@ export const pricingTier = defineType({
 
 Note: `reference: [{ type: "concept" }]` will Studio-warn until Task 4 registers `concept`. That is expected — the warning clears when concept lands.
 
-- [ ] **Step 6: Register in index**
+- [x] **Step 6: Register in index**
 
 Add imports and entries:
 
@@ -540,12 +540,12 @@ Append to the array after `category`:
   pricingTier,
 ```
 
-- [ ] **Step 7: Run test, expect PASS**
+- [x] **Step 7: Run test, expect PASS**
 
 Run: `pnpm test -- schemas`
 Expected: PASS (9 cases).
 
-- [ ] **Step 8: Commit**
+- [x] **Step 8: Commit**
 
 ```bash
 pnpm typecheck
@@ -562,16 +562,16 @@ git commit -m "feat(sanity): testimonial, branding option, pricing tier"
 - Modify: `sanity/schemas/index.ts`
 - Modify: `tests/unit/sanity/schemas.test.ts`
 
-- [ ] **Step 1: Extend schema registry test**
+- [x] **Step 1: Extend schema registry test**
 
 Append `"concept"` to the `it.each` list.
 
-- [ ] **Step 2: Run test, expect FAIL**
+- [x] **Step 2: Run test, expect FAIL**
 
 Run: `pnpm test -- schemas`
 Expected: FAIL on `concept`.
 
-- [ ] **Step 3: Implement concept**
+- [x] **Step 3: Implement concept**
 
 Create `sanity/schemas/concept.ts`:
 
@@ -633,16 +633,16 @@ export const concept = defineType({
 });
 ```
 
-- [ ] **Step 4: Register in index**
+- [x] **Step 4: Register in index**
 
 Add `import { concept } from "./concept";` and append `concept,` to the array after `pricingTier`.
 
-- [ ] **Step 5: Run test, expect PASS**
+- [x] **Step 5: Run test, expect PASS**
 
 Run: `pnpm test -- schemas`
 Expected: PASS (10 cases).
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 pnpm typecheck
@@ -659,16 +659,16 @@ git commit -m "feat(sanity): concept document with events/in-company split"
 - Modify: `sanity/schemas/index.ts`
 - Modify: `tests/unit/sanity/schemas.test.ts`
 
-- [ ] **Step 1: Extend schema registry test**
+- [x] **Step 1: Extend schema registry test**
 
 Append `"case"`.
 
-- [ ] **Step 2: Run test, expect FAIL**
+- [x] **Step 2: Run test, expect FAIL**
 
 Run: `pnpm test -- schemas`
 Expected: FAIL on `case`.
 
-- [ ] **Step 3: Implement case**
+- [x] **Step 3: Implement case**
 
 Create `sanity/schemas/case.ts`:
 
@@ -732,16 +732,16 @@ export const caseStudy = defineType({
 
 Note: we export as `caseStudy` (not `case`) because `case` is a JS reserved keyword. The `name` field still registers the type as `"case"`.
 
-- [ ] **Step 4: Register in index**
+- [x] **Step 4: Register in index**
 
 Add `import { caseStudy } from "./case";` and append `caseStudy,` after `concept`.
 
-- [ ] **Step 5: Run test, expect PASS**
+- [x] **Step 5: Run test, expect PASS**
 
 Run: `pnpm test -- schemas`
 Expected: PASS (11 cases).
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 pnpm typecheck
@@ -758,16 +758,16 @@ git commit -m "feat(sanity): case document with events/in-company split"
 - Modify: `sanity/schemas/index.ts`
 - Modify: `tests/unit/sanity/schemas.test.ts`
 
-- [ ] **Step 1: Extend schema registry test**
+- [x] **Step 1: Extend schema registry test**
 
 Append `"post"`.
 
-- [ ] **Step 2: Run test, expect FAIL**
+- [x] **Step 2: Run test, expect FAIL**
 
 Run: `pnpm test -- schemas`
 Expected: FAIL on `post`.
 
-- [ ] **Step 3: Implement post**
+- [x] **Step 3: Implement post**
 
 Create `sanity/schemas/post.ts`:
 
@@ -819,16 +819,16 @@ export const post = defineType({
 });
 ```
 
-- [ ] **Step 4: Register in index**
+- [x] **Step 4: Register in index**
 
 Add `import { post } from "./post";` and append `post,` after `caseStudy`.
 
-- [ ] **Step 5: Run test, expect PASS**
+- [x] **Step 5: Run test, expect PASS**
 
 Run: `pnpm test -- schemas`
 Expected: PASS (12 cases).
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 pnpm typecheck
@@ -843,7 +843,7 @@ git commit -m "feat(sanity): blog post document"
 **Files:**
 - Modify: `sanity.config.ts`
 
-- [ ] **Step 1: Replace Studio config with grouped structure**
+- [x] **Step 1: Replace Studio config with grouped structure**
 
 Replace `sanity.config.ts` contents:
 
@@ -902,19 +902,19 @@ export default defineConfig({
 });
 ```
 
-- [ ] **Step 2: Verify typecheck**
+- [x] **Step 2: Verify typecheck**
 
 Run: `pnpm typecheck`
 Expected: no errors.
 
-- [ ] **Step 3: Smoke-test Studio locally**
+- [x] **Step 3: Smoke-test Studio locally**
 
 Run: `pnpm dev`, open `http://localhost:3000/studio`.
 Expected: left nav shows grouped sections (Site settings, Concepts, Cases, Blog posts, etc.) with dividers between groups. Creating a new concept should load a form with the NL/EN title, category radio, slug, hero, SEO.
 
 Stop dev server (`Ctrl+C`).
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add sanity.config.ts
@@ -930,7 +930,7 @@ git commit -m "feat(sanity): grouped studio desk structure"
 - Create: `src/lib/sanity/types.generated.ts` (initial — file exists so imports compile)
 - Modify: `.gitignore` — no change (we commit generated file)
 
-- [ ] **Step 1: Add typegen dep**
+- [x] **Step 1: Add typegen dep**
 
 Run:
 
@@ -940,7 +940,7 @@ pnpm add -D @sanity/cli
 
 Expected: `@sanity/cli` added under devDependencies.
 
-- [ ] **Step 2: Add scripts to package.json**
+- [x] **Step 2: Add scripts to package.json**
 
 Add two scripts in the `scripts` block of `package.json`:
 
@@ -949,7 +949,7 @@ Add two scripts in the `scripts` block of `package.json`:
 "sanity:types": "pnpm sanity:extract && sanity typegen generate"
 ```
 
-- [ ] **Step 3: Add `sanity-typegen.json` config**
+- [x] **Step 3: Add `sanity-typegen.json` config**
 
 Create `sanity-typegen.json` at repo root:
 
@@ -961,7 +961,7 @@ Create `sanity-typegen.json` at repo root:
 }
 ```
 
-- [ ] **Step 4: Ignore extract artefact in git**
+- [x] **Step 4: Ignore extract artefact in git**
 
 Add `.sanity/` to `.gitignore` (create section if absent):
 
@@ -970,7 +970,7 @@ Add `.sanity/` to `.gitignore` (create section if absent):
 .sanity/
 ```
 
-- [ ] **Step 5: Create placeholder types file**
+- [x] **Step 5: Create placeholder types file**
 
 Create `src/lib/sanity/types.generated.ts`:
 
@@ -980,14 +980,14 @@ Create `src/lib/sanity/types.generated.ts`:
 export {};
 ```
 
-- [ ] **Step 6: Smoke-test extract**
+- [x] **Step 6: Smoke-test extract**
 
 Run: `pnpm sanity:extract`
 Expected: writes `.sanity/schema.json` (large JSON) and exits 0.
 
 Do NOT run `pnpm sanity:types` yet — it requires queries to exist. It runs successfully in Task 11 once queries land.
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 git add package.json pnpm-lock.yaml sanity-typegen.json src/lib/sanity/types.generated.ts .gitignore
@@ -1002,7 +1002,7 @@ git commit -m "build(sanity): typegen scripts"
 - Create: `src/lib/sanity/queries/concept.ts`
 - Create: `tests/unit/sanity/queries.test.ts`
 
-- [ ] **Step 1: Write failing query shape test**
+- [x] **Step 1: Write failing query shape test**
 
 Create `tests/unit/sanity/queries.test.ts`:
 
@@ -1027,12 +1027,12 @@ describe("concept queries", () => {
 });
 ```
 
-- [ ] **Step 2: Run test, expect FAIL**
+- [x] **Step 2: Run test, expect FAIL**
 
 Run: `pnpm test -- queries`
 Expected: FAIL with "Cannot find module '@/lib/sanity/queries/concept'".
 
-- [ ] **Step 3: Implement concept queries**
+- [x] **Step 3: Implement concept queries**
 
 Create `src/lib/sanity/queries/concept.ts`:
 
@@ -1086,12 +1086,12 @@ export async function getConceptBySlug(slug: string, locale: Locale) {
 }
 ```
 
-- [ ] **Step 4: Run test, expect PASS**
+- [x] **Step 4: Run test, expect PASS**
 
 Run: `pnpm test -- queries`
 Expected: PASS (3 cases).
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 pnpm typecheck
@@ -1107,7 +1107,7 @@ git commit -m "feat(queries): concept list + detail"
 - Create: `src/lib/sanity/queries/case.ts`
 - Modify: `tests/unit/sanity/queries.test.ts`
 
-- [ ] **Step 1: Extend query test**
+- [x] **Step 1: Extend query test**
 
 Append to `tests/unit/sanity/queries.test.ts`:
 
@@ -1131,12 +1131,12 @@ describe("case queries", () => {
 });
 ```
 
-- [ ] **Step 2: Run test, expect FAIL**
+- [x] **Step 2: Run test, expect FAIL**
 
 Run: `pnpm test -- queries`
 Expected: FAIL with "Cannot find module '@/lib/sanity/queries/case'".
 
-- [ ] **Step 3: Implement case queries**
+- [x] **Step 3: Implement case queries**
 
 Create `src/lib/sanity/queries/case.ts`:
 
@@ -1202,12 +1202,12 @@ export async function getCaseBySlug(slug: string, locale: Locale) {
 }
 ```
 
-- [ ] **Step 4: Run test, expect PASS**
+- [x] **Step 4: Run test, expect PASS**
 
 Run: `pnpm test -- queries`
 Expected: PASS (6 cases).
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 pnpm typecheck
@@ -1224,7 +1224,7 @@ git commit -m "feat(queries): case list + detail with category filter"
 - Modify: `tests/unit/sanity/queries.test.ts`
 - Modify: `src/lib/sanity/types.generated.ts` (overwritten by typegen)
 
-- [ ] **Step 1: Extend query test**
+- [x] **Step 1: Extend query test**
 
 Append to `tests/unit/sanity/queries.test.ts`:
 
@@ -1248,12 +1248,12 @@ describe("post queries", () => {
 });
 ```
 
-- [ ] **Step 2: Run test, expect FAIL**
+- [x] **Step 2: Run test, expect FAIL**
 
 Run: `pnpm test -- queries`
 Expected: FAIL with "Cannot find module '@/lib/sanity/queries/post'".
 
-- [ ] **Step 3: Implement post queries**
+- [x] **Step 3: Implement post queries**
 
 Create `src/lib/sanity/queries/post.ts`:
 
@@ -1305,19 +1305,19 @@ export async function getPostBySlug(slug: string, locale: Locale) {
 }
 ```
 
-- [ ] **Step 4: Run test, expect PASS**
+- [x] **Step 4: Run test, expect PASS**
 
 Run: `pnpm test -- queries`
 Expected: PASS (9 cases).
 
-- [ ] **Step 5: Run typegen end-to-end**
+- [x] **Step 5: Run typegen end-to-end**
 
 Run: `pnpm sanity:types`
 Expected: updates `src/lib/sanity/types.generated.ts` with types for all schema types and query results. Exit code 0.
 
 If this fails, read the error. Most commonly: a query contains a field the schema does not know. Fix the query or the schema.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 pnpm typecheck
@@ -1334,7 +1334,7 @@ git commit -m "feat(queries): blog post list + detail + regen types"
 - Create: `tests/unit/api/revalidate.test.ts`
 - Modify: `package.json` (add `@sanity/webhook` dep)
 
-- [ ] **Step 1: Add webhook verification dep**
+- [x] **Step 1: Add webhook verification dep**
 
 Run:
 
@@ -1344,7 +1344,7 @@ pnpm add @sanity/webhook
 
 Expected: `@sanity/webhook` added under dependencies.
 
-- [ ] **Step 2: Write failing handler test**
+- [x] **Step 2: Write failing handler test**
 
 Create `tests/unit/api/revalidate.test.ts`:
 
@@ -1415,12 +1415,12 @@ describe("POST /api/revalidate", () => {
 });
 ```
 
-- [ ] **Step 3: Run test, expect FAIL**
+- [x] **Step 3: Run test, expect FAIL**
 
 Run: `pnpm test -- revalidate`
 Expected: FAIL with "Cannot find module '@/app/api/revalidate/route'".
 
-- [ ] **Step 4: Implement webhook route**
+- [x] **Step 4: Implement webhook route**
 
 Create `src/app/api/revalidate/route.ts`:
 
@@ -1471,12 +1471,12 @@ export async function POST(req: Request) {
 }
 ```
 
-- [ ] **Step 5: Run test, expect PASS**
+- [x] **Step 5: Run test, expect PASS**
 
 Run: `pnpm test -- revalidate`
 Expected: PASS (3 cases).
 
-- [ ] **Step 6: Document webhook setup in README**
+- [x] **Step 6: Document webhook setup in README**
 
 Append to `docs/architecture.md` (or create if absent) a short block:
 
@@ -1497,7 +1497,7 @@ Configure in Sanity Manage → API → Webhooks:
 - Secret: paste `SANITY_WEBHOOK_SECRET` value
 ```
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 pnpm typecheck
@@ -1512,22 +1512,22 @@ git commit -m "feat(api): signed sanity revalidate webhook"
 
 **Files:** none.
 
-- [ ] **Step 1: Full test suite**
+- [x] **Step 1: Full test suite**
 
 Run: `pnpm test`
 Expected: all unit tests pass (schemas: 12, queries: 9, revalidate: 3, plus existing env/redirect/i18n).
 
-- [ ] **Step 2: Typecheck + lint**
+- [x] **Step 2: Typecheck + lint**
 
 Run: `pnpm typecheck && pnpm lint`
 Expected: both clean.
 
-- [ ] **Step 3: Build**
+- [x] **Step 3: Build**
 
 Run: `pnpm build`
 Expected: success with `/studio` and `/api/revalidate` in the route manifest.
 
-- [ ] **Step 4: E2E smoke**
+- [x] **Step 4: E2E smoke**
 
 Run: `pnpm test:e2e`
 Expected: pass.
