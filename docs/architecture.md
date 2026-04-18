@@ -52,6 +52,21 @@ Webhook Sanity → /api/revalidate (revalidateTag)
 - `src/lib/i18n/` — routing config, request loader, parity checker
 - `sanity.config.ts` + `sanity/schemas/` — CMS definitie
 
+## Sanity → Next revalidation webhook
+
+**Endpoint:** `POST /api/revalidate`
+**Header:** `sanity-webhook-signature: t=<ts>,v1=<hmac-sha256>`
+**Secret:** `SANITY_WEBHOOK_SECRET` (env)
+
+Configure in Sanity Manage → API → Webhooks:
+- URL: `<NEXT_PUBLIC_SITE_URL>/api/revalidate`
+- Dataset: `production`
+- Trigger: Create, Update, Delete
+- Filter: `_type in ["concept", "case", "post", "author", "category", "testimonial", "brandingOption", "pricingTier", "settings", "page"]`
+- Projection: `{ _type, slug }`
+- HTTP method: `POST`
+- Secret: paste `SANITY_WEBHOOK_SECRET` value
+
 ## Deploy
 
 - Railway met Dockerfile
