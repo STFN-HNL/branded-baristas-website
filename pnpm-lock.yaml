@@ -11,6 +11,9 @@ importers:
       '@base-ui/react':
         specifier: ^1.4.0
         version: 1.4.0(@date-fns/tz@1.4.1)(@types/react@19.2.14)(date-fns@4.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+      '@sanity/client':
+        specifier: ^7.21.0
+        version: 7.21.0
       '@sanity/image-url':
         specifier: ^2.1.1
         version: 2.1.1
