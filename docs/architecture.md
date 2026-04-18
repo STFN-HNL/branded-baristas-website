@@ -59,6 +59,7 @@ Webhook Sanity → /api/revalidate (revalidateTag)
 **Secret:** `SANITY_WEBHOOK_SECRET` (env)
 
 Configure in Sanity Manage → API → Webhooks:
+
 - URL: `<NEXT_PUBLIC_SITE_URL>/api/revalidate`
 - Dataset: `production`
 - Trigger: Create, Update, Delete

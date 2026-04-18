@@ -19,17 +19,11 @@ export default defineConfig({
               .title("Site settings")
               .child(S.document().schemaType("settings").documentId("settings")),
             S.divider(),
-            S.listItem()
-              .title("Concepts")
-              .child(S.documentTypeList("concept").title("Concepts")),
+            S.listItem().title("Concepts").child(S.documentTypeList("concept").title("Concepts")),
             S.listItem().title("Cases").child(S.documentTypeList("case").title("Cases")),
-            S.listItem()
-              .title("Blog posts")
-              .child(S.documentTypeList("post").title("Blog posts")),
+            S.listItem().title("Blog posts").child(S.documentTypeList("post").title("Blog posts")),
             S.divider(),
-            S.listItem()
-              .title("Authors")
-              .child(S.documentTypeList("author").title("Authors")),
+            S.listItem().title("Authors").child(S.documentTypeList("author").title("Authors")),
             S.listItem()
               .title("Categories")
               .child(S.documentTypeList("category").title("Categories")),

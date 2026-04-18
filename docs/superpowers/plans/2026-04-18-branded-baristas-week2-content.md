@@ -13,6 +13,7 @@
 ## File map
 
 **Schemas (new):**
+
 - `sanity/schemas/objects/bilingualSlug.ts` — `{ nl: slug, en: slug }` object used on all localized docs
 - `sanity/schemas/objects/localeText.ts` — `{ nl: text, en: text }` (paragraphs, not headings)
 - `sanity/schemas/objects/localeBlocks.ts` — `{ nl: block[], en: block[] }` (portable text body)
@@ -27,24 +28,30 @@
 - `sanity/schemas/post.ts` — document
 
 **Schemas (modify):**
+
 - `sanity/schemas/index.ts` — register all new types
 
 **Studio (modify):**
+
 - `sanity.config.ts` — add desk `structure` grouping docs
 
 **Queries (new):**
+
 - `src/lib/sanity/queries/concept.ts`
 - `src/lib/sanity/queries/case.ts`
 - `src/lib/sanity/queries/post.ts`
 
 **API route (new):**
+
 - `src/app/api/revalidate/route.ts`
 
 **Scripts (modify):**
+
 - `package.json` — add `sanity:types` script; add `@sanity/webhook` dep
 - `.env.example` and `.env.local` — (already contain `SANITY_WEBHOOK_SECRET`, no change)
 
 **Tests (new):**
+
 - `tests/unit/sanity/schemas.test.ts` — asserts each new type is registered
 - `tests/unit/sanity/queries.test.ts` — asserts each query is a non-empty string containing required projections
 - `tests/unit/api/revalidate.test.ts` — signature validation + tag revalidation behaviour
@@ -68,6 +75,7 @@
 ### Task 1: Shared object schemas
 
 **Files:**
+
 - Create: `sanity/schemas/objects/bilingualSlug.ts`
 - Create: `sanity/schemas/objects/localeText.ts`
 - Create: `sanity/schemas/objects/localeBlocks.ts`
@@ -86,14 +94,12 @@ import { schemaTypes } from "../../../sanity/schemas";
 const names = schemaTypes.map((t) => t.name);
 
 describe("sanity schema registry", () => {
-  it.each([
-    "bilingualSlug",
-    "localeText",
-    "localeBlocks",
-    "imageWithAlt",
-  ])("registers object %s", (name) => {
-    expect(names).toContain(name);
-  });
+  it.each(["bilingualSlug", "localeText", "localeBlocks", "imageWithAlt"])(
+    "registers object %s",
+    (name) => {
+      expect(names).toContain(name);
+    },
+  );
 });
 ```
 
@@ -289,6 +295,7 @@ git commit -m "feat(sanity): shared bilingual object types"
 ### Task 2: Author + category documents
 
 **Files:**
+
 - Create: `sanity/schemas/author.ts`
 - Create: `sanity/schemas/category.ts`
 - Modify: `sanity/schemas/index.ts`
@@ -299,16 +306,12 @@ git commit -m "feat(sanity): shared bilingual object types"
 Replace the `it.each` block in `tests/unit/sanity/schemas.test.ts` with the full expected set (keep existing — append `author`, `category`):
 
 ```ts
-it.each([
-  "bilingualSlug",
-  "localeText",
-  "localeBlocks",
-  "imageWithAlt",
-  "author",
-  "category",
-])("registers type %s", (name) => {
-  expect(names).toContain(name);
-});
+it.each(["bilingualSlug", "localeText", "localeBlocks", "imageWithAlt", "author", "category"])(
+  "registers type %s",
+  (name) => {
+    expect(names).toContain(name);
+  },
+);
 ```
 
 - [x] **Step 2: Run test, expect FAIL**
@@ -398,6 +401,7 @@ git commit -m "feat(sanity): author and blog category documents"
 ### Task 3: Testimonial, brandingOption, pricingTier
 
 **Files:**
+
 - Create: `sanity/schemas/testimonial.ts`
 - Create: `sanity/schemas/brandingOption.ts`
 - Create: `sanity/schemas/pricingTier.ts`
@@ -558,6 +562,7 @@ git commit -m "feat(sanity): testimonial, branding option, pricing tier"
 ### Task 4: Concept document
 
 **Files:**
+
 - Create: `sanity/schemas/concept.ts`
 - Modify: `sanity/schemas/index.ts`
 - Modify: `tests/unit/sanity/schemas.test.ts`
@@ -655,6 +660,7 @@ git commit -m "feat(sanity): concept document with events/in-company split"
 ### Task 5: Case document
 
 **Files:**
+
 - Create: `sanity/schemas/case.ts`
 - Modify: `sanity/schemas/index.ts`
 - Modify: `tests/unit/sanity/schemas.test.ts`
@@ -754,6 +760,7 @@ git commit -m "feat(sanity): case document with events/in-company split"
 ### Task 6: Post document
 
 **Files:**
+
 - Create: `sanity/schemas/post.ts`
 - Modify: `sanity/schemas/index.ts`
 - Modify: `tests/unit/sanity/schemas.test.ts`
@@ -841,6 +848,7 @@ git commit -m "feat(sanity): blog post document"
 ### Task 7: Studio desk structure
 
 **Files:**
+
 - Modify: `sanity.config.ts`
 
 - [x] **Step 1: Replace Studio config with grouped structure**
@@ -869,17 +877,11 @@ export default defineConfig({
               .title("Site settings")
               .child(S.document().schemaType("settings").documentId("settings")),
             S.divider(),
-            S.listItem()
-              .title("Concepts")
-              .child(S.documentTypeList("concept").title("Concepts")),
+            S.listItem().title("Concepts").child(S.documentTypeList("concept").title("Concepts")),
             S.listItem().title("Cases").child(S.documentTypeList("case").title("Cases")),
-            S.listItem()
-              .title("Blog posts")
-              .child(S.documentTypeList("post").title("Blog posts")),
+            S.listItem().title("Blog posts").child(S.documentTypeList("post").title("Blog posts")),
             S.divider(),
-            S.listItem()
-              .title("Authors")
-              .child(S.documentTypeList("author").title("Authors")),
+            S.listItem().title("Authors").child(S.documentTypeList("author").title("Authors")),
             S.listItem()
               .title("Categories")
               .child(S.documentTypeList("category").title("Categories")),
@@ -926,6 +928,7 @@ git commit -m "feat(sanity): grouped studio desk structure"
 ### Task 8: Sanity typegen setup
 
 **Files:**
+
 - Modify: `package.json` (add script + deps)
 - Create: `src/lib/sanity/types.generated.ts` (initial — file exists so imports compile)
 - Modify: `.gitignore` — no change (we commit generated file)
@@ -999,6 +1002,7 @@ git commit -m "build(sanity): typegen scripts"
 ### Task 9: Concept queries
 
 **Files:**
+
 - Create: `src/lib/sanity/queries/concept.ts`
 - Create: `tests/unit/sanity/queries.test.ts`
 
@@ -1104,6 +1108,7 @@ git commit -m "feat(queries): concept list + detail"
 ### Task 10: Case queries
 
 **Files:**
+
 - Create: `src/lib/sanity/queries/case.ts`
 - Modify: `tests/unit/sanity/queries.test.ts`
 
@@ -1220,6 +1225,7 @@ git commit -m "feat(queries): case list + detail with category filter"
 ### Task 11: Post queries + typegen run
 
 **Files:**
+
 - Create: `src/lib/sanity/queries/post.ts`
 - Modify: `tests/unit/sanity/queries.test.ts`
 - Modify: `src/lib/sanity/types.generated.ts` (overwritten by typegen)
@@ -1330,6 +1336,7 @@ git commit -m "feat(queries): blog post list + detail + regen types"
 ### Task 12: Revalidate webhook
 
 **Files:**
+
 - Create: `src/app/api/revalidate/route.ts`
 - Create: `tests/unit/api/revalidate.test.ts`
 - Modify: `package.json` (add `@sanity/webhook` dep)
@@ -1366,7 +1373,10 @@ function sign(raw: string, timestamp: number, secret: string) {
   return createHmac("sha256", secret).update(`${timestamp}.${raw}`).digest("base64url");
 }
 
-function makeRequest(body: unknown, opts: { signature?: string; timestamp?: number } = {}): Request {
+function makeRequest(
+  body: unknown,
+  opts: { signature?: string; timestamp?: number } = {},
+): Request {
   const raw = JSON.stringify(body);
   const ts = opts.timestamp ?? Date.now();
   const signature = opts.signature ?? sign(raw, ts, SECRET);
@@ -1488,6 +1498,7 @@ Append to `docs/architecture.md` (or create if absent) a short block:
 **Secret:** `SANITY_WEBHOOK_SECRET` (env)
 
 Configure in Sanity Manage → API → Webhooks:
+
 - URL: `<NEXT_PUBLIC_SITE_URL>/api/revalidate`
 - Dataset: `production`
 - Trigger: Create, Update, Delete
@@ -1535,6 +1546,7 @@ Expected: pass.
 - [ ] **Step 5: Studio walkthrough**
 
 Run: `pnpm dev`. Visit `http://localhost:3000/studio`. Create one of each: concept, case, post. Verify:
+
 - Both NL and EN fields required before save
 - Slug auto-generates from title
 - Preview row shows NL title + meaningful subtitle

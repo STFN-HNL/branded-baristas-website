@@ -15,7 +15,10 @@ function sign(raw: string, timestamp: number, secret: string) {
   return createHmac("sha256", secret).update(`${timestamp}.${raw}`).digest("base64url");
 }
 
-function makeRequest(body: unknown, opts: { signature?: string; timestamp?: number } = {}): Request {
+function makeRequest(
+  body: unknown,
+  opts: { signature?: string; timestamp?: number } = {},
+): Request {
   const raw = JSON.stringify(body);
   const ts = opts.timestamp ?? Date.now();
   const signature = opts.signature ?? sign(raw, ts, SECRET);
