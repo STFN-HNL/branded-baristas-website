@@ -29,10 +29,10 @@ We implementeren een **code-gebaseerde redirectmap** in `src/lib/redirects.ts`, 
 
 ```typescript
 export const redirects: Record<string, string> = {
-  "/coffee-concepts":          "/nl/diensten/koffie-concepten",
-  "/coffee-concepts/barista":  "/nl/diensten/koffie-concepten/barista",
-  "/offerte-aanvragen":        "/nl/offerte",
-  "/contact":                  "/nl/contact",
+  "/coffee-concepts": "/nl/diensten/koffie-concepten",
+  "/coffee-concepts/barista": "/nl/diensten/koffie-concepten/barista",
+  "/offerte-aanvragen": "/nl/offerte",
+  "/contact": "/nl/contact",
   // ... uitgebreid in Week 5 na Search Console export
 };
 ```
