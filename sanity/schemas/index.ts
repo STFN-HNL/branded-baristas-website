@@ -7,6 +7,8 @@ import { imageWithAlt } from "./objects/imageWithAlt";
 import { seo } from "./objects/seo";
 import { settings } from "./settings";
 import { page } from "./page";
+import { author } from "./author";
+import { category } from "./category";
 
 export const schemaTypes: SchemaTypeDefinition[] = [
   // objects
@@ -19,4 +21,6 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   // documents
   settings,
   page,
+  author,
+  category,
 ];

@@ -9,7 +9,9 @@ describe("sanity schema registry", () => {
     "localeText",
     "localeBlocks",
     "imageWithAlt",
-  ])("registers object %s", (name) => {
+    "author",
+    "category",
+  ])("registers type %s", (name) => {
     expect(names).toContain(name);
   });
 });
