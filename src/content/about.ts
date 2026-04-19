@@ -33,7 +33,7 @@ const nl: AboutContent = {
     eyebrow: "Over ons",
     title: "Specialty koffie, hospitality en aandacht voor detail",
     lead: "Branded Baristas begon vanuit een eenvoudige overtuiging: dat koffie meer kan zijn dan een drankje. Het is een moment — een manier om mensen te verbinden, een ritueel dat zorg en gastvrijheid laat zien.",
-    image: "/images/hero/hero-main.png",
+    image: "/images/about/barista-portrait.png",
   },
   story: {
     title: "Een team dat hospitality serieus neemt",
@@ -88,7 +88,7 @@ const en: AboutContent = {
     eyebrow: "About us",
     title: "Specialty coffee, hospitality and attention to detail",
     lead: "Branded Baristas started from a simple belief: that coffee can be more than a drink. It's a moment — a way to connect people, a ritual that shows care and hospitality.",
-    image: "/images/hero/hero-main.png",
+    image: "/images/about/barista-portrait.png",
   },
   story: {
     title: "A team that takes hospitality seriously",

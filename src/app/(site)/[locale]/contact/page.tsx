@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Footer } from "@/components/blocks/Footer";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { getContactContent } from "@/content/contact";
@@ -14,22 +13,13 @@ export default async function ContactPage({ params }: Props) {
 
   return (
     <>
-      <section className="relative h-[560px] w-full overflow-hidden">
-        <Image
-          src={content.hero.image}
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-black/40" aria-hidden />
-        <div className="relative z-10 mx-auto flex h-full max-w-[1440px] flex-col justify-end px-20 pb-[80px]">
+      <section className="bg-pine px-10 pt-[180px] pb-24 lg:pb-32">
+        <div className="mx-auto max-w-[1360px]">
           <span className="text-cream text-[12px] leading-[27px]">{content.hero.eyebrow}</span>
           <h1 className="font-display text-cream mt-4 max-w-[900px] text-[64px] leading-[1.05]">
             {content.hero.title}
           </h1>
-          <p className="text-cream mt-6 max-w-[660px] text-[20px] leading-[27px]">
+          <p className="text-cream/80 mt-6 max-w-[660px] text-[20px] leading-[27px]">
             {content.hero.lead}
           </p>
         </div>

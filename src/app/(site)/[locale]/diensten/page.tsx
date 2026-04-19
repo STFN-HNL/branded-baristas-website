@@ -32,7 +32,7 @@ export default async function ServicesPage({ params }: Props) {
     <>
       <section className="relative h-[560px] w-full overflow-hidden">
         <Image
-          src="/images/hero/hero-main.png"
+          src="/images/concepts/events/piaggio-tuk-tuk.png"
           alt=""
           fill
           priority
@@ -69,7 +69,7 @@ export default async function ServicesPage({ params }: Props) {
         basePath="/diensten/in-company"
         readMoreLabel={readMoreLabel}
         columns={3}
-        variant="sand"
+        variant="pine"
       />
 
       <Footer locale={locale} />

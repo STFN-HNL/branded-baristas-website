@@ -10,10 +10,11 @@ type ConceptCardProps = {
 
 export function ConceptCard({ concept, href, readMoreLabel }: ConceptCardProps) {
   return (
-    <article className="flex flex-col">
+    <article className="group flex flex-col">
       <Link
         href={href}
-        className="group relative block aspect-[630/304] w-full overflow-hidden rounded-t-[20px]"
+        className="relative block aspect-[630/304] w-full overflow-hidden rounded-t-[20px]"
+        aria-label={`${readMoreLabel}: ${concept.title}`}
       >
         <Image
           src={concept.image}
@@ -23,17 +24,33 @@ export function ConceptCard({ concept, href, readMoreLabel }: ConceptCardProps) 
           className="object-cover transition-transform duration-700 group-hover:scale-105"
         />
       </Link>
-      <div className="bg-cream flex flex-col gap-3 rounded-b-[20px] px-8 py-6">
-        <h3 className="font-display text-pine text-[24px] leading-[33px] tracking-[-0.02em]">
+      <div className="bg-cream relative flex flex-col gap-3 rounded-b-[20px] px-8 py-6">
+        <h3 className="font-display text-pine pr-14 text-[24px] leading-[33px] tracking-[-0.02em]">
           {concept.title}
         </h3>
-        <p className="text-forest text-[16px] leading-[21.5px]">{concept.description}</p>
+        <p className="text-forest pr-14 text-[16px] leading-[21.5px]">{concept.description}</p>
         <Link
           href={href}
-          className="text-copper mt-1 inline-flex items-center gap-2 text-[16px] leading-[20.8px] underline-offset-4 hover:underline"
+          aria-label={`${readMoreLabel}: ${concept.title}`}
+          className="bg-amber text-ink absolute right-6 bottom-6 inline-flex h-12 w-12 items-center justify-center rounded-full transition-transform duration-300 group-hover:translate-x-1"
         >
-          {readMoreLabel}
-          <span aria-hidden>→</span>
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 18 18"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden
+          >
+            <path
+              d="M3 9h12M10 4l5 5-5 5"
+              stroke="currentColor"
+              strokeWidth="1.75"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          <span className="sr-only">{readMoreLabel}</span>
         </Link>
       </div>
     </article>

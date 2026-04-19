@@ -38,7 +38,7 @@ export default async function HomePage({ params }: Props) {
         basePath="/diensten/in-company"
         readMoreLabel={readMoreLabel}
         columns={3}
-        variant="sand"
+        variant="pine"
       />
       <Differentiator data={content.differentiator} />
       <FAQ data={content.faq} />
