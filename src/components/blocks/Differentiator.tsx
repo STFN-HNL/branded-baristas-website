@@ -10,7 +10,7 @@ export function Differentiator({ data }: DifferentiatorProps) {
     <section className="bg-cream px-10 py-24 lg:py-32">
       <div className="mx-auto flex max-w-[1360px] flex-col gap-10">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[20px] lg:aspect-auto lg:h-[543px]">
+          <div className="relative aspect-square w-full overflow-hidden rounded-[20px] lg:h-[543px]">
             <Image
               src={data.image}
               alt=""
@@ -60,7 +60,7 @@ export function Differentiator({ data }: DifferentiatorProps) {
               <span className="text-cream/80 text-[16px] leading-[21.5px]">{data.authorRole}</span>
             </footer>
           </div>
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[20px] lg:aspect-auto lg:h-[543px]">
+          <div className="relative aspect-square w-full overflow-hidden rounded-[20px] lg:h-[543px]">
             <Image
               src={data.portrait}
               alt=""

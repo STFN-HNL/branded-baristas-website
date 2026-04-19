@@ -27,10 +27,12 @@ export function ServicesSection({
   const tone = variant === "pine" ? "light" : "dark";
   const gridCols = columns === 2 ? "sm:grid-cols-2" : "sm:grid-cols-2 lg:grid-cols-3";
 
+  const gap = columns === 2 ? "gap-5" : "gap-[30px]";
+
   return (
-    <section className="bg-cream px-10 py-6">
+    <section className="bg-cream px-10 py-[10px]">
       <div
-        className={`${blockBg} mx-auto max-w-[1360px] rounded-[20px] px-12 py-20 lg:px-20 lg:py-24`}
+        className={`${blockBg} mx-auto max-w-[1360px] rounded-[20px] px-10 py-20 lg:px-20 lg:py-20`}
       >
         <div className="flex flex-col gap-16">
           <IntroBlock
@@ -40,7 +42,7 @@ export function ServicesSection({
             tone={tone}
             align="split"
           />
-          <div className={`grid grid-cols-1 gap-10 ${gridCols} lg:gap-12`}>
+          <div className={`grid grid-cols-1 ${gap} ${gridCols}`}>
             {concepts.map((concept) => (
               <ConceptCard
                 key={concept.slug}

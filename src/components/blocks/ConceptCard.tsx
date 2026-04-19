@@ -10,10 +10,10 @@ type ConceptCardProps = {
 
 export function ConceptCard({ concept, href, readMoreLabel }: ConceptCardProps) {
   return (
-    <article className="flex flex-col gap-6">
+    <article className="flex flex-col">
       <Link
         href={href}
-        className="group bg-ink/5 relative block aspect-[4/5] w-full overflow-hidden rounded-lg"
+        className="group relative block aspect-[630/304] w-full overflow-hidden rounded-t-[20px]"
       >
         <Image
           src={concept.image}
@@ -23,14 +23,14 @@ export function ConceptCard({ concept, href, readMoreLabel }: ConceptCardProps) 
           className="object-cover transition-transform duration-700 group-hover:scale-105"
         />
       </Link>
-      <div className="flex flex-col gap-3">
+      <div className="bg-cream flex flex-col gap-3 rounded-b-[20px] px-8 py-6">
         <h3 className="font-display text-pine text-[24px] leading-[33px] tracking-[-0.02em]">
           {concept.title}
         </h3>
         <p className="text-forest text-[16px] leading-[21.5px]">{concept.description}</p>
         <Link
           href={href}
-          className="text-copper mt-2 inline-flex items-center gap-2 text-[16px] leading-[20.8px] underline-offset-4 hover:underline"
+          className="text-copper mt-1 inline-flex items-center gap-2 text-[16px] leading-[20.8px] underline-offset-4 hover:underline"
         >
           {readMoreLabel}
           <span aria-hidden>→</span>
