@@ -1,10 +1,57 @@
 {
   "common": {
     "siteName": "Branded Baristas",
-    "quoteCta": "Offerte aanvragen"
+    "quoteCta": "Offerte aanvragen",
+    "readMore": "Lees meer",
+    "comingSoon": "Deze pagina is in ontwikkeling."
+  },
+  "nav": {
+    "about": "Over ons",
+    "services": "Diensten",
+    "work": "Ons werk",
+    "blog": "Blog",
+    "contact": "Contact"
   },
   "home": {
     "title": "Welkom bij Branded Baristas",
-    "lead": "Barista's, mobiele bars en koffie-ervaringen voor events en op kantoor."
+    "lead": "Barista's, mobiele bars en koffie-ervaringen voor events en op kantoor.",
+    "hero": {
+      "title": "Gedenkwaardige momenten geserveerd",
+      "lead": "Of het nu gaat om een bedrijfsevenement, een brand activation of een beleving op kantoor, onze mobiele barista service rust op drie pijlers: professionele gastvrijheid, visuele verfijning en zintuiglijke perfectie."
+    }
+  },
+  "pages": {
+    "about": {
+      "title": "Over ons",
+      "lead": "Leer Branded Baristas kennen."
+    },
+    "services": {
+      "title": "Diensten",
+      "lead": "Onze barista services voor events en op kantoor."
+    },
+    "cases": {
+      "title": "Ons werk",
+      "lead": "Recente projecten en klantverhalen."
+    },
+    "blog": {
+      "title": "Blog",
+      "lead": "Verhalen over koffie, hospitality en events."
+    },
+    "contact": {
+      "title": "Contact",
+      "lead": "Neem contact op voor een offerte of vraag."
+    },
+    "quote": {
+      "title": "Offerte aanvragen",
+      "lead": "Vertel ons over jouw event en ontvang een offerte."
+    },
+    "branding": {
+      "title": "Branding",
+      "lead": "Maak jouw koffiemoment onmiskenbaar jouw merk."
+    },
+    "privacy": {
+      "title": "Privacy",
+      "lead": "Hoe wij omgaan met jouw gegevens."
+    }
   }
 }

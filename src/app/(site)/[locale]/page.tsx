@@ -1,15 +1,46 @@
 import { getTranslations } from "next-intl/server";
-import { getSettings } from "@/lib/sanity/queries/settings";
+import { Hero } from "@/components/blocks/Hero";
+import { ServicesSection } from "@/components/blocks/ServicesSection";
+import { Differentiator } from "@/components/blocks/Differentiator";
+import { FAQ } from "@/components/blocks/FAQ";
+import { getHomeContent } from "@/content/home";
+import type { Locale } from "@/lib/i18n/routing";
 
-export default async function HomePage() {
-  const [settings, t] = await Promise.all([getSettings(), getTranslations("home")]);
+type Props = {
+  params: Promise<{ locale: Locale }>;
+};
+
+export default async function HomePage({ params }: Props) {
+  const { locale } = await params;
+  const content = getHomeContent(locale);
+  const tCommon = await getTranslations("common");
+  const readMoreLabel = tCommon("readMore");
+
   return (
-    <main className="p-8">
-      <h1 className="text-3xl font-bold">{t("title")}</h1>
-      <p className="mt-4">{t("lead")}</p>
-      {settings?.siteName && (
-        <p className="mt-8 text-sm text-neutral-500">Sanity says: {settings.siteName}</p>
-      )}
-    </main>
+    <>
+      <Hero />
+      <ServicesSection
+        eyebrow={content.events.eyebrow}
+        title={content.events.title}
+        description={content.events.description}
+        concepts={content.events.concepts}
+        basePath="/diensten/events"
+        readMoreLabel={readMoreLabel}
+        columns={2}
+        background="cream"
+      />
+      <ServicesSection
+        eyebrow={content.inCompany.eyebrow}
+        title={content.inCompany.title}
+        description={content.inCompany.description}
+        concepts={content.inCompany.concepts}
+        basePath="/diensten/in-company"
+        readMoreLabel={readMoreLabel}
+        columns={3}
+        background="oat"
+      />
+      <Differentiator data={content.differentiator} />
+      <FAQ data={content.faq} />
+    </>
   );
 }

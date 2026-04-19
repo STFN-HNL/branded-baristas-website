@@ -1,10 +1,57 @@
 {
   "common": {
     "siteName": "Branded Baristas",
-    "quoteCta": "Request a quote"
+    "quoteCta": "Request a quote",
+    "readMore": "Learn more",
+    "comingSoon": "This page is under construction."
+  },
+  "nav": {
+    "about": "About",
+    "services": "Services",
+    "work": "Our work",
+    "blog": "Blog",
+    "contact": "Contact"
   },
   "home": {
     "title": "Welcome to Branded Baristas",
-    "lead": "Baristas, mobile bars and coffee experiences for events and in-company."
+    "lead": "Baristas, mobile bars and coffee experiences for events and in-company.",
+    "hero": {
+      "title": "Memorable moments served",
+      "lead": "Whether it's a corporate event, brand activation, or workplace experience, our mobile barista service rests on three pillars: professional hospitality, visual refinement, and sensory perfection."
+    }
+  },
+  "pages": {
+    "about": {
+      "title": "About us",
+      "lead": "Get to know Branded Baristas."
+    },
+    "services": {
+      "title": "Services",
+      "lead": "Our barista services for events and in-company."
+    },
+    "cases": {
+      "title": "Our work",
+      "lead": "Recent projects and client stories."
+    },
+    "blog": {
+      "title": "Blog",
+      "lead": "Stories on coffee, hospitality and events."
+    },
+    "contact": {
+      "title": "Contact",
+      "lead": "Get in touch for a quote or a question."
+    },
+    "quote": {
+      "title": "Request a quote",
+      "lead": "Tell us about your event and get a quote."
+    },
+    "branding": {
+      "title": "Branding",
+      "lead": "Make your coffee moment unmistakably your brand."
+    },
+    "privacy": {
+      "title": "Privacy",
+      "lead": "How we handle your data."
+    }
   }
 }
