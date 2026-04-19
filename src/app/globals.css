@@ -5,11 +5,35 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  /* Brand palette — from Figma Toolkit (docs/design/figma-inventory.md) */
+  --color-ink: #25211e;
+  --color-cream: #ece8dd;
+  --color-copper: #9e623e;
+  --color-forest: #0a2d28;
+  --color-pine: #1b493a;
+  --color-mocha: #4b2b1d;
+  --color-amber: #f49639;
+  --color-oat: #dac9b5;
+
+  /* Fonts — Questrial loaded via next/font; Roie pending licence, serif fallback for now */
+  --font-sans: var(--font-questrial), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-roie), "Fraunces", "Instrument Serif", Georgia, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-heading: var(--font-display);
+
+  /* Radii — from Figma observations */
+  --radius-pill: 100px;
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* Shadcn semantic token bridge */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -39,82 +63,75 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --background: #ece8dd;
+  --foreground: #25211e;
+  --card: #ffffff;
+  --card-foreground: #25211e;
+  --popover: #ffffff;
+  --popover-foreground: #25211e;
+  --primary: #9e623e;
+  --primary-foreground: #ece8dd;
+  --secondary: #0a2d28;
+  --secondary-foreground: #ece8dd;
+  --muted: #dac9b5;
+  --muted-foreground: #4b2b1d;
+  --accent: #f49639;
+  --accent-foreground: #25211e;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --border: rgba(37, 33, 30, 0.12);
+  --input: rgba(37, 33, 30, 0.12);
+  --ring: rgba(158, 98, 62, 0.5);
+  --chart-1: #9e623e;
+  --chart-2: #0a2d28;
+  --chart-3: #1b493a;
+  --chart-4: #f49639;
+  --chart-5: #dac9b5;
+  --radius: 9px;
+  --sidebar: #ece8dd;
+  --sidebar-foreground: #25211e;
+  --sidebar-primary: #9e623e;
+  --sidebar-primary-foreground: #ece8dd;
+  --sidebar-accent: #dac9b5;
+  --sidebar-accent-foreground: #25211e;
+  --sidebar-border: rgba(37, 33, 30, 0.12);
+  --sidebar-ring: rgba(158, 98, 62, 0.5);
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  --background: #25211e;
+  --foreground: #ece8dd;
+  --card: #0a2d28;
+  --card-foreground: #ece8dd;
+  --popover: #0a2d28;
+  --popover-foreground: #ece8dd;
+  --primary: #f49639;
+  --primary-foreground: #25211e;
+  --secondary: #1b493a;
+  --secondary-foreground: #ece8dd;
+  --muted: #1b493a;
+  --muted-foreground: #dac9b5;
+  --accent: #9e623e;
+  --accent-foreground: #ece8dd;
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --border: rgba(236, 232, 221, 0.1);
+  --input: rgba(236, 232, 221, 0.15);
+  --ring: rgba(244, 150, 57, 0.5);
+  --chart-1: #f49639;
+  --chart-2: #9e623e;
+  --chart-3: #dac9b5;
+  --chart-4: #1b493a;
+  --chart-5: #ece8dd;
+  --sidebar: #0a2d28;
+  --sidebar-foreground: #ece8dd;
+  --sidebar-primary: #f49639;
+  --sidebar-primary-foreground: #25211e;
+  --sidebar-accent: #1b493a;
+  --sidebar-accent-foreground: #ece8dd;
+  --sidebar-border: rgba(236, 232, 221, 0.1);
+  --sidebar-ring: rgba(244, 150, 57, 0.5);
 }
 
 @layer base {
@@ -123,8 +140,16 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-sans);
   }
   html {
     @apply font-sans;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
   }
 }
