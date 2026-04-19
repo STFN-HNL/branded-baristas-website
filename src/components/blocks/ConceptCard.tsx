@@ -24,26 +24,26 @@ export function ConceptCard({ concept, href, readMoreLabel }: ConceptCardProps) 
           className="object-cover transition-transform duration-700 group-hover:scale-105"
         />
       </Link>
-      <div className="bg-cream relative flex flex-col gap-3 rounded-b-[20px] px-8 py-6">
-        <h3 className="font-display text-pine pr-14 text-[24px] leading-[33px] tracking-[-0.02em]">
+      <div className="bg-cream relative flex min-h-[229px] flex-col gap-4 rounded-b-[20px] px-[34px] pt-[55px] pr-[105px] pb-[44px]">
+        <h3 className="font-display text-pine text-[24px] leading-[33px] tracking-[-0.02em]">
           {concept.title}
         </h3>
-        <p className="text-forest pr-14 text-[16px] leading-[21.5px]">{concept.description}</p>
+        <p className="text-forest text-[16px] leading-[22px]">{concept.description}</p>
         <Link
           href={href}
           aria-label={`${readMoreLabel}: ${concept.title}`}
-          className="bg-amber text-ink absolute right-6 bottom-6 inline-flex h-12 w-12 items-center justify-center rounded-full transition-transform duration-300 group-hover:translate-x-1"
+          className="bg-amber text-ink absolute right-[45px] bottom-[44px] inline-flex h-[55px] w-[55px] items-center justify-center rounded-full transition-transform duration-300 group-hover:translate-x-1"
         >
           <svg
-            width="18"
-            height="18"
-            viewBox="0 0 18 18"
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             aria-hidden
           >
             <path
-              d="M3 9h12M10 4l5 5-5 5"
+              d="M4 10h12M11 5l5 5-5 5"
               stroke="currentColor"
               strokeWidth="1.75"
               strokeLinecap="round"

@@ -69,7 +69,7 @@ export default async function ServicesPage({ params }: Props) {
         basePath="/diensten/in-company"
         readMoreLabel={readMoreLabel}
         columns={3}
-        variant="pine"
+        variant="sand"
       />
 
       <Footer locale={locale} />
