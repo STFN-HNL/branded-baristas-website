@@ -10,7 +10,7 @@ type ServicesSectionProps = {
   basePath: "/diensten/events" | "/diensten/in-company";
   readMoreLabel: string;
   columns?: 2 | 3;
-  background?: "cream" | "oat";
+  variant?: "pine" | "sand";
 };
 
 export function ServicesSection({
@@ -21,24 +21,35 @@ export function ServicesSection({
   basePath,
   readMoreLabel,
   columns = 3,
-  background = "cream",
+  variant = "pine",
 }: ServicesSectionProps) {
-  const bg = background === "oat" ? "bg-oat/40" : "bg-cream";
+  const blockBg = variant === "pine" ? "bg-pine" : "bg-sand";
+  const tone = variant === "pine" ? "light" : "dark";
   const gridCols = columns === 2 ? "sm:grid-cols-2" : "sm:grid-cols-2 lg:grid-cols-3";
 
   return (
-    <section className={`${bg} px-6 py-24 md:px-12 lg:px-20 lg:py-32`}>
-      <div className="mx-auto flex max-w-[1280px] flex-col gap-16">
-        <IntroBlock eyebrow={eyebrow} title={title} description={description} />
-        <div className={`grid grid-cols-1 gap-10 ${gridCols} lg:gap-12`}>
-          {concepts.map((concept) => (
-            <ConceptCard
-              key={concept.slug}
-              concept={concept}
-              href={`${basePath}/${concept.slug}`}
-              readMoreLabel={readMoreLabel}
-            />
-          ))}
+    <section className="bg-cream px-10 py-6">
+      <div
+        className={`${blockBg} mx-auto max-w-[1360px] rounded-[20px] px-12 py-20 lg:px-20 lg:py-24`}
+      >
+        <div className="flex flex-col gap-16">
+          <IntroBlock
+            eyebrow={eyebrow}
+            title={title}
+            description={description}
+            tone={tone}
+            align="split"
+          />
+          <div className={`grid grid-cols-1 gap-10 ${gridCols} lg:gap-12`}>
+            {concepts.map((concept) => (
+              <ConceptCard
+                key={concept.slug}
+                concept={concept}
+                href={`${basePath}/${concept.slug}`}
+                readMoreLabel={readMoreLabel}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

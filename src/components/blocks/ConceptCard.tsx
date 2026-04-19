@@ -24,11 +24,13 @@ export function ConceptCard({ concept, href, readMoreLabel }: ConceptCardProps) 
         />
       </Link>
       <div className="flex flex-col gap-3">
-        <h3 className="font-display text-ink text-[28px] leading-[1.1]">{concept.title}</h3>
-        <p className="text-ink/75 text-[16px] leading-[1.55]">{concept.description}</p>
+        <h3 className="font-display text-pine text-[24px] leading-[33px] tracking-[-0.02em]">
+          {concept.title}
+        </h3>
+        <p className="text-forest text-[16px] leading-[21.5px]">{concept.description}</p>
         <Link
           href={href}
-          className="text-copper mt-2 inline-flex items-center gap-2 text-[15px] underline-offset-4 hover:underline"
+          className="text-copper mt-2 inline-flex items-center gap-2 text-[16px] leading-[20.8px] underline-offset-4 hover:underline"
         >
           {readMoreLabel}
           <span aria-hidden>→</span>

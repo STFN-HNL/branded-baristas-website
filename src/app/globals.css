@@ -6,7 +6,7 @@
 
 @theme inline {
   /* Brand palette — from Figma Toolkit (docs/design/figma-inventory.md) */
-  --color-ink: #25211e;
+  --color-ink: #1b110d;
   --color-cream: #ece8dd;
   --color-copper: #9e623e;
   --color-forest: #0a2d28;
@@ -14,6 +14,7 @@
   --color-mocha: #4b2b1d;
   --color-amber: #f49639;
   --color-oat: #dac9b5;
+  --color-sand: #e1d2c1;
 
   /* Fonts — Questrial loaded via next/font; Roie pending licence, serif fallback for now */
   --font-sans: var(--font-questrial), ui-sans-serif, system-ui, sans-serif;

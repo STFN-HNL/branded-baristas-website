@@ -3,6 +3,7 @@ import { Hero } from "@/components/blocks/Hero";
 import { ServicesSection } from "@/components/blocks/ServicesSection";
 import { Differentiator } from "@/components/blocks/Differentiator";
 import { FAQ } from "@/components/blocks/FAQ";
+import { Footer } from "@/components/blocks/Footer";
 import { getHomeContent } from "@/content/home";
 import type { Locale } from "@/lib/i18n/routing";
 
@@ -27,7 +28,7 @@ export default async function HomePage({ params }: Props) {
         basePath="/diensten/events"
         readMoreLabel={readMoreLabel}
         columns={2}
-        background="cream"
+        variant="pine"
       />
       <ServicesSection
         eyebrow={content.inCompany.eyebrow}
@@ -37,10 +38,11 @@ export default async function HomePage({ params }: Props) {
         basePath="/diensten/in-company"
         readMoreLabel={readMoreLabel}
         columns={3}
-        background="oat"
+        variant="sand"
       />
       <Differentiator data={content.differentiator} />
       <FAQ data={content.faq} />
+      <Footer locale={locale} wrapperBg="mocha" />
     </>
   );
 }
