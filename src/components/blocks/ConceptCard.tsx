@@ -24,7 +24,7 @@ export function ConceptCard({ concept, href, readMoreLabel }: ConceptCardProps) 
           className="object-cover transition-transform duration-700 group-hover:scale-105"
         />
       </Link>
-      <div className="bg-cream relative flex min-h-[229px] flex-col gap-4 rounded-b-[20px] px-[34px] pt-[55px] pr-[105px] pb-[44px]">
+      <div className="bg-cream relative flex min-h-[229px] flex-col gap-[26px] rounded-b-[20px] px-[34px] pt-[55px] pr-[190px] pb-[44px]">
         <h3 className="font-display text-pine text-[24px] leading-[33px] tracking-[-0.02em]">
           {concept.title}
         </h3>
