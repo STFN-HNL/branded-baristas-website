@@ -26,7 +26,7 @@ export default async function AboutPage({ params }: Props) {
         <div className="absolute inset-0 bg-black/40" aria-hidden />
         <div className="relative z-10 mx-auto flex h-full max-w-[1440px] flex-col justify-end px-20 pb-[99px]">
           <span className="text-cream text-[12px] leading-[27px]">{content.hero.eyebrow}</span>
-          <h1 className="font-display text-cream mt-4 max-w-[900px] text-[76px] leading-[70px]">
+          <h1 className="font-display text-cream mt-4 max-w-[900px] text-[58px] leading-[65px]">
             {content.hero.title}
           </h1>
           <p className="text-cream mt-6 max-w-[660px] text-[20px] leading-[27px]">
@@ -60,7 +60,7 @@ export default async function AboutPage({ params }: Props) {
       </section>
 
       <section className="bg-cream px-10 py-[10px]">
-        <div className="bg-pine mx-auto max-w-[1360px] rounded-[20px] px-10 py-20 lg:px-20">
+        <div className="bg-pine mx-auto max-w-[1360px] rounded-[20px] px-[40px] pt-[44px] pb-[75px]">
           <div className="flex flex-col gap-16">
             <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
               <div className="flex flex-col gap-5">
@@ -92,7 +92,7 @@ export default async function AboutPage({ params }: Props) {
       </section>
 
       <section className="bg-cream px-10 py-24 lg:py-32">
-        <div className="bg-mocha mx-auto flex max-w-[1360px] flex-col items-start gap-8 rounded-[20px] px-12 py-20 lg:px-20">
+        <div className="bg-mocha mx-auto flex max-w-[1360px] flex-col items-start gap-8 rounded-[20px] px-[40px] py-[58px]">
           <h2 className="font-display text-cream max-w-[900px] text-[50px] leading-[55px]">
             {content.cta.title}
           </h2>
