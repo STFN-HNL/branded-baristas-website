@@ -7,8 +7,8 @@ export async function Header() {
 
   return (
     <header className="absolute inset-x-0 top-0 z-50 h-[116px]">
-      <div className="mx-auto flex h-full max-w-[1440px] items-center px-20">
-        <div className="bg-forest flex h-[70px] w-full items-center justify-between rounded-full pr-10 pl-6">
+      <div className="mx-auto flex max-w-[1440px] px-20 pt-10">
+        <div className="bg-forest flex h-[70px] w-full items-center justify-between rounded-full pr-[29px] pl-[14px]">
           <Link
             href="/"
             className="text-cream flex items-center gap-3"
@@ -18,9 +18,9 @@ export async function Header() {
               src="/logo/mark.svg"
               alt=""
               width={44}
-              height={41}
+              height={40}
               priority
-              className="h-[44px] w-auto"
+              className="h-[40px] w-auto"
             />
             <span className="font-display text-[22px] leading-none tracking-tight">
               {tCommon("siteName")}
