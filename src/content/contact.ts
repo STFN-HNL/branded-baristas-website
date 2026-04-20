@@ -60,7 +60,8 @@ const nl: ContactContent = {
   },
   form: {
     title: "Stuur ons een bericht",
-    description: "Vertel ons wat je in gedachten hebt. Hoe concreter, hoe beter we kunnen meedenken.",
+    description:
+      "Vertel ons wat je in gedachten hebt. Hoe concreter, hoe beter we kunnen meedenken.",
     fields: {
       name: "Naam",
       email: "Email",

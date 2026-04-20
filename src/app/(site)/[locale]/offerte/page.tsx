@@ -39,9 +39,7 @@ export default async function QuotePage({ params }: Props) {
               <h2 className="font-display text-pine text-[36px] leading-[41.58px]">
                 {content.intro.title}
               </h2>
-              <p className="text-forest text-[18px] leading-[27px]">
-                {content.intro.description}
-              </p>
+              <p className="text-forest text-[18px] leading-[27px]">{content.intro.description}</p>
             </div>
             <ol className="flex flex-col gap-6">
               {content.intro.steps.map((step) => (
@@ -65,9 +63,7 @@ export default async function QuotePage({ params }: Props) {
               <h2 className="font-display text-cream text-[36px] leading-[41.58px]">
                 {content.form.title}
               </h2>
-              <p className="text-cream/80 text-[18px] leading-[27px]">
-                {content.form.description}
-              </p>
+              <p className="text-cream/80 text-[18px] leading-[27px]">{content.form.description}</p>
             </div>
             <QuoteForm form={content.form} concepts={concepts} />
           </div>

@@ -97,7 +97,10 @@ export default async function BrandingPage({ params }: Props) {
           </div>
           <ol className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {content.process.steps.map((step) => (
-              <li key={step.number} className="bg-cream flex flex-col gap-3 rounded-[20px] px-8 py-6">
+              <li
+                key={step.number}
+                className="bg-cream flex flex-col gap-3 rounded-[20px] px-8 py-6"
+              >
                 <span className="font-display text-copper text-[28px] leading-[33px]">
                   {step.number}
                 </span>

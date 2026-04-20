@@ -62,9 +62,7 @@ const cases = (locale: Locale): CaseItem[] => {
     {
       slug: "dutch-design-week",
       category: "events",
-      title: isEn
-        ? "Pop-up café on the Design Week floor"
-        : "Pop-up café op de Design Week vloer",
+      title: isEn ? "Pop-up café on the Design Week floor" : "Pop-up café op de Design Week vloer",
       client: "Dutch Design Week",
       location: "Eindhoven",
       guests: "3.800",
@@ -90,9 +88,7 @@ const cases = (locale: Locale): CaseItem[] => {
     {
       slug: "heineken-summer-series",
       category: "events",
-      title: isEn
-        ? "Summer festival with vintage truck"
-        : "Zomerfestival met vintage truck",
+      title: isEn ? "Summer festival with vintage truck" : "Zomerfestival met vintage truck",
       client: "Heineken",
       location: "Amsterdam",
       guests: "2.400",

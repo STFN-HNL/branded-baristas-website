@@ -44,9 +44,7 @@ export function Differentiator({ data }: DifferentiatorProps) {
           </div>
           <div className="bg-pine relative flex flex-col justify-between gap-10 rounded-[20px] p-[58px] pr-[95px]">
             <div className="flex flex-col gap-6">
-              <h2 className="font-display text-cream text-[36px] leading-[42px]">
-                {data.title}
-              </h2>
+              <h2 className="font-display text-cream text-[36px] leading-[42px]">{data.title}</h2>
               <p className="text-cream text-[20px] leading-[27px] whitespace-pre-line">
                 {data.description}
               </p>
@@ -56,10 +54,10 @@ export function Differentiator({ data }: DifferentiatorProps) {
                 <span className="bg-pine text-cream flex h-[55px] w-[55px] shrink-0 items-center justify-center rounded-full">
                   <ArrowIcon />
                 </span>
-                <span className="bg-cream text-pine font-body inline-flex h-[55px] shrink-0 items-center whitespace-nowrap rounded-full px-6 text-[16px] leading-[22px]">
+                <span className="bg-cream text-pine font-body inline-flex h-[55px] shrink-0 items-center rounded-full px-6 text-[16px] leading-[22px] whitespace-nowrap">
                   {feature.title}
                 </span>
-                <span className="text-cream text-[16px] leading-[22px] flex-1">
+                <span className="text-cream flex-1 text-[16px] leading-[22px]">
                   {feature.description}
                 </span>
               </div>
@@ -70,18 +68,16 @@ export function Differentiator({ data }: DifferentiatorProps) {
         <div className="grid grid-cols-1 gap-[40px] lg:grid-cols-[1fr_545px]">
           <div className="bg-copper relative flex flex-col justify-between gap-10 rounded-[20px] p-[58px] pr-[95px]">
             <blockquote className="flex flex-col gap-6">
-              <p className="font-display text-cream text-[36px] leading-[42px]">
-                “{data.quote}”
-              </p>
+              <p className="font-display text-cream text-[36px] leading-[42px]">“{data.quote}”</p>
               <p className="text-cream text-[20px] leading-[27px] whitespace-pre-line">
                 {data.quoteDescription}
               </p>
             </blockquote>
             <footer className="flex items-center gap-4">
-              <span className="bg-cream text-copper font-body inline-flex h-[55px] shrink-0 items-center whitespace-nowrap rounded-full px-6 text-[16px] leading-[22px]">
+              <span className="bg-cream text-copper font-body inline-flex h-[55px] shrink-0 items-center rounded-full px-6 text-[16px] leading-[22px] whitespace-nowrap">
                 {data.author}
               </span>
-              <span className="text-cream text-[16px] leading-[22px] flex-1">
+              <span className="text-cream flex-1 text-[16px] leading-[22px]">
                 {data.authorRole}
               </span>
               <span className="bg-copper text-cream flex h-[55px] w-[55px] shrink-0 items-center justify-center rounded-full">
