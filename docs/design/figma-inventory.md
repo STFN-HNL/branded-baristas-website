@@ -125,11 +125,15 @@ Not extracted from JSON in this pass (requires deeper frame inspection). Week 3 
 
 ## Open items
 
-1. **Roie licence** — confirm commercial licence or pick fallback (Fraunces / Instrument Serif).
+1. **Roie licence** — confirm commercial licence or pick fallback (Fraunces / Instrument Serif). Still the hero's unresolved typography gap per [audit.md](./audit.md).
 2. **Concept detail variants** — only `Mobiele Koffiebar` is designed. Reuse its structure for the other 6 concepts (Coffee Truck, Piaggio Tuk-Tuk, Barista Service, Espresso Bar, Pop-up, Executive).
 3. **Offerte / Contact / Branding** — no Figma designs yet. Either get designs from Stefan or compose from Home sections + a simple form layout.
 4. **Cases detail template** — verify `86:921 Asset Page` is the cases-detail template (name is ambiguous).
 5. **Grid/spacing system** — extract in Week 3 kickoff before first component build.
+6. **Blog artikel (`99:653`) template** — route currently renders `PlaceholderPage`; needs a real article layout. Blocked on Figma quota reset to pull the frame; see [audit.md](./audit.md#blog-artikel--frame-99653). Blocker.
+7. **Concept detail (`99:1120`) full layout** — current route renders a minimal stub with "coming soon" tag. Needs the full Figma-designed layout once quota resets. Blocker.
+8. **Figma MCP / REST quota** — Starter plan daily caps hit during `figma-audit` branch (2026-04-20). Audits for `99:512`, `99:1000`, `99:653`, `99:1120`, `99:1435` are pattern-based (not frame-verified). Re-run the audit when quota resets to confirm.
+9. **Canonical bg-block inner padding** — Home audit established `px-[40px] pt-[44px] pb-[75px]` as the correct inner-padding spec for pine/sand/mocha content blocks (was `lg:px-20 lg:py-20`=80/80). Candidate design token — consider promoting to a shared utility class once visually confirmed on all pages.
 
 ---
 
