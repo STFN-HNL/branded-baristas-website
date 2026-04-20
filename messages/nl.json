@@ -12,6 +12,10 @@
     "blog": "Blog",
     "contact": "Contact"
   },
+  "footer": {
+    "quickLinks": "Snelle links",
+    "credit": "Website ontworpen door Noscero."
+  },
   "home": {
     "title": "Welkom bij Branded Baristas",
     "lead": "Barista's, mobiele bars en koffie-ervaringen voor events en op kantoor.",

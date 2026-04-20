@@ -12,6 +12,10 @@
     "blog": "Blog",
     "contact": "Contact"
   },
+  "footer": {
+    "quickLinks": "Quick links",
+    "credit": "Website designed by Noscero."
+  },
   "home": {
     "title": "Welcome to Branded Baristas",
     "lead": "Baristas, mobile bars and coffee experiences for events and in-company.",
