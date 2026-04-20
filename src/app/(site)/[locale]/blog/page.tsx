@@ -158,7 +158,7 @@ export default async function BlogPage({ params }: Props) {
       </section>
 
       <section className="bg-cream px-10 pb-24 lg:pb-32">
-        <div className="bg-pine mx-auto flex max-w-[1360px] flex-col gap-6 rounded-[20px] px-12 py-16 lg:px-20">
+        <div className="bg-pine mx-auto flex max-w-[1360px] flex-col gap-6 rounded-[20px] px-[40px] py-[58px]">
           <h2 className="font-display text-cream max-w-[800px] text-[40px] leading-[44px]">
             {content.newsletter.title}
           </h2>
