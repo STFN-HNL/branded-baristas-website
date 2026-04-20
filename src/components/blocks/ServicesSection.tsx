@@ -11,6 +11,7 @@ type ServicesSectionProps = {
   readMoreLabel: string;
   columns?: 2 | 3;
   variant?: "pine" | "sand";
+  overlap?: boolean;
 };
 
 export function ServicesSection({
@@ -22,17 +23,19 @@ export function ServicesSection({
   readMoreLabel,
   columns = 3,
   variant = "pine",
+  overlap = false,
 }: ServicesSectionProps) {
   const blockBg = variant === "pine" ? "bg-pine" : "bg-sand";
   const tone = variant === "pine" ? "light" : "dark";
   const gridCols = columns === 2 ? "sm:grid-cols-2" : "sm:grid-cols-2 lg:grid-cols-3";
 
-  const gap = columns === 2 ? "gap-5" : "gap-[30px]";
+  const gap = "gap-[30px]";
+  const overlapClass = overlap ? "-mt-8" : "";
 
   return (
-    <section className="bg-cream px-10 py-[10px]">
+    <section className={`bg-cream px-10 py-[10px] ${overlapClass}`}>
       <div
-        className={`${blockBg} mx-auto max-w-[1360px] rounded-[20px] px-10 py-20 lg:px-20 lg:py-20`}
+        className={`${blockBg} mx-auto max-w-[1360px] rounded-[20px] px-[40px] pt-[44px] pb-[75px]`}
       >
         <div className="flex flex-col gap-16">
           <IntroBlock

@@ -29,6 +29,7 @@ export default async function HomePage({ params }: Props) {
         readMoreLabel={readMoreLabel}
         columns={2}
         variant="pine"
+        overlap
       />
       <ServicesSection
         eyebrow={content.inCompany.eyebrow}
