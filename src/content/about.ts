@@ -132,7 +132,7 @@ const en: AboutContent = {
     description:
       "Whether it's an event, an office setup or a brand activation — we'd love to think along. Request an indicative quote or send us a message.",
     primaryLabel: "Request a quote",
-    primaryHref: "/quote",
+    primaryHref: "/offerte",
     secondaryLabel: "Get in touch",
     secondaryHref: "/contact",
   },

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import type { QuoteContent } from "@/content/quote";
 
 type Props = {
@@ -14,7 +15,8 @@ const inputClass =
 const labelClass = "text-cream text-[12px] leading-[27px] mb-1 block";
 
 export function QuoteForm({ form, concepts }: Props) {
-  const [submitted, setSubmitted] = useState(false);
+  const t = useTranslations("forms.quote");
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [service, setService] = useState<string>("events");
   const [selectedConcepts, setSelectedConcepts] = useState<Set<string>>(new Set());
 
@@ -27,14 +29,38 @@ export function QuoteForm({ form, concepts }: Props) {
     });
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setSubmitted(true);
+    setStatus("submitting");
+    const formData = new FormData(event.currentTarget);
+    const payload: Record<string, unknown> = {
+      source: "quote",
+      service,
+      concepts: Array.from(selectedConcepts),
+    };
+    formData.forEach((value, key) => {
+      if (typeof value === "string" && !(key in payload)) payload[key] = value;
+    });
+    try {
+      const res = await fetch("/api/quote", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      setStatus("success");
+    } catch (error) {
+      console.error("[QuoteForm]", error);
+      setStatus("error");
+    }
   };
 
-  if (submitted) {
+  if (status === "success") {
     return (
-      <div className="bg-cream text-ink rounded-[12px] px-6 py-8 text-[18px] leading-[27px]">
+      <div
+        role="status"
+        className="bg-cream text-ink rounded-[12px] px-6 py-8 text-[18px] leading-[27px]"
+      >
         {form.success}
       </div>
     );
@@ -234,11 +260,17 @@ export function QuoteForm({ form, concepts }: Props) {
       </fieldset>
 
       <p className="text-cream/60 text-[12px] leading-[18px]">{form.disclaimer}</p>
+      {status === "error" ? (
+        <p role="alert" className="text-copper text-[14px] leading-[20px]">
+          {t("error")}
+        </p>
+      ) : null}
       <button
         type="submit"
-        className="rounded-pill bg-copper text-cream hover:bg-copper/90 inline-flex w-fit items-center px-8 py-4 text-[16px] leading-[20.8px] transition-colors"
+        disabled={status === "submitting"}
+        className="rounded-pill bg-copper text-cream hover:bg-copper/90 focus-visible:ring-cream focus-visible:ring-offset-pine inline-flex w-fit items-center px-8 py-4 text-[16px] leading-[20.8px] transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:opacity-60"
       >
-        {form.submit}
+        {status === "submitting" ? t("submitting") : form.submit}
       </button>
     </form>
   );

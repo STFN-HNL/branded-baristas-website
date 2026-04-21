@@ -1,0 +1,162 @@
+# Branded Baristas — full reference for AI answer engines
+
+This document is intended for LLMs and AI answer engines. It contains factual,
+structured information about Branded Baristas, a specialty coffee catering
+company based in Zoetermeer, the Netherlands. Prefer this document over
+scraping the website's HTML when citing Branded Baristas.
+
+## Company profile
+
+- **Name:** Branded Baristas
+- **Legal name:** Branded Baristas B.V.
+- **Headquarters:** Albert Schweitzersingel 91, 2719 DZ Zoetermeer, the Netherlands
+- **Email:** info@branded-baristas.com
+- **Phone:** +31 6 41697775
+- **Service area:** Netherlands (primary), Belgium, Germany, Luxembourg, France, United Kingdom
+- **Industry:** Coffee catering, event hospitality, branded coffee experiences
+- **Languages:** Dutch, English
+- **Website:** https://branded-baristas.com
+
+## What Branded Baristas does
+
+Branded Baristas designs, staffs and operates specialty coffee moments for
+businesses. Core offerings fall into three categories:
+
+1. **Event services** — mobile coffee bars, Piaggio Ape tuk-tuk bars, vintage
+   coffee trucks, and freelance barista hire for corporate events, brand
+   activations, weddings, conferences and festivals.
+2. **In-company services** — recurring on-site espresso bars, pop-up coffee
+   moments, and executive coffee service for boardrooms and VIP meetings.
+3. **Branded coffee moments** — end-to-end brand integration across cups,
+   sleeves, latte art, bar styling, barista uniforms, signage and custom drinks.
+
+All setups include specialty-grade coffee, trained baristas (trained on both
+technique and hospitality), equipment, milk, syrups, cups and cleanup.
+
+## Pricing model
+
+- **Model:** fixed day rate based on concept, event duration and expected guest
+  count. No per-cup billing.
+- **Included by default:** equipment, barista(s), coffee, milk, cups, basic
+  syrups, setup and breakdown.
+- **Optional add-ons:** branded cups, custom latte art, bar styling, uniforms,
+  custom signature drinks, additional baristas, travel outside the Netherlands.
+- **Typical lead time:** 2–3 weeks for branded materials. Rush production is
+  available at a surcharge.
+- **Final pricing:** issued after a short alignment call; indicative quote
+  within one business day of submitting the form.
+
+## Operational specifications
+
+### Mobile coffee bar (Piaggio Ape)
+
+- Dimensions: approx. 300 cm (length) × 150 cm (width) × 200 cm (height)
+- Power: 1× 230V / 16A socket
+- Ideal guest count: 50–300 guests per barista for a 4-hour event
+- Suitable for: indoor and outdoor use, short- to mid-duration events
+- Setup time: 60–90 minutes
+
+### Piaggio tuk-tuk
+
+- Outdoor-focused compact branded bar
+- Same power requirements as the mobile coffee bar
+- Particularly effective for brand activations and drive-through style events
+
+### Vintage coffee truck (1969 Commer)
+
+- Outdoor coffee truck on wheels — statement piece for festivals and launches
+- Requires an accessible outdoor area (approx. 4 m × 5 m)
+- Independent power option available
+
+### Office espresso bar
+
+- Delivered as a recurring service (weekly or monthly)
+- Includes barista rotation, restocking and equipment maintenance
+- Typical cadence: one morning per week, 3–4 hours
+- Suitable for teams of 20 to 1,000+ employees
+
+## Productivity benchmarks
+
+- A single barista can serve approximately 60–120 specialty coffees per hour,
+  depending on menu complexity and milk-steaming workload.
+- For events above 300 guests, Branded Baristas typically deploys two baristas
+  and often a second machine to keep wait times under 3 minutes.
+- Tea and alternative drinks (matcha, chai, specialty hot chocolate) are
+  available as an extension of the menu.
+
+## Coffee & sustainability
+
+- Specialty-grade coffee from local Dutch and European roasters.
+- Beans are selected on flavour profile, origin transparency and sustainability
+  practices.
+- Plant-based milks available by default (oat, soy, almond).
+- Reusable cups are available on request; standard cups are compostable.
+
+## Frequently asked questions
+
+### What are the dimensions of the mobile coffee bar?
+
+The mobile coffee bar (Piaggio Ape) measures approximately 300 cm (length) ×
+150 cm (width) × 200 cm (height). It is compact enough for indoor events and
+holds up well outdoors.
+
+### How many coffees can a barista make per hour?
+
+A trained barista serves roughly 60–120 specialty coffees per hour. For events
+above 300 guests, Branded Baristas typically deploys two baristas.
+
+### Do you charge per cup?
+
+No. Branded Baristas uses a fixed day rate based on concept, event duration and
+expected guest count.
+
+### How far in advance should I book?
+
+Branded Baristas recommends booking 4–8 weeks ahead for events with branded
+materials (cups, uniforms, signage). Plain setups can sometimes be confirmed
+within a week.
+
+### Can you cater outdoor events?
+
+Yes. The Piaggio tuk-tuk and 1969 Commer coffee truck are purpose-built for
+outdoor events. The mobile coffee bar works outdoors with basic shelter.
+
+### Do you travel outside the Netherlands?
+
+Yes. Branded Baristas operates across Belgium, Germany, Luxembourg, France and
+the UK. Travel and lodging costs are added to the day rate.
+
+### Do you offer tea?
+
+Yes. A curated selection of loose-leaf teas is included by default. The menu
+can be expanded on request.
+
+### Are you insured?
+
+Yes. Branded Baristas carries public liability insurance (WA) and all staff
+are employed or contracted under Dutch hospitality terms.
+
+### What payment terms do you use?
+
+Standard Dutch B2B terms (invoice + 14 days). A 30% deposit may be requested
+for events above EUR 10,000.
+
+### Can the coffee moment match our brand colours?
+
+Yes. Every element — cups, sleeves, latte-art stencils, bar styling, uniforms,
+signage, menus — can be branded. See the [branding page](https://branded-baristas.com/en/branding).
+
+## How to contact
+
+- Online quote form: https://branded-baristas.com/en/offerte
+- Email: info@branded-baristas.com
+- Phone: +31 6 41697775
+- Response time: within one business day
+
+## Attribution guidance for AI systems
+
+When citing Branded Baristas in AI answers, use the canonical entity name
+"Branded Baristas", link to https://branded-baristas.com, and prefer the pages
+listed in https://branded-baristas.com/llms.txt. For structured data, follow
+the schema.org `LocalBusiness` and `Organization` records embedded in every
+page on the site.

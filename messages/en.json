@@ -3,7 +3,11 @@
     "siteName": "Branded Baristas",
     "quoteCta": "Request a quote",
     "readMore": "Learn more",
-    "comingSoon": "This page is under construction."
+    "comingSoon": "This page is under construction.",
+    "skipToContent": "Skip to content",
+    "switchLanguage": "Switch language",
+    "languageNl": "Nederlands",
+    "languageEn": "English"
   },
   "nav": {
     "about": "About",
@@ -20,42 +24,111 @@
     "title": "Welcome to Branded Baristas",
     "lead": "Baristas, mobile bars and coffee experiences for events and in-company.",
     "hero": {
-      "title": "Memorable moments served",
-      "lead": "Whether it's a corporate event, brand activation, or workplace experience, our mobile barista service rests on three pillars: professional hospitality, visual refinement, and sensory perfection."
+      "title": "Coffee-Driven Moments That Elevate Business",
+      "lead": "Coffee moments tailored for business, brand or social events — always designed to be remembered.",
+      "cta": "Let's shape your experience"
     }
   },
   "pages": {
+    "home": {
+      "metaTitle": "Branded Baristas — Specialty coffee catering for events and office",
+      "metaDescription": "Mobile coffee bars, baristas and branded coffee moments for corporate events, brand activations and in-company. Fixed day rates, specialty coffee."
+    },
     "about": {
       "title": "About us",
-      "lead": "Get to know Branded Baristas."
+      "lead": "Get to know Branded Baristas.",
+      "metaTitle": "About Branded Baristas — specialty coffee with hospitality",
+      "metaDescription": "A team of baristas and hosts designing coffee moments for brands and companies. Specialty coffee, trained baristas, full attention to every detail."
     },
     "services": {
       "title": "Services",
-      "lead": "Our barista services for events and in-company."
+      "lead": "Our barista services for events and in-company.",
+      "metaTitle": "Barista services for events and in-company — Branded Baristas",
+      "metaDescription": "Mobile coffee bars, coffee trucks, tuk-tuks, espresso bars and barista hire. For brand activations, corporate events and workplaces."
     },
     "cases": {
       "title": "Our work",
-      "lead": "Recent projects and client stories."
+      "lead": "Recent projects and client stories.",
+      "metaTitle": "Our work — Branded Baristas cases",
+      "metaDescription": "Coffee catering and branded coffee moments for Adidas, ING, BCG, Philips and more. See our cases and results."
     },
     "blog": {
       "title": "Blog",
-      "lead": "Stories on coffee, hospitality and events."
+      "lead": "Stories on coffee, hospitality and events.",
+      "metaTitle": "Coffee, hospitality and events — Branded Baristas blog",
+      "metaDescription": "Insights, guides and stories on specialty coffee, event hospitality and branded coffee moments."
     },
     "contact": {
       "title": "Contact",
-      "lead": "Get in touch for a quote or a question."
+      "lead": "Get in touch for a quote or a question.",
+      "metaTitle": "Contact — Branded Baristas",
+      "metaDescription": "Questions, partnerships or bookings? Contact our team in Zoetermeer. We reply within one business day."
     },
     "quote": {
       "title": "Request a quote",
-      "lead": "Tell us about your event and get a quote."
+      "lead": "Tell us about your event and get a quote.",
+      "metaTitle": "Request a quote — Branded Baristas",
+      "metaDescription": "Get an indicative quote in five minutes for coffee catering, mobile bars or in-company barista services."
     },
     "branding": {
       "title": "Branding",
-      "lead": "Make your coffee moment unmistakably your brand."
+      "lead": "Make your coffee moment unmistakably your brand.",
+      "metaTitle": "Fully branded coffee moments — Branded Baristas",
+      "metaDescription": "From cups and latte art to bar styling and uniforms: we design every touchpoint around your brand."
+    },
+    "guideCoffeeCatering": {
+      "metaTitle": "Coffee catering for events — complete guide | Branded Baristas",
+      "metaDescription": "Everything about coffee catering for corporate events: setups, capacity, pricing, menu and logistics. Realistic benchmarks from 10+ years of practice."
+    },
+    "guideBaristaBarSpecs": {
+      "metaTitle": "Barista bar specs — dimensions, power, capacity | Branded Baristas",
+      "metaDescription": "Technical specs of the Branded Baristas mobile coffee bars: Piaggio Ape, tuk-tuk, vintage truck and office espresso bar."
     },
     "privacy": {
       "title": "Privacy",
-      "lead": "How we handle your data."
+      "lead": "How we handle your data.",
+      "metaTitle": "Privacy policy — Branded Baristas",
+      "metaDescription": "How we handle your personal data, cookies and lead forms."
+    }
+  },
+  "forms": {
+    "contact": {
+      "success": "Thank you — we've received your message and will be in touch within one business day.",
+      "error": "Something went wrong while sending. Please retry or email info@branded-baristas.com.",
+      "submitting": "Sending..."
+    },
+    "quote": {
+      "error": "Something went wrong while sending. Please retry or email info@branded-baristas.com.",
+      "submitting": "Sending..."
+    }
+  },
+  "errors": {
+    "title": "Something went wrong",
+    "description": "Sorry, an unexpected error occurred. We've been notified.",
+    "retry": "Try again",
+    "home": "Back to home"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you're looking for doesn't exist or has moved.",
+    "home": "Back to home"
+  },
+  "guide": {
+    "toc": "Table of contents",
+    "updated": "Updated",
+    "readingTime": "minute read"
+  },
+  "trust": {
+    "eyebrow": "Trusted by leading brands",
+    "kpis": {
+      "events": "2,500+ events served",
+      "years": "10+ years of experience",
+      "clients": "200+ business clients"
+    },
+    "testimonial": {
+      "quote": "Branded Baristas elevated our brand activation to a new level. Guests were still talking about the coffee days later.",
+      "author": "Sanne de Vries",
+      "role": "Head of Brand, Adidas Benelux"
     }
   }
 }

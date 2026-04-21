@@ -5,7 +5,7 @@ import { routing } from "@/lib/i18n/routing";
 
 const intlMiddleware = createIntlMiddleware(routing);
 
-export default function proxy(request: NextRequest) {
+export default function middleware(request: NextRequest) {
   const redirect = findRedirect(request.nextUrl.pathname);
   if (redirect) {
     const url = new URL(redirect.destination, request.url);

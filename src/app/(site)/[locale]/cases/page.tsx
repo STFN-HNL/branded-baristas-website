@@ -1,14 +1,27 @@
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import { Footer } from "@/components/blocks/Footer";
 import { CasesGrid } from "@/components/blocks/CasesGrid";
-import { Link } from "@/lib/i18n/routing";
+import { Link, asHref } from "@/lib/i18n/routing";
 import { getCasesContent } from "@/content/cases";
 import type { Locale } from "@/lib/i18n/routing";
+import { buildMetadata } from "@/lib/seo";
 
 type Props = {
   params: Promise<{ locale: Locale }>;
 };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pages.cases" });
+  return buildMetadata({
+    locale,
+    path: "/cases",
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+  });
+}
 
 export default async function CasesPage({ params }: Props) {
   const { locale } = await params;
@@ -58,7 +71,7 @@ export default async function CasesPage({ params }: Props) {
             {content.cta.description}
           </p>
           <Link
-            href={content.cta.primaryHref}
+            href={asHref(content.cta.primaryHref)}
             className="rounded-pill bg-copper text-cream hover:bg-copper/90 mt-2 inline-flex items-center px-8 py-4 text-[16px] leading-[20.8px] transition-colors"
           >
             {content.cta.primaryLabel}

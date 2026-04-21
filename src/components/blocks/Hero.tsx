@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
+import { PillCta } from "./PillCta";
 
 export async function Hero() {
   const t = await getTranslations("home.hero");
@@ -19,7 +20,12 @@ export async function Hero() {
         <h1 className="font-display text-cream mb-[14px] max-w-[668px] text-[58px] leading-[65px]">
           {t("title")}
         </h1>
-        <p className="text-cream max-w-[442px] text-[20px] leading-[27px]">{t("lead")}</p>
+        <div className="flex max-w-[442px] flex-col gap-[30px]">
+          <p className="text-cream text-[20px] leading-[27px]">{t("lead")}</p>
+          <PillCta href="/contact" variant="dark">
+            {t("cta")}
+          </PillCta>
+        </div>
       </div>
     </section>
   );

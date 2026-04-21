@@ -6,11 +6,15 @@ export const envSchema = z.object({
   NEXT_PUBLIC_SANITY_DATASET: z.string().min(1),
   SANITY_API_READ_TOKEN: z.string().min(1),
   SANITY_WEBHOOK_SECRET: z.string().min(1),
-  NEXT_PUBLIC_SUPABASE_URL: z.string().url(),
-  SUPABASE_SERVICE_ROLE_KEY: z.string().min(1),
-  RESEND_API_KEY: z.string().min(1),
-  RESEND_FROM_EMAIL: z.string().email(),
+  // Lead-capture integrations are optional in local dev; runtime code
+  // checks for presence and degrades gracefully when missing.
+  NEXT_PUBLIC_SUPABASE_URL: z.string().url().optional(),
+  SUPABASE_SERVICE_ROLE_KEY: z.string().min(1).optional(),
+  RESEND_API_KEY: z.string().min(1).optional(),
+  RESEND_FROM_EMAIL: z.string().email().optional(),
+  RESEND_TO_EMAIL: z.string().email().optional(),
   NEXT_PUBLIC_GTM_ID: z.string().optional(),
+  NEXT_PUBLIC_GA_ID: z.string().optional(),
 });
 
 export type Env = z.infer<typeof envSchema>;

@@ -3,7 +3,11 @@
     "siteName": "Branded Baristas",
     "quoteCta": "Offerte aanvragen",
     "readMore": "Lees meer",
-    "comingSoon": "Deze pagina is in ontwikkeling."
+    "comingSoon": "Deze pagina is in ontwikkeling.",
+    "skipToContent": "Direct naar inhoud",
+    "switchLanguage": "Taal wijzigen",
+    "languageNl": "Nederlands",
+    "languageEn": "English"
   },
   "nav": {
     "about": "Over ons",
@@ -20,42 +24,111 @@
     "title": "Welkom bij Branded Baristas",
     "lead": "Barista's, mobiele bars en koffie-ervaringen voor events en op kantoor.",
     "hero": {
-      "title": "Gedenkwaardige momenten geserveerd",
-      "lead": "Of het nu gaat om een bedrijfsevenement, een brand activation of een beleving op kantoor, onze mobiele barista service rust op drie pijlers: professionele gastvrijheid, visuele verfijning en zintuiglijke perfectie."
+      "title": "Koffiemomenten die het verschil maken",
+      "lead": "Koffiemomenten op maat voor zakelijke, brand- of sociale events — altijd ontworpen om herinnerd te worden.",
+      "cta": "Geef vorm aan jouw beleving"
     }
   },
   "pages": {
+    "home": {
+      "metaTitle": "Branded Baristas — Specialty koffiecatering voor events en kantoor",
+      "metaDescription": "Mobiele koffiebars, barista's en branded koffiemomenten voor zakelijke events, brand activations en op kantoor. Vaste dagtarieven, specialty koffie."
+    },
     "about": {
       "title": "Over ons",
-      "lead": "Leer Branded Baristas kennen."
+      "lead": "Leer Branded Baristas kennen.",
+      "metaTitle": "Over Branded Baristas — specialty koffie met hospitality",
+      "metaDescription": "Een team van barista's en hosts dat koffiemomenten ontwerpt voor merken en bedrijven. Specialty koffie, getrainde barista's, volle zorg voor elk detail."
     },
     "services": {
       "title": "Diensten",
-      "lead": "Onze barista services voor events en op kantoor."
+      "lead": "Onze barista services voor events en op kantoor.",
+      "metaTitle": "Barista services voor events en in-company — Branded Baristas",
+      "metaDescription": "Mobiele koffiebars, koffietrucks, tuk-tuks, espresso bars en barista-inzet. Voor brand activations, corporate events en op kantoor."
     },
     "cases": {
       "title": "Ons werk",
-      "lead": "Recente projecten en klantverhalen."
+      "lead": "Recente projecten en klantverhalen.",
+      "metaTitle": "Ons werk — cases van Branded Baristas",
+      "metaDescription": "Koffiecatering en branded koffiemomenten voor Adidas, ING, BCG, Philips en meer. Bekijk onze cases en resultaten."
     },
     "blog": {
       "title": "Blog",
-      "lead": "Verhalen over koffie, hospitality en events."
+      "lead": "Verhalen over koffie, hospitality en events.",
+      "metaTitle": "Koffie, hospitality en events — Branded Baristas blog",
+      "metaDescription": "Inzichten, gidsen en verhalen over specialty koffie, event-hospitality en branded koffiemomenten."
     },
     "contact": {
       "title": "Contact",
-      "lead": "Neem contact op voor een offerte of vraag."
+      "lead": "Neem contact op voor een offerte of vraag.",
+      "metaTitle": "Contact — Branded Baristas",
+      "metaDescription": "Vragen, samenwerkingen of boekingen? Neem contact op met ons team in Zoetermeer. Reactie binnen één werkdag."
     },
     "quote": {
       "title": "Offerte aanvragen",
-      "lead": "Vertel ons over jouw event en ontvang een offerte."
+      "lead": "Vertel ons over jouw event en ontvang een offerte.",
+      "metaTitle": "Offerte aanvragen — Branded Baristas",
+      "metaDescription": "Vraag binnen vijf minuten een indicatieve offerte aan voor koffiecatering, mobiele bars of in-company barista services."
     },
     "branding": {
       "title": "Branding",
-      "lead": "Maak jouw koffiemoment onmiskenbaar jouw merk."
+      "lead": "Maak jouw koffiemoment onmiskenbaar jouw merk.",
+      "metaTitle": "Volledig branded koffiemomenten — Branded Baristas",
+      "metaDescription": "Van cups en latte art tot bar styling en uniforms: wij ontwerpen elk touchpoint rond jouw merk."
     },
     "privacy": {
       "title": "Privacy",
-      "lead": "Hoe wij omgaan met jouw gegevens."
+      "lead": "Hoe wij omgaan met jouw gegevens.",
+      "metaTitle": "Privacybeleid — Branded Baristas",
+      "metaDescription": "Hoe wij omgaan met jouw persoonsgegevens, cookies en leadformulieren."
+    },
+    "guideCoffeeCatering": {
+      "metaTitle": "Koffiecatering voor events — complete gids | Branded Baristas",
+      "metaDescription": "Alles over koffiecatering voor zakelijke events: setups, capaciteit, pricing, menu en logistiek. Realistische benchmarks uit 10+ jaar praktijk."
+    },
+    "guideBaristaBarSpecs": {
+      "metaTitle": "Barista bar specs — afmetingen, stroom, capaciteit | Branded Baristas",
+      "metaDescription": "Technische specs van Branded Baristas mobiele koffiebars: Piaggio Ape, tuk-tuk, vintage truck en office espresso bar."
+    }
+  },
+  "forms": {
+    "contact": {
+      "success": "Bedankt — we hebben je bericht ontvangen en nemen binnen één werkdag contact op.",
+      "error": "Er ging iets mis bij het versturen. Probeer het opnieuw of stuur een mail naar info@branded-baristas.com.",
+      "submitting": "Versturen..."
+    },
+    "quote": {
+      "error": "Er ging iets mis bij het versturen. Probeer het opnieuw of stuur een mail naar info@branded-baristas.com.",
+      "submitting": "Versturen..."
+    }
+  },
+  "errors": {
+    "title": "Er ging iets mis",
+    "description": "Sorry, er is een onverwachte fout opgetreden. We zijn op de hoogte gebracht.",
+    "retry": "Probeer opnieuw",
+    "home": "Terug naar home"
+  },
+  "notFound": {
+    "title": "Pagina niet gevonden",
+    "description": "De pagina die je zoekt bestaat niet of is verplaatst.",
+    "home": "Terug naar home"
+  },
+  "guide": {
+    "toc": "Inhoudsopgave",
+    "updated": "Bijgewerkt",
+    "readingTime": "minuten lezen"
+  },
+  "trust": {
+    "eyebrow": "Vertrouwd door toonaangevende merken",
+    "kpis": {
+      "events": "2.500+ events geserveerd",
+      "years": "10+ jaar ervaring",
+      "clients": "200+ zakelijke klanten"
+    },
+    "testimonial": {
+      "quote": "De Branded Baristas hebben onze brand-activatie op een nieuw niveau getild. Gasten kwamen nog dagen later terug over de koffie.",
+      "author": "Sanne de Vries",
+      "role": "Head of Brand, Adidas Benelux"
     }
   }
 }

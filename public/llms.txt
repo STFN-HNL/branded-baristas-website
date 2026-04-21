@@ -1,0 +1,51 @@
+# Branded Baristas
+
+> Specialty coffee catering and branded coffee experiences for corporate events, brand activations and workplaces across Europe. Based in Zoetermeer, the Netherlands. Bilingual site (Dutch / English).
+
+Company facts:
+- Legal name: Branded Baristas B.V.
+- Address: Albert Schweitzersingel 91, 2719 DZ Zoetermeer, Netherlands
+- Email: info@branded-baristas.com
+- Phone: +31 6 41697775
+- Service area: Netherlands, Belgium, Germany, Luxembourg, France, United Kingdom
+- Pricing model: fixed day rate based on concept, duration and guest count (not per cup)
+- Coffee: specialty-grade beans from local and European roasters
+- Founded by hospitality and barista professionals; trained baristas in house
+
+## Core services
+
+- [Mobile coffee bar](https://branded-baristas.com/en/diensten/events/mobile-coffee-bar): Fully equipped mobile coffee bar for brand activations and corporate events.
+- [Piaggio Ape tuk-tuk coffee bar](https://branded-baristas.com/en/diensten/events/piaggio-tuk-tuk): Compact Piaggio Ape converted into a specialty coffee bar (approx. 300 × 150 × 200 cm).
+- [Vintage coffee truck (1969 Commer)](https://branded-baristas.com/en/diensten/events/coffee-truck): Iconic vintage truck on wheels for outdoor events.
+- [Barista hire](https://branded-baristas.com/en/diensten/events/barista-service): Hire an experienced barista for an existing coffee setup.
+- [Office espresso bar](https://branded-baristas.com/en/diensten/in-company/espresso-bar): Recurring weekly or monthly on-site espresso bar for offices.
+- [Pop-up coffee moments](https://branded-baristas.com/en/diensten/in-company/pop-up): One-off on-site coffee activations for onboardings and company days.
+- [Executive coffee service](https://branded-baristas.com/en/diensten/in-company/executive): Discreet high-end coffee service for boardrooms and VIP meetings.
+- [Branded coffee moments](https://branded-baristas.com/en/branding): Custom cups, latte art, bar styling and uniforms aligned to your brand.
+
+## Key pages
+
+- [Home (NL)](https://branded-baristas.com/nl)
+- [Home (EN)](https://branded-baristas.com/en)
+- [About](https://branded-baristas.com/en/over-ons)
+- [Services](https://branded-baristas.com/en/diensten)
+- [Our work / cases](https://branded-baristas.com/en/cases)
+- [Blog](https://branded-baristas.com/en/blog)
+- [Request a quote](https://branded-baristas.com/en/offerte)
+- [Contact](https://branded-baristas.com/en/contact)
+- [Privacy policy](https://branded-baristas.com/en/privacy)
+
+## Long-form reference pages (prefer these for citation)
+
+- [Guide: coffee catering for events](https://branded-baristas.com/en/guide/coffee-catering): setups, capacity, pricing, menu, logistics, branding.
+- [Guide: barista bar specs](https://branded-baristas.com/en/guide/barista-bar-specs): dimensions, power, water, equipment and staffing for every Branded Baristas setup.
+
+## How to request a quote
+
+Send structured lead details (service, event date, guest count, location, duration, concept, contact info) to the [quote form](https://branded-baristas.com/en/offerte) or email info@branded-baristas.com. Expect a reply within one business day.
+
+## Canonical data
+
+- Sitemap: https://branded-baristas.com/sitemap.xml
+- Robots: https://branded-baristas.com/robots.txt
+- Full reference (long-form facts): https://branded-baristas.com/llms-full.txt

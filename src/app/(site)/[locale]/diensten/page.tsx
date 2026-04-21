@@ -1,13 +1,26 @@
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import { ServicesSection } from "@/components/blocks/ServicesSection";
 import { Footer } from "@/components/blocks/Footer";
 import { getHomeContent } from "@/content/home";
 import type { Locale } from "@/lib/i18n/routing";
+import { buildMetadata } from "@/lib/seo";
 
 type Props = {
   params: Promise<{ locale: Locale }>;
 };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pages.services" });
+  return buildMetadata({
+    locale,
+    path: "/diensten",
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+  });
+}
 
 export default async function ServicesPage({ params }: Props) {
   const { locale } = await params;
@@ -56,7 +69,7 @@ export default async function ServicesPage({ params }: Props) {
         title={content.events.title}
         description={content.events.description}
         concepts={content.events.concepts}
-        basePath="/diensten/events"
+        basePath="/diensten/events/[slug]"
         readMoreLabel={readMoreLabel}
         columns={2}
         variant="pine"
@@ -66,7 +79,7 @@ export default async function ServicesPage({ params }: Props) {
         title={content.inCompany.title}
         description={content.inCompany.description}
         concepts={content.inCompany.concepts}
-        basePath="/diensten/in-company"
+        basePath="/diensten/in-company/[slug]"
         readMoreLabel={readMoreLabel}
         columns={3}
         variant="sand"

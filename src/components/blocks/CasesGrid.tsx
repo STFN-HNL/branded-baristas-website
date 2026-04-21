@@ -33,11 +33,12 @@ export function CasesGrid({ items, filters, readMoreLabel }: Props) {
               key={b.value}
               type="button"
               onClick={() => setActive(b.value)}
-              className={`rounded-pill px-5 py-2 text-[14px] leading-[19px] transition-colors ${
+              className={`rounded-pill focus-visible:ring-copper px-5 py-2 text-[14px] leading-[19px] transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none ${
                 isActive
                   ? "bg-pine text-cream"
                   : "border-forest/20 text-forest hover:border-forest/40 border"
               }`}
+              aria-pressed={isActive}
             >
               {b.label}
             </button>
@@ -49,7 +50,7 @@ export function CasesGrid({ items, filters, readMoreLabel }: Props) {
         {filtered.map((item) => (
           <li key={item.slug} className="flex flex-col">
             <Link
-              href={`/cases/${item.slug}`}
+              href={{ pathname: "/cases/[slug]", params: { slug: item.slug } }}
               className="group relative block aspect-[420/320] w-full overflow-hidden rounded-t-[20px]"
             >
               <Image
@@ -71,7 +72,7 @@ export function CasesGrid({ items, filters, readMoreLabel }: Props) {
               </h3>
               <p className="text-forest text-[16px] leading-[21.5px]">{item.excerpt}</p>
               <Link
-                href={`/cases/${item.slug}`}
+                href={{ pathname: "/cases/[slug]", params: { slug: item.slug } }}
                 className="text-copper mt-1 inline-flex items-center gap-2 text-[16px] leading-[20.8px]"
               >
                 {readMoreLabel}

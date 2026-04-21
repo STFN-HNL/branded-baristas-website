@@ -224,7 +224,7 @@ const en: BrandingContent = {
     title: "Ready for a coffee moment that feels like your brand?",
     description: "Request an indicative quote or send us a message with what you have in mind.",
     primaryLabel: "Request a quote",
-    primaryHref: "/quote",
+    primaryHref: "/offerte",
     secondaryLabel: "Get in touch",
     secondaryHref: "/contact",
   },

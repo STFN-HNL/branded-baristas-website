@@ -12,7 +12,32 @@ export type FaqItem = {
   answer: string;
 };
 
+export type LogoItem = {
+  name: string;
+  icon: "square" | "bolt" | "arc" | "ring" | "dots" | "circle" | "t";
+};
+
+export type PillarItem = {
+  icon: "storefront" | "handshake" | "pitcher" | "cup";
+  title: string;
+  description: string;
+};
+
+export type Social = {
+  platform: "instagram" | "linkedin";
+  href: string;
+};
+
 export type HomeContent = {
+  intro: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    ctaLabel: string;
+    ctaHref: string;
+    image: string;
+  };
+  logos: LogoItem[];
   events: {
     eyebrow: string;
     title: string;
@@ -25,6 +50,20 @@ export type HomeContent = {
     description: string;
     concepts: ConceptCard[];
   };
+  inlineCta: {
+    text: string;
+    ctaLabel: string;
+    ctaHref: string;
+  };
+  tagline: {
+    title: string;
+    image: string;
+  };
+  pillars: {
+    subtitle: string;
+    title: string;
+    items: PillarItem[];
+  };
   differentiator: {
     title: string;
     description: string;
@@ -35,6 +74,36 @@ export type HomeContent = {
     author: string;
     authorRole: string;
     portrait: string;
+  };
+  contact: {
+    title: string;
+    description: string;
+    labels: {
+      office: string;
+      email: string;
+      phone: string;
+      follow: string;
+    };
+    office: string;
+    email: string;
+    phone: string;
+    socials: Social[];
+    form: {
+      labels: {
+        name: string;
+        email: string;
+        phone: string;
+        message: string;
+      };
+      placeholders: {
+        name: string;
+        email: string;
+        phone: string;
+        message: string;
+      };
+      submitLabel: string;
+      thankYou: string;
+    };
   };
   faq: {
     title: string;
@@ -48,76 +117,140 @@ export type HomeContent = {
   };
 };
 
+const sharedLogos: LogoItem[] = [
+  { name: "Wealthro", icon: "square" },
+  { name: "Finyon", icon: "bolt" },
+  { name: "Aegra", icon: "arc" },
+  { name: "Portivio", icon: "ring" },
+  { name: "Vaultic", icon: "dots" },
+  { name: "Altoris", icon: "circle" },
+  { name: "Quan", icon: "t" },
+];
+
+const sharedSocials: Social[] = [
+  { platform: "instagram", href: "https://instagram.com/brandedbaristas" },
+  { platform: "linkedin", href: "https://linkedin.com/company/branded-baristas" },
+];
+
 const nl: HomeContent = {
+  intro: {
+    eyebrow: "Welkom bij Branded Baristas",
+    title: "Gedenkwaardige\nmomenten geserveerd",
+    description:
+      "Wij creëren betekenisvolle touchpoints binnen jouw bedrijf, event of brand activation.\n\nElk detail — van aroma tot flow — is ontworpen om de beleving te versterken en waarde te creëren.",
+    ctaLabel: "Meer weten",
+    ctaHref: "/over-ons",
+    image: "/images/about/barista-portrait.png",
+  },
+  logos: sharedLogos,
   events: {
     eyebrow: "De ervaring",
-    title: "Specialty barista services voor zakelijke evenementen",
+    title: "Event\nServices",
     description:
-      "Wij bieden specialty barista services voor bedrijfsevenementen, conferenties en brand activations in heel Europa. Van de selectie van koffiesoorten tot de visuele opstelling en de gastvrije flow, elk detail is ontworpen om jouw merk te versterken en de gastenbeleving te verrijken.\n\nOf het nu in een boardroom is of tijdens een productlancering, ons team creëert verfijnde, zintuiglijke momenten die blijvende indruk maken.",
+      "Wij leveren professionele barista koffieservices voor bedrijfsevenementen, conferenties en brand activations. Elk detail, van koffieselectie tot hospitality en service flow, is zorgvuldig ontworpen om de sfeer te verheffen, jouw gasten te verrassen en onvergetelijke momenten te creëren.",
     concepts: [
       {
         slug: "mobile-coffee-bar",
-        title: "Mobiele koffiebar",
+        title: "Mobiele Koffiebar",
         description:
-          "Een stijlvolle, volledig uitgeruste koffiebar die perfect past bij zakelijke evenementen, beurzen en brand activations. Compact, elegant en snel te plaatsen, verandert het elke locatie in een gastvrije ontmoetingsplek waar echte verbindingen ontstaan dankzij uitzonderlijke koffie.",
+          "Onze volledig uitgeruste mobiele koffiebars kunnen overal worden opgesteld en bieden kwaliteitskoffie en een onvergetelijke beleving voor jouw gasten of team.",
         image: "/images/concepts/events/mobile-coffee-bar.png",
       },
       {
         slug: "piaggio-tuk-tuk",
         title: "Piaggio TUK TUK",
         description:
-          "Premium koffie, met stijl geserveerd waar jouw evenement ook plaatsvindt. Onze volledig uitgeruste coffee tuk-tuk is compact, elegant en speciaal ontworpen voor locaties die waarde hechten aan beleving, verbinding en een verfijnde sfeer.",
+          "Onze volledig uitgeruste Piaggio Tuk Tuk koffiebar brengt kwaliteitskoffie en een unieke ervaring naar elke locatie of event.",
         image: "/images/concepts/events/piaggio-tuk-tuk.png",
       },
       {
         slug: "coffee-truck",
-        title: "Vintage koffietruck",
+        title: "Vintage Koffietruck",
         description:
-          "Een opvallende Commer koffietruck uit 1969 die vintage charme en ambachtelijke koffie naar jouw evenement brengt. Volledig uitgerust en visueel iconisch, creëert hij een warme, gastvrije sfeer die uitnodigt tot verbinding.",
+          "De 1969 Commer Coffee Truck is een iconische vintage koffiebar op wielen. Perfect voor een unieke koffiebeleving bij elk event.",
         image: "/images/concepts/events/vintage-truck.png",
       },
       {
         slug: "barista-service",
-        title: "Barista Service",
+        title: "Barista Huren",
         description:
-          "Professionele barista's die vakmanschap, elegantie en warmte toevoegen aan jouw evenement. Van espresso tot latte art, elke kop is een zorgvuldig gecreëerde ervaring die het moment versterkt en de aandacht van jouw merk voor detail weerspiegelt.",
+          "Heb je al een koffiebar met apparatuur en tools? Huur een ervaren barista om jouw service naar een hoger niveau te tillen.",
         image: "/images/concepts/events/barista-service.png",
       },
     ],
   },
   inCompany: {
     eyebrow: "De ervaring",
-    title: "Barista belevingen voor werkplekken en kantoren",
+    title: "In-Company\nServices",
     description:
-      "Wij brengen specialty barista stations naar kantoren, co-working ruimtes en hoofdkantoren, waarbij we koffiepauzes omvormen tot een verfijnde ervaring van verbinding en aandacht.\n\nVan dagelijkse service tot speciale teammomenten, onze in-company opstellingen zijn ontworpen om de werkcultuur te versterken, hospitalitydoelen te ondersteunen en een waardevolle pauze te bieden in het ritme van de dag.",
+      "Onze in-company barista services transformeren jouw kantoor of werkplek in een gastvrije hub voor teams en gasten. Elk detail is zorgvuldig ontworpen om engagement, welzijn en bedrijfscultuur te versterken.",
     concepts: [
       {
         slug: "espresso-bar",
         title: "Office Espresso Bar",
         description:
-          "Een professionele koffieopstelling voor kantoren in Nederland. Ideaal voor teammomenten, klantbezoeken of dagelijkse hospitality, met kwaliteit en stijl.",
+          "Bied jouw team een unieke kantoorperk met onze professionele on-site barista service, beschikbaar wekelijks of maandelijks.",
         image: "/images/concepts/in-company/espresso-bar.png",
       },
       {
         slug: "pop-up",
-        title: "Pop-up koffiemomenten",
+        title: "Pop-up Moments",
         description:
-          "Een mobiele espressobar die elke ruimte verandert in een gastvrije ervaring. Perfect voor activaties, beurzen en indoor evenementen in heel Europa.",
+          "Verras jouw team met pop-up koffie-activaties, perfect voor onboardings, bedrijfsfeestdagen of medewerker waarderingsdagen.",
         image: "/images/concepts/in-company/pop-up.png",
       },
       {
         slug: "executive",
-        title: "Executive Meeting Coffee",
+        title: "Executive Meeting",
         description:
-          "Specialty koffieservice, ontworpen voor boardrooms en zakelijke settings. Ideaal voor klantgesprekken, presentaties en executive momenten die uitmuntendheid vragen.",
+          "Bied discrete, high-end koffieservice voor boardrooms, directievergaderingen of VIP-gasten met onze professionele barista-ervaring.",
         image: "/images/concepts/in-company/executive.png",
       },
     ],
   },
+  inlineCta: {
+    text: "Wil je dat jouw merk aanwezig is met intentie?",
+    ctaLabel: "Geef vorm aan jouw beleving",
+    ctaHref: "/contact",
+  },
+  tagline: {
+    title: "De nieuwste manier om\nmensen en bedrijven te verbinden\ndoor kwaliteitskoffie",
+    image: "/images/hero/hero-main.png",
+  },
+  pillars: {
+    subtitle: "Een complete koffiereis in vier essentiële lagen.",
+    title: "De Branded Baristas\nkoffiebeleving",
+    items: [
+      {
+        icon: "storefront",
+        title: "Ambience Design",
+        description:
+          "Wij ontwerpen elke ruimte als een strategische achtergrond — van indeling tot verlichting — om verbinding en flow te ondersteunen.",
+      },
+      {
+        icon: "handshake",
+        title: "Hospitality Service",
+        description:
+          "Onze barista's doen meer dan koffie serveren. Ze ontvangen met warmte en aandacht, en stemmen elk gebaar af op de unieke toon van jouw bedrijf.",
+      },
+      {
+        icon: "pitcher",
+        title: "Technical Precision",
+        description:
+          "Elk detail telt, van koffieorigine tot service flow en timing. Wij zorgen voor precisie en consistentie bij elk event.",
+      },
+      {
+        icon: "cup",
+        title: "Branding Applications",
+        description:
+          "Jouw merk wordt visueel en zintuiglijk geïntegreerd in elk detail, van custom setups tot kopjes, uniformen en elk touchpoint.",
+      },
+    ],
+  },
   differentiator: {
-    title: "Wat Branded Baristas onderscheidt",
+    title: "Waarom Branded Baristas?",
     description:
-      "Branded Baristas biedt specialty barista services, ontwikkeld voor hoogwaardige zakelijke omgevingen: van bedrijfsevenementen en brand activations tot in-house hospitality en werkplekrituelen.\n\nWij combineren hospitality-expertise met operationele precisie om merken te helpen momenten van aanwezigheid, verbinding en zintuiglijke verfijning te creëren.",
+      "Branded Baristas combineert hospitality-expertise en operationele uitmuntendheid om naadloze koffiebelevingen te leveren — ontworpen om jouw merkpresentie te verheffen tijdens events, op werkplekken en bij corporate samenkomsten.",
     features: [
       {
         title: "Partners, geen leveranciers.",
@@ -126,13 +259,43 @@ const nl: HomeContent = {
       },
     ],
     image: "/images/hero/hero-main.png",
-    quote:
-      "Mensen herinneren zich de gastvrijheid, niet alleen de koffie. Ze herinneren zich hoe ze zijn ontvangen.",
+    quote: "Mensen herinneren zich hoe ze werden ontvangen",
     quoteDescription:
-      "Onze barista's ontvangen met aandacht. Getraind in zowel technische uitvoering als menselijke interactie, brengen zij ritme, warmte en bewustzijn in elke service.\n\nOf het nu op de werkvloer is of tijdens een brand activation, hun rol is om de sfeer subtiel te verheffen en elk koffiemoment te laten weerspiegelen wat jouw bedrijfscultuur en zorg kenmerkt.",
+      "Onze barista's zijn meer dan koffiespecialisten — ze zijn experts in aanwezigheid. Elk is getraind niet alleen om te serveren, maar om gastheer te zijn. Met rustige zelfverzekerdheid creëren ze een gevoel van zorg, ritme en aandacht dat een simpele service verandert in een blijvende indruk.",
     author: "Ander, barista sinds 2017.",
     authorRole: "Specialist in pour-over technieken en ochtendgesprekken.",
     portrait: "/images/about/barista-portrait.png",
+  },
+  contact: {
+    title: "Neem contact op",
+    description:
+      "Voor vragen of om jouw visie verder te verkennen, nodigen wij je uit om contact op te nemen met ons professionele team via onderstaande gegevens.",
+    labels: {
+      office: "Kantoor",
+      email: "E-mail",
+      phone: "Telefoon",
+      follow: "Volg ons",
+    },
+    office: "Albert Schweitzersingel 91, 271DZ Zoetermeer",
+    email: "Info@branded-baristas.com",
+    phone: "+31 641697775",
+    socials: sharedSocials,
+    form: {
+      labels: {
+        name: "Naam*",
+        email: "E-mail*",
+        phone: "Telefoonnummer",
+        message: "Bericht*",
+      },
+      placeholders: {
+        name: "Jan Jansen",
+        email: "janjansen@gmail.com",
+        phone: "+31 612 345678",
+        message: "Hallo, ik wil graag informeren naar...",
+      },
+      submitLabel: "Verstuur bericht",
+      thankYou: "Bedankt — we hebben je bericht ontvangen en nemen binnen één werkdag contact op.",
+    },
   },
   faq: {
     title: "Jouw vragen over onze barista setups",
@@ -160,105 +323,259 @@ const nl: HomeContent = {
         answer:
           "Nee. Wij werken met een vast dagtarief op basis van jouw concept, event-duur en verwacht aantal gasten — zonder verrassingen achteraf.",
       },
+      {
+        question: "Hoeveel koffies maakt een barista per uur?",
+        answer:
+          "Een ervaren barista serveert gemiddeld 60 tot 120 specialty koffies per uur, afhankelijk van menu en melkwerk. Voor events boven de 300 gasten zetten we standaard twee barista's en vaak een tweede machine in om wachttijden onder de drie minuten te houden.",
+      },
+      {
+        question: "Hoe lang van tevoren moeten we boeken?",
+        answer:
+          "Voor events met branded elementen (cups, uniforms, signage) adviseren we 4 tot 8 weken vooraf te boeken. Een standaard setup kunnen we soms binnen een week bevestigen — stuur ons een aanvraag met datum en locatie voor een snelle beschikbaarheidscheck.",
+      },
+      {
+        question: "Werken jullie ook buiten Nederland?",
+        answer:
+          "Ja. We werken regelmatig in België, Duitsland, Luxemburg, Frankrijk en het Verenigd Koninkrijk. Reis- en verblijfskosten worden transparant in de offerte opgenomen.",
+      },
+      {
+        question: "Welke stroom en ruimte hebben jullie nodig?",
+        answer:
+          "Een standaard 230V / 16A stopcontact is voldoende voor onze mobiele koffiebar. Reken op een opstelruimte van circa 3 × 2 meter voor de Piaggio en iets meer voor de vintage koffietruck. Opbouwen duurt 60 tot 90 minuten.",
+      },
+      {
+        question: "Kunnen jullie de koffiemomenten brandpersoonlijk maken?",
+        answer:
+          "Ja — cups, sleeves, latte-art stencils, bar styling, uniformen, signage en menukaarten kunnen we afstemmen op jouw huisstijl. Bekijk onze branding-pagina voor voorbeelden en doorlooptijden.",
+      },
+      {
+        question: "Kunnen jullie buiten cateren bij slecht weer?",
+        answer:
+          "Onze Piaggio tuk-tuk en 1969 Commer koffietruck zijn gemaakt voor buitenevenementen. Voor de reguliere mobiele bar adviseren we een partytent of overkapping bij regen — we denken graag mee in je eventplanning.",
+      },
+      {
+        question: "Bieden jullie alternatieven voor zuivel?",
+        answer:
+          "Standaard hebben we haver-, soja- en amandelmelk aan boord. Op aanvraag kunnen we ook kokos of andere plantaardige melkopties meenemen — zonder extra kosten voor je gasten.",
+      },
+      {
+        question: "Kunnen jullie een vast espressobar-ritme op kantoor verzorgen?",
+        answer:
+          "Ja, we draaien wekelijkse of maandelijkse espressobars op kantoor voor teams van 20 tot meer dan 1.000 medewerkers. Typisch boeken onze klanten één ochtend per week van 3 tot 4 uur.",
+      },
+      {
+        question: "Hoe ziet de menukaart eruit?",
+        answer:
+          "Standaard serveren we espresso, cappuccino, flat white, latte, Americano, espresso macchiato, cortado en een filterkoffie of cold brew naar keuze. Ook specialty drinks, matcha, chai en signature coffees zijn mogelijk.",
+      },
+      {
+        question: "Zijn jullie bekers composteerbaar?",
+        answer:
+          "Ja. Onze standaard beker is composteerbaar. Voor recurring events of kantoor-setups werken we graag met herbruikbare cups — dat past bij onze duurzaamheidsaanpak en verlaagt je footprint.",
+      },
+      {
+        question: "Hoe werkt de offerte- en betaalprocedure?",
+        answer:
+          "Na je aanvraag sturen we binnen één werkdag een indicatieve offerte. Na bevestiging ontvang je een factuur met standaard B2B-betaaltermijn van 14 dagen. Voor events boven EUR 10.000 vragen we soms 30% aanbetaling.",
+      },
+      {
+        question: "Zijn jullie verzekerd en gediplomeerd?",
+        answer:
+          "Ja. Branded Baristas heeft een bedrijfsaansprakelijkheidsverzekering (WA). Onze barista's zijn getraind op techniek én gastvrijheid en werken onder Nederlandse horeca-afspraken.",
+      },
+      {
+        question: "Kunnen jullie signature drinks ontwikkelen voor een brand-activatie?",
+        answer:
+          "Zeker. Van een branded iced latte voor een zomerlaunch tot een signature signature matcha voor een retailopening: we ontwikkelen samen een drink die aansluit bij de campagne en zetten deze receptmatig vast in ons playbook.",
+      },
+      {
+        question: "Kan de koffie-activatie onderdeel zijn van onze marketing-KPIs?",
+        answer:
+          "Ja. We werken regelmatig met marketing- en brand-teams en kunnen metingen als kopjes geserveerd, doorlooptijd, NPS en social shares terugkoppelen. Zo wordt een koffiemoment een meetbaar brand-touchpoint.",
+      },
+      {
+        question: "Hoe groot moet de ruimte zijn voor jullie setup?",
+        answer:
+          "Voor de Piaggio Ape mobiele bar rekenen we op 3 × 2 meter, voor de coffee truck op circa 4 × 5 meter met een accessible outdoor spot. Een standaard kantoorsetup past in een foyer of receptie van 2 × 2 meter.",
+      },
     ],
   },
   footer: {
     columns: [
       { label: "Over ons", href: "/over-ons" },
-      { label: "Getuigenissen", href: "/over-ons#getuigenissen" },
       { label: "Ons werk", href: "/cases" },
-      { label: "Veel gestelde vragen", href: "/#faq" },
       { label: "Diensten", href: "/diensten" },
+      { label: "Offerte aanvragen", href: "/offerte" },
+      { label: "Veel gestelde vragen", href: "/#faq" },
       { label: "Contact", href: "/contact" },
     ],
-    colophon: "© 2025 Branded Baristas. Alle rechten voorbehouden.",
+    colophon: `© ${new Date().getFullYear()} Branded Baristas. Alle rechten voorbehouden.`,
   },
 };
 
 const en: HomeContent = {
+  intro: {
+    eyebrow: "Welcome to Branded Baristas",
+    title: "Memorable\nMoments Served",
+    description:
+      "We create meaningful touchpoints inside your company, event, or brand activation.\n\nEvery detail — from aroma to flow — is designed to enhance the experience and create value.",
+    ctaLabel: "Learn More",
+    ctaHref: "/over-ons",
+    image: "/images/about/barista-portrait.png",
+  },
+  logos: sharedLogos,
   events: {
     eyebrow: "The experience",
-    title: "Specialty barista services for corporate events",
+    title: "Event\nServices",
     description:
-      "We deliver specialty barista services for corporate events, conferences and brand activations across Europe. From coffee selection to visual setup and hospitality flow, every detail is designed to elevate your brand and enrich the guest experience.\n\nWhether in a boardroom or at a product launch, our team creates refined, sensory moments that leave a lasting impression.",
+      "We deliver professional barista coffee services for corporate events, conferences and brand activations. Every detail, from coffee selection to hospitality and service flow, is thoughtfully designed to elevate the atmosphere, engage your guests and create memorable experiences.",
     concepts: [
       {
         slug: "mobile-coffee-bar",
-        title: "Mobile coffee bar",
+        title: "Mobiele Koffiebar",
         description:
-          "A stylish, fully equipped coffee bar that suits corporate events, trade shows and brand activations. Compact, elegant and quick to set up, it turns any location into a welcoming meeting place where real connections happen over exceptional coffee.",
+          "Our fully equipped mobile coffee bars can be set up anywhere, delivering quality coffee and a memorable experience for your guests or team.",
         image: "/images/concepts/events/mobile-coffee-bar.png",
       },
       {
         slug: "piaggio-tuk-tuk",
         title: "Piaggio TUK TUK",
         description:
-          "Premium coffee served in style wherever your event takes place. Our fully equipped coffee tuk-tuk is compact, elegant and purpose-built for venues that value experience, connection and a refined atmosphere.",
+          "Our fully equipped Piaggio Tuk Tuk coffee bar brings quality coffee and a unique experience to any location or event.",
         image: "/images/concepts/events/piaggio-tuk-tuk.png",
       },
       {
         slug: "coffee-truck",
-        title: "Vintage coffee truck",
+        title: "Vintage Koffietruck",
         description:
-          "A striking 1969 Commer coffee truck that brings vintage charm and artisan coffee to your event. Fully equipped and visually iconic, it creates a warm, welcoming atmosphere that invites people to connect.",
+          "The 1969 Commer Coffee Truck is an iconic vintage coffee bar on wheels. Perfect for bringing a unique coffee experience to any event.",
         image: "/images/concepts/events/vintage-truck.png",
       },
       {
         slug: "barista-service",
-        title: "Barista service",
+        title: "Barista Huren",
         description:
-          "Professional baristas who add craft, elegance and warmth to your event. From espresso to latte art, every cup is a carefully crafted experience that elevates the moment and reflects your brand's attention to detail.",
+          "Already have a coffee bar set up with equipment and tools? Hire an experienced barista to elevate your service.",
         image: "/images/concepts/events/barista-service.png",
       },
     ],
   },
   inCompany: {
     eyebrow: "The experience",
-    title: "Barista experiences for workplaces and offices",
+    title: "In-Company\nServices",
     description:
-      "We bring specialty barista stations into offices, co-working spaces and headquarters, turning coffee breaks into a refined experience of connection and care.\n\nFrom daily service to special team moments, our in-company setups strengthen workplace culture, support hospitality goals and deliver a meaningful pause in the rhythm of the day.",
+      "Our in-company barista services transform your office or workspace into a welcoming hub for teams and guests. Each detail is carefully crafted to boost engagement, well-being, and company culture.",
     concepts: [
       {
         slug: "espresso-bar",
-        title: "Office espresso bar",
+        title: "Office Espresso Bar",
         description:
-          "A professional coffee setup for offices in the Netherlands. Ideal for team moments, client visits or daily hospitality — with quality and style.",
+          "Offer your team a unique office perk with our professional on-site barista service, available weekly or monthly.",
         image: "/images/concepts/in-company/espresso-bar.png",
       },
       {
         slug: "pop-up",
-        title: "Pop-up coffee moments",
+        title: "Pop-up Moments",
         description:
-          "A mobile espresso bar that turns any room into a welcoming experience. Perfect for activations, trade shows and indoor events across Europe.",
+          "Delight your team with surprise pop-up coffee activations, perfect for onboardings, company holidays or employee appreciation days.",
         image: "/images/concepts/in-company/pop-up.png",
       },
       {
         slug: "executive",
-        title: "Executive meeting coffee",
+        title: "Executive Meeting",
         description:
-          "Specialty coffee service designed for boardrooms and corporate settings. Ideal for client conversations, presentations and executive moments that demand excellence.",
+          "Provide discreet, high-end coffee service for boardrooms, leadership meetings or VIP guests with our professional barista experience.",
         image: "/images/concepts/in-company/executive.png",
       },
     ],
   },
+  inlineCta: {
+    text: "Want your brand to show up with intention?",
+    ctaLabel: "Let's shape your experience",
+    ctaHref: "/contact",
+  },
+  tagline: {
+    title: "The newest way to connect\npeople and businesses\nthrough quality coffee",
+    image: "/images/hero/hero-main.png",
+  },
+  pillars: {
+    subtitle: "A complete coffee journey in four essential layers.",
+    title: "The Branded Baristas\ncoffee experience",
+    items: [
+      {
+        icon: "storefront",
+        title: "Ambience Design",
+        description:
+          "We design each space as a strategic backdrop — from layout to lighting — to support connection and flow.",
+      },
+      {
+        icon: "handshake",
+        title: "Hospitality Service",
+        description:
+          "Our baristas do more than serve coffee. They host with warmth and attention, aligning every gesture with your company's unique tone.",
+      },
+      {
+        icon: "pitcher",
+        title: "Technical Precision",
+        description:
+          "Every detail matters, from coffee origin to service flow and timing. We ensure precision and consistency at every event.",
+      },
+      {
+        icon: "cup",
+        title: "Branding Applications",
+        description:
+          "Your brand is integrated visually and sensorially into every detail, from custom setups to cups, uniforms and every touchpoint.",
+      },
+    ],
+  },
   differentiator: {
-    title: "What sets Branded Baristas apart",
+    title: "Why Branded Baristas?",
     description:
-      "Branded Baristas delivers specialty barista services built for high-end corporate environments: from corporate events and brand activations to in-house hospitality and workplace rituals.\n\nWe combine hospitality expertise with operational precision to help brands create moments of presence, connection and sensory refinement.",
+      "Branded Baristas combines hospitality expertise and operational excellence to deliver seamless coffee experiences — designed to elevate your brand presence in events, workspaces and corporate gatherings.",
     features: [
       {
-        title: "Partners, not vendors.",
-        description: "We serve businesses across Europe, with local insight and global quality.",
+        title: "Partners, not suppliers.",
+        description: "Serving businesses across Europe, with local insight and global quality.",
       },
     ],
     image: "/images/hero/hero-main.png",
-    quote:
-      "People remember the hospitality, not just the coffee. They remember how they were welcomed.",
+    quote: "People remember how they were received",
     quoteDescription:
-      "Our baristas welcome with attention. Trained in both technical execution and human interaction, they bring rhythm, warmth and awareness to every service.\n\nWhether on the workfloor or during a brand activation, their role is to subtly elevate the atmosphere and let every coffee moment reflect what defines your company's culture and care.",
+      "Our baristas are more than coffee specialists — they're experts in presence. Each one is trained not only to serve, but to host. With quiet confidence, they create a sense of care, rhythm and attention that turns a simple service into a lasting impression.",
     author: "Ander, barista since 2017.",
     authorRole: "Specialist in pour-over techniques and morning conversations.",
     portrait: "/images/about/barista-portrait.png",
+  },
+  contact: {
+    title: "Get in touch",
+    description:
+      "For any inquiries or to explore your vision further, we invite you to contact our professional team using the details provided below.",
+    labels: {
+      office: "Office",
+      email: "Email",
+      phone: "Telephone",
+      follow: "Follow us",
+    },
+    office: "Albert Schweitzersingel 91, 271DZ Zoetermeer",
+    email: "Info@branded-baristas.com",
+    phone: "+31 641697775",
+    socials: sharedSocials,
+    form: {
+      labels: {
+        name: "Name*",
+        email: "Email*",
+        phone: "Phone Number",
+        message: "Message*",
+      },
+      placeholders: {
+        name: "John Smith",
+        email: "johnsmith@gmail.com",
+        phone: "+44789 123456",
+        message: "Hello, I'd like to enquire about...",
+      },
+      submitLabel: "Send message",
+      thankYou: "Thank you — we've received your message and will be in touch within one business day.",
+    },
   },
   faq: {
     title: "Your questions about our barista setups",
@@ -286,18 +603,93 @@ const en: HomeContent = {
         answer:
           "No. We work with a fixed day rate based on your concept, event duration and expected guest count — no surprises afterwards.",
       },
+      {
+        question: "How many coffees can a barista make per hour?",
+        answer:
+          "An experienced barista serves roughly 60 to 120 specialty coffees per hour, depending on menu complexity and milk-steaming workload. For events above 300 guests we typically deploy two baristas and often a second machine to keep wait times under three minutes.",
+      },
+      {
+        question: "How far in advance should we book?",
+        answer:
+          "For events with branded elements (cups, uniforms, signage) we recommend booking 4 to 8 weeks ahead. A plain setup can sometimes be confirmed within a week — send us a request with date and location for a quick availability check.",
+      },
+      {
+        question: "Do you operate outside the Netherlands?",
+        answer:
+          "Yes. We regularly work in Belgium, Germany, Luxembourg, France and the United Kingdom. Travel and lodging costs are listed transparently in the quote.",
+      },
+      {
+        question: "What power and space do you need?",
+        answer:
+          "A standard 230V / 16A socket is enough for our mobile coffee bar. Expect a setup footprint of around 3 × 2 metres for the Piaggio and slightly more for the vintage coffee truck. Set-up takes 60 to 90 minutes.",
+      },
+      {
+        question: "Can the coffee moment match our brand?",
+        answer:
+          "Yes — cups, sleeves, latte-art stencils, bar styling, uniforms, signage and menu cards can all be tailored to your brand. See our branding page for examples and lead times.",
+      },
+      {
+        question: "Can you cater outdoors in bad weather?",
+        answer:
+          "Our Piaggio tuk-tuk and 1969 Commer coffee truck are built for outdoor events. For the regular mobile bar we recommend a tent or shelter when rain is likely — we're happy to think along in your event planning.",
+      },
+      {
+        question: "Do you offer dairy alternatives?",
+        answer:
+          "Oat, soy and almond milk are included by default. On request we can add coconut or other plant-based milks — at no extra cost to your guests.",
+      },
+      {
+        question: "Can you run a recurring espresso bar at our office?",
+        answer:
+          "Yes, we operate weekly or monthly on-site espresso bars for teams of 20 to more than 1,000 employees. A typical cadence is one morning per week for 3 to 4 hours.",
+      },
+      {
+        question: "What does the menu look like?",
+        answer:
+          "By default we serve espresso, cappuccino, flat white, latte, Americano, espresso macchiato, cortado and a filter coffee or cold brew. Specialty drinks, matcha, chai and signature coffees are available on request.",
+      },
+      {
+        question: "Are your cups compostable?",
+        answer:
+          "Yes. Our default cup is compostable. For recurring events or office setups we like to work with reusable cups — aligned with our sustainability approach and lowering your footprint.",
+      },
+      {
+        question: "How do quoting and payment work?",
+        answer:
+          "After your request we send an indicative quote within one business day. Once confirmed you receive an invoice with standard Dutch B2B terms (14 days). For events above EUR 10,000 we may request a 30% deposit.",
+      },
+      {
+        question: "Are you insured and certified?",
+        answer:
+          "Yes. Branded Baristas carries public liability insurance. Our baristas are trained on technique and hospitality and are employed or contracted under Dutch hospitality terms.",
+      },
+      {
+        question: "Can you develop a signature drink for a brand activation?",
+        answer:
+          "Absolutely. From a branded iced latte for a summer launch to a signature matcha for a retail opening: we co-create a drink that fits the campaign and lock the recipe into our playbook.",
+      },
+      {
+        question: "Can the coffee activation tie into our marketing KPIs?",
+        answer:
+          "Yes. We regularly work with marketing and brand teams and can report back on cups served, throughput, NPS and social shares. That turns a coffee moment into a measurable brand touchpoint.",
+      },
+      {
+        question: "How much space do you need?",
+        answer:
+          "For the Piaggio Ape mobile bar we plan on 3 × 2 metres, for the coffee truck around 4 × 5 metres with an accessible outdoor spot. A standard office setup fits into a foyer or reception area of 2 × 2 metres.",
+      },
     ],
   },
   footer: {
     columns: [
-      { label: "About", href: "/over-ons" },
-      { label: "Testimonials", href: "/over-ons#testimonials" },
+      { label: "About us", href: "/over-ons" },
       { label: "Our work", href: "/cases" },
-      { label: "Frequently asked questions", href: "/#faq" },
       { label: "Services", href: "/diensten" },
+      { label: "Request a quote", href: "/offerte" },
+      { label: "FAQs", href: "/#faq" },
       { label: "Contact", href: "/contact" },
     ],
-    colophon: "© 2025 Branded Baristas. All rights reserved.",
+    colophon: `© ${new Date().getFullYear()} Branded Baristas. All rights reserved.`,
   },
 };
 

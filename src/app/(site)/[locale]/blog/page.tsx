@@ -1,13 +1,27 @@
+import type { Metadata } from "next";
 import Image from "next/image";
+import { getTranslations } from "next-intl/server";
 import { Footer } from "@/components/blocks/Footer";
 import { Link } from "@/lib/i18n/routing";
 import { getBlogContent } from "@/content/blog";
 import type { BlogPost } from "@/content/blog";
 import type { Locale } from "@/lib/i18n/routing";
+import { buildMetadata } from "@/lib/seo";
 
 type Props = {
   params: Promise<{ locale: Locale }>;
 };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pages.blog" });
+  return buildMetadata({
+    locale,
+    path: "/blog",
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+  });
+}
 
 function formatDate(date: string, locale: Locale): string {
   return new Intl.DateTimeFormat(locale === "en" ? "en-GB" : "nl-NL", {
@@ -31,12 +45,12 @@ function PostCard({
   return (
     <article className="flex flex-col">
       <Link
-        href={`/blog/${post.slug}`}
+        href={{ pathname: "/blog/[slug]", params: { slug: post.slug } }}
         className="group relative block aspect-[420/280] w-full overflow-hidden rounded-t-[20px]"
       >
         <Image
           src={post.image}
-          alt=""
+          alt={post.title}
           fill
           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
           className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -57,7 +71,7 @@ function PostCard({
         </h3>
         <p className="text-forest flex-1 text-[16px] leading-[21.5px]">{post.excerpt}</p>
         <Link
-          href={`/blog/${post.slug}`}
+          href={{ pathname: "/blog/[slug]", params: { slug: post.slug } }}
           className="text-copper mt-1 inline-flex items-center gap-2 text-[16px] leading-[20.8px]"
         >
           {readMoreLabel}
@@ -101,13 +115,13 @@ export default async function BlogPage({ params }: Props) {
         <section className="bg-cream px-10 pt-24 lg:pt-32">
           <div className="mx-auto max-w-[1360px]">
             <Link
-              href={`/blog/${featured.slug}`}
+              href={{ pathname: "/blog/[slug]", params: { slug: featured.slug } }}
               className="group grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16"
             >
               <div className="relative aspect-[3/2] w-full overflow-hidden rounded-[20px]">
                 <Image
                   src={featured.image}
-                  alt=""
+                  alt={featured.title}
                   fill
                   sizes="(min-width: 1024px) 50vw, 100vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"

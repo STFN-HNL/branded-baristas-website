@@ -1,10 +1,24 @@
+import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { Footer } from "@/components/blocks/Footer";
 import { getPrivacyContent } from "@/content/privacy";
 import type { Locale } from "@/lib/i18n/routing";
+import { buildMetadata } from "@/lib/seo";
 
 type Props = {
   params: Promise<{ locale: Locale }>;
 };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pages.privacy" });
+  return buildMetadata({
+    locale,
+    path: "/privacy",
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+  });
+}
 
 export default async function PrivacyPage({ params }: Props) {
   const { locale } = await params;

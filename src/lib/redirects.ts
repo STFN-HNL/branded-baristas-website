@@ -32,6 +32,13 @@ export const redirects: RedirectMapping[] = [
   },
   { source: "/offerte-aanvragen", destination: "/nl/offerte", permanent: true },
   { source: "/contact", destination: "/nl/contact", permanent: true },
+
+  // Legacy EN links that used the NL slug before ADR 0003 translated slugs
+  // landed. next-intl rewrites these internally, but keeping an explicit 301
+  // avoids any ambiguity for external backlinks and search engines.
+  { source: "/en/over-ons", destination: "/en/about", permanent: true },
+  { source: "/en/diensten", destination: "/en/services", permanent: true },
+  { source: "/en/offerte", destination: "/en/quote", permanent: true },
 ];
 
 export function findRedirect(pathname: string): RedirectMapping | null {

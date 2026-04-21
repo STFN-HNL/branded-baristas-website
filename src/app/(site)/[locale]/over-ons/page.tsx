@@ -1,12 +1,26 @@
+import type { Metadata } from "next";
 import Image from "next/image";
-import { Link } from "@/lib/i18n/routing";
+import { getTranslations } from "next-intl/server";
+import { Link, asHref } from "@/lib/i18n/routing";
 import { Footer } from "@/components/blocks/Footer";
 import { getAboutContent } from "@/content/about";
 import type { Locale } from "@/lib/i18n/routing";
+import { buildMetadata } from "@/lib/seo";
 
 type Props = {
   params: Promise<{ locale: Locale }>;
 };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pages.about" });
+  return buildMetadata({
+    locale,
+    path: "/over-ons",
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+  });
+}
 
 export default async function AboutPage({ params }: Props) {
   const { locale } = await params;
@@ -101,13 +115,13 @@ export default async function AboutPage({ params }: Props) {
           </p>
           <div className="mt-4 flex flex-col gap-4 sm:flex-row">
             <Link
-              href={content.cta.primaryHref}
+              href={asHref(content.cta.primaryHref)}
               className="rounded-pill bg-cream text-ink hover:bg-cream/90 inline-flex items-center px-8 py-4 text-[16px] leading-[20.8px] transition-colors"
             >
               {content.cta.primaryLabel}
             </Link>
             <Link
-              href={content.cta.secondaryHref}
+              href={asHref(content.cta.secondaryHref)}
               className="rounded-pill border-cream/40 text-cream hover:bg-cream/10 inline-flex items-center border px-8 py-4 text-[16px] leading-[20.8px] transition-colors"
             >
               {content.cta.secondaryLabel}

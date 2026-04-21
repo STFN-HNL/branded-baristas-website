@@ -1,22 +1,25 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
-import { Link } from "@/lib/i18n/routing";
+import { Link, asHref } from "@/lib/i18n/routing";
 import { getHomeContent } from "@/content/home";
 import type { Locale } from "@/lib/i18n/routing";
 
 type FooterProps = {
   locale: Locale;
   wrapperBg?: "cream" | "mocha";
+  flush?: boolean;
 };
 
-export async function Footer({ locale, wrapperBg = "cream" }: FooterProps) {
+export async function Footer({ locale, wrapperBg = "cream", flush = false }: FooterProps) {
   const [tCommon, tFooter] = await Promise.all([
     getTranslations("common"),
     getTranslations("footer"),
   ]);
   const { footer } = getHomeContent(locale);
 
-  const wrapperClass = wrapperBg === "mocha" ? "bg-mocha pt-8" : "bg-cream pt-24";
+  const topPadding = flush ? "pt-0" : wrapperBg === "mocha" ? "pt-8" : "pt-24";
+  const bgClass = wrapperBg === "mocha" ? "bg-mocha" : "bg-cream";
+  const wrapperClass = `${bgClass} ${topPadding}`;
 
   return (
     <footer className={`${wrapperClass} px-8 pb-8`}>
@@ -47,7 +50,7 @@ export async function Footer({ locale, wrapperBg = "cream" }: FooterProps) {
                 {footer.columns.map((column) => (
                   <Link
                     key={column.label}
-                    href={column.href}
+                    href={asHref(column.href)}
                     className="hover:text-amber whitespace-nowrap transition-colors"
                   >
                     {column.label}
