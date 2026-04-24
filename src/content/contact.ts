@@ -51,10 +51,10 @@ const nl: ContactContent = {
     description:
       "We zijn het snelst bereikbaar via email. Voor directe vragen kun je ook bellen tijdens kantooruren.",
     email: { label: "Email", value: "hello@branded-baristas.com" },
-    phone: { label: "Telefoon", value: "+31 (0)10 123 45 67" },
+    phone: { label: "Telefoon", value: "+31 6 41697775" },
     address: {
       label: "Adres",
-      lines: ["Branded Baristas HQ", "Keilestraat 9F", "3029 BP Rotterdam"],
+      lines: ["Albert Schweitzersingel 91", "2719 DZ Zoetermeer"],
     },
     hours: { label: "Openingsuren", value: "Ma–Vr · 09:00 – 18:00" },
   },
@@ -96,10 +96,10 @@ const en: ContactContent = {
     description:
       "Email is the fastest way to reach us. For urgent questions, you can also call during office hours.",
     email: { label: "Email", value: "hello@branded-baristas.com" },
-    phone: { label: "Phone", value: "+31 (0)10 123 45 67" },
+    phone: { label: "Phone", value: "+31 6 41697775" },
     address: {
       label: "Address",
-      lines: ["Branded Baristas HQ", "Keilestraat 9F", "3029 BP Rotterdam"],
+      lines: ["Albert Schweitzersingel 91", "2719 DZ Zoetermeer"],
     },
     hours: { label: "Office hours", value: "Mon–Fri · 09:00 – 18:00" },
   },

@@ -10,6 +10,7 @@ import { InlineCta } from "@/components/blocks/InlineCta";
 import { ParallaxTagline } from "@/components/blocks/ParallaxTagline";
 import { Pillars } from "@/components/blocks/Pillars";
 import { Differentiator } from "@/components/blocks/Differentiator";
+import { FAQ } from "@/components/blocks/FAQ";
 import { ContactSection } from "@/components/blocks/ContactSection";
 import { Footer } from "@/components/blocks/Footer";
 import { getHomeContent } from "@/content/home";
@@ -66,6 +67,7 @@ export default async function HomePage({ params }: Props) {
       <ParallaxTagline data={content.tagline} />
       <Pillars data={content.pillars} />
       <Differentiator data={content.differentiator} />
+      <FAQ data={content.faq} />
       <ContactSection data={content.contact} />
       <Footer locale={locale} wrapperBg="mocha" flush />
     </>

@@ -33,7 +33,7 @@ const nl: PrivacyContent = {
     {
       title: "1. Wie we zijn",
       paragraphs: [
-        "Branded Baristas is een handelsnaam gevestigd in Rotterdam (Nederland). Wij verzorgen barista-services voor events en in-company setups. Voor vragen over dit privacybeleid kun je contact opnemen via hello@branded-baristas.com.",
+        "Branded Baristas is een handelsnaam gevestigd in Zoetermeer (Nederland). Wij verzorgen barista-services voor events en in-company setups. Voor vragen over dit privacybeleid kun je contact opnemen via hello@branded-baristas.com.",
       ],
     },
     {
@@ -104,7 +104,7 @@ const en: PrivacyContent = {
     {
       title: "1. Who we are",
       paragraphs: [
-        "Branded Baristas is a trade name based in Rotterdam (Netherlands). We provide barista services for events and in-company setups. For questions about this privacy policy, reach us at hello@branded-baristas.com.",
+        "Branded Baristas is a trade name based in Zoetermeer (Netherlands). We provide barista services for events and in-company setups. For questions about this privacy policy, reach us at hello@branded-baristas.com.",
       ],
     },
     {

@@ -6,6 +6,7 @@ import { Footer } from "@/components/blocks/Footer";
 import { JsonLd } from "@/components/JsonLd";
 import { PortableText, type Block } from "@/components/PortableText";
 import { getPostBySlug } from "@/lib/sanity/queries/post";
+import { getBlogContent } from "@/content/blog";
 import { articleSchema, breadcrumbSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
 import type { Locale } from "@/lib/i18n/routing";
@@ -38,10 +39,24 @@ async function loadPost(slug: string, locale: Locale): Promise<PostDoc | null> {
   }
 }
 
+function fallbackFromHardcoded(slug: string, locale: Locale): PostDoc | null {
+  const post = getBlogContent(locale).posts.find((p) => p.slug === slug);
+  if (!post) return null;
+  return {
+    _id: post.slug,
+    title: { [locale]: post.title },
+    publishedAt: post.date,
+    excerpt: { [locale]: post.excerpt },
+    coverImage: { url: post.image, alt: post.title },
+    author: { name: post.author },
+    category: { title: { [locale]: post.category } },
+  };
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
   const t = await getTranslations({ locale, namespace: "pages.blog" });
-  const doc = await loadPost(slug, locale);
+  const doc = (await loadPost(slug, locale)) ?? fallbackFromHardcoded(slug, locale);
   if (!doc) {
     return buildMetadata({
       locale,
@@ -67,7 +82,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function BlogPostPage({ params }: Props) {
   const { locale, slug } = await params;
-  const doc = await loadPost(slug, locale);
+  const doc = (await loadPost(slug, locale)) ?? fallbackFromHardcoded(slug, locale);
   if (!doc) notFound();
 
   const title = doc.title?.[locale] ?? "";
@@ -166,4 +181,9 @@ export default async function BlogPostPage({ params }: Props) {
       <Footer locale={locale} />
     </>
   );
+}
+
+export function generateStaticParams() {
+  const posts = getBlogContent("nl").posts;
+  return posts.map((p) => ({ slug: p.slug }));
 }
