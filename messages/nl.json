@@ -118,6 +118,12 @@
     "updated": "Bijgewerkt",
     "readingTime": "minuten lezen"
   },
+  "cookieBanner": {
+    "text": "We gebruiken analytische cookies om te begrijpen hoe bezoekers onze website gebruiken. Jouw gegevens blijven anoniem.",
+    "accept": "Accepteren",
+    "decline": "Weigeren",
+    "privacyLabel": "Privacybeleid"
+  },
   "trust": {
     "eyebrow": "Vertrouwd door toonaangevende merken",
     "kpis": {

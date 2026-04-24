@@ -9,7 +9,7 @@ const STREET = "Albert Schweitzersingel 91";
 const POSTAL_CODE = "2719 DZ";
 const COUNTRY = "NL";
 const PHONE = "+31-6-41697775";
-const EMAIL = "info@branded-baristas.com";
+const EMAIL = "hello@branded-baristas.com";
 
 export function organizationSchema(locale: Locale): JsonLd {
   const origin = siteOrigin();
@@ -31,8 +31,8 @@ export function organizationSchema(locale: Locale): JsonLd {
       addressCountry: COUNTRY,
     },
     sameAs: [
-      "https://instagram.com/brandedbaristas",
-      "https://linkedin.com/company/branded-baristas",
+      "https://www.instagram.com/branded_baristas/",
+      "https://www.linkedin.com/company/branded-baristas/",
     ],
     areaServed: ["NL", "BE", "DE", "LU", "FR", "UK"],
   };

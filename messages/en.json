@@ -118,6 +118,12 @@
     "updated": "Updated",
     "readingTime": "minute read"
   },
+  "cookieBanner": {
+    "text": "We use analytics cookies to understand how visitors use our website. Your data remains anonymous.",
+    "accept": "Accept",
+    "decline": "Decline",
+    "privacyLabel": "Privacy policy"
+  },
   "trust": {
     "eyebrow": "Trusted by leading brands",
     "kpis": {

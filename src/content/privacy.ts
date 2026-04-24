@@ -28,7 +28,7 @@ const nl: PrivacyContent = {
     lead: "We gaan zorgvuldig om met je gegevens. Hieronder leggen we uit welke gegevens we verzamelen, waarom en hoe lang.",
   },
   lastUpdatedLabel: "Laatst bijgewerkt",
-  lastUpdated: "18 april 2026",
+  lastUpdated: "24 april 2026",
   sections: [
     {
       title: "1. Wie we zijn",
@@ -99,7 +99,7 @@ const en: PrivacyContent = {
     lead: "We handle your data with care. Below we explain what we collect, why, and how long we keep it.",
   },
   lastUpdatedLabel: "Last updated",
-  lastUpdated: "18 April 2026",
+  lastUpdated: "24 April 2026",
   sections: [
     {
       title: "1. Who we are",

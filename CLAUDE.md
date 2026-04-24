@@ -1,6 +1,6 @@
 # Branded Baristas Website
 
-Next.js 15 marketing + lead-gen site voor coffee catering. NL/EN bilingual.
+Next.js 16.2.4 marketing + lead-gen site voor coffee catering. NL/EN bilingual.
 Content via Sanity, leads via Supabase+Resend, hosted op Railway.
 
 ## Hoe we werken

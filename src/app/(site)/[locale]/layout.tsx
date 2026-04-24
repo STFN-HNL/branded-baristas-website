@@ -5,6 +5,7 @@ import { getMessages, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { Questrial } from "next/font/google";
 import { routing, type Locale } from "@/lib/i18n/routing";
+import { CookieBanner } from "@/components/blocks/CookieBanner";
 import { Header } from "@/components/blocks/Header";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { WebVitals } from "@/components/analytics/WebVitals";
@@ -62,6 +63,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           <Header />
           <main id="main-content">{children}</main>
           <WebVitals />
+          <CookieBanner />
         </NextIntlClientProvider>
         <JsonLd
           id="ld-site-global"

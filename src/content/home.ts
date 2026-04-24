@@ -128,8 +128,8 @@ const sharedLogos: LogoItem[] = [
 ];
 
 const sharedSocials: Social[] = [
-  { platform: "instagram", href: "https://instagram.com/brandedbaristas" },
-  { platform: "linkedin", href: "https://linkedin.com/company/branded-baristas" },
+  { platform: "instagram", href: "https://www.instagram.com/branded_baristas/" },
+  { platform: "linkedin", href: "https://www.linkedin.com/company/branded-baristas/" },
 ];
 
 const nl: HomeContent = {
@@ -408,6 +408,7 @@ const nl: HomeContent = {
       { label: "Offerte aanvragen", href: "/offerte" },
       { label: "Veel gestelde vragen", href: "/#faq" },
       { label: "Contact", href: "/contact" },
+      { label: "Koffiegids", href: "/gids" },
     ],
     colophon: `© ${new Date().getFullYear()} Branded Baristas. Alle rechten voorbehouden.`,
   },
@@ -688,6 +689,7 @@ const en: HomeContent = {
       { label: "Request a quote", href: "/offerte" },
       { label: "FAQs", href: "/#faq" },
       { label: "Contact", href: "/contact" },
+      { label: "Coffee guide", href: "/gids" },
     ],
     colophon: `© ${new Date().getFullYear()} Branded Baristas. All rights reserved.`,
   },
