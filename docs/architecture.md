@@ -23,7 +23,7 @@ Webhook Sanity → /api/revalidate (revalidateTag)
 ## Runtime
 
 - Volledig op Railway als Docker container (Dockerfile multi-stage, output: standalone)
-- Next.js 15 App Router, RSC, ISR
+- Next.js 16.2.4 App Router, RSC, ISR
 - Sanity CDN serveert images en content
 - Cloudflare voor static asset caching + DNS
 

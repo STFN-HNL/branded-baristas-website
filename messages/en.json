@@ -18,7 +18,9 @@
   },
   "footer": {
     "quickLinks": "Quick links",
-    "credit": "Website designed by Noscero."
+    "credit": "Website designed by Noscero.",
+    "privacy": "Privacy policy",
+    "cookies": "Cookie policy"
   },
   "home": {
     "title": "Welcome to Branded Baristas",
@@ -83,6 +85,19 @@
     "guideBaristaBarSpecs": {
       "metaTitle": "Barista bar specs — dimensions, power, capacity | Branded Baristas",
       "metaDescription": "Technical specs of the Branded Baristas mobile coffee bars: Piaggio Ape, tuk-tuk, vintage truck and office espresso bar."
+    },
+    "guides": {
+      "title": "Guides",
+      "lead": "Practical guides on coffee catering and barista setups.",
+      "metaTitle": "Coffee guides — Branded Baristas",
+      "metaDescription": "Free guides on coffee catering for events and technical specs of our mobile barista setups.",
+      "readingMinutes": "min read"
+    },
+    "cookies": {
+      "title": "Cookie policy",
+      "lead": "Which cookies we use, why, and how to manage them.",
+      "metaTitle": "Cookie policy — Branded Baristas",
+      "metaDescription": "Overview of the cookies Branded Baristas uses, including analytics cookies and consent management."
     },
     "privacy": {
       "title": "Privacy",

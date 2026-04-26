@@ -18,7 +18,9 @@
   },
   "footer": {
     "quickLinks": "Snelle links",
-    "credit": "Website ontworpen door Noscero."
+    "credit": "Website ontworpen door Noscero.",
+    "privacy": "Privacybeleid",
+    "cookies": "Cookiebeleid"
   },
   "home": {
     "title": "Welkom bij Branded Baristas",
@@ -89,6 +91,19 @@
     "guideBaristaBarSpecs": {
       "metaTitle": "Barista bar specs — afmetingen, stroom, capaciteit | Branded Baristas",
       "metaDescription": "Technische specs van Branded Baristas mobiele koffiebars: Piaggio Ape, tuk-tuk, vintage truck en office espresso bar."
+    },
+    "guides": {
+      "title": "Gidsen",
+      "lead": "Praktische handleidingen over koffiecatering en barista setups.",
+      "metaTitle": "Koffiegidsen — Branded Baristas",
+      "metaDescription": "Gratis handleidingen over koffiecatering voor events en technische specs van onze mobiele barista setups.",
+      "readingMinutes": "min lezen"
+    },
+    "cookies": {
+      "title": "Cookiebeleid",
+      "lead": "Welke cookies we gebruiken, waarvoor en hoe je ze beheert.",
+      "metaTitle": "Cookiebeleid — Branded Baristas",
+      "metaDescription": "Overzicht van de cookies die Branded Baristas gebruikt, inclusief analytische cookies en toestemmingsbeheer."
     }
   },
   "forms": {
