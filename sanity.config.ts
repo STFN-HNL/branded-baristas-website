@@ -38,6 +38,19 @@ export default defineConfig({
               .child(S.documentTypeList("pricingTier").title("Pricing tiers")),
             S.divider(),
             S.listItem().title("Pages").child(S.documentTypeList("page").title("Pages")),
+            S.divider(),
+            S.listItem().title("FAQ items").child(S.documentTypeList("faqItem").title("FAQ items")),
+            S.listItem().title("Guides").child(S.documentTypeList("guide").title("Guides")),
+            S.divider(),
+            S.listItem()
+              .title("Home page")
+              .child(S.document().schemaType("homePage").documentId("singleton-homePage")),
+            S.listItem()
+              .title("About page")
+              .child(S.document().schemaType("aboutPage").documentId("singleton-aboutPage")),
+            S.listItem()
+              .title("Branding page")
+              .child(S.document().schemaType("brandingPage").documentId("singleton-brandingPage")),
           ]),
     }),
     visionTool(),

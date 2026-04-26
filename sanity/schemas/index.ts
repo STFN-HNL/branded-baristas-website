@@ -15,6 +15,11 @@ import { pricingTier } from "./pricingTier";
 import { concept } from "./concept";
 import { caseStudy } from "./case";
 import { post } from "./post";
+import { faqItem } from "./faqItem";
+import { guide } from "./guide";
+import { homePage } from "./homePage";
+import { aboutPage } from "./aboutPage";
+import { brandingPage } from "./brandingPage";
 
 export const schemaTypes: SchemaTypeDefinition[] = [
   // objects
@@ -35,4 +40,9 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   concept,
   caseStudy,
   post,
+  faqItem,
+  guide,
+  homePage,
+  aboutPage,
+  brandingPage,
 ];
