@@ -61,7 +61,15 @@ export async function Footer({ locale, wrapperBg = "cream", flush = false }: Foo
           </div>
           <div className="border-cream/15 text-cream/70 flex flex-col gap-4 border-t pt-10 text-[12px] leading-[27px] sm:flex-row sm:items-center sm:justify-between">
             <span>{footer.colophon}</span>
-            <span>{tFooter("credit")}</span>
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-1">
+              <Link href="/privacy" className="hover:text-cream transition-colors">
+                {tFooter("privacy")}
+              </Link>
+              <Link href="/cookies" className="hover:text-cream transition-colors">
+                {tFooter("cookies")}
+              </Link>
+              <span>{tFooter("credit")}</span>
+            </div>
           </div>
         </div>
       </div>

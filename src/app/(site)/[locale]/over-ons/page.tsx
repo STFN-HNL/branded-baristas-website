@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server";
 import { Link, asHref } from "@/lib/i18n/routing";
 import { Footer } from "@/components/blocks/Footer";
 import { getAboutContent } from "@/content/about";
+import { getAboutPageContent } from "@/lib/content/aboutPage";
 import type { Locale } from "@/lib/i18n/routing";
 import { buildMetadata } from "@/lib/seo";
 
@@ -24,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function AboutPage({ params }: Props) {
   const { locale } = await params;
-  const content = getAboutContent(locale);
+  const content = (await getAboutPageContent(locale)) ?? getAboutContent(locale);
 
   return (
     <>

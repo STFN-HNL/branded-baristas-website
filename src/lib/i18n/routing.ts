@@ -43,6 +43,7 @@ export const pathnames = {
   },
   "/branding": "/branding",
   "/privacy": "/privacy",
+  "/cookies": "/cookies",
   "/gids": {
     nl: "/gids",
     en: "/guide",

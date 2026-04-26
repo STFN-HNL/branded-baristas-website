@@ -14,6 +14,9 @@ import { FAQ } from "@/components/blocks/FAQ";
 import { ContactSection } from "@/components/blocks/ContactSection";
 import { Footer } from "@/components/blocks/Footer";
 import { getHomeContent } from "@/content/home";
+import { getHomePageContent } from "@/lib/content/homePage";
+import { getFaqItems } from "@/lib/content/faqItems";
+import { getConcepts } from "@/lib/content/concepts";
 import type { Locale } from "@/lib/i18n/routing";
 
 type Props = {
@@ -33,42 +36,65 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;
-  const content = getHomeContent(locale);
-  const tCommon = await getTranslations("common");
+  const hardcoded = getHomeContent(locale);
+
+  const [tCommon, homeContent, faqItems, eventConcepts, inCompanyConcepts] = await Promise.all([
+    getTranslations("common"),
+    getHomePageContent(locale),
+    getFaqItems(locale),
+    getConcepts(locale, "events"),
+    getConcepts(locale, "in-company"),
+  ]);
+
   const readMoreLabel = tCommon("readMore");
+
+  const intro = homeContent?.intro ?? hardcoded.intro;
+  const inlineCta = homeContent?.inlineCta ?? hardcoded.inlineCta;
+  const tagline = homeContent?.tagline ?? hardcoded.tagline;
+  const pillars = homeContent?.pillars ?? hardcoded.pillars;
+  const differentiator = homeContent?.differentiator ?? hardcoded.differentiator;
+  const faqData = { ...(homeContent?.faq ?? hardcoded.faq), items: faqItems };
+  const events = {
+    ...hardcoded.events,
+    concepts: eventConcepts.length > 0 ? eventConcepts : hardcoded.events.concepts,
+  };
+  const inCompany = {
+    ...hardcoded.inCompany,
+    concepts: inCompanyConcepts.length > 0 ? inCompanyConcepts : hardcoded.inCompany.concepts,
+  };
 
   return (
     <>
       <Hero />
-      <TrustRow />
-      <IntroSplit data={content.intro} />
-      <ClientLogoStrip logos={content.logos} />
+      <TrustRow locale={locale} />
+      <IntroSplit data={intro} />
+      <ClientLogoStrip logos={hardcoded.logos} />
       <ServicesSection
-        eyebrow={content.events.eyebrow}
-        title={content.events.title}
-        description={content.events.description}
-        concepts={content.events.concepts}
+        eyebrow={events.eyebrow}
+        title={events.title}
+        description={events.description}
+        concepts={events.concepts}
         basePath="/diensten/events/[slug]"
         readMoreLabel={readMoreLabel}
         columns={4}
         variant="pine"
       />
       <ServicesSection
-        eyebrow={content.inCompany.eyebrow}
-        title={content.inCompany.title}
-        description={content.inCompany.description}
-        concepts={content.inCompany.concepts}
+        eyebrow={inCompany.eyebrow}
+        title={inCompany.title}
+        description={inCompany.description}
+        concepts={inCompany.concepts}
         basePath="/diensten/in-company/[slug]"
         readMoreLabel={readMoreLabel}
         columns={3}
         variant="sand"
       />
-      <InlineCta data={content.inlineCta} />
-      <ParallaxTagline data={content.tagline} />
-      <Pillars data={content.pillars} />
-      <Differentiator data={content.differentiator} />
-      <FAQ data={content.faq} />
-      <ContactSection data={content.contact} />
+      <InlineCta data={inlineCta} />
+      <ParallaxTagline data={tagline} />
+      <Pillars data={pillars} />
+      <Differentiator data={differentiator} />
+      <FAQ data={faqData} />
+      <ContactSection data={hardcoded.contact} />
       <Footer locale={locale} wrapperBg="mocha" flush />
     </>
   );

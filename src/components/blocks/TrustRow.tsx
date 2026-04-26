@@ -1,19 +1,20 @@
 import { getTranslations } from "next-intl/server";
+import { getTrustRowTestimonial } from "@/lib/content/trustRow";
+import type { Locale } from "@/lib/i18n/routing";
 
 type KpiKey = "events" | "years" | "clients";
 
 const KPI_KEYS: KpiKey[] = ["events", "years", "clients"];
 
-/**
- * Social-proof strip placed directly under the hero.
- *
- * Copy comes from `messages/*.json` under the `trust` namespace. The KPI
- * numbers and testimonial can later be replaced with a Sanity testimonial
- * document — the component keeps its shape stable so the swap is a pure
- * data change.
- */
-export async function TrustRow() {
-  const t = await getTranslations("trust");
+export async function TrustRow({ locale }: { locale: Locale }) {
+  const [t, sanityTestimonial] = await Promise.all([
+    getTranslations("trust"),
+    getTrustRowTestimonial(locale),
+  ]);
+
+  const quote = sanityTestimonial?.quote ?? t("testimonial.quote");
+  const author = sanityTestimonial?.author ?? t("testimonial.author");
+  const role = sanityTestimonial?.role ?? t("testimonial.role");
 
   return (
     <section
@@ -40,19 +41,19 @@ export async function TrustRow() {
         <figure className="max-w-[480px] lg:text-right">
           <blockquote className="text-forest text-[18px] leading-[26px]">
             <span aria-hidden className="text-copper pr-1">
-              “
+              &ldquo;
             </span>
-            {t("testimonial.quote")}
+            {quote}
             <span aria-hidden className="text-copper pl-1">
-              ”
+              &rdquo;
             </span>
           </blockquote>
           <figcaption className="text-forest/70 mt-3 text-[13px] leading-[20px]">
-            <span className="text-pine font-medium">{t("testimonial.author")}</span>
+            <span className="text-pine font-medium">{author}</span>
             <span aria-hidden className="px-2">
               ·
             </span>
-            <span>{t("testimonial.role")}</span>
+            <span>{role}</span>
           </figcaption>
         </figure>
       </div>

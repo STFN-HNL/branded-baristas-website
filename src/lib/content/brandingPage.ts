@@ -34,8 +34,8 @@ export async function getBrandingPageContent(locale: Locale): Promise<BrandingCo
         eyebrow: ls(process?.eyebrow, locale),
         title: ls(process?.title, locale),
         description: ls(process?.description, locale),
-        steps: (process?.steps ?? []).map((s: any) => ({
-          number: "",
+        steps: (process?.steps ?? []).map((s: any, i: number) => ({
+          number: String(i + 1),
           title: ls(s.title, locale),
           description: ls(s.description, locale),
         })),

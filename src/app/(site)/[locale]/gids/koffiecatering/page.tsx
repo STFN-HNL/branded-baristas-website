@@ -4,6 +4,7 @@ import { Footer } from "@/components/blocks/Footer";
 import { Guide } from "@/components/blocks/Guide";
 import { JsonLd } from "@/components/JsonLd";
 import { getCoffeeCateringGuide } from "@/content/guides/coffee-catering";
+import { getGuide } from "@/lib/content/guide";
 import type { Locale } from "@/lib/i18n/routing";
 import { articleSchema, breadcrumbSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
@@ -27,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function CoffeeCateringGuidePage({ params }: Props) {
   const { locale } = await params;
-  const content = getCoffeeCateringGuide(locale);
+  const content = (await getGuide(locale, "koffiecatering")) ?? getCoffeeCateringGuide(locale);
   const tGuide = await getTranslations({ locale, namespace: "guide" });
   const tCommon = await getTranslations({ locale, namespace: "common" });
 

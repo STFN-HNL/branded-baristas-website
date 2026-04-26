@@ -4,6 +4,7 @@ import { Footer } from "@/components/blocks/Footer";
 import { Guide } from "@/components/blocks/Guide";
 import { JsonLd } from "@/components/JsonLd";
 import { getBaristaBarSpecsGuide } from "@/content/guides/barista-bar-specs";
+import { getGuide } from "@/lib/content/guide";
 import type { Locale } from "@/lib/i18n/routing";
 import { articleSchema, breadcrumbSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
@@ -27,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function BaristaBarSpecsGuidePage({ params }: Props) {
   const { locale } = await params;
-  const content = getBaristaBarSpecsGuide(locale);
+  const content = (await getGuide(locale, "barista-bar-specs")) ?? getBaristaBarSpecsGuide(locale);
   const tGuide = await getTranslations({ locale, namespace: "guide" });
   const tCommon = await getTranslations({ locale, namespace: "common" });
 
