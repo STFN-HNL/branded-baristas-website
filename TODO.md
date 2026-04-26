@@ -8,34 +8,32 @@ Living checklist of things that were intentionally deferred or require a human
 Paste these into Railway (and `.env.local` for dev when you want them). All are
 optional — the app runs fine without them, individual features just no-op.
 
-- [ ] `NEXT_PUBLIC_GA_ID` — GA4 measurement ID (`G-XXXXXXXXXX`).
-      Without this, no analytics ships. Create a property at
-      <https://analytics.google.com> → Admin → Create property.
-- [ ] `NEXT_PUBLIC_SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY` —
-      without these, `/api/quote` accepts the submission but doesn't persist it.
-- [ ] `RESEND_API_KEY`, `RESEND_FROM_EMAIL`, `RESEND_TO_EMAIL` —
-      without these, no confirmation emails are sent.
-- [ ] Create a Supabase table `leads` matching the zod schema in
-      `src/lib/leads.ts` before flipping Supabase on.
+- [x] `NEXT_PUBLIC_GA_ID` — set to G-EYKMNTH8T3 on 2026-04-25.
+- [x] `NEXT_PUBLIC_SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY` — set 2026-04-25.
+- [x] `RESEND_API_KEY`, `RESEND_FROM_EMAIL`, `RESEND_TO_EMAIL` — set 2026-04-25.
+- [x] Create a Supabase table `leads` — created via migration 2026-04-25.
 
 ## 2. Content ops (Sanity)
 
-Everything under `src/content/*.ts` is hardcoded copy marked for migration.
-See `src/content/README.md` for the full plan.
+Migration complete 2026-04-25. All content lives in Sanity with hardcoded
+fallback still in place (`src/content/*.ts`). Fetcher layer at `src/lib/content/`.
 
-- [ ] Move home-page copy (hero, services blurbs, FAQ, footer) from
-      `src/content/home.ts` into Sanity `page` / `faqItem` / `concept` docs.
-- [ ] Move case studies from `src/content/cases.ts` into Sanity `case` docs.
-- [ ] Move about/branding copy from `src/content/about.ts` and
-      `src/content/branding.ts`.
-- [ ] Replace the two long-form guides with Sanity docs so editors can update
-      them without a deploy:
-      - `src/content/guides/coffee-catering.ts`
-      - `src/content/guides/barista-bar-specs.ts`
-- [ ] Create a Sanity `testimonial` doc type and swap the hardcoded KPIs +
-      testimonial in `src/components/blocks/TrustRow.tsx` for a Sanity query.
+- [x] Move home-page copy (hero, services blurbs, FAQ, footer) into Sanity
+      `homePage` singleton + `faqItem` + `concept` docs — done 2026-04-25.
+- [x] Move case studies from `src/content/cases.ts` into Sanity `case` docs — done 2026-04-25.
+- [x] Move about/branding copy from `src/content/about.ts` and
+      `src/content/branding.ts` — done 2026-04-25.
+- [x] Replace the two long-form guides with Sanity docs:
+      - `src/content/guides/coffee-catering.ts` → Sanity `guide` doc
+      - `src/content/guides/barista-bar-specs.ts` → Sanity `guide` doc
+      — done 2026-04-25.
+- [x] Create a Sanity `testimonial` doc type and wire `TrustRow.tsx` to fetch
+      from Sanity with messages fallback — done 2026-04-25.
 - [ ] Replace placeholder `publishedTime: "2026-04-15"` in guide pages with
-      real dates from the CMS once migrated.
+      real dates from the CMS (`guide.updatedAt` field is now populated).
+- [ ] After visual verification on Railway: delete hardcoded content files
+      (`src/content/about.ts`, `branding.ts`, `cases.ts`, `guides/*.ts`) and
+      remove fallback imports from `src/lib/content/*.ts` fetchers.
 
 ## 3. Design / brand assets
 
@@ -56,8 +54,7 @@ See `src/content/README.md` for the full plan.
       LLM knowledge graphs.
 - [ ] Expand `public/llms.txt` and `public/llms-full.txt` once long-form
       content is in Sanity — they're currently summaries.
-- [ ] Add the guide pages to the footer or a "Resources" menu when you want
-      visitors (not just crawlers) to find them.
+- [x] Add the guide pages to the footer — `/gids` index page created, linked in footer nav 2026-04-26.
 - [ ] Fill in real FAQ content beyond the ~20 starter questions in
       `messages/*.json` — direct answers rank well in AI search.
 
@@ -69,7 +66,7 @@ See `src/content/README.md` for the full plan.
       the user agrees.
 - [ ] Review `/privacy` copy — currently placeholder-ish. Add DPA reference
       for Supabase + Resend + GA4 processors.
-- [ ] Add a cookie policy page if the banner is comprehensive.
+- [x] Add a cookie policy page — `/cookies` route created, linked in footer 2026-04-26.
 
 ## 6. Developer ergonomics / ops
 
@@ -95,15 +92,13 @@ See `src/content/README.md` for the full plan.
 
 ## 8. Known debt / drift
 
-- [ ] `CLAUDE.md` says "Next 15" but the repo is on `next@16.2.4` — update
-      the doc.
-- [ ] Architecture doc in `docs/architecture.md` may need a refresh after
-      this audit round.
+- [x] `CLAUDE.md` says "Next 15" — already fixed (says 16.2.4).
+- [x] Architecture doc `docs/architecture.md` — updated "Next.js 15" → "Next.js 16.2.4" 2026-04-26.
 - [ ] `EN` legacy-slug redirects in `src/lib/redirects.ts` assume no one
       has deep links to `/en/over-ons` etc. from before the translated-slug
       rollout. Check logs after deploy to see if more redirects are needed.
 
 ---
 
-_Last updated: 2026-04-20. Generated from the audit roadmap at_
+_Last updated: 2026-04-25. Generated from the audit roadmap at_
 _`.cursor/plans/audit_+_seo_llm_conversion_roadmap_38a721a5.plan.md`._
