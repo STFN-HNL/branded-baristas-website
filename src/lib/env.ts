@@ -15,6 +15,7 @@ export const envSchema = z.object({
   RESEND_TO_EMAIL: z.string().email().optional(),
   NEXT_PUBLIC_GTM_ID: z.string().optional(),
   NEXT_PUBLIC_GA_ID: z.string().optional(),
+  SANITY_WRITE_TOKEN: z.string().optional(),
 });
 
 export type Env = z.infer<typeof envSchema>;
