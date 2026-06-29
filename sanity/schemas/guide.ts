@@ -5,9 +5,24 @@ export const guide = defineType({
   type: "document",
   title: "Guide",
   fields: [
-    defineField({ name: "title", type: "localeString", title: "Title", validation: (r) => r.required() }),
-    defineField({ name: "slug", type: "bilingualSlug", title: "Slug", validation: (r) => r.required() }),
-    defineField({ name: "lead", type: "localeText", title: "Lead", validation: (r) => r.required() }),
+    defineField({
+      name: "title",
+      type: "localeString",
+      title: "Title",
+      validation: (r) => r.required(),
+    }),
+    defineField({
+      name: "slug",
+      type: "bilingualSlug",
+      title: "Slug",
+      validation: (r) => r.required(),
+    }),
+    defineField({
+      name: "lead",
+      type: "localeText",
+      title: "Lead",
+      validation: (r) => r.required(),
+    }),
     defineField({
       name: "intro",
       type: "object",

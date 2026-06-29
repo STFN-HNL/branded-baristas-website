@@ -29,9 +29,7 @@ export const homePage = defineType({
       name: "tagline",
       type: "object",
       title: "Tagline",
-      fields: [
-        defineField({ name: "title", type: "localeString", title: "Title" }),
-      ],
+      fields: [defineField({ name: "title", type: "localeString", title: "Title" })],
     }),
     defineField({
       name: "pillars",
@@ -44,15 +42,17 @@ export const homePage = defineType({
           name: "items",
           type: "array",
           title: "Pillars",
-          of: [{
-            type: "object",
-            fields: [
-              defineField({ name: "icon", type: "string", title: "Icon name" }),
-              defineField({ name: "title", type: "localeString", title: "Title" }),
-              defineField({ name: "description", type: "localeText", title: "Description" }),
-            ],
-            preview: { select: { title: "title.nl" }, prepare: ({ title }) => ({ title }) },
-          }],
+          of: [
+            {
+              type: "object",
+              fields: [
+                defineField({ name: "icon", type: "string", title: "Icon name" }),
+                defineField({ name: "title", type: "localeString", title: "Title" }),
+                defineField({ name: "description", type: "localeText", title: "Description" }),
+              ],
+              preview: { select: { title: "title.nl" }, prepare: ({ title }) => ({ title }) },
+            },
+          ],
         }),
       ],
     }),
@@ -67,13 +67,15 @@ export const homePage = defineType({
           name: "features",
           type: "array",
           title: "Features",
-          of: [{
-            type: "object",
-            fields: [
-              defineField({ name: "title", type: "localeString", title: "Title" }),
-              defineField({ name: "description", type: "localeText", title: "Description" }),
-            ],
-          }],
+          of: [
+            {
+              type: "object",
+              fields: [
+                defineField({ name: "title", type: "localeString", title: "Title" }),
+                defineField({ name: "description", type: "localeText", title: "Description" }),
+              ],
+            },
+          ],
         }),
         defineField({ name: "quote", type: "localeText", title: "Quote" }),
         defineField({ name: "quoteDescription", type: "localeString", title: "Quote description" }),

@@ -17,7 +17,8 @@ export function LanguageSwitcher({ variant = "dark" }: Props) {
   const [isPending, startTransition] = useTransition();
   const activeLocale = (params?.locale as string) ?? routing.defaultLocale;
 
-  const baseColor = variant === "dark" ? "text-cream/80 hover:text-cream" : "text-ink/70 hover:text-ink";
+  const baseColor =
+    variant === "dark" ? "text-cream/80 hover:text-cream" : "text-ink/70 hover:text-ink";
   const activeColor = variant === "dark" ? "text-cream" : "text-ink";
   const separatorColor = variant === "dark" ? "text-cream/30" : "text-ink/30";
 

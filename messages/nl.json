@@ -14,7 +14,9 @@
     "services": "Diensten",
     "work": "Ons werk",
     "blog": "Blog",
-    "contact": "Contact"
+    "contact": "Contact",
+    "openMenu": "Menu openen",
+    "closeMenu": "Menu sluiten"
   },
   "footer": {
     "quickLinks": "Snelle links",

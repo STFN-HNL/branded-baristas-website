@@ -36,9 +36,7 @@ export default async function GidsIndexPage({ params }: Props) {
           <h1 className="font-display text-cream mt-4 max-w-[900px] text-[64px] leading-[1.05]">
             {t("title")}
           </h1>
-          <p className="text-cream/80 mt-6 max-w-[660px] text-[20px] leading-[27px]">
-            {t("lead")}
-          </p>
+          <p className="text-cream/80 mt-6 max-w-[660px] text-[20px] leading-[27px]">{t("lead")}</p>
         </div>
       </section>
 

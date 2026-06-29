@@ -23,9 +23,9 @@ export async function Footer({ locale, wrapperBg = "cream", flush = false }: Foo
 
   return (
     <footer className={`${wrapperClass} px-8 pb-8`}>
-      <div className="bg-ink text-cream mx-auto max-w-[1376px] rounded-[20px] px-20 pt-[74px] pb-[88px]">
-        <div className="flex flex-col gap-[92px]">
-          <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between">
+      <div className="bg-ink text-cream mx-auto max-w-[1376px] rounded-[20px] px-5 pt-10 pb-10 sm:px-10 sm:pt-12 lg:px-20 lg:pt-[74px] lg:pb-[88px]">
+        <div className="flex flex-col gap-12 lg:gap-[92px]">
+          <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between lg:gap-12">
             <Link
               href="/"
               className="text-cream flex items-center gap-[10px]"
@@ -36,22 +36,28 @@ export async function Footer({ locale, wrapperBg = "cream", flush = false }: Foo
                 alt=""
                 width={55}
                 height={55}
-                className="h-[55px] w-auto"
+                className="h-[44px] w-auto lg:h-[55px]"
               />
-              <span className="font-display text-[32px] leading-none tracking-tight">
+              <span
+                className="font-display leading-none tracking-tight"
+                style={{ fontSize: "var(--text-h2)" }}
+              >
                 {tCommon("siteName")}
               </span>
             </Link>
-            <div className="flex flex-col gap-[37px]">
-              <h2 className="text-cream text-[20px] leading-none font-medium">
+            <div className="flex flex-col gap-5 lg:gap-[37px]">
+              <h2
+                className="text-cream leading-none font-medium"
+                style={{ fontSize: "var(--text-body)" }}
+              >
                 {tFooter("quickLinks")}
               </h2>
-              <nav className="grid grid-cols-2 gap-x-[80px] gap-y-[33px] text-[16px] leading-[13px]">
+              <nav className="grid grid-cols-2 gap-x-10 gap-y-4 text-[15px] leading-none lg:gap-x-[80px] lg:gap-y-[33px] lg:text-[16px]">
                 {footer.columns.map((column) => (
                   <Link
                     key={column.label}
                     href={asHref(column.href)}
-                    className="hover:text-amber whitespace-nowrap transition-colors"
+                    className="hover:text-amber inline-flex min-h-[44px] items-center whitespace-nowrap transition-colors"
                   >
                     {column.label}
                   </Link>
@@ -59,13 +65,19 @@ export async function Footer({ locale, wrapperBg = "cream", flush = false }: Foo
               </nav>
             </div>
           </div>
-          <div className="border-cream/15 text-cream/70 flex flex-col gap-4 border-t pt-10 text-[12px] leading-[27px] sm:flex-row sm:items-center sm:justify-between">
+          <div className="border-cream/15 text-cream/70 flex flex-col gap-3 border-t pt-8 text-[12px] leading-[27px] sm:flex-row sm:items-center sm:justify-between">
             <span>{footer.colophon}</span>
             <div className="flex flex-wrap items-center gap-x-6 gap-y-1">
-              <Link href="/privacy" className="hover:text-cream transition-colors">
+              <Link
+                href="/privacy"
+                className="hover:text-cream inline-flex min-h-[44px] items-center transition-colors"
+              >
                 {tFooter("privacy")}
               </Link>
-              <Link href="/cookies" className="hover:text-cream transition-colors">
+              <Link
+                href="/cookies"
+                className="hover:text-cream inline-flex min-h-[44px] items-center transition-colors"
+              >
                 {tFooter("cookies")}
               </Link>
               <span>{tFooter("credit")}</span>

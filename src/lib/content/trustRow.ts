@@ -16,7 +16,7 @@ export async function getTrustRowTestimonial(locale: Locale): Promise<Testimonia
     .fetch<RawTestimonial | null>(
       TRUST_ROW_TESTIMONIAL_QUERY,
       {},
-      { next: { tags: ["testimonial"] } }
+      { next: { tags: ["testimonial"] } },
     )
     .catch(() => null);
 

@@ -42,10 +42,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const fallback = content.events.concepts.find((c) => c.slug === slug);
   const doc = await loadConcept(slug, locale);
   if (!doc && !fallback) {
-    return buildMetadata({ locale, path: `/diensten/events/${slug}`, title: "Not found", description: "", noIndex: true });
+    return buildMetadata({
+      locale,
+      path: `/diensten/events/${slug}`,
+      title: "Not found",
+      description: "",
+      noIndex: true,
+    });
   }
   const title = doc?.seo?.title?.[locale] ?? doc?.title?.[locale] ?? fallback?.title ?? "";
-  const description = doc?.seo?.description?.[locale] ?? doc?.shortDescription?.[locale] ?? fallback?.description ?? "";
+  const description =
+    doc?.seo?.description?.[locale] ??
+    doc?.shortDescription?.[locale] ??
+    fallback?.description ??
+    "";
   return buildMetadata({
     locale,
     path: `/diensten/events/${slug}`,
@@ -95,7 +105,9 @@ export default async function EventConceptPage({ params }: Props) {
         <div className="mx-auto grid max-w-[1360px] grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-24">
           <div className="flex flex-col gap-6">
             <span className="text-forest text-[12px] leading-[27px]">{content.events.eyebrow}</span>
-            <h1 className="font-display text-ink text-[56px] leading-[1.05] lg:text-[64px]">{title}</h1>
+            <h1 className="font-display text-ink text-[56px] leading-[1.05] lg:text-[64px]">
+              {title}
+            </h1>
             <p className="text-ink/75 text-[20px] leading-[27px]">{description}</p>
           </div>
           {heroUrl ? (
@@ -119,10 +131,10 @@ export default async function EventConceptPage({ params }: Props) {
             {doc.specs.map((spec, i) =>
               spec.label && spec.value ? (
                 <div key={i} className="flex flex-col gap-1">
-                  <dt className="text-forest/60 text-[12px] leading-[27px] uppercase tracking-wider">
+                  <dt className="text-forest/60 text-[12px] leading-[27px] tracking-wider uppercase">
                     {spec.label}
                   </dt>
-                  <dd className="text-pine text-[20px] font-medium leading-[27px]">{spec.value}</dd>
+                  <dd className="text-pine text-[20px] leading-[27px] font-medium">{spec.value}</dd>
                 </div>
               ) : null,
             )}

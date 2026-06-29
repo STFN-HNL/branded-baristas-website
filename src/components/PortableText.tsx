@@ -63,8 +63,13 @@ function renderSpan(span: Span, markDefs: MarkDef[] = [], keyPrefix: string): Re
   return node;
 }
 
-function groupLists(blocks: Block[]): (Block | { _type: "list"; level: number; kind: "bullet" | "number"; items: Block[] })[] {
-  const out: (Block | { _type: "list"; level: number; kind: "bullet" | "number"; items: Block[] })[] = [];
+function groupLists(
+  blocks: Block[],
+): (Block | { _type: "list"; level: number; kind: "bullet" | "number"; items: Block[] })[] {
+  const out: (
+    | Block
+    | { _type: "list"; level: number; kind: "bullet" | "number"; items: Block[] }
+  )[] = [];
   let buffer: Block[] = [];
   let currentKind: "bullet" | "number" | null = null;
   const flush = () => {
@@ -93,7 +98,7 @@ export function PortableText({ value, className }: Props) {
   const grouped = groupLists(value.filter((b) => b?._type === "block"));
 
   return (
-    <div className={className}>
+    <div className={`max-w-prose ${className ?? ""}`}>
       {grouped.map((item, i) => {
         if ("kind" in item) {
           const Tag = item.kind === "bullet" ? "ul" : "ol";
@@ -120,25 +125,41 @@ export function PortableText({ value, className }: Props) {
         switch (block.style) {
           case "h1":
             return (
-              <h1 key={key} className="font-display text-pine mt-12 mb-6 text-[48px] leading-[1.1]">
+              <h1
+                key={key}
+                className="font-display text-pine mt-12 mb-6 leading-[1.1]"
+                style={{ fontSize: "var(--text-display)" }}
+              >
                 {children}
               </h1>
             );
           case "h2":
             return (
-              <h2 key={key} className="font-display text-pine mt-10 mb-5 text-[36px] leading-[1.15]">
+              <h2
+                key={key}
+                className="font-display text-pine mt-10 mb-5 leading-[1.15]"
+                style={{ fontSize: "var(--text-h2)" }}
+              >
                 {children}
               </h2>
             );
           case "h3":
             return (
-              <h3 key={key} className="font-display text-pine mt-8 mb-4 text-[24px] leading-[1.25]">
+              <h3
+                key={key}
+                className="font-display text-pine mt-8 mb-4 leading-[1.25]"
+                style={{ fontSize: "var(--text-h3)" }}
+              >
                 {children}
               </h3>
             );
           case "h4":
             return (
-              <h4 key={key} className="font-display text-pine mt-6 mb-3 text-[20px] leading-[1.3]">
+              <h4
+                key={key}
+                className="font-display text-pine mt-6 mb-3 leading-[1.3]"
+                style={{ fontSize: "var(--text-h4)" }}
+              >
                 {children}
               </h4>
             );

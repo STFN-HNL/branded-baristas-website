@@ -27,10 +27,10 @@ export default async function ContactPage({ params }: Props) {
 
   return (
     <>
-      <section className="bg-pine px-10 pt-[180px] pb-24 lg:pb-32">
+      <section className="bg-pine px-5 pt-[180px] pb-24 sm:px-8 lg:px-10 lg:pb-32">
         <div className="mx-auto max-w-[1360px]">
           <span className="text-cream text-[12px] leading-[27px]">{content.hero.eyebrow}</span>
-          <h1 className="font-display text-cream mt-4 max-w-[900px] text-[64px] leading-[1.05]">
+          <h1 className="font-display text-cream mt-4 max-w-[900px] text-[clamp(2.25rem,8vw,4rem)] leading-[1.05] [overflow-wrap:break-word]">
             {content.hero.title}
           </h1>
           <p className="text-cream/80 mt-6 max-w-[660px] text-[20px] leading-[27px]">

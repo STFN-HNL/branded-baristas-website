@@ -35,10 +35,7 @@ export const contactLeadSchema = z
   })
   .strict();
 
-export const leadSchema = z.discriminatedUnion("source", [
-  quoteLeadSchema,
-  contactLeadSchema,
-]);
+export const leadSchema = z.discriminatedUnion("source", [quoteLeadSchema, contactLeadSchema]);
 
 export type Lead = z.infer<typeof leadSchema>;
 

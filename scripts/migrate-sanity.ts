@@ -3,7 +3,9 @@ import { createReadStream, existsSync } from "fs";
 import path from "path";
 
 if (!process.env.SANITY_WRITE_TOKEN) {
-  throw new Error("SANITY_WRITE_TOKEN is required. Run: pnpm tsx --env-file .env.local scripts/migrate-sanity.ts");
+  throw new Error(
+    "SANITY_WRITE_TOKEN is required. Run: pnpm tsx --env-file .env.local scripts/migrate-sanity.ts",
+  );
 }
 
 const client = createClient({
@@ -24,7 +26,9 @@ function textToBlocks(strings: string[]) {
   }));
 }
 
-async function uploadImage(publicPath: string): Promise<{ _type: "reference"; _ref: string } | null> {
+async function uploadImage(
+  publicPath: string,
+): Promise<{ _type: "reference"; _ref: string } | null> {
   const fullPath = path.join(process.cwd(), "public", publicPath);
   if (!existsSync(fullPath)) {
     console.warn(`  ⚠ Image not found: ${fullPath}`);
@@ -50,8 +54,16 @@ async function migrateFaqItems() {
     await upsert({
       _id: `faq-item-${i + 1}`,
       _type: "faqItem",
-      question: { _type: "localeString", nl: nlItems[i].question, en: enItems[i]?.question ?? nlItems[i].question },
-      answer: { _type: "localeText", nl: nlItems[i].answer, en: enItems[i]?.answer ?? nlItems[i].answer },
+      question: {
+        _type: "localeString",
+        nl: nlItems[i].question,
+        en: enItems[i]?.question ?? nlItems[i].question,
+      },
+      answer: {
+        _type: "localeText",
+        nl: nlItems[i].answer,
+        en: enItems[i]?.answer ?? nlItems[i].answer,
+      },
       order: i + 1,
     });
   }
@@ -104,13 +116,15 @@ async function migrateCases() {
       client: nlCase.client,
       location: nlCase.location,
       guestCount: parseInt(nlCase.guests.replace(/\D/g, ""), 10) || 0,
-      ...(heroRef ? {
-        hero: {
-          _type: "imageWithAlt",
-          asset: heroRef,
-          alt: { _type: "localeString", nl: nlCase.title, en: enCase?.title ?? nlCase.title },
-        },
-      } : {}),
+      ...(heroRef
+        ? {
+            hero: {
+              _type: "imageWithAlt",
+              asset: heroRef,
+              alt: { _type: "localeString", nl: nlCase.title, en: enCase?.title ?? nlCase.title },
+            },
+          }
+        : {}),
       story: {
         nl: textToBlocks([nlCase.excerpt]),
         en: textToBlocks([enCase?.excerpt ?? nlCase.excerpt]),
@@ -137,7 +151,11 @@ async function migrateConcepts() {
       _id: `concept-${nlConcept.slug}`,
       _type: "concept",
       category: isEvents.has(nlConcept.slug) ? "events" : "in-company",
-      title: { _type: "localeString", nl: nlConcept.title, en: enConcept?.title ?? nlConcept.title },
+      title: {
+        _type: "localeString",
+        nl: nlConcept.title,
+        en: enConcept?.title ?? nlConcept.title,
+      },
       slug: {
         nl: { _type: "slug", current: nlConcept.slug },
         en: { _type: "slug", current: nlConcept.slug },
@@ -147,13 +165,19 @@ async function migrateConcepts() {
         nl: nlConcept.description,
         en: enConcept?.description ?? nlConcept.description,
       },
-      ...(heroRef ? {
-        hero: {
-          _type: "imageWithAlt",
-          asset: heroRef,
-          alt: { _type: "localeString", nl: nlConcept.title, en: enConcept?.title ?? nlConcept.title },
-        },
-      } : {}),
+      ...(heroRef
+        ? {
+            hero: {
+              _type: "imageWithAlt",
+              asset: heroRef,
+              alt: {
+                _type: "localeString",
+                nl: nlConcept.title,
+                en: enConcept?.title ?? nlConcept.title,
+              },
+            },
+          }
+        : {}),
     });
   }
 }
@@ -165,7 +189,11 @@ async function migrateGuides() {
 
   const guides = [
     { slug: "koffiecatering", nl: getCoffeeCateringGuide("nl"), en: getCoffeeCateringGuide("en") },
-    { slug: "barista-bar-specs", nl: getBaristaBarSpecsGuide("nl"), en: getBaristaBarSpecsGuide("en") },
+    {
+      slug: "barista-bar-specs",
+      nl: getBaristaBarSpecsGuide("nl"),
+      en: getBaristaBarSpecsGuide("en"),
+    },
   ];
 
   for (const { slug, nl, en } of guides) {
@@ -233,23 +261,51 @@ async function migrateHomePage() {
         _type: "object",
         _key: `pillar_${i}`,
         icon: item.icon,
-        title: { _type: "localeString", nl: item.title, en: en.pillars.items[i]?.title ?? item.title },
-        description: { _type: "localeText", nl: item.description, en: en.pillars.items[i]?.description ?? item.description },
+        title: {
+          _type: "localeString",
+          nl: item.title,
+          en: en.pillars.items[i]?.title ?? item.title,
+        },
+        description: {
+          _type: "localeText",
+          nl: item.description,
+          en: en.pillars.items[i]?.description ?? item.description,
+        },
       })),
     },
     differentiator: {
       title: { _type: "localeString", nl: nl.differentiator.title, en: en.differentiator.title },
-      description: { _type: "localeText", nl: nl.differentiator.description, en: en.differentiator.description },
+      description: {
+        _type: "localeText",
+        nl: nl.differentiator.description,
+        en: en.differentiator.description,
+      },
       features: nl.differentiator.features.map((f, i) => ({
         _type: "object",
         _key: `feature_${i}`,
-        title: { _type: "localeString", nl: f.title, en: en.differentiator.features[i]?.title ?? f.title },
-        description: { _type: "localeText", nl: f.description, en: en.differentiator.features[i]?.description ?? f.description },
+        title: {
+          _type: "localeString",
+          nl: f.title,
+          en: en.differentiator.features[i]?.title ?? f.title,
+        },
+        description: {
+          _type: "localeText",
+          nl: f.description,
+          en: en.differentiator.features[i]?.description ?? f.description,
+        },
       })),
       quote: { _type: "localeText", nl: nl.differentiator.quote, en: en.differentiator.quote },
-      quoteDescription: { _type: "localeString", nl: nl.differentiator.quoteDescription ?? "", en: en.differentiator.quoteDescription ?? "" },
+      quoteDescription: {
+        _type: "localeString",
+        nl: nl.differentiator.quoteDescription ?? "",
+        en: en.differentiator.quoteDescription ?? "",
+      },
       author: nl.differentiator.author,
-      authorRole: { _type: "localeString", nl: nl.differentiator.authorRole, en: en.differentiator.authorRole },
+      authorRole: {
+        _type: "localeString",
+        nl: nl.differentiator.authorRole,
+        en: en.differentiator.authorRole,
+      },
     },
     faqSection: {
       title: { _type: "localeString", nl: nl.faq.title, en: en.faq.title },
@@ -291,15 +347,27 @@ async function migrateAboutPage() {
       items: nl.values.items.map((item, i) => ({
         _type: "object",
         _key: `value_${i}`,
-        title: { _type: "localeString", nl: item.title, en: en.values.items[i]?.title ?? item.title },
-        description: { _type: "localeText", nl: item.description, en: en.values.items[i]?.description ?? item.description },
+        title: {
+          _type: "localeString",
+          nl: item.title,
+          en: en.values.items[i]?.title ?? item.title,
+        },
+        description: {
+          _type: "localeText",
+          nl: item.description,
+          en: en.values.items[i]?.description ?? item.description,
+        },
       })),
     },
     cta: {
       title: { _type: "localeString", nl: nl.cta.title, en: en.cta.title },
       description: { _type: "localeText", nl: nl.cta.description, en: en.cta.description },
       primaryLabel: { _type: "localeString", nl: nl.cta.primaryLabel, en: en.cta.primaryLabel },
-      secondaryLabel: { _type: "localeString", nl: nl.cta.secondaryLabel, en: en.cta.secondaryLabel },
+      secondaryLabel: {
+        _type: "localeString",
+        nl: nl.cta.secondaryLabel,
+        en: en.cta.secondaryLabel,
+      },
     },
   });
 }
@@ -331,14 +399,22 @@ async function migrateBrandingPage() {
         _type: "object",
         _key: `step_${i}`,
         title: { _type: "localeString", nl: s.title, en: en.process.steps[i]?.title ?? s.title },
-        description: { _type: "localeText", nl: s.description, en: en.process.steps[i]?.description ?? s.description },
+        description: {
+          _type: "localeText",
+          nl: s.description,
+          en: en.process.steps[i]?.description ?? s.description,
+        },
       })),
     },
     cta: {
       title: { _type: "localeString", nl: nl.cta.title, en: en.cta.title },
       description: { _type: "localeText", nl: nl.cta.description, en: en.cta.description },
       primaryLabel: { _type: "localeString", nl: nl.cta.primaryLabel, en: en.cta.primaryLabel },
-      secondaryLabel: { _type: "localeString", nl: nl.cta.secondaryLabel, en: en.cta.secondaryLabel },
+      secondaryLabel: {
+        _type: "localeString",
+        nl: nl.cta.secondaryLabel,
+        en: en.cta.secondaryLabel,
+      },
     },
   });
 }

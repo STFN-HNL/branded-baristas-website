@@ -14,7 +14,7 @@ export function ConceptCard({ concept, href, readMoreLabel }: ConceptCardProps) 
     <article className="group flex flex-col">
       <Link
         href={href}
-        className="focus-visible:ring-copper relative block aspect-[306/260] w-full overflow-hidden rounded-t-[20px] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+        className="focus-visible:ring-copper relative block aspect-[4/3] w-full overflow-hidden rounded-t-[20px] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none lg:aspect-[306/260]"
         aria-label={`${readMoreLabel}: ${concept.title}`}
       >
         <Image
@@ -25,15 +25,18 @@ export function ConceptCard({ concept, href, readMoreLabel }: ConceptCardProps) 
           className="object-cover transition-transform duration-700 group-hover:scale-105"
         />
       </Link>
-      <div className="bg-cream relative flex min-h-[210px] flex-col gap-[18px] rounded-b-[20px] px-[26px] pt-[26px] pr-[70px] pb-[30px]">
-        <h3 className="font-display text-pine text-[22px] leading-[28px] tracking-[-0.02em]">
+      <div className="bg-cream relative flex min-h-[180px] flex-col gap-3 rounded-b-[20px] px-5 pt-5 pr-14 pb-6 lg:min-h-[210px] lg:gap-[18px] lg:px-[26px] lg:pt-[26px] lg:pr-[70px] lg:pb-[30px]">
+        <h3
+          className="font-display text-pine leading-[1.25] tracking-[-0.02em]"
+          style={{ fontSize: "var(--text-h3)" }}
+        >
           {concept.title}
         </h3>
         <p className="text-forest/80 text-[14px] leading-[20px]">{concept.description}</p>
         <Link
           href={href}
           aria-label={`${readMoreLabel}: ${concept.title}`}
-          className="bg-amber text-ink focus-visible:ring-copper absolute right-[18px] bottom-[18px] inline-flex h-[48px] w-[48px] items-center justify-center rounded-full transition-transform duration-300 group-hover:scale-110 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+          className="bg-amber text-ink focus-visible:ring-copper absolute right-[14px] bottom-[14px] inline-flex h-[44px] w-[44px] items-center justify-center rounded-full transition-transform duration-300 group-hover:scale-110 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none lg:right-[18px] lg:bottom-[18px] lg:h-[48px] lg:w-[48px]"
         >
           <svg
             width="20"

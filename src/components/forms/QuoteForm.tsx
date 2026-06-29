@@ -268,7 +268,7 @@ export function QuoteForm({ form, concepts }: Props) {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="rounded-pill bg-copper text-cream hover:bg-copper/90 focus-visible:ring-cream focus-visible:ring-offset-pine inline-flex w-fit items-center px-8 py-4 text-[16px] leading-[20.8px] transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:opacity-60"
+        className="rounded-pill bg-copper text-cream hover:bg-copper/90 focus-visible:ring-cream focus-visible:ring-offset-pine inline-flex w-full items-center justify-center px-8 py-4 text-[16px] leading-[20.8px] transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:opacity-60 sm:w-fit sm:justify-start"
       >
         {status === "submitting" ? t("submitting") : form.submit}
       </button>

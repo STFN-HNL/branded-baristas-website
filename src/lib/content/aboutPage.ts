@@ -3,6 +3,14 @@ import { ABOUT_PAGE_QUERY } from "@/lib/sanity/queries/aboutPage";
 import type { AboutContent } from "@/content/about";
 import type { Locale } from "@/lib/i18n/routing";
 
+type RawNode = Record<string, unknown>;
+function asNode(value: unknown): RawNode {
+  return value && typeof value === "object" ? (value as RawNode) : {};
+}
+function asArray(value: unknown): RawNode[] {
+  return Array.isArray(value) ? value.map(asNode) : [];
+}
+
 type RawBlock = { _type: string; children?: { text: string }[] };
 function blocksToStrings(blocks: RawBlock[] | null | undefined): string[] {
   if (!blocks) return [];
@@ -11,8 +19,10 @@ function blocksToStrings(blocks: RawBlock[] | null | undefined): string[] {
     .map((b) => b.children?.map((c) => c.text).join("") ?? "")
     .filter(Boolean);
 }
-function ls(obj: { nl: string; en: string } | null | undefined, locale: Locale): string {
-  return obj?.[locale] ?? obj?.nl ?? "";
+function ls(obj: unknown, locale: Locale): string {
+  const node = asNode(obj);
+  const v = node[locale] ?? node.nl;
+  return typeof v === "string" ? v : "";
 }
 
 export async function getAboutPageContent(locale: Locale): Promise<AboutContent | null> {
@@ -21,38 +31,41 @@ export async function getAboutPageContent(locale: Locale): Promise<AboutContent 
     .catch(() => null);
 
   if (raw) {
-    const hero = raw.hero as any;
-    const story = raw.story as any;
-    const values = raw.values as any;
-    const cta = raw.cta as any;
+    const hero = asNode(raw.hero);
+    const story = asNode(raw.story);
+    const values = asNode(raw.values);
+    const cta = asNode(raw.cta);
+    const storyParagraphs = asNode(story.paragraphs);
     return {
       hero: {
-        eyebrow: ls(hero?.eyebrow, locale),
-        title: ls(hero?.title, locale),
-        lead: ls(hero?.lead, locale),
+        eyebrow: ls(hero.eyebrow, locale),
+        title: ls(hero.title, locale),
+        lead: ls(hero.lead, locale),
         image: "/images/about/team.png",
       },
       story: {
-        title: ls(story?.title, locale),
-        paragraphs: blocksToStrings(story?.paragraphs?.[locale] ?? story?.paragraphs?.nl),
+        title: ls(story.title, locale),
+        paragraphs: blocksToStrings(
+          (storyParagraphs[locale] ?? storyParagraphs.nl) as RawBlock[] | undefined,
+        ),
         image: "/images/about/barista-portrait.png",
       },
       values: {
-        eyebrow: ls(values?.eyebrow, locale),
-        title: ls(values?.title, locale),
-        description: ls(values?.description, locale),
-        items: (values?.items ?? []).map((item: any) => ({
-          icon: item.icon ?? "",
+        eyebrow: ls(values.eyebrow, locale),
+        title: ls(values.title, locale),
+        description: ls(values.description, locale),
+        items: asArray(values.items).map((item) => ({
+          icon: typeof item.icon === "string" ? item.icon : "",
           title: ls(item.title, locale),
           description: ls(item.description, locale),
         })),
       },
       cta: {
-        title: ls(cta?.title, locale),
-        description: ls(cta?.description, locale),
-        primaryLabel: ls(cta?.primaryLabel, locale),
+        title: ls(cta.title, locale),
+        description: ls(cta.description, locale),
+        primaryLabel: ls(cta.primaryLabel, locale),
         primaryHref: "/offerte",
-        secondaryLabel: ls(cta?.secondaryLabel, locale),
+        secondaryLabel: ls(cta.secondaryLabel, locale),
         secondaryHref: "/cases",
       },
     };

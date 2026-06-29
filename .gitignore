@@ -52,3 +52,6 @@ yarn-error.log*
 
 # Vercel
 .vercel
+
+# Superpowers brainstorm sessions
+.superpowers/

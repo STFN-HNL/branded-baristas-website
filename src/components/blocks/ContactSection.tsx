@@ -31,11 +31,13 @@ function LinkedinIcon() {
 
 export function ContactSection({ data }: ContactSectionProps) {
   return (
-    <section className="bg-mocha px-10 pt-[100px] pb-[120px]">
+    <section className="bg-mocha px-5 pt-[100px] pb-[120px] sm:px-8 lg:px-10">
       <div className="mx-auto grid max-w-[1360px] grid-cols-1 gap-[80px] lg:grid-cols-[1fr_1fr]">
         <div className="flex flex-col gap-[40px]">
           <div className="flex flex-col gap-5">
-            <h2 className="font-display text-cream text-[50px] leading-[55px]">{data.title}</h2>
+            <h2 className="font-display text-cream text-[clamp(2rem,7vw,3.125rem)] leading-[1.1] [overflow-wrap:break-word]">
+              {data.title}
+            </h2>
             <p className="text-cream/80 max-w-[460px] text-[18px] leading-[27px]">
               {data.description}
             </p>

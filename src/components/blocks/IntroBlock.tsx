@@ -19,13 +19,21 @@ export function IntroBlock({
 
   if (align === "left") {
     return (
-      <div className="flex max-w-[900px] flex-col gap-6">
+      <div className="flex max-w-[900px] flex-col gap-4 lg:gap-6">
         {eyebrow ? (
           <span className={`${eyebrowColor} text-[12px] leading-[27px]`}>{eyebrow}</span>
         ) : null}
-        <h2 className={`font-display ${titleColor} text-[50px] leading-[55px]`}>{title}</h2>
+        <h2
+          className={`font-display ${titleColor} leading-[1.1]`}
+          style={{ fontSize: "var(--text-h2)" }}
+        >
+          {title}
+        </h2>
         {description ? (
-          <p className={`${bodyColor} text-[20px] leading-[27px] whitespace-pre-line`}>
+          <p
+            className={`${bodyColor} leading-[1.6] whitespace-pre-line`}
+            style={{ fontSize: "var(--text-body)" }}
+          >
             {description}
           </p>
         ) : null}
@@ -34,15 +42,23 @@ export function IntroBlock({
   }
 
   return (
-    <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
-      <div className="flex flex-col gap-5">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-16">
+      <div className="flex flex-col gap-4 lg:gap-5">
         {eyebrow ? (
           <span className={`${eyebrowColor} text-[12px] leading-[27px]`}>{eyebrow}</span>
         ) : null}
-        <h2 className={`font-display ${titleColor} text-[50px] leading-[55px]`}>{title}</h2>
+        <h2
+          className={`font-display ${titleColor} leading-[1.1]`}
+          style={{ fontSize: "var(--text-h2)" }}
+        >
+          {title}
+        </h2>
       </div>
       {description ? (
-        <p className={`${bodyColor} text-[20px] leading-[27px] whitespace-pre-line lg:pt-10`}>
+        <p
+          className={`${bodyColor} leading-[1.6] whitespace-pre-line lg:pt-10`}
+          style={{ fontSize: "var(--text-body)" }}
+        >
           {description}
         </p>
       ) : null}

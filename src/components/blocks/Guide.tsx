@@ -29,10 +29,13 @@ export function Guide({ content, quoteHref, tocLabel, updatedLabel, readingTimeL
               {content.readingTimeMinutes} {readingTimeLabel}
             </span>
           </div>
-          <h1 className="font-display text-pine text-[48px] leading-[54px] tracking-[-0.02em] lg:text-[64px] lg:leading-[70px]">
+          <h1
+            className="font-display text-pine leading-[1.1] tracking-[-0.02em]"
+            style={{ fontSize: "var(--text-display)" }}
+          >
             {content.title}
           </h1>
-          <p className="text-forest text-[20px] leading-[28px] lg:text-[22px] lg:leading-[30px]">
+          <p className="text-forest leading-[1.6]" style={{ fontSize: "var(--text-body)" }}>
             {content.lead}
           </p>
         </header>
@@ -71,7 +74,8 @@ export function Guide({ content, quoteHref, tocLabel, updatedLabel, readingTimeL
             >
               <h2
                 id={`${section.id}-heading`}
-                className="font-display text-pine text-[32px] leading-[38px] tracking-[-0.01em] lg:text-[36px] lg:leading-[42px]"
+                className="font-display text-pine leading-[1.15] tracking-[-0.01em]"
+                style={{ fontSize: "var(--text-h2)" }}
               >
                 {section.heading}
               </h2>
@@ -86,8 +90,11 @@ export function Guide({ content, quoteHref, tocLabel, updatedLabel, readingTimeL
           ))}
         </div>
 
-        <aside className="bg-mocha mt-8 flex flex-col items-start gap-4 rounded-[24px] px-8 py-10 lg:px-12">
-          <h2 className="font-display text-cream text-[32px] leading-[38px]">
+        <aside className="bg-mocha mt-8 flex flex-col items-start gap-4 rounded-[24px] px-5 py-8 sm:px-8 lg:px-12 lg:py-10">
+          <h2
+            className="font-display text-cream leading-[1.15]"
+            style={{ fontSize: "var(--text-h2)" }}
+          >
             {content.cta.title}
           </h2>
           <p className="text-cream/85 max-w-[560px] text-[18px] leading-[26px]">

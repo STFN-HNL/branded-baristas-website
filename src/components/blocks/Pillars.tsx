@@ -71,19 +71,29 @@ function Icon({ icon }: { icon: PillarIcon }) {
 
 export function Pillars({ data }: PillarsProps) {
   return (
-    <section className="bg-cream px-10 py-[90px]">
-      <div className="mx-auto flex max-w-[1360px] flex-col gap-[70px]">
-        <div className="flex flex-col items-center gap-[18px] text-center">
-          <span className="text-forest text-[14px] leading-[27px]">{data.subtitle}</span>
-          <h2 className="font-display text-pine text-[50px] leading-[55px] whitespace-pre-line">
+    <section className="bg-cream px-5 py-10 sm:px-8 lg:px-10 lg:py-[90px]">
+      <div className="mx-auto flex max-w-[1360px] flex-col gap-10 lg:gap-[70px]">
+        <div className="flex flex-col items-center gap-3 text-center lg:gap-[18px]">
+          <span className="text-forest text-[13px] leading-[27px] lg:text-[14px]">
+            {data.subtitle}
+          </span>
+          <h2
+            className="font-display text-pine leading-[1.1] whitespace-pre-line"
+            style={{ fontSize: "var(--text-h2)" }}
+          >
             {data.title}
           </h2>
         </div>
-        <div className="grid grid-cols-1 gap-[40px] sm:grid-cols-2 lg:grid-cols-4 lg:gap-[50px]">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-[50px]">
           {data.items.map((item) => (
-            <div key={item.title} className="flex flex-col items-center gap-[18px] text-center">
+            <div
+              key={item.title}
+              className="flex flex-col items-center gap-4 text-center lg:gap-[18px]"
+            >
               <Icon icon={item.icon} />
-              <h3 className="text-pine text-[20px] leading-[27px]">{item.title}</h3>
+              <h3 className="text-pine leading-[1.35]" style={{ fontSize: "var(--text-h4)" }}>
+                {item.title}
+              </h3>
               <p className="text-forest/80 text-[14px] leading-[22px]">{item.description}</p>
             </div>
           ))}
