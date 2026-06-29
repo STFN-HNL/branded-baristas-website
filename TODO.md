@@ -41,17 +41,16 @@ fallback still in place (`src/content/*.ts`). Fetcher layer at `src/lib/content/
       `src/app/(site)/[locale]/opengraph-image.tsx` renders a minimal branded
       card). Ideally includes the page title and a hero photo.
 - [ ] Shoot / source real client logo grayscale strip for `TrustRow`.
-- [ ] Validate Rotterdam address + geo coords in `src/lib/schema.ts`
-      (`localBusinessSchema`). Make sure opening hours and phone match
-      reality — this feeds `LocalBusiness` JSON-LD and affects local SEO.
+- [x] Validate address, geo coords, phone and opening hours in `src/lib/schema.ts`
+      — Zoetermeer address correct, hours updated to 09:00–20:00 2026-04-29.
 
 ## 4. SEO / LLM follow-ups
 
 - [ ] Submit `https://branded-baristas.com/sitemap.xml` to Google Search
       Console for both `nl` and `en` properties.
-- [ ] Add real `sameAs` URLs (LinkedIn, Instagram, press mentions) to
-      `organizationSchema` in `src/lib/schema.ts` — anchors the brand in
-      LLM knowledge graphs.
+- [x] Add real `sameAs` URLs (LinkedIn, Instagram) to `organizationSchema`
+      in `src/lib/schema.ts` — already present (instagram.com/branded_baristas,
+      linkedin.com/company/branded-baristas).
 - [ ] Expand `public/llms.txt` and `public/llms-full.txt` once long-form
       content is in Sanity — they're currently summaries.
 - [x] Add the guide pages to the footer — `/gids` index page created, linked in footer nav 2026-04-26.
@@ -60,20 +59,20 @@ fallback still in place (`src/content/*.ts`). Fetcher layer at `src/lib/content/
 
 ## 5. Legal / consent
 
-- [ ] Ship a cookie banner. GA4 is wired with `consent mode v2` defaulting
-      to "denied" (see `src/components/analytics/GoogleAnalytics.tsx`). The
-      banner just needs to call `gtag('consent', 'update', { ... })` after
-      the user agrees.
-- [ ] Review `/privacy` copy — currently placeholder-ish. Add DPA reference
-      for Supabase + Resend + GA4 processors.
+- [x] Ship a cookie banner — `CookieBanner.tsx` built and mounted in layout,
+      calls `gtag('consent', 'update', ...)` on accept, localStorage key
+      `cookie_consent`, NL+EN i18n — done 2026-04-26 (commit 7f54e93).
+- [x] Review `/privacy` copy — entity type (eenmanszaak), KvK 74669907, address
+      and GA4 as processor added 2026-04-29.
 - [x] Add a cookie policy page — `/cookies` route created, linked in footer 2026-04-26.
 
 ## 6. Developer ergonomics / ops
 
 - [ ] Hook `pnpm i18n:check` and `pnpm typecheck` into GitHub Actions CI as
       required checks for PRs (scripts exist; the workflow doesn't yet).
-- [ ] Set up the Sanity webhook to ping `/api/revalidate` on publish so
-      ISR tags actually flush.
+- [x] Set up the Sanity webhook to ping `/api/revalidate` on publish so
+      ISR tags actually flush — `SANITY_WEBHOOK_SECRET` set in Railway,
+      webhook configured in Sanity dashboard 2026-04-28.
 - [ ] Add a Playwright smoke test for the quote form end-to-end once
       Supabase + Resend are live.
 - [ ] Run `pnpm analyze` once and eyeball the treemap — good baseline

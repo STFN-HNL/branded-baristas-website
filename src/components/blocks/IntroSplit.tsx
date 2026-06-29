@@ -15,9 +15,9 @@ type IntroSplitProps = {
 
 export function IntroSplit({ data }: IntroSplitProps) {
   return (
-    <section className="bg-cream px-10 py-[90px]">
-      <div className="mx-auto grid max-w-[1360px] grid-cols-1 gap-[60px] lg:grid-cols-[590px_1fr] lg:gap-[100px]">
-        <div className="relative aspect-[590/500] w-full overflow-hidden rounded-[20px]">
+    <section className="bg-cream px-5 py-10 sm:px-8 lg:px-10 lg:py-[90px]">
+      <div className="mx-auto grid max-w-[1360px] grid-cols-1 gap-10 lg:grid-cols-[590px_1fr] lg:gap-[100px]">
+        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[20px] lg:aspect-[590/500]">
           <Image
             src={data.image}
             alt=""
@@ -26,10 +26,18 @@ export function IntroSplit({ data }: IntroSplitProps) {
             className="object-cover"
           />
         </div>
-        <div className="flex flex-col gap-[26px] lg:justify-center">
+        <div className="flex flex-col gap-5 lg:justify-center lg:gap-[26px]">
           <span className="text-forest text-[12px] leading-[27px]">{data.eyebrow}</span>
-          <h2 className="font-display text-pine text-[50px] leading-[55px]">{data.title}</h2>
-          <p className="text-forest text-[20px] leading-[27px] whitespace-pre-line">
+          <h2
+            className="font-display text-pine leading-[1.1]"
+            style={{ fontSize: "var(--text-h2)" }}
+          >
+            {data.title}
+          </h2>
+          <p
+            className="text-forest leading-[1.6] whitespace-pre-line"
+            style={{ fontSize: "var(--text-body)" }}
+          >
             {data.description}
           </p>
           <div className="mt-2">

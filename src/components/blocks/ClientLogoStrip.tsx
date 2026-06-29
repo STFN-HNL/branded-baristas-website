@@ -67,12 +67,12 @@ function LogoMark({ icon }: { icon: Logo["icon"] }) {
 
 export function ClientLogoStrip({ logos }: ClientLogoStripProps) {
   return (
-    <section className="bg-cream px-10 pt-[10px] pb-[80px]">
-      <div className="mx-auto flex max-w-[1360px] items-center justify-between gap-10 overflow-hidden">
+    <section className="bg-cream px-5 pt-[10px] pb-14 sm:px-8 lg:px-10 lg:pb-[80px]">
+      <div className="mx-auto flex max-w-[1360px] flex-wrap items-center justify-center gap-x-8 gap-y-6 lg:gap-x-10">
         {logos.map((logo) => (
           <div
             key={logo.name}
-            className="text-forest/50 font-display flex items-center gap-2 text-[24px] leading-none whitespace-nowrap"
+            className="text-forest/50 font-display flex items-center gap-2 text-[18px] leading-none whitespace-nowrap lg:text-[24px]"
           >
             <LogoMark icon={logo.icon} />
             <span>{logo.name}</span>

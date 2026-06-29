@@ -3,7 +3,7 @@ import { localeUrl, siteOrigin, SITE_NAME } from "@/lib/seo";
 
 type JsonLd = Record<string, unknown>;
 
-const LEGAL_NAME = "Branded Baristas B.V.";
+const LEGAL_NAME = "Branded Baristas";
 const ADDRESS_LOCALITY = "Zoetermeer";
 const STREET = "Albert Schweitzersingel 91";
 const POSTAL_CODE = "2719 DZ";
@@ -67,7 +67,7 @@ export function localBusinessSchema(locale: Locale): JsonLd {
         "@type": "OpeningHoursSpecification",
         dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
         opens: "09:00",
-        closes: "18:00",
+        closes: "20:00",
       },
     ],
     areaServed: ["NL", "BE", "DE", "LU", "FR", "UK"],

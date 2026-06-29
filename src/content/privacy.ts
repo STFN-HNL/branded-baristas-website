@@ -33,7 +33,7 @@ const nl: PrivacyContent = {
     {
       title: "1. Wie we zijn",
       paragraphs: [
-        "Branded Baristas is een handelsnaam gevestigd in Zoetermeer (Nederland). Wij verzorgen barista-services voor events en in-company setups. Voor vragen over dit privacybeleid kun je contact opnemen via hello@branded-baristas.com.",
+        "Branded Baristas is een eenmanszaak gevestigd te Albert Schweitzersingel 91, 2719 DZ Zoetermeer, Nederland (KvK-nummer: 74669907). Wij verzorgen barista-services voor events en in-company setups. Voor vragen over dit privacybeleid kun je contact opnemen via hello@branded-baristas.com.",
       ],
     },
     {
@@ -61,7 +61,7 @@ const nl: PrivacyContent = {
       title: "5. Met wie we gegevens delen",
       paragraphs: [
         "We delen je gegevens niet met derden, tenzij dat strikt nodig is voor de uitvoering van je opdracht (bijvoorbeeld een locatie-eigenaar of subcontractor). In alle gevallen maken we dan een verwerkersovereenkomst.",
-        "Onze technische dienstverleners (Resend voor email, Supabase voor opslag, Railway voor hosting) zijn verwerkers onder AVG-overeenkomst.",
+        "Onze technische dienstverleners zijn verwerkers onder AVG-overeenkomst: Resend (emailverzending), Supabase (gegevensopslag), Railway (hosting) en Google (Analytics 4 — uitsluitend na jouw toestemming).",
       ],
     },
     {
@@ -104,7 +104,7 @@ const en: PrivacyContent = {
     {
       title: "1. Who we are",
       paragraphs: [
-        "Branded Baristas is a trade name based in Zoetermeer (Netherlands). We provide barista services for events and in-company setups. For questions about this privacy policy, reach us at hello@branded-baristas.com.",
+        "Branded Baristas is a sole proprietorship (eenmanszaak) registered at Albert Schweitzersingel 91, 2719 DZ Zoetermeer, Netherlands (KvK: 74669907). We provide barista services for events and in-company setups. For questions about this privacy policy, reach us at hello@branded-baristas.com.",
       ],
     },
     {
@@ -132,7 +132,7 @@ const en: PrivacyContent = {
       title: "5. Who we share data with",
       paragraphs: [
         "We don't share your data with third parties unless strictly necessary for delivering your project (e.g. a venue owner or subcontractor). In all such cases we sign a data processing agreement.",
-        "Our technical providers (Resend for email, Supabase for storage, Railway for hosting) are processors under GDPR agreement.",
+        "Our technical providers are processors under GDPR agreement: Resend (email delivery), Supabase (data storage), Railway (hosting), and Google (Analytics 4 — only after your consent).",
       ],
     },
     {

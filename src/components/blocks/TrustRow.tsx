@@ -19,18 +19,21 @@ export async function TrustRow({ locale }: { locale: Locale }) {
   return (
     <section
       aria-label={t("eyebrow")}
-      className="bg-cream border-forest/10 border-y px-10 py-10 lg:py-12"
+      className="bg-cream border-forest/10 border-y px-5 py-8 sm:px-8 lg:px-10 lg:py-12"
     >
-      <div className="mx-auto flex max-w-[1360px] flex-col gap-8 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
-        <div className="flex flex-col gap-5">
+      <div className="mx-auto flex max-w-[1360px] flex-col gap-6 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
+        <div className="flex flex-col gap-4 lg:gap-5">
           <span className="text-forest/70 text-[12px] tracking-[0.2em] uppercase">
             {t("eyebrow")}
           </span>
-          <dl className="flex flex-wrap items-baseline gap-x-10 gap-y-4">
+          <dl className="grid grid-cols-2 gap-x-8 gap-y-3 sm:flex sm:flex-wrap sm:items-baseline sm:gap-x-10 sm:gap-y-4">
             {KPI_KEYS.map((key) => (
               <div key={key} className="flex flex-col">
                 <dt className="sr-only">{key}</dt>
-                <dd className="font-display text-pine text-[28px] leading-[32px]">
+                <dd
+                  className="font-display text-pine leading-[1.15]"
+                  style={{ fontSize: "var(--text-h2)" }}
+                >
                   {t(`kpis.${key}`)}
                 </dd>
               </div>
@@ -38,8 +41,11 @@ export async function TrustRow({ locale }: { locale: Locale }) {
           </dl>
         </div>
 
-        <figure className="max-w-[480px] lg:text-right">
-          <blockquote className="text-forest text-[18px] leading-[26px]">
+        <figure className="lg:max-w-[480px] lg:text-right">
+          <blockquote
+            className="text-forest leading-[1.55]"
+            style={{ fontSize: "var(--text-body)" }}
+          >
             <span aria-hidden className="text-copper pr-1">
               &ldquo;
             </span>
@@ -50,9 +56,7 @@ export async function TrustRow({ locale }: { locale: Locale }) {
           </blockquote>
           <figcaption className="text-forest/70 mt-3 text-[13px] leading-[20px]">
             <span className="text-pine font-medium">{author}</span>
-            <span aria-hidden className="px-2">
-              ·
-            </span>
+            <span aria-hidden className="px-2">·</span>
             <span>{role}</span>
           </figcaption>
         </figure>

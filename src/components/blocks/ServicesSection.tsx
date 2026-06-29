@@ -40,24 +40,32 @@ export function ServicesSection({
   const sectionPadding = overlap ? "pb-[180px]" : "pb-[10px]";
 
   return (
-    <section className={`bg-cream px-10 pt-[10px] ${sectionPadding}`}>
+    <section className={`bg-cream px-3 pt-[10px] sm:px-5 lg:px-10 ${sectionPadding}`}>
       <div
-        className={`${blockBg} relative mx-auto max-w-[1360px] rounded-[20px] px-[40px] pt-[64px] pb-[75px]`}
+        className={`${blockBg} relative mx-auto max-w-[1360px] rounded-[20px] px-5 pt-10 pb-12 sm:px-8 lg:px-[40px] lg:pt-[64px] lg:pb-[75px]`}
       >
-        <div className="relative z-10 flex flex-col gap-[56px]">
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-[80px]">
-            <div className="flex flex-col gap-4">
-              <span className={`${eyebrowColor} text-[14px] leading-[27px]`}>{eyebrow}</span>
+        <div className="relative z-10 flex flex-col gap-10 lg:gap-[56px]">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1.1fr] lg:gap-[80px]">
+            <div className="flex flex-col gap-3 lg:gap-4">
+              <span className={`${eyebrowColor} text-[13px] leading-[27px] lg:text-[14px]`}>
+                {eyebrow}
+              </span>
               <h2
-                className={`font-display ${titleColor} text-[58px] leading-[62px] whitespace-pre-line`}
+                className={`font-display ${titleColor} leading-[1.1] whitespace-pre-line`}
+                style={{ fontSize: "var(--text-display)" }}
               >
                 {title}
               </h2>
             </div>
-            <p className={`${bodyColor} text-[20px] leading-[28px] lg:pt-10`}>{description}</p>
+            <p
+              className={`${bodyColor} leading-[1.6] lg:pt-10`}
+              style={{ fontSize: "var(--text-body)" }}
+            >
+              {description}
+            </p>
           </div>
           <div
-            className={`grid grid-cols-1 gap-[30px] ${gridCols} ${overlap ? "-mb-[220px]" : ""}`}
+            className={`grid grid-cols-1 gap-5 ${gridCols} lg:gap-[30px] ${overlap ? "-mb-[220px]" : ""}`}
           >
             {concepts.map((concept) => (
               <ConceptCard
