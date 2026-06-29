@@ -575,7 +575,8 @@ const en: HomeContent = {
         message: "Hello, I'd like to enquire about...",
       },
       submitLabel: "Send message",
-      thankYou: "Thank you — we've received your message and will be in touch within one business day.",
+      thankYou:
+        "Thank you — we've received your message and will be in touch within one business day.",
     },
   },
   faq: {

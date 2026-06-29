@@ -5,10 +5,7 @@ import { LanguageSwitcher } from "./LanguageSwitcher";
 import { MobileNav } from "./MobileNav";
 
 export async function Header() {
-  const [tCommon, tNav] = await Promise.all([
-    getTranslations("common"),
-    getTranslations("nav"),
-  ]);
+  const [tCommon, tNav] = await Promise.all([getTranslations("common"), getTranslations("nav")]);
 
   const navItems = [
     { href: "/over-ons", label: tNav("about") },
@@ -43,15 +40,13 @@ export async function Header() {
             aria-label={tCommon("siteName")}
             className="text-cream hidden items-center gap-[28px] text-[16px] leading-[24px] lg:flex xl:gap-[40px] xl:text-[18px]"
           >
-            {(
-              [
-                { href: "/over-ons" as const, label: navItems[0].label },
-                { href: "/diensten" as const, label: navItems[1].label },
-                { href: "/cases" as const, label: navItems[2].label },
-                { href: "/blog" as const, label: navItems[3].label },
-                { href: "/contact" as const, label: navItems[4].label },
-              ]
-            ).map((item) => (
+            {[
+              { href: "/over-ons" as const, label: navItems[0].label },
+              { href: "/diensten" as const, label: navItems[1].label },
+              { href: "/cases" as const, label: navItems[2].label },
+              { href: "/blog" as const, label: navItems[3].label },
+              { href: "/contact" as const, label: navItems[4].label },
+            ].map((item) => (
               <Link
                 key={item.href}
                 href={item.href}

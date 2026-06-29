@@ -119,7 +119,9 @@ export function buildMetadata(params: SeoParams): Metadata {
       title,
       description,
       locale: locale === "en" ? "en_GB" : "nl_NL",
-      alternateLocale: routing.locales.filter((l) => l !== locale).map((l) => (l === "en" ? "en_GB" : "nl_NL")),
+      alternateLocale: routing.locales
+        .filter((l) => l !== locale)
+        .map((l) => (l === "en" ? "en_GB" : "nl_NL")),
       images: [{ url: ogImage, width: 1200, height: 630, alt: title }],
       ...(type === "article" && params.publishedTime
         ? { publishedTime: params.publishedTime, modifiedTime: params.modifiedTime }

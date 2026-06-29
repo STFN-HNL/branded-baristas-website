@@ -14,14 +14,10 @@ type RawConcept = {
 
 export async function getConcepts(
   locale: Locale,
-  category: "events" | "in-company"
+  category: "events" | "in-company",
 ): Promise<ConceptCard[]> {
   const raw = await sanityClient
-    .fetch<RawConcept[]>(
-      CONCEPTS_QUERY,
-      { category },
-      { next: { tags: ["concept"] } }
-    )
+    .fetch<RawConcept[]>(CONCEPTS_QUERY, { category }, { next: { tags: ["concept"] } })
     .catch(() => null);
 
   if (raw && raw.length > 0) {

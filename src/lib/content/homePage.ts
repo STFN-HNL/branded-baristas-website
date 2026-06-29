@@ -8,68 +8,104 @@ type HomePageSanityData = Pick<
   "intro" | "inlineCta" | "tagline" | "pillars" | "differentiator" | "faq" | "contact"
 >;
 
-function ls(obj: { nl: string; en: string } | null | undefined, locale: Locale): string {
+type PillarIcon = HomeContent["pillars"]["items"][number]["icon"];
+
+/** A localized string field as stored in Sanity. */
+type LocaleString = { nl: string; en: string };
+
+/**
+ * The raw homePage document is loosely typed: we read it as a tree of unknowns
+ * and narrow each field at the point of use. This keeps us decoupled from the
+ * generated Sanity types (which lag schema edits) without resorting to `any`.
+ */
+type RawNode = Record<string, unknown>;
+
+function asNode(value: unknown): RawNode {
+  return value && typeof value === "object" ? (value as RawNode) : {};
+}
+
+function asLocaleString(value: unknown): LocaleString | undefined {
+  const node = asNode(value);
+  if (typeof node.nl === "string" || typeof node.en === "string") {
+    return { nl: (node.nl as string) ?? "", en: (node.en as string) ?? "" };
+  }
+  return undefined;
+}
+
+function asArray(value: unknown): RawNode[] {
+  return Array.isArray(value) ? value.map(asNode) : [];
+}
+
+function ls(obj: LocaleString | null | undefined, locale: Locale): string {
   if (!obj) return "";
   return obj[locale] ?? obj.nl ?? "";
 }
 
 export async function getHomePageContent(locale: Locale): Promise<HomePageSanityData | null> {
   const raw = await sanityClient
-    .fetch<Record<string, unknown> | null>(HOME_PAGE_QUERY, {}, { next: { tags: ["homePage"] } })
+    .fetch<RawNode | null>(HOME_PAGE_QUERY, {}, { next: { tags: ["homePage"] } })
     .catch(() => null);
 
   if (raw) {
-    const map = (obj: { nl: string; en: string } | null | undefined) => ls(obj, locale);
+    const map = (value: unknown) => ls(asLocaleString(value), locale);
+    const intro = asNode(raw.intro);
+    const inlineCta = asNode(raw.inlineCta);
+    const tagline = asNode(raw.tagline);
+    const pillars = asNode(raw.pillars);
+    const differentiator = asNode(raw.differentiator);
+    const faqSection = asNode(raw.faqSection);
+    const contactSection = asNode(raw.contactSection);
     return {
       intro: {
-        eyebrow: map((raw.intro as any)?.eyebrow),
-        title: map((raw.intro as any)?.title),
-        description: map((raw.intro as any)?.description),
-        ctaLabel: map((raw.intro as any)?.ctaLabel),
+        eyebrow: map(intro.eyebrow),
+        title: map(intro.title),
+        description: map(intro.description),
+        ctaLabel: map(intro.ctaLabel),
         ctaHref: "/over-ons",
         image: "/images/about/barista-portrait.png",
       },
       inlineCta: {
-        text: map((raw.inlineCta as any)?.text),
-        ctaLabel: map((raw.inlineCta as any)?.ctaLabel),
+        text: map(inlineCta.text),
+        ctaLabel: map(inlineCta.ctaLabel),
         ctaHref: "/offerte",
       },
       tagline: {
-        title: map((raw.tagline as any)?.title),
+        title: map(tagline.title),
         image: "/images/hero/tagline-bg.jpg",
       },
       pillars: {
-        subtitle: map((raw.pillars as any)?.eyebrow), // Sanity field is "eyebrow", HomeContent uses "subtitle"
-        title: map((raw.pillars as any)?.title),
-        items: ((raw.pillars as any)?.items ?? []).map((item: any) => ({
-          icon: item.icon ?? "",
+        subtitle: map(pillars.eyebrow), // Sanity field is "eyebrow", HomeContent uses "subtitle"
+        title: map(pillars.title),
+        items: asArray(pillars.items).map((item) => ({
+          // icon is a CMS-authored enum value; trust the stored string.
+          icon: (typeof item.icon === "string" ? item.icon : "") as PillarIcon,
           title: map(item.title),
           description: map(item.description),
         })),
       },
       differentiator: {
-        title: map((raw.differentiator as any)?.title),
-        description: map((raw.differentiator as any)?.description),
-        features: ((raw.differentiator as any)?.features ?? []).map((f: any) => ({
+        title: map(differentiator.title),
+        description: map(differentiator.description),
+        features: asArray(differentiator.features).map((f) => ({
           title: map(f.title),
           description: map(f.description),
         })),
         image: "/images/differentiator/bg.jpg",
-        quote: map((raw.differentiator as any)?.quote),
-        quoteDescription: map((raw.differentiator as any)?.quoteDescription),
-        author: (raw.differentiator as any)?.author ?? "",
-        authorRole: map((raw.differentiator as any)?.authorRole),
+        quote: map(differentiator.quote),
+        quoteDescription: map(differentiator.quoteDescription),
+        author: typeof differentiator.author === "string" ? differentiator.author : "",
+        authorRole: map(differentiator.authorRole),
         portrait: "/images/differentiator/portrait.jpg",
       },
       faq: {
-        title: map((raw.faqSection as any)?.title),
-        description: map((raw.faqSection as any)?.description),
-        ctaLabel: map((raw.faqSection as any)?.ctaLabel),
+        title: map(faqSection.title),
+        description: map(faqSection.description),
+        ctaLabel: map(faqSection.ctaLabel),
         items: [],
       },
       contact: {
-        title: map((raw.contactSection as any)?.title),
-        description: map((raw.contactSection as any)?.description),
+        title: map(contactSection.title),
+        description: map(contactSection.description),
         labels: { office: "", email: "", phone: "", follow: "" },
         office: "",
         email: "",

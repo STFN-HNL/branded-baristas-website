@@ -13,6 +13,7 @@
 ## Prerequisites
 
 **Get a Sanity write token** (one-time, done by human):
+
 1. [sanity.io/manage](https://sanity.io/manage) → project **Branded Baristas** → API → Tokens → Add API token
 2. Name: `Migration`, Permissions: **Editor**
 3. Copy the token and add to `.env.local`:
@@ -26,6 +27,7 @@
 ## File Map
 
 **New Sanity schemas:**
+
 - Create: `sanity/schemas/faqItem.ts`
 - Create: `sanity/schemas/guide.ts`
 - Create: `sanity/schemas/homePage.ts`
@@ -34,6 +36,7 @@
 - Modify: `sanity/schemas/index.ts`
 
 **New GROQ queries:**
+
 - Create: `src/lib/sanity/queries/faqItems.ts`
 - Create: `src/lib/sanity/queries/guide.ts`
 - Create: `src/lib/sanity/queries/homePage.ts`
@@ -42,6 +45,7 @@
 - Create: `src/lib/sanity/queries/testimonial.ts`
 
 **New fetcher layer:**
+
 - Create: `src/lib/content/faqItems.ts`
 - Create: `src/lib/content/guide.ts`
 - Create: `src/lib/content/homePage.ts`
@@ -52,9 +56,11 @@
 - Create: `src/lib/content/trustRow.ts`
 
 **Migration script:**
+
 - Create: `scripts/migrate-sanity.ts`
 
 **Updated pages/components (swap imports):**
+
 - Modify: `src/app/(site)/[locale]/page.tsx`
 - Modify: `src/app/(site)/[locale]/over-ons/page.tsx`
 - Modify: `src/app/(site)/[locale]/branding/page.tsx`
@@ -70,6 +76,7 @@
 - Modify: `src/app/sitemap.ts`
 
 **Deleted after migration (in final task):**
+
 - `src/content/about.ts`
 - `src/content/branding.ts`
 - `src/content/cases.ts`
@@ -111,8 +118,18 @@ export const faqItem = defineType({
   type: "document",
   title: "FAQ item",
   fields: [
-    defineField({ name: "question", type: "localeString", title: "Question", validation: (r) => r.required() }),
-    defineField({ name: "answer", type: "localeText", title: "Answer", validation: (r) => r.required() }),
+    defineField({
+      name: "question",
+      type: "localeString",
+      title: "Question",
+      validation: (r) => r.required(),
+    }),
+    defineField({
+      name: "answer",
+      type: "localeText",
+      title: "Answer",
+      validation: (r) => r.required(),
+    }),
     defineField({ name: "order", type: "number", title: "Sort order" }),
   ],
   preview: {
@@ -138,9 +155,24 @@ export const guide = defineType({
   type: "document",
   title: "Guide",
   fields: [
-    defineField({ name: "title", type: "localeString", title: "Title", validation: (r) => r.required() }),
-    defineField({ name: "slug", type: "bilingualSlug", title: "Slug", validation: (r) => r.required() }),
-    defineField({ name: "lead", type: "localeText", title: "Lead", validation: (r) => r.required() }),
+    defineField({
+      name: "title",
+      type: "localeString",
+      title: "Title",
+      validation: (r) => r.required(),
+    }),
+    defineField({
+      name: "slug",
+      type: "bilingualSlug",
+      title: "Slug",
+      validation: (r) => r.required(),
+    }),
+    defineField({
+      name: "lead",
+      type: "localeText",
+      title: "Lead",
+      validation: (r) => r.required(),
+    }),
     defineField({
       name: "intro",
       type: "object",
@@ -234,9 +266,7 @@ export const homePage = defineType({
       name: "tagline",
       type: "object",
       title: "Tagline",
-      fields: [
-        defineField({ name: "title", type: "localeString", title: "Title" }),
-      ],
+      fields: [defineField({ name: "title", type: "localeString", title: "Title" })],
     }),
     defineField({
       name: "pillars",
@@ -249,15 +279,17 @@ export const homePage = defineType({
           name: "items",
           type: "array",
           title: "Pillars",
-          of: [{
-            type: "object",
-            fields: [
-              defineField({ name: "icon", type: "string", title: "Icon name" }),
-              defineField({ name: "title", type: "localeString", title: "Title" }),
-              defineField({ name: "description", type: "localeText", title: "Description" }),
-            ],
-            preview: { select: { title: "title.nl" }, prepare: ({ title }) => ({ title }) },
-          }],
+          of: [
+            {
+              type: "object",
+              fields: [
+                defineField({ name: "icon", type: "string", title: "Icon name" }),
+                defineField({ name: "title", type: "localeString", title: "Title" }),
+                defineField({ name: "description", type: "localeText", title: "Description" }),
+              ],
+              preview: { select: { title: "title.nl" }, prepare: ({ title }) => ({ title }) },
+            },
+          ],
         }),
       ],
     }),
@@ -272,13 +304,15 @@ export const homePage = defineType({
           name: "features",
           type: "array",
           title: "Features",
-          of: [{
-            type: "object",
-            fields: [
-              defineField({ name: "title", type: "localeString", title: "Title" }),
-              defineField({ name: "description", type: "localeText", title: "Description" }),
-            ],
-          }],
+          of: [
+            {
+              type: "object",
+              fields: [
+                defineField({ name: "title", type: "localeString", title: "Title" }),
+                defineField({ name: "description", type: "localeText", title: "Description" }),
+              ],
+            },
+          ],
         }),
         defineField({ name: "quote", type: "localeText", title: "Quote" }),
         defineField({ name: "quoteDescription", type: "localeString", title: "Quote description" }),
@@ -364,15 +398,17 @@ export const aboutPage = defineType({
           name: "items",
           type: "array",
           title: "Values",
-          of: [{
-            type: "object",
-            fields: [
-              defineField({ name: "icon", type: "string", title: "Icon name" }),
-              defineField({ name: "title", type: "localeString", title: "Title" }),
-              defineField({ name: "description", type: "localeText", title: "Description" }),
-            ],
-            preview: { select: { title: "title.nl" }, prepare: ({ title }) => ({ title }) },
-          }],
+          of: [
+            {
+              type: "object",
+              fields: [
+                defineField({ name: "icon", type: "string", title: "Icon name" }),
+                defineField({ name: "title", type: "localeString", title: "Title" }),
+                defineField({ name: "description", type: "localeText", title: "Description" }),
+              ],
+              preview: { select: { title: "title.nl" }, prepare: ({ title }) => ({ title }) },
+            },
+          ],
         }),
       ],
     }),
@@ -384,7 +420,11 @@ export const aboutPage = defineType({
         defineField({ name: "title", type: "localeString", title: "Title" }),
         defineField({ name: "description", type: "localeText", title: "Description" }),
         defineField({ name: "primaryLabel", type: "localeString", title: "Primary button label" }),
-        defineField({ name: "secondaryLabel", type: "localeString", title: "Secondary button label" }),
+        defineField({
+          name: "secondaryLabel",
+          type: "localeString",
+          title: "Secondary button label",
+        }),
       ],
     }),
   ],
@@ -440,14 +480,16 @@ export const brandingPage = defineType({
           name: "steps",
           type: "array",
           title: "Steps",
-          of: [{
-            type: "object",
-            fields: [
-              defineField({ name: "title", type: "localeString", title: "Title" }),
-              defineField({ name: "description", type: "localeText", title: "Description" }),
-            ],
-            preview: { select: { title: "title.nl" }, prepare: ({ title }) => ({ title }) },
-          }],
+          of: [
+            {
+              type: "object",
+              fields: [
+                defineField({ name: "title", type: "localeString", title: "Title" }),
+                defineField({ name: "description", type: "localeText", title: "Description" }),
+              ],
+              preview: { select: { title: "title.nl" }, prepare: ({ title }) => ({ title }) },
+            },
+          ],
         }),
       ],
     }),
@@ -459,7 +501,11 @@ export const brandingPage = defineType({
         defineField({ name: "title", type: "localeString", title: "Title" }),
         defineField({ name: "description", type: "localeText", title: "Description" }),
         defineField({ name: "primaryLabel", type: "localeString", title: "Primary button label" }),
-        defineField({ name: "secondaryLabel", type: "localeString", title: "Secondary button label" }),
+        defineField({
+          name: "secondaryLabel",
+          type: "localeString",
+          title: "Secondary button label",
+        }),
       ],
     }),
   ],
@@ -732,7 +778,11 @@ type RawGuide = {
     heading: { nl: string; en: string };
     body?: { nl?: RawBlock[]; en?: RawBlock[] };
   }[];
-  cta?: { title: { nl: string; en: string }; description: { nl: string; en: string }; label: { nl: string; en: string } };
+  cta?: {
+    title: { nl: string; en: string };
+    description: { nl: string; en: string };
+    label: { nl: string; en: string };
+  };
   updatedAt?: string;
   readingTimeMinutes?: number;
 };
@@ -895,7 +945,11 @@ export async function getHomePageContent(locale: Locale): Promise<HomePageSanity
         description: map((raw.contactSection as any)?.description),
         // structural fields stay hardcoded — these match settings singleton
         labels: {} as any, // consumed components read these from hardcoded content
-        office: "", email: "", phone: "", socials: [], form: {} as any,
+        office: "",
+        email: "",
+        phone: "",
+        socials: [],
+        form: {} as any,
       },
     };
   }
@@ -995,7 +1049,10 @@ function ls(obj: { nl: string; en: string } | null | undefined, locale: Locale):
 
 export async function getBrandingPageContent(locale: Locale): Promise<BrandingContent | null> {
   const raw = await sanityClient
-    .fetch<Record<string, unknown> | null>(BRANDING_PAGE_QUERY, {}, { next: { tags: ["brandingPage"] } })
+    .fetch<Record<
+      string,
+      unknown
+    > | null>(BRANDING_PAGE_QUERY, {}, { next: { tags: ["brandingPage"] } })
     .catch(() => null);
 
   if (raw) {
@@ -1116,14 +1173,10 @@ type RawConcept = {
 
 export async function getConcepts(
   locale: Locale,
-  category: "events" | "in-company"
+  category: "events" | "in-company",
 ): Promise<ConceptCard[]> {
   const raw = await sanityClient
-    .fetch<RawConcept[]>(
-      CONCEPTS_LIST_QUERY,
-      { category },
-      { next: { tags: ["concept"] } }
-    )
+    .fetch<RawConcept[]>(CONCEPTS_LIST_QUERY, { category }, { next: { tags: ["concept"] } })
     .catch(() => null);
 
   if (raw && raw.length > 0) {
@@ -1169,7 +1222,7 @@ export async function getTrustRowTestimonial(locale: Locale): Promise<Testimonia
     .fetch<RawTestimonial | null>(
       TRUST_ROW_TESTIMONIAL_QUERY,
       {},
-      { next: { tags: ["testimonial"] } }
+      { next: { tags: ["testimonial"] } },
     )
     .catch(() => null);
 
@@ -1203,6 +1256,7 @@ export async function getTrustRowTestimonial(locale: Locale): Promise<Testimonia
 - [ ] Open the file. Find the array of handled `_type` values. Add: `"faqItem"`, `"guide"`, `"homePage"`, `"aboutPage"`, `"brandingPage"`.
 
 - [ ] Also update the Sanity webhook filter in the Sanity dashboard (Settings → API → Webhooks) to include the new types:
+
   ```
   _type in ["concept", "case", "post", "author", "category", "testimonial", "brandingOption", "pricingTier", "settings", "page", "faqItem", "guide", "homePage", "aboutPage", "brandingPage"]
   ```
@@ -1250,7 +1304,9 @@ function textToBlocks(strings: string[]) {
 }
 
 // Uploads a local /public image to Sanity CDN and returns asset reference
-async function uploadImage(publicPath: string): Promise<{ _type: "reference"; _ref: string } | null> {
+async function uploadImage(
+  publicPath: string,
+): Promise<{ _type: "reference"; _ref: string } | null> {
   const fullPath = path.join(process.cwd(), "public", publicPath);
   if (!existsSync(fullPath)) {
     console.warn(`Image not found: ${fullPath}`);
@@ -1280,7 +1336,10 @@ async function main() {
   console.log("\nMigration complete.");
 }
 
-main().catch((err) => { console.error(err); process.exit(1); });
+main().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});
 ```
 
 ---
@@ -1301,8 +1360,16 @@ async function migrateFaqItems() {
     await upsert({
       _id: `faq-item-${i + 1}`,
       _type: "faqItem",
-      question: { _type: "localeString", nl: nlItems[i].question, en: enItems[i]?.question ?? nlItems[i].question },
-      answer: { _type: "localeText", nl: nlItems[i].answer, en: enItems[i]?.answer ?? nlItems[i].answer },
+      question: {
+        _type: "localeString",
+        nl: nlItems[i].question,
+        en: enItems[i]?.question ?? nlItems[i].question,
+      },
+      answer: {
+        _type: "localeText",
+        nl: nlItems[i].answer,
+        en: enItems[i]?.answer ?? nlItems[i].answer,
+      },
       order: i + 1,
     });
   }
@@ -1372,7 +1439,15 @@ async function migrateCases() {
       client: nlCase.client,
       location: nlCase.location,
       guestCount: parseInt(nlCase.guests.replace(/\D/g, ""), 10) || 0,
-      ...(heroRef ? { hero: { _type: "imageWithAlt", asset: heroRef, alt: { _type: "localeString", nl: nlCase.title, en: enCase?.title ?? nlCase.title } } } : {}),
+      ...(heroRef
+        ? {
+            hero: {
+              _type: "imageWithAlt",
+              asset: heroRef,
+              alt: { _type: "localeString", nl: nlCase.title, en: enCase?.title ?? nlCase.title },
+            },
+          }
+        : {}),
       story: {
         _type: "object",
         nl: textToBlocks([nlCase.excerpt]),
@@ -1408,14 +1483,34 @@ async function migrateConcepts() {
       _id: `concept-${nlConcept.slug}`,
       _type: "concept",
       category: isEvents.has(nlConcept.slug) ? "events" : "in-company",
-      title: { _type: "localeString", nl: nlConcept.title, en: enConcept?.title ?? nlConcept.title },
+      title: {
+        _type: "localeString",
+        nl: nlConcept.title,
+        en: enConcept?.title ?? nlConcept.title,
+      },
       slug: {
         _type: "object",
         nl: { _type: "slug", current: nlConcept.slug },
         en: { _type: "slug", current: nlConcept.slug },
       },
-      shortDescription: { _type: "localeText", nl: nlConcept.description, en: enConcept?.description ?? nlConcept.description },
-      ...(heroRef ? { hero: { _type: "imageWithAlt", asset: heroRef, alt: { _type: "localeString", nl: nlConcept.title, en: enConcept?.title ?? nlConcept.title } } } : {}),
+      shortDescription: {
+        _type: "localeText",
+        nl: nlConcept.description,
+        en: enConcept?.description ?? nlConcept.description,
+      },
+      ...(heroRef
+        ? {
+            hero: {
+              _type: "imageWithAlt",
+              asset: heroRef,
+              alt: {
+                _type: "localeString",
+                nl: nlConcept.title,
+                en: enConcept?.title ?? nlConcept.title,
+              },
+            },
+          }
+        : {}),
     });
   }
 }
@@ -1435,7 +1530,11 @@ async function migrateGuides() {
 
   const guides = [
     { slug: "koffiecatering", nl: getCoffeeCateringGuide("nl"), en: getCoffeeCateringGuide("en") },
-    { slug: "barista-bar-specs", nl: getBaristaBarSpecsGuide("nl"), en: getBaristaBarSpecsGuide("en") },
+    {
+      slug: "barista-bar-specs",
+      nl: getBaristaBarSpecsGuide("nl"),
+      en: getBaristaBarSpecsGuide("en"),
+    },
   ];
 
   for (const { slug, nl, en } of guides) {
@@ -1508,29 +1607,61 @@ async function migrateHomePage() {
       title: { _type: "localeString", nl: nl.tagline.title, en: en.tagline.title },
     },
     pillars: {
-      eyebrow: { _type: "localeString", nl: nl.pillars.eyebrow ?? "", en: en.pillars.eyebrow ?? "" },
+      eyebrow: {
+        _type: "localeString",
+        nl: nl.pillars.eyebrow ?? "",
+        en: en.pillars.eyebrow ?? "",
+      },
       title: { _type: "localeString", nl: nl.pillars.title, en: en.pillars.title },
       items: nl.pillars.items.map((item, i) => ({
         _type: "object",
         _key: `pillar_${i}`,
         icon: item.icon,
-        title: { _type: "localeString", nl: item.title, en: en.pillars.items[i]?.title ?? item.title },
-        description: { _type: "localeText", nl: item.description, en: en.pillars.items[i]?.description ?? item.description },
+        title: {
+          _type: "localeString",
+          nl: item.title,
+          en: en.pillars.items[i]?.title ?? item.title,
+        },
+        description: {
+          _type: "localeText",
+          nl: item.description,
+          en: en.pillars.items[i]?.description ?? item.description,
+        },
       })),
     },
     differentiator: {
       title: { _type: "localeString", nl: nl.differentiator.title, en: en.differentiator.title },
-      description: { _type: "localeText", nl: nl.differentiator.description, en: en.differentiator.description },
+      description: {
+        _type: "localeText",
+        nl: nl.differentiator.description,
+        en: en.differentiator.description,
+      },
       features: nl.differentiator.features.map((f, i) => ({
         _type: "object",
         _key: `feature_${i}`,
-        title: { _type: "localeString", nl: f.title, en: en.differentiator.features[i]?.title ?? f.title },
-        description: { _type: "localeText", nl: f.description, en: en.differentiator.features[i]?.description ?? f.description },
+        title: {
+          _type: "localeString",
+          nl: f.title,
+          en: en.differentiator.features[i]?.title ?? f.title,
+        },
+        description: {
+          _type: "localeText",
+          nl: f.description,
+          en: en.differentiator.features[i]?.description ?? f.description,
+        },
       })),
       quote: { _type: "localeText", nl: nl.differentiator.quote, en: en.differentiator.quote },
-      quoteDescription: { _type: "localeString", nl: nl.differentiator.quoteDescription ?? "", en: en.differentiator.quoteDescription ?? "" },
+      quoteDescription: {
+        _type: "localeString",
+        nl: nl.differentiator.quoteDescription ?? "",
+        en: en.differentiator.quoteDescription ?? "",
+      },
       author: nl.differentiator.author,
-      authorRole: { _type: "localeString", nl: nl.differentiator.authorRole, en: en.differentiator.authorRole },
+      authorRole: {
+        _type: "localeString",
+        nl: nl.differentiator.authorRole,
+        en: en.differentiator.authorRole,
+      },
     },
     faqSection: {
       title: { _type: "localeString", nl: nl.faq.title, en: en.faq.title },
@@ -1573,15 +1704,27 @@ async function migrateAboutPage() {
         _type: "object",
         _key: `value_${i}`,
         icon: item.icon,
-        title: { _type: "localeString", nl: item.title, en: en.values.items[i]?.title ?? item.title },
-        description: { _type: "localeText", nl: item.description, en: en.values.items[i]?.description ?? item.description },
+        title: {
+          _type: "localeString",
+          nl: item.title,
+          en: en.values.items[i]?.title ?? item.title,
+        },
+        description: {
+          _type: "localeText",
+          nl: item.description,
+          en: en.values.items[i]?.description ?? item.description,
+        },
       })),
     },
     cta: {
       title: { _type: "localeString", nl: nl.cta.title, en: en.cta.title },
       description: { _type: "localeText", nl: nl.cta.description, en: en.cta.description },
       primaryLabel: { _type: "localeString", nl: nl.cta.primaryLabel, en: en.cta.primaryLabel },
-      secondaryLabel: { _type: "localeString", nl: nl.cta.secondaryLabel, en: en.cta.secondaryLabel },
+      secondaryLabel: {
+        _type: "localeString",
+        nl: nl.cta.secondaryLabel,
+        en: en.cta.secondaryLabel,
+      },
     },
   });
 }
@@ -1613,14 +1756,22 @@ async function migrateBrandingPage() {
         _type: "object",
         _key: `step_${i}`,
         title: { _type: "localeString", nl: s.title, en: en.process.steps[i]?.title ?? s.title },
-        description: { _type: "localeText", nl: s.description, en: en.process.steps[i]?.description ?? s.description },
+        description: {
+          _type: "localeText",
+          nl: s.description,
+          en: en.process.steps[i]?.description ?? s.description,
+        },
       })),
     },
     cta: {
       title: { _type: "localeString", nl: nl.cta.title, en: en.cta.title },
       description: { _type: "localeText", nl: nl.cta.description, en: en.cta.description },
       primaryLabel: { _type: "localeString", nl: nl.cta.primaryLabel, en: en.cta.primaryLabel },
-      secondaryLabel: { _type: "localeString", nl: nl.cta.secondaryLabel, en: en.cta.secondaryLabel },
+      secondaryLabel: {
+        _type: "localeString",
+        nl: nl.cta.secondaryLabel,
+        en: en.cta.secondaryLabel,
+      },
     },
   });
 }
@@ -1633,9 +1784,11 @@ async function migrateBrandingPage() {
 - [ ] Ensure `SANITY_WRITE_TOKEN` is in `.env.local`.
 
 - [ ] Run:
+
   ```bash
   pnpm dotenv -e .env.local -- tsx scripts/migrate-sanity.ts
   ```
+
   If `dotenv` CLI isn't available: `env $(cat .env.local | grep -v '^#' | xargs) tsx scripts/migrate-sanity.ts`
 
 - [ ] Expected output: all types printed with ✓. No errors.
@@ -1774,7 +1927,7 @@ const items = await getCasesList(locale);
 const concept = await sanityClient.fetch(
   CONCEPT_QUERY,
   { locale, slug },
-  { next: { tags: [`concept:${slug}`] } }
+  { next: { tags: [`concept:${slug}`] } },
 );
 if (!concept) notFound();
 ```

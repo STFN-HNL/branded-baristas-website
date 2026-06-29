@@ -40,7 +40,13 @@ export function Differentiator({ data }: DifferentiatorProps) {
             {feature ? (
               <div className="flex items-center gap-3 lg:gap-4">
                 <span className="bg-pine border-cream/40 text-cream flex h-[48px] w-[48px] shrink-0 items-center justify-center rounded-full border lg:h-[55px] lg:w-[55px]">
-                  <Image src="/logo/mark.svg" alt="" width={28} height={28} className="h-[24px] w-auto lg:h-[28px]" />
+                  <Image
+                    src="/logo/mark.svg"
+                    alt=""
+                    width={28}
+                    height={28}
+                    className="h-[24px] w-auto lg:h-[28px]"
+                  />
                 </span>
                 <span className="bg-cream text-pine font-body inline-flex h-[48px] shrink-0 items-center rounded-full px-5 text-[14px] leading-[22px] whitespace-nowrap lg:h-[55px] lg:px-6 lg:text-[16px]">
                   {feature.title}
@@ -78,7 +84,13 @@ export function Differentiator({ data }: DifferentiatorProps) {
                 {data.author}
               </span>
               <span className="bg-copper border-cream/40 text-cream flex h-[48px] w-[48px] shrink-0 items-center justify-center rounded-full border lg:h-[55px] lg:w-[55px]">
-                <Image src="/logo/mark.svg" alt="" width={28} height={28} className="h-[24px] w-auto lg:h-[28px]" />
+                <Image
+                  src="/logo/mark.svg"
+                  alt=""
+                  width={28}
+                  height={28}
+                  className="h-[24px] w-auto lg:h-[28px]"
+                />
               </span>
             </footer>
           </div>

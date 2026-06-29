@@ -23,8 +23,12 @@ export function CookieBanner() {
     if (stored === "granted") {
       updateConsent("granted");
     } else if (!stored) {
-      setVisible(true);
+      // Defer the state update out of the effect's synchronous phase to avoid
+      // a cascading re-render (eslint react-hooks/set-state-in-effect).
+      const id = requestAnimationFrame(() => setVisible(true));
+      return () => cancelAnimationFrame(id);
     }
+    return undefined;
   }, []);
 
   function accept() {
@@ -45,14 +49,14 @@ export function CookieBanner() {
       role="dialog"
       aria-live="polite"
       aria-label={t("text")}
-      className="fixed bottom-0 left-0 right-0 z-50 border-t border-pine/10 bg-cream px-6 py-5 shadow-lg sm:px-10"
+      className="border-pine/10 bg-cream fixed right-0 bottom-0 left-0 z-50 border-t px-6 py-5 shadow-lg sm:px-10"
     >
       <div className="mx-auto flex max-w-[1360px] flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-forest text-[14px] leading-[21px]">
           {t("text")}{" "}
           <Link
             href="/privacy"
-            className="text-copper underline underline-offset-2 hover:text-copper/80"
+            className="text-copper hover:text-copper/80 underline underline-offset-2"
           >
             {t("privacyLabel")}
           </Link>

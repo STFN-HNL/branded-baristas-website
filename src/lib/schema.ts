@@ -129,10 +129,7 @@ export function faqPageSchema(items: { question: string; answer: string }[]): Js
   };
 }
 
-export function breadcrumbSchema(
-  locale: Locale,
-  trail: { name: string; path: string }[],
-): JsonLd {
+export function breadcrumbSchema(locale: Locale, trail: { name: string; path: string }[]): JsonLd {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -145,12 +142,15 @@ export function breadcrumbSchema(
   };
 }
 
-export function serviceSchema(locale: Locale, params: {
-  name: string;
-  description: string;
-  path: string;
-  image?: string;
-}): JsonLd {
+export function serviceSchema(
+  locale: Locale,
+  params: {
+    name: string;
+    description: string;
+    path: string;
+    image?: string;
+  },
+): JsonLd {
   const origin = siteOrigin();
   return {
     "@context": "https://schema.org",

@@ -37,14 +37,16 @@ export const brandingPage = defineType({
           name: "steps",
           type: "array",
           title: "Steps",
-          of: [{
-            type: "object",
-            fields: [
-              defineField({ name: "title", type: "localeString", title: "Title" }),
-              defineField({ name: "description", type: "localeText", title: "Description" }),
-            ],
-            preview: { select: { title: "title.nl" }, prepare: ({ title }) => ({ title }) },
-          }],
+          of: [
+            {
+              type: "object",
+              fields: [
+                defineField({ name: "title", type: "localeString", title: "Title" }),
+                defineField({ name: "description", type: "localeText", title: "Description" }),
+              ],
+              preview: { select: { title: "title.nl" }, prepare: ({ title }) => ({ title }) },
+            },
+          ],
         }),
       ],
     }),
@@ -56,7 +58,11 @@ export const brandingPage = defineType({
         defineField({ name: "title", type: "localeString", title: "Title" }),
         defineField({ name: "description", type: "localeText", title: "Description" }),
         defineField({ name: "primaryLabel", type: "localeString", title: "Primary button label" }),
-        defineField({ name: "secondaryLabel", type: "localeString", title: "Secondary button label" }),
+        defineField({
+          name: "secondaryLabel",
+          type: "localeString",
+          title: "Secondary button label",
+        }),
       ],
     }),
   ],

@@ -23,9 +23,7 @@ fallback still in place (`src/content/*.ts`). Fetcher layer at `src/lib/content/
 - [x] Move case studies from `src/content/cases.ts` into Sanity `case` docs — done 2026-04-25.
 - [x] Move about/branding copy from `src/content/about.ts` and
       `src/content/branding.ts` — done 2026-04-25.
-- [x] Replace the two long-form guides with Sanity docs:
-      - `src/content/guides/coffee-catering.ts` → Sanity `guide` doc
-      - `src/content/guides/barista-bar-specs.ts` → Sanity `guide` doc
+- [x] Replace the two long-form guides with Sanity docs: - `src/content/guides/coffee-catering.ts` → Sanity `guide` doc - `src/content/guides/barista-bar-specs.ts` → Sanity `guide` doc
       — done 2026-04-25.
 - [x] Create a Sanity `testimonial` doc type and wire `TrustRow.tsx` to fetch
       from Sanity with messages fallback — done 2026-04-25.

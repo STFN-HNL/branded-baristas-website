@@ -10,13 +10,7 @@ type ParallaxTaglineProps = {
 export function ParallaxTagline({ data }: ParallaxTaglineProps) {
   return (
     <section className="relative min-h-[240px] w-full overflow-hidden lg:min-h-[560px]">
-      <Image
-        src={data.image}
-        alt=""
-        fill
-        sizes="100vw"
-        className="object-cover"
-      />
+      <Image src={data.image} alt="" fill sizes="100vw" className="object-cover" />
       <div className="absolute inset-0 bg-black/30" aria-hidden />
       <div className="relative z-10 mx-auto flex min-h-[240px] max-w-[1440px] items-center justify-center px-5 py-16 lg:min-h-[560px] lg:px-10">
         <h2

@@ -56,7 +56,9 @@ export async function TrustRow({ locale }: { locale: Locale }) {
           </blockquote>
           <figcaption className="text-forest/70 mt-3 text-[13px] leading-[20px]">
             <span className="text-pine font-medium">{author}</span>
-            <span aria-hidden className="px-2">·</span>
+            <span aria-hidden className="px-2">
+              ·
+            </span>
             <span>{role}</span>
           </figcaption>
         </figure>

@@ -48,7 +48,12 @@ export function MobileNav({ items, quoteCta, siteName, openLabel, closeLabel }: 
         className="text-cream focus-visible:ring-copper flex h-[44px] w-[44px] items-center justify-center rounded-full transition-opacity hover:opacity-75 focus-visible:ring-2 focus-visible:outline-none lg:hidden"
       >
         <svg width="22" height="16" viewBox="0 0 22 16" fill="none" aria-hidden>
-          <path d="M0 1h22M0 8h22M0 15h22" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
+          <path
+            d="M0 1h22M0 8h22M0 15h22"
+            stroke="currentColor"
+            strokeWidth="1.75"
+            strokeLinecap="round"
+          />
         </svg>
       </button>
 
@@ -76,7 +81,12 @@ export function MobileNav({ items, quoteCta, siteName, openLabel, closeLabel }: 
               className="text-cream focus-visible:ring-copper flex h-[44px] w-[44px] items-center justify-center rounded-full transition-opacity hover:opacity-75 focus-visible:ring-2 focus-visible:outline-none"
             >
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
-                <path d="M2 2l14 14M16 2L2 16" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
+                <path
+                  d="M2 2l14 14M16 2L2 16"
+                  stroke="currentColor"
+                  strokeWidth="1.75"
+                  strokeLinecap="round"
+                />
               </svg>
             </button>
           </div>
@@ -100,7 +110,7 @@ export function MobileNav({ items, quoteCta, siteName, openLabel, closeLabel }: 
             <Link
               href={"/offerte" satisfies AppPathname}
               onClick={() => setIsOpen(false)}
-              className="bg-amber text-ink focus-visible:ring-cream block w-full rounded-full py-4 text-center text-[16px] font-medium leading-none transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:outline-none"
+              className="bg-amber text-ink focus-visible:ring-cream block w-full rounded-full py-4 text-center text-[16px] leading-none font-medium transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:outline-none"
             >
               {quoteCta}
             </Link>

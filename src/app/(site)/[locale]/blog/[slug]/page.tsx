@@ -25,7 +25,12 @@ type PostDoc = {
   excerpt?: Record<string, string>;
   body?: Record<string, Block[]>;
   coverImage?: { url?: string; alt?: string };
-  author?: { name?: string; role?: Record<string, string>; bio?: Record<string, string>; avatar?: string };
+  author?: {
+    name?: string;
+    role?: Record<string, string>;
+    bio?: Record<string, string>;
+    avatar?: string;
+  };
   category?: { title?: Record<string, string>; slug?: Record<string, { current: string }> };
   seo?: { title?: Record<string, string>; description?: Record<string, string> };
 };
@@ -156,7 +161,7 @@ export default async function BlogPostPage({ params }: Props) {
 
       {doc.author?.name ? (
         <section className="bg-cream px-10 pb-24 lg:pb-32">
-          <div className="mx-auto flex max-w-[820px] items-center gap-5 border-t border-forest/15 pt-10">
+          <div className="border-forest/15 mx-auto flex max-w-[820px] items-center gap-5 border-t pt-10">
             {doc.author.avatar ? (
               <div className="relative h-16 w-16 overflow-hidden rounded-full">
                 <Image
@@ -169,9 +174,11 @@ export default async function BlogPostPage({ params }: Props) {
               </div>
             ) : null}
             <div>
-              <p className="text-pine text-[16px] font-medium leading-[22px]">{doc.author.name}</p>
+              <p className="text-pine text-[16px] leading-[22px] font-medium">{doc.author.name}</p>
               {doc.author.role?.[locale] ? (
-                <p className="text-forest/70 text-[14px] leading-[20px]">{doc.author.role[locale]}</p>
+                <p className="text-forest/70 text-[14px] leading-[20px]">
+                  {doc.author.role[locale]}
+                </p>
               ) : null}
             </div>
           </div>

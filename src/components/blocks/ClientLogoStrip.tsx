@@ -13,7 +13,16 @@ function LogoMark({ icon }: { icon: Logo["icon"] }) {
     case "square":
       return (
         <svg className={common} width="28" height="28" viewBox="0 0 28 28" aria-hidden>
-          <rect x="3" y="3" width="22" height="22" rx="2" fill="none" stroke="currentColor" strokeWidth="2" />
+          <rect
+            x="3"
+            y="3"
+            width="22"
+            height="22"
+            rx="2"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          />
           <path d="M8 20 L14 8 L20 20 Z" fill="currentColor" />
         </svg>
       );
@@ -26,7 +35,13 @@ function LogoMark({ icon }: { icon: Logo["icon"] }) {
     case "arc":
       return (
         <svg className={common} width="28" height="28" viewBox="0 0 28 28" aria-hidden>
-          <path d="M4 22 C8 8 20 8 24 22" stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round" />
+          <path
+            d="M4 22 C8 8 20 8 24 22"
+            stroke="currentColor"
+            strokeWidth="3"
+            fill="none"
+            strokeLinecap="round"
+          />
         </svg>
       );
     case "ring":
@@ -59,7 +74,12 @@ function LogoMark({ icon }: { icon: Logo["icon"] }) {
     case "t":
       return (
         <svg className={common} width="28" height="28" viewBox="0 0 28 28" aria-hidden>
-          <path d="M4 6 H24 M14 6 V24" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+          <path
+            d="M4 6 H24 M14 6 V24"
+            stroke="currentColor"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
         </svg>
       );
   }

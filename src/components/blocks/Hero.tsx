@@ -6,7 +6,7 @@ export async function Hero() {
   const t = await getTranslations("home.hero");
 
   return (
-    <section className="relative min-h-svh w-full overflow-hidden lg:min-h-0 lg:h-[702px]">
+    <section className="relative min-h-svh w-full overflow-hidden lg:h-[702px] lg:min-h-0">
       <Image
         src="/images/hero/hero-main.png"
         alt=""
@@ -30,10 +30,7 @@ export async function Hero() {
           {t("title")}
         </h1>
         <div className="flex max-w-full flex-col gap-5 lg:max-w-[442px] lg:gap-[30px]">
-          <p
-            className="text-cream/90 leading-[1.6]"
-            style={{ fontSize: "var(--text-body)" }}
-          >
+          <p className="text-cream/90 leading-[1.6]" style={{ fontSize: "var(--text-body)" }}>
             {t("lead")}
           </p>
           <PillCta href="/contact" variant="dark">

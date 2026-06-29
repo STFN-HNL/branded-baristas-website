@@ -34,7 +34,12 @@ type CaseDoc = {
     slug?: Record<string, { current: string }>;
     category?: string;
   }[];
-  testimonial?: { quote?: Record<string, string>; author?: string; role?: string; company?: string };
+  testimonial?: {
+    quote?: Record<string, string>;
+    author?: string;
+    role?: string;
+    company?: string;
+  };
   story?: Record<string, Block[]>;
   seo?: { title?: Record<string, string>; description?: Record<string, string> };
 };
@@ -61,8 +66,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       noIndex: true,
     });
   }
-  const title =
-    doc.seo?.title?.[locale] ?? doc.title?.[locale] ?? doc.client ?? t("metaTitle");
+  const title = doc.seo?.title?.[locale] ?? doc.title?.[locale] ?? doc.client ?? t("metaTitle");
   const description = doc.seo?.description?.[locale] ?? t("metaDescription");
   return buildMetadata({
     locale,

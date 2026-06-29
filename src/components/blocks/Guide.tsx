@@ -35,10 +35,7 @@ export function Guide({ content, quoteHref, tocLabel, updatedLabel, readingTimeL
           >
             {content.title}
           </h1>
-          <p
-            className="text-forest leading-[1.6]"
-            style={{ fontSize: "var(--text-body)" }}
-          >
+          <p className="text-forest leading-[1.6]" style={{ fontSize: "var(--text-body)" }}>
             {content.lead}
           </p>
         </header>

@@ -77,8 +77,6 @@ export const { Link, redirect, usePathname, useRouter, getPathname } = createNav
  * exhaustive pathname union. Prefer the object form
  * `{ pathname: "/foo/[slug]", params: { slug } }` for dynamic routes.
  */
-export function asHref(
-  href: string,
-): Parameters<typeof Link>[0]["href"] {
+export function asHref(href: string): Parameters<typeof Link>[0]["href"] {
   return href as unknown as Parameters<typeof Link>[0]["href"];
 }

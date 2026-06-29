@@ -38,8 +38,20 @@ export function ConceptCard({ concept, href, readMoreLabel }: ConceptCardProps) 
           aria-label={`${readMoreLabel}: ${concept.title}`}
           className="bg-amber text-ink focus-visible:ring-copper absolute right-[14px] bottom-[14px] inline-flex h-[44px] w-[44px] items-center justify-center rounded-full transition-transform duration-300 group-hover:scale-110 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none lg:right-[18px] lg:bottom-[18px] lg:h-[48px] lg:w-[48px]"
         >
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-            <path d="M10 4v12M4 10h12" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden
+          >
+            <path
+              d="M10 4v12M4 10h12"
+              stroke="currentColor"
+              strokeWidth="1.75"
+              strokeLinecap="round"
+            />
           </svg>
           <span className="sr-only">{readMoreLabel}</span>
         </Link>

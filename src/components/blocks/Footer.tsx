@@ -47,7 +47,7 @@ export async function Footer({ locale, wrapperBg = "cream", flush = false }: Foo
             </Link>
             <div className="flex flex-col gap-5 lg:gap-[37px]">
               <h2
-                className="text-cream font-medium leading-none"
+                className="text-cream leading-none font-medium"
                 style={{ fontSize: "var(--text-body)" }}
               >
                 {tFooter("quickLinks")}
@@ -68,10 +68,16 @@ export async function Footer({ locale, wrapperBg = "cream", flush = false }: Foo
           <div className="border-cream/15 text-cream/70 flex flex-col gap-3 border-t pt-8 text-[12px] leading-[27px] sm:flex-row sm:items-center sm:justify-between">
             <span>{footer.colophon}</span>
             <div className="flex flex-wrap items-center gap-x-6 gap-y-1">
-              <Link href="/privacy" className="hover:text-cream inline-flex min-h-[44px] items-center transition-colors">
+              <Link
+                href="/privacy"
+                className="hover:text-cream inline-flex min-h-[44px] items-center transition-colors"
+              >
                 {tFooter("privacy")}
               </Link>
-              <Link href="/cookies" className="hover:text-cream inline-flex min-h-[44px] items-center transition-colors">
+              <Link
+                href="/cookies"
+                className="hover:text-cream inline-flex min-h-[44px] items-center transition-colors"
+              >
                 {tFooter("cookies")}
               </Link>
               <span>{tFooter("credit")}</span>

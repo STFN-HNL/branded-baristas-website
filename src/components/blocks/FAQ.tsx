@@ -40,10 +40,7 @@ export function FAQ({ data }: FAQProps) {
           >
             {data.title}
           </h2>
-          <p
-            className="text-cream/80 leading-[1.6]"
-            style={{ fontSize: "var(--text-body)" }}
-          >
+          <p className="text-cream/80 leading-[1.6]" style={{ fontSize: "var(--text-body)" }}>
             {data.description}
           </p>
           <Link
@@ -57,7 +54,10 @@ export function FAQ({ data }: FAQProps) {
           {data.items.map((item, index) => {
             const isOpen = openIndex === index;
             return (
-              <li key={item.question} className="bg-cream rounded-[20px] px-5 py-5 lg:px-10 lg:py-6">
+              <li
+                key={item.question}
+                className="bg-cream rounded-[20px] px-5 py-5 lg:px-10 lg:py-6"
+              >
                 <button
                   type="button"
                   aria-expanded={isOpen}

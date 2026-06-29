@@ -63,8 +63,13 @@ function renderSpan(span: Span, markDefs: MarkDef[] = [], keyPrefix: string): Re
   return node;
 }
 
-function groupLists(blocks: Block[]): (Block | { _type: "list"; level: number; kind: "bullet" | "number"; items: Block[] })[] {
-  const out: (Block | { _type: "list"; level: number; kind: "bullet" | "number"; items: Block[] })[] = [];
+function groupLists(
+  blocks: Block[],
+): (Block | { _type: "list"; level: number; kind: "bullet" | "number"; items: Block[] })[] {
+  const out: (
+    | Block
+    | { _type: "list"; level: number; kind: "bullet" | "number"; items: Block[] }
+  )[] = [];
   let buffer: Block[] = [];
   let currentKind: "bullet" | "number" | null = null;
   const flush = () => {

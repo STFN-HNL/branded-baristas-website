@@ -5,8 +5,18 @@ export const faqItem = defineType({
   type: "document",
   title: "FAQ item",
   fields: [
-    defineField({ name: "question", type: "localeString", title: "Question", validation: (r) => r.required() }),
-    defineField({ name: "answer", type: "localeText", title: "Answer", validation: (r) => r.required() }),
+    defineField({
+      name: "question",
+      type: "localeString",
+      title: "Question",
+      validation: (r) => r.required(),
+    }),
+    defineField({
+      name: "answer",
+      type: "localeText",
+      title: "Answer",
+      validation: (r) => r.required(),
+    }),
     defineField({ name: "order", type: "number", title: "Sort order" }),
   ],
   preview: {

@@ -86,12 +86,12 @@ export function Pillars({ data }: PillarsProps) {
         </div>
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-[50px]">
           {data.items.map((item) => (
-            <div key={item.title} className="flex flex-col items-center gap-4 text-center lg:gap-[18px]">
+            <div
+              key={item.title}
+              className="flex flex-col items-center gap-4 text-center lg:gap-[18px]"
+            >
               <Icon icon={item.icon} />
-              <h3
-                className="text-pine leading-[1.35]"
-                style={{ fontSize: "var(--text-h4)" }}
-              >
+              <h3 className="text-pine leading-[1.35]" style={{ fontSize: "var(--text-h4)" }}>
                 {item.title}
               </h3>
               <p className="text-forest/80 text-[14px] leading-[22px]">{item.description}</p>
