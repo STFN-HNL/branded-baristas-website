@@ -16,13 +16,14 @@ const PATH = "/gids/koffiecatering";
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "pages.guideCoffeeCatering" });
+  const content = (await getGuide(locale, "koffiecatering")) ?? getCoffeeCateringGuide(locale);
   return buildMetadata({
     locale,
     path: PATH,
     title: t("metaTitle"),
     description: t("metaDescription"),
     type: "article",
-    publishedTime: "2026-04-15",
+    publishedTime: content.updated,
   });
 }
 
