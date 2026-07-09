@@ -1,5 +1,10 @@
 import type { MetadataRoute } from "next";
 import { routing, type Locale } from "@/lib/i18n/routing";
+
+// Evaluate at request time: the Docker build runs with placeholder env vars
+// (see Dockerfile), so a build-time sitemap would bake placeholder.example.com
+// into every URL. Runtime evaluation reads the real NEXT_PUBLIC_SITE_URL.
+export const dynamic = "force-dynamic";
 import { languageAlternates, localeUrl } from "@/lib/seo";
 import { getHomeContent } from "@/content/home";
 import { getCases } from "@/lib/sanity/queries/case";
