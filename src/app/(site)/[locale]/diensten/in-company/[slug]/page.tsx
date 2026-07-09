@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Footer } from "@/components/blocks/Footer";
 import { InlineCta } from "@/components/blocks/InlineCta";
 import { JsonLd } from "@/components/JsonLd";
-import { PortableText, type Block } from "@/components/PortableText";
+import { PortableText, type PortableBlock } from "@/components/PortableText";
 import { getHomeContent } from "@/content/home";
 import { getConceptBySlug } from "@/lib/sanity/queries/concept";
 import type { Locale } from "@/lib/i18n/routing";
@@ -23,7 +23,7 @@ type ConceptDoc = {
   shortDescription?: Record<string, string>;
   hero?: { url?: string; alt?: Record<string, string> };
   gallery?: { url?: string; alt?: Record<string, string> }[];
-  body?: Record<string, Block[]>;
+  body?: Record<string, PortableBlock[]>;
   specs?: { label?: string; value?: string }[];
   seo?: { title?: Record<string, string>; description?: Record<string, string> };
 };
@@ -147,7 +147,7 @@ export default async function InCompanyConceptPage({ params }: Props) {
       {body ? (
         <section className="bg-cream px-10 pb-24 lg:pb-32">
           <div className="mx-auto max-w-[820px]">
-            <PortableText value={body} />
+            <PortableText value={body} locale={locale} />
           </div>
         </section>
       ) : null}

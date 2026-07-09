@@ -34,7 +34,7 @@ export async function getBrandingPageContent(locale: Locale): Promise<BrandingCo
         eyebrow: ls(hero.eyebrow, locale),
         title: ls(hero.title, locale),
         lead: ls(hero.lead, locale),
-        image: "/images/branding/hero.jpg",
+        image: "/images/hero/hero-main.jpeg",
       },
       intro: {
         eyebrow: ls(intro.eyebrow, locale),

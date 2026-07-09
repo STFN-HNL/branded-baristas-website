@@ -37,6 +37,8 @@ const bodyField = (name: "nl" | "en", title: string) =>
         },
       },
       { type: "imageWithAlt" },
+      { type: "callout" },
+      { type: "ctaBlock" },
     ],
     validation: (r) => r.required().min(1),
   });

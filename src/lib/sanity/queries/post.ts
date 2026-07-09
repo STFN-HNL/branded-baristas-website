@@ -20,7 +20,10 @@ export const POST_BY_SLUG_QUERY = defineQuery(`
     slug,
     publishedAt,
     excerpt,
-    body,
+    body {
+      "nl": nl[]{ ..., _type == "imageWithAlt" => { ..., "url": asset->url } },
+      "en": en[]{ ..., _type == "imageWithAlt" => { ..., "url": asset->url } }
+    },
     coverImage { ..., "url": asset->url },
     "author": author-> { name, role, bio, "avatar": avatar.asset->url },
     "category": category-> { title, slug },

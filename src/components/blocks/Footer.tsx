@@ -28,22 +28,16 @@ export async function Footer({ locale, wrapperBg = "cream", flush = false }: Foo
           <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between lg:gap-12">
             <Link
               href="/"
-              className="text-cream flex items-center gap-[10px]"
+              className="text-cream flex items-center"
               aria-label={tCommon("siteName")}
             >
               <Image
-                src="/logo/mark.svg"
-                alt=""
-                width={55}
-                height={55}
+                src="/logo/logo-stacked.svg"
+                alt={tCommon("siteName")}
+                width={843}
+                height={264}
                 className="h-[44px] w-auto lg:h-[55px]"
               />
-              <span
-                className="font-display leading-none tracking-tight"
-                style={{ fontSize: "var(--text-h2)" }}
-              >
-                {tCommon("siteName")}
-              </span>
             </Link>
             <div className="flex flex-col gap-5 lg:gap-[37px]">
               <h2

@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { Footer } from "@/components/blocks/Footer";
 import { JsonLd } from "@/components/JsonLd";
-import { PortableText, type Block } from "@/components/PortableText";
+import { PortableText, type PortableBlock } from "@/components/PortableText";
 import { getPostBySlug } from "@/lib/sanity/queries/post";
 import { getBlogContent } from "@/content/blog";
 import { articleSchema, breadcrumbSchema } from "@/lib/schema";
@@ -23,7 +23,7 @@ type PostDoc = {
   slug?: Record<string, { current: string }>;
   publishedAt?: string;
   excerpt?: Record<string, string>;
-  body?: Record<string, Block[]>;
+  body?: Record<string, PortableBlock[]>;
   coverImage?: { url?: string; alt?: string };
   author?: {
     name?: string;
@@ -80,6 +80,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${title} — Branded Baristas`,
     description,
     image: doc.coverImage?.url,
+    fileOgImage: true,
     type: "article",
     publishedTime: doc.publishedAt,
   });
@@ -155,7 +156,7 @@ export default async function BlogPostPage({ params }: Props) {
 
       <section className="bg-cream px-10 py-16">
         <div className="mx-auto max-w-[820px]">
-          <PortableText value={body} />
+          <PortableText value={body} locale={locale} />
         </div>
       </section>
 

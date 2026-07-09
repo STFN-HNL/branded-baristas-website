@@ -20,7 +20,10 @@ export const CONCEPT_BY_SLUG_QUERY = defineQuery(`
     shortDescription,
     hero { ..., "url": asset->url },
     gallery[] { ..., "url": asset->url },
-    body,
+    body {
+      "nl": nl[]{ ..., _type == "imageWithAlt" => { ..., "url": asset->url } },
+      "en": en[]{ ..., _type == "imageWithAlt" => { ..., "url": asset->url } }
+    },
     specs,
     seo
   }

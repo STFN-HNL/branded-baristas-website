@@ -41,7 +41,7 @@ export async function getAboutPageContent(locale: Locale): Promise<AboutContent 
         eyebrow: ls(hero.eyebrow, locale),
         title: ls(hero.title, locale),
         lead: ls(hero.lead, locale),
-        image: "/images/about/team.png",
+        image: "/images/about/barista-portrait.png",
       },
       story: {
         title: ls(story.title, locale),

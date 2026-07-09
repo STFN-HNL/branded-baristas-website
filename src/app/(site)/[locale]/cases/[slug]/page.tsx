@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { Footer } from "@/components/blocks/Footer";
 import { JsonLd } from "@/components/JsonLd";
-import { PortableText, type Block } from "@/components/PortableText";
+import { PortableText, type PortableBlock } from "@/components/PortableText";
 import { getCaseBySlug } from "@/lib/sanity/queries/case";
 import { articleSchema, breadcrumbSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
@@ -40,7 +40,7 @@ type CaseDoc = {
     role?: string;
     company?: string;
   };
-  story?: Record<string, Block[]>;
+  story?: Record<string, PortableBlock[]>;
   seo?: { title?: Record<string, string>; description?: Record<string, string> };
 };
 
@@ -161,7 +161,7 @@ export default async function CaseDetailPage({ params }: Props) {
 
       <section className="bg-cream px-10 py-24 lg:py-32">
         <div className="mx-auto max-w-[820px]">
-          <PortableText value={story} />
+          <PortableText value={story} locale={locale} />
         </div>
       </section>
 

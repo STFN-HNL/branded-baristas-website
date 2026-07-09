@@ -28,7 +28,10 @@ export const CASE_BY_SLUG_QUERY = defineQuery(`
     gallery[] { ..., "url": asset->url },
     "conceptsUsed": conceptsUsed[]-> { _id, title, slug, category },
     "testimonial": testimonial-> { quote, author, role, company },
-    story,
+    story {
+      "nl": nl[]{ ..., _type == "imageWithAlt" => { ..., "url": asset->url } },
+      "en": en[]{ ..., _type == "imageWithAlt" => { ..., "url": asset->url } }
+    },
     seo
   }
 `);

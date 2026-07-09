@@ -21,6 +21,13 @@ export type SeoParams = {
   title: string;
   description: string;
   image?: string;
+  /**
+   * Skip the static generic OG fallback so a colocated file-based
+   * `opengraph-image.tsx` (a generated per-route card) can take over when no
+   * explicit `image` is set. Only useful for segments that ship such a file,
+   * e.g. blog/[slug].
+   */
+  fileOgImage?: boolean;
   noIndex?: boolean;
   type?: "website" | "article";
   publishedTime?: string;
@@ -101,7 +108,13 @@ function replaceParamsFromPath(publicPath: string, template: AppPathname, actual
 export function buildMetadata(params: SeoParams): Metadata {
   const { locale, path = "/", title, description, image, noIndex, type = "website" } = params;
   const canonical = localeUrl(locale, path);
-  const ogImage = image ?? "/opengraph-image";
+  // Without an explicit image, fall back to the static generic card. The
+  // generated `[locale]/opengraph-image.tsx` route only covers its own segment
+  // (child pages that define `openGraph` lose it), and its URL is hashed, so it
+  // can't be referenced here. Segments with their own file-based card opt out
+  // via `fileOgImage` to let that route fill the gap.
+  const ogImage = image ?? (params.fileOgImage ? undefined : `/images/og/default-${locale}.png`);
+  const images = ogImage ? [{ url: ogImage, width: 1200, height: 630, alt: title }] : undefined;
 
   return {
     metadataBase: new URL(siteOrigin()),
@@ -122,7 +135,7 @@ export function buildMetadata(params: SeoParams): Metadata {
       alternateLocale: routing.locales
         .filter((l) => l !== locale)
         .map((l) => (l === "en" ? "en_GB" : "nl_NL")),
-      images: [{ url: ogImage, width: 1200, height: 630, alt: title }],
+      ...(images ? { images } : {}),
       ...(type === "article" && params.publishedTime
         ? { publishedTime: params.publishedTime, modifiedTime: params.modifiedTime }
         : {}),
@@ -131,7 +144,7 @@ export function buildMetadata(params: SeoParams): Metadata {
       card: "summary_large_image",
       title,
       description,
-      images: [ogImage],
+      ...(ogImage ? { images: [ogImage] } : {}),
     },
     robots: noIndex
       ? { index: false, follow: false }

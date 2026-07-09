@@ -71,7 +71,7 @@ export async function getHomePageContent(locale: Locale): Promise<HomePageSanity
       },
       tagline: {
         title: map(tagline.title),
-        image: "/images/hero/tagline-bg.jpg",
+        image: "/images/hero/hero-main.jpeg",
       },
       pillars: {
         subtitle: map(pillars.eyebrow), // Sanity field is "eyebrow", HomeContent uses "subtitle"
@@ -90,12 +90,12 @@ export async function getHomePageContent(locale: Locale): Promise<HomePageSanity
           title: map(f.title),
           description: map(f.description),
         })),
-        image: "/images/differentiator/bg.jpg",
+        image: "/images/hero/hero-main.jpeg",
         quote: map(differentiator.quote),
         quoteDescription: map(differentiator.quoteDescription),
         author: typeof differentiator.author === "string" ? differentiator.author : "",
         authorRole: map(differentiator.authorRole),
-        portrait: "/images/differentiator/portrait.jpg",
+        portrait: "/images/about/barista-portrait.png",
       },
       faq: {
         title: map(faqSection.title),

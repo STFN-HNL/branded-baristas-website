@@ -4,6 +4,8 @@ import { localeText } from "./objects/localeText";
 import { localeBlocks } from "./objects/localeBlocks";
 import { bilingualSlug } from "./objects/bilingualSlug";
 import { imageWithAlt } from "./objects/imageWithAlt";
+import { callout } from "./objects/callout";
+import { ctaBlock } from "./objects/ctaBlock";
 import { seo } from "./objects/seo";
 import { settings } from "./settings";
 import { page } from "./page";
@@ -28,6 +30,8 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   localeBlocks,
   bilingualSlug,
   imageWithAlt,
+  callout,
+  ctaBlock,
   seo,
   // documents
   settings,

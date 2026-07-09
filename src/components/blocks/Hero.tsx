@@ -6,14 +6,14 @@ export async function Hero() {
   const t = await getTranslations("home.hero");
 
   return (
-    <section className="relative min-h-svh w-full overflow-hidden lg:h-[702px] lg:min-h-0">
+    <section className="relative h-[78svh] max-h-[760px] min-h-[600px] w-full overflow-hidden lg:h-[clamp(640px,46vw,820px)] lg:max-h-none lg:min-h-0">
       <Image
-        src="/images/hero/hero-main.png"
+        src="/images/hero/hero-main.jpeg"
         alt=""
         fill
         priority
         sizes="100vw"
-        className="object-cover"
+        className="object-cover object-[36%_38%]"
       />
       {/* Gradient overlay — stronger at bottom for text legibility on mobile */}
       <div
@@ -22,7 +22,7 @@ export async function Hero() {
       />
 
       {/* Mobile: single column anchored bottom. Desktop: 2-column row */}
-      <div className="relative z-10 mx-auto flex h-full max-w-[1440px] flex-col justify-end gap-6 px-5 pb-10 sm:px-8 sm:pb-14 lg:flex-row lg:items-end lg:justify-between lg:gap-12 lg:px-20 lg:pb-[99px]">
+      <div className="relative z-10 mx-auto flex h-full max-w-[1440px] flex-col justify-end gap-5 px-5 pt-[140px] pb-10 sm:gap-6 sm:px-8 sm:pb-14 lg:flex-row lg:items-end lg:justify-between lg:gap-12 lg:px-20 lg:pt-0 lg:pb-[99px]">
         <h1
           className="font-display text-cream max-w-[668px] leading-[1.1]"
           style={{ fontSize: "var(--text-display)" }}
