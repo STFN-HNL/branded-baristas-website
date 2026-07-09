@@ -27,17 +27,19 @@ fallback still in place (`src/content/*.ts`). Fetcher layer at `src/lib/content/
       — done 2026-04-25.
 - [x] Create a Sanity `testimonial` doc type and wire `TrustRow.tsx` to fetch
       from Sanity with messages fallback — done 2026-04-25.
-- [ ] Replace placeholder `publishedTime: "2026-04-15"` in guide pages with
-      real dates from the CMS (`guide.updatedAt` field is now populated).
+- [x] Replace placeholder `publishedTime: "2026-04-15"` in guide pages with
+      real dates from the CMS — reads `guide.updatedAt` since 2026-07-09.
 - [ ] After visual verification on Railway: delete hardcoded content files
       (`src/content/about.ts`, `branding.ts`, `cases.ts`, `guides/*.ts`) and
       remove fallback imports from `src/lib/content/*.ts` fetchers.
 
 ## 3. Design / brand assets
 
-- [ ] Design a real OG image template (currently
-      `src/app/(site)/[locale]/opengraph-image.tsx` renders a minimal branded
-      card). Ideally includes the page title and a hero photo.
+- [ ] Design a real OG image template. Since 2026-07-09 every page gets a
+      static branded card (`public/images/og/default-{nl,en}.png`, snapshots of
+      the generated card) and blog posts get a dynamic per-post card; a
+      designed template with hero photo would still be nicer. Note: the static
+      cards must be re-captured if the home meta title/description changes.
 - [ ] Shoot / source real client logo grayscale strip for `TrustRow`.
 - [x] Validate address, geo coords, phone and opening hours in `src/lib/schema.ts`
       — Zoetermeer address correct, hours updated to 09:00–20:00 2026-04-29.
@@ -94,8 +96,23 @@ fallback still in place (`src/content/*.ts`). Fetcher layer at `src/lib/content/
 - [ ] `EN` legacy-slug redirects in `src/lib/redirects.ts` assume no one
       has deep links to `/en/over-ons` etc. from before the translated-slug
       rollout. Check logs after deploy to see if more redirects are needed.
+      (2026-07-09: barista-hire/beverage-catering targets fixed, they 404'd.)
+
+## 9. Launch 2026-07-09 — remaining polish
+
+- [ ] Submit `https://branded-baristas.com/sitemap.xml` in Google Search
+      Console (also listed in §4 — the one open launch task).
+- [ ] `www.branded-baristas.com` serves the app but does not redirect to the
+      apex domain. Canonicals point to apex so SEO is safe, but add a
+      Cloudflare redirect rule (www → apex, 301) for cleanliness.
+- [ ] Remove stale Resend DNS records for `contact.branded-baristas.com` in
+      Cloudflare (old account's DKIM/SPF; root domain verified 2026-07-09 in
+      the new Resend account).
+- [ ] Consider uploading the seven 2026-07-09 Figma photos to the Sanity
+      singletons so editors can swap them; they're currently repo assets
+      mapped in `src/lib/content/*.ts`.
 
 ---
 
-_Last updated: 2026-04-25. Generated from the audit roadmap at_
+_Last updated: 2026-07-09 (launch day). Generated from the audit roadmap at_
 _`.cursor/plans/audit_+_seo_llm_conversion_roadmap_38a721a5.plan.md`._
