@@ -140,7 +140,7 @@ const nl: HomeContent = {
       "Wij creëren betekenisvolle touchpoints binnen jouw bedrijf, event of brand activation.\n\nElk detail — van aroma tot flow — is ontworpen om de beleving te versterken en waarde te creëren.",
     ctaLabel: "Meer weten",
     ctaHref: "/over-ons",
-    image: "/images/about/barista-portrait.png",
+    image: "/images/home/intro-espresso-bar.jpg",
   },
   logos: sharedLogos,
   events: {
@@ -215,7 +215,7 @@ const nl: HomeContent = {
   },
   tagline: {
     title: "De nieuwste manier om\nmensen en bedrijven te verbinden\ndoor kwaliteitskoffie",
-    image: "/images/hero/hero-main.png",
+    image: "/images/home/tagline-tamping.jpg",
   },
   pillars: {
     subtitle: "Een complete koffiereis in vier essentiële lagen.",
@@ -258,13 +258,13 @@ const nl: HomeContent = {
           "Wij bedienen bedrijven in heel Europa, met lokale inzichten en wereldwijde kwaliteit.",
       },
     ],
-    image: "/images/hero/hero-main.png",
+    image: "/images/home/differentiator-tuktuk.jpg",
     quote: "Mensen herinneren zich hoe ze werden ontvangen",
     quoteDescription:
       "Onze barista's zijn meer dan koffiespecialisten — ze zijn experts in aanwezigheid. Elk is getraind niet alleen om te serveren, maar om gastheer te zijn. Met rustige zelfverzekerdheid creëren ze een gevoel van zorg, ritme en aandacht dat een simpele service verandert in een blijvende indruk.",
     author: "Ander, barista sinds 2017.",
     authorRole: "Specialist in pour-over technieken en ochtendgesprekken.",
-    portrait: "/images/about/barista-portrait.png",
+    portrait: "/images/home/differentiator-portrait-executive.jpg",
   },
   contact: {
     title: "Neem contact op",
@@ -422,7 +422,7 @@ const en: HomeContent = {
       "We create meaningful touchpoints inside your company, event, or brand activation.\n\nEvery detail — from aroma to flow — is designed to enhance the experience and create value.",
     ctaLabel: "Learn More",
     ctaHref: "/over-ons",
-    image: "/images/about/barista-portrait.png",
+    image: "/images/home/intro-espresso-bar.jpg",
   },
   logos: sharedLogos,
   events: {
@@ -497,7 +497,7 @@ const en: HomeContent = {
   },
   tagline: {
     title: "The newest way to connect\npeople and businesses\nthrough quality coffee",
-    image: "/images/hero/hero-main.png",
+    image: "/images/home/tagline-tamping.jpg",
   },
   pillars: {
     subtitle: "A complete coffee journey in four essential layers.",
@@ -539,13 +539,13 @@ const en: HomeContent = {
         description: "Serving businesses across Europe, with local insight and global quality.",
       },
     ],
-    image: "/images/hero/hero-main.png",
+    image: "/images/home/differentiator-tuktuk.jpg",
     quote: "People remember how they were received",
     quoteDescription:
       "Our baristas are more than coffee specialists — they're experts in presence. Each one is trained not only to serve, but to host. With quiet confidence, they create a sense of care, rhythm and attention that turns a simple service into a lasting impression.",
     author: "Ander, barista since 2017.",
     authorRole: "Specialist in pour-over techniques and morning conversations.",
-    portrait: "/images/about/barista-portrait.png",
+    portrait: "/images/home/differentiator-portrait-executive.jpg",
   },
   contact: {
     title: "Get in touch",

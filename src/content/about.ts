@@ -33,7 +33,7 @@ const nl: AboutContent = {
     eyebrow: "Over ons",
     title: "Specialty koffie, hospitality en aandacht voor detail",
     lead: "Branded Baristas begon vanuit een eenvoudige overtuiging: dat koffie meer kan zijn dan een drankje. Het is een moment — een manier om mensen te verbinden, een ritueel dat zorg en gastvrijheid laat zien.",
-    image: "/images/about/barista-portrait.png",
+    image: "/images/about/team-serving.jpg",
   },
   story: {
     title: "Een team dat hospitality serieus neemt",
@@ -42,7 +42,7 @@ const nl: AboutContent = {
       "Elke barista in ons team is getraind in zowel techniek als hospitality. We weten hoe we een perfecte flat white maken én hoe we een gesprek laten ontstaan. We zien onszelf als gastheren, niet als leveranciers.",
       "We werken met merken die waarde hechten aan kwaliteit, mensen en momenten die ertoe doen. Dat zijn bedrijven die begrijpen dat een kop koffie vaak het eerste contactmoment is met hun gasten, klanten of medewerkers.",
     ],
-    image: "/images/about/barista-portrait.png",
+    image: "/images/about/office-coffee-cart.jpg",
   },
   values: {
     eyebrow: "Onze pijlers",
@@ -88,7 +88,7 @@ const en: AboutContent = {
     eyebrow: "About us",
     title: "Specialty coffee, hospitality and attention to detail",
     lead: "Branded Baristas started from a simple belief: that coffee can be more than a drink. It's a moment — a way to connect people, a ritual that shows care and hospitality.",
-    image: "/images/about/barista-portrait.png",
+    image: "/images/about/team-serving.jpg",
   },
   story: {
     title: "A team that takes hospitality seriously",
@@ -97,7 +97,7 @@ const en: AboutContent = {
       "Every barista on our team is trained in both technique and hospitality. We know how to make a perfect flat white — and how to start a conversation. We see ourselves as hosts, not suppliers.",
       "We work with brands that value quality, people and moments that matter. Companies that understand a cup of coffee is often the first real contact point with their guests, clients or employees.",
     ],
-    image: "/images/about/barista-portrait.png",
+    image: "/images/about/office-coffee-cart.jpg",
   },
   values: {
     eyebrow: "Our pillars",

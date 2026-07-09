@@ -62,7 +62,7 @@ export async function getHomePageContent(locale: Locale): Promise<HomePageSanity
         description: map(intro.description),
         ctaLabel: map(intro.ctaLabel),
         ctaHref: "/over-ons",
-        image: "/images/about/barista-portrait.png",
+        image: "/images/home/intro-espresso-bar.jpg",
       },
       inlineCta: {
         text: map(inlineCta.text),
@@ -71,7 +71,7 @@ export async function getHomePageContent(locale: Locale): Promise<HomePageSanity
       },
       tagline: {
         title: map(tagline.title),
-        image: "/images/hero/hero-main.jpeg",
+        image: "/images/home/tagline-tamping.jpg",
       },
       pillars: {
         subtitle: map(pillars.eyebrow), // Sanity field is "eyebrow", HomeContent uses "subtitle"
@@ -90,12 +90,12 @@ export async function getHomePageContent(locale: Locale): Promise<HomePageSanity
           title: map(f.title),
           description: map(f.description),
         })),
-        image: "/images/hero/hero-main.jpeg",
+        image: "/images/home/differentiator-tuktuk.jpg",
         quote: map(differentiator.quote),
         quoteDescription: map(differentiator.quoteDescription),
         author: typeof differentiator.author === "string" ? differentiator.author : "",
         authorRole: map(differentiator.authorRole),
-        portrait: "/images/about/barista-portrait.png",
+        portrait: "/images/home/differentiator-portrait-executive.jpg",
       },
       faq: {
         title: map(faqSection.title),

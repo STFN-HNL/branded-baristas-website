@@ -38,7 +38,7 @@ const nl: BrandingContent = {
     eyebrow: "Branding",
     title: "Volledig branded koffiemomenten — ontworpen voor jouw merk",
     lead: "Van cup tot set, van latte art tot uniform. We ontwerpen elke touchpoint rondom jouw identiteit, zodat het koffiemoment voelt alsof het altijd bij je merk hoorde.",
-    image: "/images/concepts/events/vintage-truck.png",
+    image: "/images/branding/branded-van.jpg",
   },
   intro: {
     eyebrow: "Branding",
@@ -137,7 +137,7 @@ const en: BrandingContent = {
     eyebrow: "Branding",
     title: "Fully branded coffee moments — designed for your brand",
     lead: "From cup to setup, from latte art to uniform. We design every touchpoint around your identity, so the coffee moment feels like it always belonged to your brand.",
-    image: "/images/concepts/events/vintage-truck.png",
+    image: "/images/branding/branded-van.jpg",
   },
   intro: {
     eyebrow: "Branding",

@@ -41,14 +41,14 @@ export async function getAboutPageContent(locale: Locale): Promise<AboutContent 
         eyebrow: ls(hero.eyebrow, locale),
         title: ls(hero.title, locale),
         lead: ls(hero.lead, locale),
-        image: "/images/about/barista-portrait.png",
+        image: "/images/about/team-serving.jpg",
       },
       story: {
         title: ls(story.title, locale),
         paragraphs: blocksToStrings(
           (storyParagraphs[locale] ?? storyParagraphs.nl) as RawBlock[] | undefined,
         ),
-        image: "/images/about/barista-portrait.png",
+        image: "/images/about/office-coffee-cart.jpg",
       },
       values: {
         eyebrow: ls(values.eyebrow, locale),
