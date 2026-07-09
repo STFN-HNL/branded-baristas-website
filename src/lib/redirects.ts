@@ -22,12 +22,12 @@ export const redirects: RedirectMapping[] = [
   },
   {
     source: "/coffee-concepts/barista-hire",
-    destination: "/nl/diensten/events/barista",
+    destination: "/nl/diensten/events/barista-service",
     permanent: true,
   },
   {
     source: "/coffee-concepts/beverage-catering",
-    destination: "/nl/diensten/events/barista",
+    destination: "/nl/diensten/events/barista-service",
     permanent: true,
   },
   { source: "/offerte-aanvragen", destination: "/nl/offerte", permanent: true },
