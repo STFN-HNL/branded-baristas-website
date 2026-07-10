@@ -11,7 +11,7 @@ type ConceptCardProps = {
 
 export function ConceptCard({ concept, href, readMoreLabel }: ConceptCardProps) {
   return (
-    <article className="group flex flex-col">
+    <article className="group flex h-full flex-col">
       <Link
         href={href}
         className="focus-visible:ring-copper relative block aspect-[4/3] w-full overflow-hidden rounded-t-[20px] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none lg:aspect-[306/260]"
@@ -25,7 +25,7 @@ export function ConceptCard({ concept, href, readMoreLabel }: ConceptCardProps) 
           className="object-cover transition-transform duration-700 group-hover:scale-105"
         />
       </Link>
-      <div className="bg-cream relative flex min-h-[180px] flex-col gap-3 rounded-b-[20px] px-5 pt-5 pr-14 pb-6 lg:min-h-[210px] lg:gap-[18px] lg:px-[26px] lg:pt-[26px] lg:pr-[70px] lg:pb-[30px]">
+      <div className="bg-cream relative flex min-h-[180px] flex-1 flex-col gap-3 rounded-b-[20px] px-5 pt-5 pr-14 pb-6 lg:min-h-[210px] lg:gap-[18px] lg:px-[26px] lg:pt-[26px] lg:pr-[70px] lg:pb-[30px]">
         <h3
           className="font-display text-pine leading-[1.25] tracking-[-0.02em]"
           style={{ fontSize: "var(--text-h3)" }}

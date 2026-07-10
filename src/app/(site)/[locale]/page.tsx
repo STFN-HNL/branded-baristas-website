@@ -66,7 +66,7 @@ export default async function HomePage({ params }: Props) {
   return (
     <>
       <Hero />
-      <TrustRow locale={locale} />
+      <TrustRow />
       <IntroSplit data={intro} />
       <ClientLogoStrip logos={hardcoded.logos} />
       <ServicesSection

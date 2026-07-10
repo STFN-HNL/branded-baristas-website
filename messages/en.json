@@ -144,14 +144,9 @@
   "trust": {
     "eyebrow": "Trusted by leading brands",
     "kpis": {
-      "events": "2,500+ events served",
+      "events": "500+ events served",
       "years": "10+ years of experience",
       "clients": "200+ business clients"
-    },
-    "testimonial": {
-      "quote": "Branded Baristas elevated our brand activation to a new level. Guests were still talking about the coffee days later.",
-      "author": "Sanne de Vries",
-      "role": "Head of Brand, Adidas Benelux"
     }
   }
 }

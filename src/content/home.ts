@@ -135,7 +135,7 @@ const sharedSocials: Social[] = [
 const nl: HomeContent = {
   intro: {
     eyebrow: "Welkom bij Branded Baristas",
-    title: "Gedenkwaardige\nmomenten geserveerd",
+    title: "Speciale momenten,\nmet zorg geserveerd",
     description:
       "Wij creëren betekenisvolle touchpoints binnen jouw bedrijf, event of brand activation.\n\nElk detail — van aroma tot flow — is ontworpen om de beleving te versterken en waarde te creëren.",
     ctaLabel: "Meer weten",
@@ -417,7 +417,7 @@ const nl: HomeContent = {
 const en: HomeContent = {
   intro: {
     eyebrow: "Welcome to Branded Baristas",
-    title: "Memorable\nMoments Served",
+    title: "Special moments,\nserved with care",
     description:
       "We create meaningful touchpoints inside your company, event, or brand activation.\n\nEvery detail — from aroma to flow — is designed to enhance the experience and create value.",
     ctaLabel: "Learn More",

@@ -69,31 +69,6 @@ async function migrateFaqItems() {
   }
 }
 
-async function migrateTestimonials() {
-  console.log("\nMigrating testimonials…");
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  const nlMessages = require("../messages/nl.json");
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  const enMessages = require("../messages/en.json");
-
-  await upsert({
-    _id: "testimonial-trust-row",
-    _type: "testimonial",
-    quote: {
-      _type: "localeText",
-      nl: nlMessages.trust.testimonial.quote,
-      en: enMessages.trust.testimonial.quote,
-    },
-    author: nlMessages.trust.testimonial.author,
-    role: {
-      _type: "localeString",
-      nl: nlMessages.trust.testimonial.role,
-      en: enMessages.trust.testimonial.role,
-    },
-    company: "Adidas Benelux",
-  });
-}
-
 async function migrateCases() {
   console.log("\nMigrating case studies…");
   const { getCasesContent } = await import("@/content/cases");
@@ -422,7 +397,6 @@ async function migrateBrandingPage() {
 async function main() {
   console.log("Starting Sanity content migration…");
   await migrateFaqItems();
-  await migrateTestimonials();
   await migrateCases();
   await migrateConcepts();
   await migrateGuides();
