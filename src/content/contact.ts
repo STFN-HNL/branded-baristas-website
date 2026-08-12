@@ -12,6 +12,7 @@ export type ContactContent = {
     description: string;
     email: { label: string; value: string };
     phone: { label: string; value: string };
+    whatsapp: { label: string; value: string };
     address: { label: string; lines: string[] };
     hours: { label: string; value: string };
   };
@@ -52,6 +53,7 @@ const nl: ContactContent = {
       "We zijn het snelst bereikbaar via email. Voor directe vragen kun je ook bellen tijdens kantooruren.",
     email: { label: "Email", value: "hello@branded-baristas.com" },
     phone: { label: "Telefoon", value: "+31 6 41697775" },
+    whatsapp: { label: "WhatsApp", value: "+31 6 41697775" },
     address: {
       label: "Adres",
       lines: ["Albert Schweitzersingel 91", "2719 DZ Zoetermeer"],
@@ -97,6 +99,7 @@ const en: ContactContent = {
       "Email is the fastest way to reach us. For urgent questions, you can also call during office hours.",
     email: { label: "Email", value: "hello@branded-baristas.com" },
     phone: { label: "Phone", value: "+31 6 41697775" },
+    whatsapp: { label: "WhatsApp", value: "+31 6 41697775" },
     address: {
       label: "Address",
       lines: ["Albert Schweitzersingel 91", "2719 DZ Zoetermeer"],

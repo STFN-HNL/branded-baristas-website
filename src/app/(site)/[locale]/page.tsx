@@ -4,7 +4,6 @@ import { buildMetadata } from "@/lib/seo";
 import { Hero } from "@/components/blocks/Hero";
 import { TrustRow } from "@/components/blocks/TrustRow";
 import { IntroSplit } from "@/components/blocks/IntroSplit";
-import { ClientLogoStrip } from "@/components/blocks/ClientLogoStrip";
 import { ServicesSection } from "@/components/blocks/ServicesSection";
 import { InlineCta } from "@/components/blocks/InlineCta";
 import { ParallaxTagline } from "@/components/blocks/ParallaxTagline";
@@ -68,7 +67,6 @@ export default async function HomePage({ params }: Props) {
       <Hero />
       <TrustRow />
       <IntroSplit data={intro} />
-      <ClientLogoStrip logos={hardcoded.logos} />
       <ServicesSection
         eyebrow={events.eyebrow}
         title={events.title}

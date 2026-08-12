@@ -12,7 +12,17 @@ export default defineConfig({
     trace: "on-first-retry",
     locale: "nl-NL",
   },
-  projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
+  projects: [
+    {
+      name: "chromium",
+      use: {
+        ...devices["Desktop Chrome"],
+        // PW_CHANNEL=chrome runs against system Chrome — useful when the
+        // Playwright browser download is unavailable (slow/blocked CDN).
+        ...(process.env.PW_CHANNEL ? { channel: process.env.PW_CHANNEL } : {}),
+      },
+    },
+  ],
   webServer: {
     command: "pnpm dev",
     url: "http://localhost:3000",

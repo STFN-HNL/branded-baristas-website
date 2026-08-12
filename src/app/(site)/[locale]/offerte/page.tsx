@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
+import { DirectContact } from "@/components/blocks/DirectContact";
 import { Footer } from "@/components/blocks/Footer";
 import { QuoteForm } from "@/components/forms/QuoteForm";
 import { getHomeContent } from "@/content/home";
@@ -70,6 +71,7 @@ export default async function QuotePage({ params }: Props) {
                 </li>
               ))}
             </ol>
+            <DirectContact />
           </aside>
 
           <div className="bg-pine rounded-[20px] px-8 py-10 lg:px-12 lg:py-12">

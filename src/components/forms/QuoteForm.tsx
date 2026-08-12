@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
+import { readUtm } from "@/components/UtmCapture";
 import type { QuoteContent } from "@/content/quote";
 
 type Props = {
@@ -37,6 +38,7 @@ export function QuoteForm({ form, concepts }: Props) {
       source: "quote",
       service,
       concepts: Array.from(selectedConcepts),
+      ...readUtm(),
     };
     formData.forEach((value, key) => {
       if (typeof value === "string" && !(key in payload)) payload[key] = value;
@@ -116,7 +118,8 @@ export function QuoteForm({ form, concepts }: Props) {
             <input
               id="date"
               name="date"
-              type="text"
+              type="date"
+              min={new Date().toISOString().slice(0, 10)}
               placeholder={form.sections.event.placeholders.date}
               className={inputClass}
             />

@@ -12,11 +12,6 @@ export type FaqItem = {
   answer: string;
 };
 
-export type LogoItem = {
-  name: string;
-  icon: "square" | "bolt" | "arc" | "ring" | "dots" | "circle" | "t";
-};
-
 export type PillarItem = {
   icon: "storefront" | "handshake" | "pitcher" | "cup";
   title: string;
@@ -37,7 +32,6 @@ export type HomeContent = {
     ctaHref: string;
     image: string;
   };
-  logos: LogoItem[];
   events: {
     eyebrow: string;
     title: string;
@@ -71,8 +65,9 @@ export type HomeContent = {
     image: string;
     quote: string;
     quoteDescription: string;
-    author: string;
-    authorRole: string;
+    /** Only render an attribution when there is a real person to credit. */
+    author?: string;
+    authorRole?: string;
     portrait: string;
   };
   contact: {
@@ -87,6 +82,7 @@ export type HomeContent = {
     office: string;
     email: string;
     phone: string;
+    whatsapp?: { label: string; href: string; display: string };
     socials: Social[];
     form: {
       labels: {
@@ -117,16 +113,6 @@ export type HomeContent = {
   };
 };
 
-const sharedLogos: LogoItem[] = [
-  { name: "Wealthro", icon: "square" },
-  { name: "Finyon", icon: "bolt" },
-  { name: "Aegra", icon: "arc" },
-  { name: "Portivio", icon: "ring" },
-  { name: "Vaultic", icon: "dots" },
-  { name: "Altoris", icon: "circle" },
-  { name: "Quan", icon: "t" },
-];
-
 const sharedSocials: Social[] = [
   { platform: "instagram", href: "https://www.instagram.com/branded_baristas/" },
   { platform: "linkedin", href: "https://www.linkedin.com/company/branded-baristas/" },
@@ -142,7 +128,6 @@ const nl: HomeContent = {
     ctaHref: "/over-ons",
     image: "/images/home/intro-espresso-bar.jpg",
   },
-  logos: sharedLogos,
   events: {
     eyebrow: "De ervaring",
     title: "Event\nServices",
@@ -189,7 +174,7 @@ const nl: HomeContent = {
         slug: "espresso-bar",
         title: "Office Espresso Bar",
         description:
-          "Bied jouw team een unieke kantoorperk met onze professionele on-site barista service, beschikbaar wekelijks of maandelijks.",
+          "Bied jouw team een uniek kantoorvoordeel met onze professionele on-site barista service, beschikbaar wekelijks of maandelijks.",
         image: "/images/concepts/in-company/espresso-bar.png",
       },
       {
@@ -211,10 +196,10 @@ const nl: HomeContent = {
   inlineCta: {
     text: "Wil je dat jouw merk aanwezig is met intentie?",
     ctaLabel: "Geef vorm aan jouw beleving",
-    ctaHref: "/contact",
+    ctaHref: "/offerte",
   },
   tagline: {
-    title: "De nieuwste manier om\nmensen en bedrijven te verbinden\ndoor kwaliteitskoffie",
+    title: "De beste manier om mensen\nen bedrijven met elkaar te verbinden\nis door kwaliteitskoffie te serveren.",
     image: "/images/home/tagline-tamping.jpg",
   },
   pillars: {
@@ -262,8 +247,6 @@ const nl: HomeContent = {
     quote: "Mensen herinneren zich hoe ze werden ontvangen",
     quoteDescription:
       "Onze barista's zijn meer dan koffiespecialisten — ze zijn experts in aanwezigheid. Elk is getraind niet alleen om te serveren, maar om gastheer te zijn. Met rustige zelfverzekerdheid creëren ze een gevoel van zorg, ritme en aandacht dat een simpele service verandert in een blijvende indruk.",
-    author: "Ander, barista sinds 2017.",
-    authorRole: "Specialist in pour-over technieken en ochtendgesprekken.",
     portrait: "/images/home/differentiator-portrait-executive.jpg",
   },
   contact: {
@@ -276,9 +259,10 @@ const nl: HomeContent = {
       phone: "Telefoon",
       follow: "Volg ons",
     },
-    office: "Albert Schweitzersingel 91, 271DZ Zoetermeer",
-    email: "Info@branded-baristas.com",
+    office: "Albert Schweitzersingel 91, 2719 DZ Zoetermeer",
+    email: "hello@branded-baristas.com",
     phone: "+31 641697775",
+    whatsapp: { label: "WhatsApp", href: "https://wa.me/31641697775", display: "+31 6 41697775" },
     socials: sharedSocials,
     form: {
       labels: {
@@ -424,7 +408,6 @@ const en: HomeContent = {
     ctaHref: "/over-ons",
     image: "/images/home/intro-espresso-bar.jpg",
   },
-  logos: sharedLogos,
   events: {
     eyebrow: "The experience",
     title: "Event\nServices",
@@ -493,10 +476,10 @@ const en: HomeContent = {
   inlineCta: {
     text: "Want your brand to show up with intention?",
     ctaLabel: "Let's shape your experience",
-    ctaHref: "/contact",
+    ctaHref: "/offerte",
   },
   tagline: {
-    title: "The newest way to connect\npeople and businesses\nthrough quality coffee",
+    title: "The best way to connect\npeople and businesses\nis by serving quality coffee.",
     image: "/images/home/tagline-tamping.jpg",
   },
   pillars: {
@@ -543,8 +526,6 @@ const en: HomeContent = {
     quote: "People remember how they were received",
     quoteDescription:
       "Our baristas are more than coffee specialists — they're experts in presence. Each one is trained not only to serve, but to host. With quiet confidence, they create a sense of care, rhythm and attention that turns a simple service into a lasting impression.",
-    author: "Ander, barista since 2017.",
-    authorRole: "Specialist in pour-over techniques and morning conversations.",
     portrait: "/images/home/differentiator-portrait-executive.jpg",
   },
   contact: {
@@ -557,9 +538,10 @@ const en: HomeContent = {
       phone: "Telephone",
       follow: "Follow us",
     },
-    office: "Albert Schweitzersingel 91, 271DZ Zoetermeer",
-    email: "Info@branded-baristas.com",
+    office: "Albert Schweitzersingel 91, 2719 DZ Zoetermeer",
+    email: "hello@branded-baristas.com",
     phone: "+31 641697775",
+    whatsapp: { label: "WhatsApp", href: "https://wa.me/31641697775", display: "+31 6 41697775" },
     socials: sharedSocials,
     form: {
       labels: {

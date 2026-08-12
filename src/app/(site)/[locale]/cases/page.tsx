@@ -6,6 +6,7 @@ import { CasesGrid } from "@/components/blocks/CasesGrid";
 import { Link, asHref } from "@/lib/i18n/routing";
 import { getCasesContent } from "@/content/cases";
 import { getCasesList } from "@/lib/content/cases";
+import { hasPublishedCases } from "@/lib/content/publishedContent";
 import type { Locale } from "@/lib/i18n/routing";
 import { buildMetadata } from "@/lib/seo";
 
@@ -15,19 +16,28 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "pages.cases" });
+  const [t, hasCases] = await Promise.all([
+    getTranslations({ locale, namespace: "pages.cases" }),
+    hasPublishedCases(),
+  ]);
   return buildMetadata({
     locale,
     path: "/cases",
     title: t("metaTitle"),
     description: t("metaDescription"),
+    // Stay out of the index until there is real work to show.
+    noIndex: !hasCases,
   });
 }
 
 export default async function CasesPage({ params }: Props) {
   const { locale } = await params;
   const hardcoded = getCasesContent(locale);
-  const [items, tCommon] = await Promise.all([getCasesList(locale), getTranslations("common")]);
+  const [items, tCommon, tCases] = await Promise.all([
+    getCasesList(locale),
+    getTranslations("common"),
+    getTranslations({ locale, namespace: "pages.cases" }),
+  ]);
   const readMoreLabel = tCommon("readMore");
 
   return (
@@ -55,11 +65,13 @@ export default async function CasesPage({ params }: Props) {
 
       <section className="bg-cream px-10 py-24 lg:py-32">
         <div className="mx-auto max-w-[1360px]">
-          <CasesGrid
-            items={items.length > 0 ? items : hardcoded.items}
-            filters={hardcoded.filters}
-            readMoreLabel={readMoreLabel}
-          />
+          {items.length > 0 ? (
+            <CasesGrid items={items} filters={hardcoded.filters} readMoreLabel={readMoreLabel} />
+          ) : (
+            <p className="text-forest mx-auto max-w-[660px] text-center text-[18px] leading-[27px]">
+              {tCases("emptyState")}
+            </p>
+          )}
         </div>
       </section>
 

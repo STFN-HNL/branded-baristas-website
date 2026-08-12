@@ -45,7 +45,9 @@ export function localBusinessSchema(locale: Locale): JsonLd {
     "@type": "LocalBusiness",
     "@id": `${origin}/#local-business`,
     name: SITE_NAME,
-    image: `${origin}/opengraph-image`,
+    // Must be a directly resolvable asset; /opengraph-image only exists under
+    // a locale prefix and 307s at the origin root.
+    image: `${origin}/images/og/default-nl.png`,
     url: `${origin}/${locale}`,
     telephone: PHONE,
     email: EMAIL,

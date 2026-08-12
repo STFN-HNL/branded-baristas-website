@@ -3,13 +3,14 @@ import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
-import { Questrial } from "next/font/google";
+import { Fraunces, Questrial } from "next/font/google";
 import { routing, type Locale } from "@/lib/i18n/routing";
 import { CookieBanner } from "@/components/blocks/CookieBanner";
 import { Header } from "@/components/blocks/Header";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { WebVitals } from "@/components/analytics/WebVitals";
 import { JsonLd } from "@/components/JsonLd";
+import { UtmCapture } from "@/components/UtmCapture";
 import { localBusinessSchema, organizationSchema, websiteSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
 import "../../globals.css";
@@ -18,6 +19,16 @@ const questrial = Questrial({
   subsets: ["latin"],
   weight: "400",
   variable: "--font-questrial",
+  display: "swap",
+});
+
+// Display face. Roie (the original Figma pick) is unlicensed; Fraunces was the
+// first fallback in the stack and is now loaded deliberately (ADR-worthy if we
+// ever license Roie after all).
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-fraunces",
   display: "swap",
 });
 
@@ -51,7 +62,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   const tCommon = await getTranslations({ locale: typedLocale, namespace: "common" });
 
   return (
-    <html lang={typedLocale} className={questrial.variable}>
+    <html lang={typedLocale} className={`${questrial.variable} ${fraunces.variable}`}>
       <body>
         <a
           href="#main-content"
@@ -63,6 +74,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           <Header />
           <main id="main-content">{children}</main>
           <WebVitals />
+          <UtmCapture />
           <CookieBanner />
         </NextIntlClientProvider>
         <JsonLd

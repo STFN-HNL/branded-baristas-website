@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import { getTranslations } from "next-intl/server";
 import { Footer } from "@/components/blocks/Footer";
 import { InlineCta } from "@/components/blocks/InlineCta";
 import { JsonLd } from "@/components/JsonLd";
 import { PortableText, type PortableBlock } from "@/components/PortableText";
 import { getHomeContent } from "@/content/home";
+import { getFromPriceEuros } from "@/lib/content/pricing";
 import { getConceptBySlug } from "@/lib/sanity/queries/concept";
 import type { Locale } from "@/lib/i18n/routing";
 import { buildMetadata } from "@/lib/seo";
@@ -68,7 +70,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function EventConceptPage({ params }: Props) {
   const { locale, slug } = await params;
   const content = getHomeContent(locale);
-  const doc = await loadConcept(slug, locale);
+  const [doc, fromPrice, tPricing] = await Promise.all([
+    loadConcept(slug, locale),
+    getFromPriceEuros(slug),
+    getTranslations({ locale, namespace: "pricing" }),
+  ]);
   const fallback = content.events.concepts.find((c) => c.slug === slug);
   if (!doc && !fallback) notFound();
 
@@ -109,6 +115,14 @@ export default async function EventConceptPage({ params }: Props) {
               {title}
             </h1>
             <p className="text-ink/75 text-[20px] leading-[27px]">{description}</p>
+            {fromPrice !== null ? (
+              <div className="flex flex-col gap-1">
+                <span className="text-pine text-[24px] leading-[33px] font-medium">
+                  {tPricing("from", { price: fromPrice })}
+                </span>
+                <span className="text-ink/60 text-[14px] leading-[22px]">{tPricing("note")}</span>
+              </div>
+            ) : null}
           </div>
           {heroUrl ? (
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[20px]">

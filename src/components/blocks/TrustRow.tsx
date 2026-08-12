@@ -1,8 +1,8 @@
 import { getTranslations } from "next-intl/server";
 
-type KpiKey = "events" | "years" | "clients";
+type KpiKey = "quality" | "reach" | "approach";
 
-const KPI_KEYS: KpiKey[] = ["events", "years", "clients"];
+const KPI_KEYS: KpiKey[] = ["quality", "reach", "approach"];
 
 export async function TrustRow() {
   const t = await getTranslations("trust");

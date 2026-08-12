@@ -66,6 +66,21 @@ export function ContactSection({ data }: ContactSectionProps) {
                 </a>
               </dd>
             </div>
+            {data.whatsapp ? (
+              <div className="flex items-baseline gap-6">
+                <dt className="text-cream/70 w-[110px] shrink-0">{data.whatsapp.label}</dt>
+                <dd className="text-cream">
+                  <a
+                    href={data.whatsapp.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline underline-offset-4"
+                  >
+                    {data.whatsapp.display}
+                  </a>
+                </dd>
+              </div>
+            ) : null}
           </dl>
           <div className="border-cream/15 border-t" />
           <div className="flex flex-col gap-4">

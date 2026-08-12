@@ -15,6 +15,9 @@ export const envSchema = z.object({
   RESEND_TO_EMAIL: z.string().email().optional(),
   NEXT_PUBLIC_GTM_ID: z.string().optional(),
   NEXT_PUBLIC_GA_ID: z.string().optional(),
+  // Cal.com (or similar) booking link; the "plan a call" CTAs only render
+  // when this is set.
+  NEXT_PUBLIC_CAL_URL: z.string().url().optional(),
   SANITY_WRITE_TOKEN: z.string().optional(),
 });
 

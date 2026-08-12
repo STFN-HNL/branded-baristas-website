@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { getTranslations } from "next-intl/server";
+import { siteOrigin } from "@/lib/seo";
 import type { Locale } from "@/lib/i18n/routing";
 
 export const runtime = "edge";
@@ -14,6 +15,8 @@ type Props = {
 export default async function OpengraphImage({ params }: Props) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "pages.home" });
+  // Real hero photo as backdrop (TODO §3.1) — darkened for text legibility.
+  const heroUrl = `${siteOrigin()}/images/hero/hero-main.jpeg`;
 
   return new ImageResponse(
     <div
@@ -24,11 +27,36 @@ export default async function OpengraphImage({ params }: Props) {
         flexDirection: "column",
         justifyContent: "space-between",
         padding: "72px",
-        background: "linear-gradient(135deg, #1F2B25 0%, #2F4036 55%, #A85D3C 100%)",
+        background: "#1F2B25",
         color: "#F5EFE3",
         fontFamily: "sans-serif",
+        position: "relative",
       }}
     >
+      <img
+        src={heroUrl}
+        alt=""
+        width={1200}
+        height={630}
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          background: "linear-gradient(135deg, #1F2B25F5 0%, #1F2B25CC 55%, #A85D3C99 100%)",
+        }}
+      />
       <div style={{ display: "flex", alignItems: "center", gap: "18px", fontSize: 30 }}>
         <div
           style={{

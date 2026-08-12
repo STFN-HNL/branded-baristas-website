@@ -93,8 +93,10 @@ export async function getHomePageContent(locale: Locale): Promise<HomePageSanity
         image: "/images/home/differentiator-tuktuk.jpg",
         quote: map(differentiator.quote),
         quoteDescription: map(differentiator.quoteDescription),
-        author: typeof differentiator.author === "string" ? differentiator.author : "",
-        authorRole: map(differentiator.authorRole),
+        author: typeof differentiator.author === "string" ? differentiator.author : undefined,
+        authorRole: asLocaleString(differentiator.authorRole)
+          ? map(differentiator.authorRole)
+          : undefined,
         portrait: "/images/home/differentiator-portrait-executive.jpg",
       },
       faq: {

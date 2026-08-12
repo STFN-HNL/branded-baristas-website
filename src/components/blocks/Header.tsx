@@ -1,22 +1,29 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
-import { Link } from "@/lib/i18n/routing";
+import { Link, asHref } from "@/lib/i18n/routing";
+import { hasPublishedCases, hasPublishedPosts } from "@/lib/content/publishedContent";
+import { PHONE_DISPLAY, PHONE_TEL } from "@/lib/contactInfo";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { MobileNav } from "./MobileNav";
 
 export async function Header() {
-  const [tCommon, tNav] = await Promise.all([getTranslations("common"), getTranslations("nav")]);
+  const [tCommon, tNav, showCases, showBlog] = await Promise.all([
+    getTranslations("common"),
+    getTranslations("nav"),
+    hasPublishedCases(),
+    hasPublishedPosts(),
+  ]);
 
   const navItems = [
     { href: "/over-ons", label: tNav("about") },
     { href: "/diensten", label: tNav("services") },
-    { href: "/cases", label: tNav("work") },
-    { href: "/blog", label: tNav("blog") },
+    ...(showCases ? [{ href: "/cases", label: tNav("work") }] : []),
+    ...(showBlog ? [{ href: "/blog", label: tNav("blog") }] : []),
     { href: "/contact", label: tNav("contact") },
   ];
 
   return (
-    <header className="absolute inset-x-0 top-0 z-50 h-[116px]">
+    <header className="fixed inset-x-0 top-0 z-50 h-[116px]">
       <div className="mx-auto flex max-w-[1440px] px-4 pt-4 sm:px-6 sm:pt-6 lg:px-20 lg:pt-10">
         <div className="bg-forest flex h-[64px] w-full items-center justify-between rounded-full py-[6px] pr-[6px] pl-[12px] lg:h-[70px] lg:pl-[20px]">
           {/* Logo */}
@@ -40,16 +47,10 @@ export async function Header() {
             aria-label={tCommon("siteName")}
             className="text-cream hidden items-center gap-[28px] text-[16px] leading-[24px] lg:flex xl:gap-[40px] xl:text-[18px]"
           >
-            {[
-              { href: "/over-ons" as const, label: navItems[0].label },
-              { href: "/diensten" as const, label: navItems[1].label },
-              { href: "/cases" as const, label: navItems[2].label },
-              { href: "/blog" as const, label: navItems[3].label },
-              { href: "/contact" as const, label: navItems[4].label },
-            ].map((item) => (
+            {navItems.map((item) => (
               <Link
                 key={item.href}
-                href={item.href}
+                href={asHref(item.href)}
                 className="hover:text-amber focus-visible:ring-copper rounded-sm transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
               >
                 {item.label}
@@ -59,6 +60,12 @@ export async function Header() {
 
           {/* Right side: language + CTA + mobile hamburger */}
           <div className="flex items-center gap-2 lg:gap-5">
+            <a
+              href={`tel:${PHONE_TEL}`}
+              className="text-cream hover:text-amber focus-visible:ring-copper hidden items-center rounded-sm text-[15px] leading-none whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none xl:inline-flex"
+            >
+              {PHONE_DISPLAY}
+            </a>
             <LanguageSwitcher variant="dark" />
             <Link
               href="/offerte"

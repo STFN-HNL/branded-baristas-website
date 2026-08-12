@@ -2,6 +2,7 @@ import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { Link, asHref } from "@/lib/i18n/routing";
 import { getHomeContent } from "@/content/home";
+import { hasPublishedCases, hasPublishedPosts } from "@/lib/content/publishedContent";
 import type { Locale } from "@/lib/i18n/routing";
 
 type FooterProps = {
@@ -11,11 +12,17 @@ type FooterProps = {
 };
 
 export async function Footer({ locale, wrapperBg = "cream", flush = false }: FooterProps) {
-  const [tCommon, tFooter] = await Promise.all([
+  const [tCommon, tFooter, showCases, showBlog] = await Promise.all([
     getTranslations("common"),
     getTranslations("footer"),
+    hasPublishedCases(),
+    hasPublishedPosts(),
   ]);
   const { footer } = getHomeContent(locale);
+  const columns = footer.columns.filter(
+    (column) =>
+      (showCases || column.href !== "/cases") && (showBlog || column.href !== "/blog"),
+  );
 
   const topPadding = flush ? "pt-0" : wrapperBg === "mocha" ? "pt-8" : "pt-24";
   const bgClass = wrapperBg === "mocha" ? "bg-mocha" : "bg-cream";
@@ -47,7 +54,7 @@ export async function Footer({ locale, wrapperBg = "cream", flush = false }: Foo
                 {tFooter("quickLinks")}
               </h2>
               <nav className="grid grid-cols-2 gap-x-10 gap-y-4 text-[15px] leading-none lg:gap-x-[80px] lg:gap-y-[33px] lg:text-[16px]">
-                {footer.columns.map((column) => (
+                {columns.map((column) => (
                   <Link
                     key={column.label}
                     href={asHref(column.href)}

@@ -19,8 +19,6 @@ const STATIC_PATHS: readonly string[] = [
   "/",
   "/over-ons",
   "/diensten",
-  "/cases",
-  "/blog",
   "/contact",
   "/offerte",
   "/branding",
@@ -72,8 +70,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   // Dynamic cases + posts from Sanity (ignored if fetch fails / no data).
+  // The /cases and /blog list pages noindex while empty, so they only enter
+  // the sitemap once at least one real document is published.
   try {
     const cases = (await getCases().catch(() => null)) ?? [];
+    if (cases.length > 0) {
+      entries.push(buildEntry("/cases", { priority: 0.8 }));
+    }
     for (const caseDoc of cases) {
       const slug = (caseDoc.slug as { nl?: { current?: string } } | undefined)?.nl?.current;
       if (!slug) continue;
@@ -85,6 +88,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   try {
     const posts = (await getPosts().catch(() => null)) ?? [];
+    if (posts.length > 0) {
+      entries.push(buildEntry("/blog", { priority: 0.8 }));
+    }
     for (const post of posts) {
       const slug = (post.slug as { nl?: { current?: string } } | undefined)?.nl?.current;
       if (!slug) continue;

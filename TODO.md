@@ -35,12 +35,14 @@ fallback still in place (`src/content/*.ts`). Fetcher layer at `src/lib/content/
 
 ## 3. Design / brand assets
 
-- [ ] Design a real OG image template. Since 2026-07-09 every page gets a
-      static branded card (`public/images/og/default-{nl,en}.png`, snapshots of
-      the generated card) and blog posts get a dynamic per-post card; a
-      designed template with hero photo would still be nicer. Note: the static
-      cards must be re-captured if the home meta title/description changes.
-- [ ] Shoot / source real client logo grayscale strip for `TrustRow`.
+- [x] Design a real OG image template — dynamic OG route uses the hero photo
+      with a brand gradient overlay since 2026-07-10. Still to do: re-capture
+      the static fallback cards (`public/images/og/default-{nl,en}.png`) from
+      the new template.
+- [ ] Shoot / source real client logo grayscale strip. Note 2026-07-10: the
+      old `ClientLogoStrip` (fictional brands Wealthro/Finyon/…) was removed
+      from the home page and deleted; build a new image-based strip once real
+      logos (with permission) exist.
 - [x] Validate address, geo coords, phone and opening hours in `src/lib/schema.ts`
       — Zoetermeer address correct, hours updated to 09:00–20:00 2026-04-29.
 
@@ -73,19 +75,23 @@ fallback still in place (`src/content/*.ts`). Fetcher layer at `src/lib/content/
 - [x] Set up the Sanity webhook to ping `/api/revalidate` on publish so
       ISR tags actually flush — `SANITY_WEBHOOK_SECRET` set in Railway,
       webhook configured in Sanity dashboard 2026-04-28.
-- [ ] Add a Playwright smoke test for the quote form end-to-end once
-      Supabase + Resend are live.
+- [x] Add a Playwright smoke test for the quote form end-to-end —
+      `tests/e2e/quote-form.spec.ts` (API intercepted, asserts UTM payload)
+      since 2026-07-10.
 - [ ] Run `pnpm analyze` once and eyeball the treemap — good baseline
       before anything else gets added.
 
 ## 7. Things worth doing eventually
 
 - [ ] A/B test the quote form layout (P3 in the audit plan).
-- [ ] Add a date picker to the quote form instead of free-text date.
-- [ ] Track `utm_source/medium/campaign` on quote submissions (hidden
-      fields that read from the URL on mount).
-- [ ] Consider a "Book a 15-min call" Cal.com embed as a lower-friction
-      secondary CTA alongside the full quote form.
+- [x] Add a date picker to the quote form — native `<input type="date">`
+      since 2026-07-10.
+- [x] Track `utm_source/medium/campaign` on quote submissions —
+      `UtmCapture` (sessionStorage, first touch) + merged into the payload in
+      `QuoteForm` since 2026-07-10.
+- [x] "Book a call" Cal.com secondary CTA — built into the hero and the
+      offerte aside, gated behind `NEXT_PUBLIC_CAL_URL` (renders only when
+      set). **Stefan: set the env var in Railway to activate.**
 - [ ] Set up Core Web Vitals dashboard in GA4 (filter on event names
       `LCP`, `CLS`, `INP`, `FCP`, `TTFB`, `FID`) once data starts flowing.
 
@@ -112,7 +118,43 @@ fallback still in place (`src/content/*.ts`). Fetcher layer at `src/lib/content/
       singletons so editors can swap them; they're currently repo assets
       mapped in `src/lib/content/*.ts`.
 
+## 10. Verbeterronde 2026-07-10 — input van Stefan nodig
+
+Context: full-scope audit (SEO/conversie/vertrouwen). Legacy-WordPress 301's
+toegevoegd, nep-content (merken-cases, logostrip, cijfers, demo-blog,
+testimonial) verwijderd uit repo én Sanity (backup:
+`docs/superpowers/sanity-backup-2026-07-10.json`), hero-CTA → /offerte,
+WhatsApp/telefoon-CTA's, UTM-capture + date picker, Fraunces geladen, OG met
+hero-foto. Openstaand voor Stefan:
+
+- [ ] **Vanaf-prijzen invoeren** — maak per concept een `pricingTier` document
+      aan in Sanity Studio (basisprijs in centen). De "Vanaf €…"-regel op de
+      dienst-detailpagina's verschijnt automatisch zodra een tier bestaat;
+      zonder tiers wordt er bewust géén prijs getoond. NB: de meta-description
+      belooft "vaste dagtarieven" — prijzen invoeren maakt die belofte waar.
+- [ ] **`NEXT_PUBLIC_CAL_URL` zetten in Railway** — activeert de
+      "Plan een kennismaking"-knoppen (hero + offertepagina).
+- [ ] **Bevestig dat `hello@branded-baristas.com` bestaat/ontvangt** — alle
+      zichtbare vermeldingen zijn gelijkgetrokken naar hello@ (was mix van
+      Info@/info@/hello@). De interne Resend-fallback in `src/lib/leads.ts`
+      staat nog op info@ tot dit bevestigd is.
+- [ ] **Typo in Sanity fixen** — `concept-espresso-bar` →
+      `shortDescription.nl`: "een unieke kantoorperk" moet bv. "een uniek
+      kantoorvoordeel" worden (patch via Studio; de repo-fallback is al
+      gefixt, maar Sanity-content wint).
+- [ ] **TrustRow-cijfers** — de verzonnen "500+ events / 10+ jaar / 200+
+      klanten" zijn vervangen door kwalitatieve claims. Lever echte,
+      verifieerbare cijfers aan als je die wilt terugbrengen.
+- [ ] **Echte cases + blog** — de secties zijn verborgen (nav + sitemap +
+      noindex) zolang Sanity leeg is; publiceer echte `case`/`post` documenten
+      en alles verschijnt vanzelf weer.
+- [ ] **Echte eventfoto's** — meerdere site-foto's ogen AI-gegenereerd; echte
+      foto's van eigen events zijn de hoogste merk-ROI (zie ook §9 punt 4).
+- [ ] Overweeg daarna: city-landingspagina's ("barista huren Amsterdam/
+      Rotterdam/…") — de oude site rankte op zulke termen; vergt echte
+      lokale content.
+
 ---
 
-_Last updated: 2026-07-09 (launch day). Generated from the audit roadmap at_
+_Last updated: 2026-07-10 (verbeterronde). Eerder gegenereerd vanuit_
 _`.cursor/plans/audit_+_seo_llm_conversion_roadmap_38a721a5.plan.md`._

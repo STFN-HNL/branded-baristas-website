@@ -7,6 +7,21 @@ describe("redirects", () => {
     expect(r?.destination).toBe("/nl/diensten/events/piaggio-tuk-tuk");
   });
 
+  it("maps indexed legacy WordPress URLs to the closest new page", () => {
+    expect(findRedirect("/mobiele-koffiebar-huren")?.destination).toBe(
+      "/nl/diensten/events/mobile-coffee-bar",
+    );
+    expect(findRedirect("/piaggio-koffie-tuk-tuk-huren")?.destination).toBe(
+      "/nl/diensten/events/piaggio-tuk-tuk",
+    );
+    expect(findRedirect("/barista-huren-eindhoven")?.destination).toBe(
+      "/nl/diensten/events/barista-service",
+    );
+    expect(findRedirect("/koffie-concepten")?.destination).toBe("/nl/diensten");
+    expect(findRedirect("/over-ons")?.destination).toBe("/nl/over-ons");
+    expect(findRedirect("/nieuws")?.destination).toBe("/nl");
+  });
+
   it("returns null for an unknown path", () => {
     const r = findRedirect("/nothing-here");
     expect(r).toBeNull();
@@ -21,9 +36,9 @@ describe("redirects", () => {
     expect(new Set(sources).size).toBe(sources.length);
   });
 
-  it("destinations start with /nl/ or /en/ (locale-prefixed)", () => {
+  it("destinations are locale-prefixed (/nl, /en or a path below them)", () => {
     const bad = redirects.filter(
-      (r) => !r.destination.startsWith("/nl/") && !r.destination.startsWith("/en/"),
+      (r) => !/^\/(nl|en)(\/|$)/.test(r.destination),
     );
     expect(bad).toEqual([]);
   });

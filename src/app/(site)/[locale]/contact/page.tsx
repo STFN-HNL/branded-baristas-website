@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { Footer } from "@/components/blocks/Footer";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { getContactContent } from "@/content/contact";
+import { WHATSAPP_URL } from "@/lib/contactInfo";
 import type { Locale } from "@/lib/i18n/routing";
 import { buildMetadata } from "@/lib/seo";
 
@@ -72,6 +73,21 @@ export default async function ContactPage({ params }: Props) {
                     className="text-forest hover:text-copper text-[18px] leading-[27px] transition-colors"
                   >
                     {content.info.phone.value}
+                  </a>
+                </dd>
+              </div>
+              <div className="flex flex-col gap-1">
+                <dt className="text-copper text-[12px] leading-[27px]">
+                  {content.info.whatsapp.label}
+                </dt>
+                <dd>
+                  <a
+                    href={WHATSAPP_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-forest hover:text-copper text-[18px] leading-[27px] transition-colors"
+                  >
+                    {content.info.whatsapp.value}
                   </a>
                 </dd>
               </div>

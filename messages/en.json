@@ -30,7 +30,8 @@
     "hero": {
       "title": "Coffee-Driven Moments That Elevate Business",
       "lead": "Coffee moments tailored for business, brand or social events — always designed to be remembered.",
-      "cta": "Let's shape your experience"
+      "cta": "Request a quote",
+      "secondaryCta": "Book an intro call"
     }
   },
   "pages": {
@@ -54,13 +55,15 @@
       "title": "Our work",
       "lead": "Recent projects and client stories.",
       "metaTitle": "Our work — Branded Baristas cases",
-      "metaDescription": "Coffee catering and branded coffee moments for Adidas, ING, BCG, Philips and more. See our cases and results."
+      "metaDescription": "Coffee catering and branded coffee moments for Adidas, ING, BCG, Philips and more. See our cases and results.",
+      "emptyState": "We're currently curating our favourite projects to show here. Curious what we can do for your event? Request a free quote."
     },
     "blog": {
       "title": "Blog",
       "lead": "Stories on coffee, hospitality and events.",
       "metaTitle": "Coffee, hospitality and events — Branded Baristas blog",
-      "metaDescription": "Insights, guides and stories on specialty coffee, event hospitality and branded coffee moments."
+      "metaDescription": "Insights, guides and stories on specialty coffee, event hospitality and branded coffee moments.",
+      "emptyState": "Soon we'll be sharing stories and insights here about specialty coffee at events and in the office."
     },
     "contact": {
       "title": "Contact",
@@ -111,11 +114,11 @@
   "forms": {
     "contact": {
       "success": "Thank you — we've received your message and will be in touch within one business day.",
-      "error": "Something went wrong while sending. Please retry or email info@branded-baristas.com.",
+      "error": "Something went wrong while sending. Please retry or email hello@branded-baristas.com.",
       "submitting": "Sending..."
     },
     "quote": {
-      "error": "Something went wrong while sending. Please retry or email info@branded-baristas.com.",
+      "error": "Something went wrong while sending. Please retry or email hello@branded-baristas.com.",
       "submitting": "Sending..."
     }
   },
@@ -142,11 +145,21 @@
     "privacyLabel": "Privacy policy"
   },
   "trust": {
-    "eyebrow": "Trusted by leading brands",
+    "eyebrow": "Why companies choose us",
     "kpis": {
-      "events": "500+ events served",
-      "years": "10+ years of experience",
-      "clients": "200+ business clients"
+      "quality": "Specialty coffee, our own equipment",
+      "reach": "On location across the Netherlands and Europe",
+      "approach": "Baristas trained in hospitality"
     }
+  },
+  "pricing": {
+    "from": "From €{price} excl. VAT",
+    "note": "Fixed day rate — including barista, equipment and specialty coffee. No per-cup charges."
+  },
+  "directContact": {
+    "title": "Prefer direct contact?",
+    "call": "Call us",
+    "whatsapp": "Message us on WhatsApp",
+    "plan": "Book an intro call"
   }
 }

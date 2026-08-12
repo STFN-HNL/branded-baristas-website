@@ -30,7 +30,8 @@
     "hero": {
       "title": "Koffiemomenten die het verschil maken",
       "lead": "Koffiemomenten op maat voor zakelijke, brand- of sociale events — altijd ontworpen om herinnerd te worden.",
-      "cta": "Geef vorm aan jouw beleving"
+      "cta": "Vraag een offerte aan",
+      "secondaryCta": "Plan een kennismaking"
     }
   },
   "pages": {
@@ -54,13 +55,15 @@
       "title": "Ons werk",
       "lead": "Recente projecten en klantverhalen.",
       "metaTitle": "Ons werk — cases van Branded Baristas",
-      "metaDescription": "Koffiecatering en branded koffiemomenten voor Adidas, ING, BCG, Philips en meer. Bekijk onze cases en resultaten."
+      "metaDescription": "Koffiecatering en branded koffiemomenten voor Adidas, ING, BCG, Philips en meer. Bekijk onze cases en resultaten.",
+      "emptyState": "We verzamelen momenteel onze mooiste projecten om hier te tonen. Benieuwd wat we voor jouw event kunnen betekenen? Vraag vrijblijvend een offerte aan."
     },
     "blog": {
       "title": "Blog",
       "lead": "Verhalen over koffie, hospitality en events.",
       "metaTitle": "Koffie, hospitality en events — Branded Baristas blog",
-      "metaDescription": "Inzichten, gidsen en verhalen over specialty koffie, event-hospitality en branded koffiemomenten."
+      "metaDescription": "Inzichten, gidsen en verhalen over specialty koffie, event-hospitality en branded koffiemomenten.",
+      "emptyState": "Binnenkort delen we hier verhalen en inzichten over specialty koffie op events en op kantoor."
     },
     "contact": {
       "title": "Contact",
@@ -111,11 +114,11 @@
   "forms": {
     "contact": {
       "success": "Bedankt — we hebben je bericht ontvangen en nemen binnen één werkdag contact op.",
-      "error": "Er ging iets mis bij het versturen. Probeer het opnieuw of stuur een mail naar info@branded-baristas.com.",
+      "error": "Er ging iets mis bij het versturen. Probeer het opnieuw of stuur een mail naar hello@branded-baristas.com.",
       "submitting": "Versturen..."
     },
     "quote": {
-      "error": "Er ging iets mis bij het versturen. Probeer het opnieuw of stuur een mail naar info@branded-baristas.com.",
+      "error": "Er ging iets mis bij het versturen. Probeer het opnieuw of stuur een mail naar hello@branded-baristas.com.",
       "submitting": "Versturen..."
     }
   },
@@ -142,11 +145,21 @@
     "privacyLabel": "Privacybeleid"
   },
   "trust": {
-    "eyebrow": "Vertrouwd door toonaangevende merken",
+    "eyebrow": "Waarom bedrijven voor ons kiezen",
     "kpis": {
-      "events": "500+ events geserveerd",
-      "years": "10+ jaar ervaring",
-      "clients": "200+ zakelijke klanten"
+      "quality": "Specialty koffie, eigen apparatuur",
+      "reach": "Op locatie in heel Nederland en Europa",
+      "approach": "Barista's met hospitality-training"
     }
+  },
+  "pricing": {
+    "from": "Vanaf €{price} excl. btw",
+    "note": "Vast dagtarief — inclusief barista, apparatuur en specialty koffie. Geen kosten per kop."
+  },
+  "directContact": {
+    "title": "Liever direct contact?",
+    "call": "Bel ons",
+    "whatsapp": "App ons op WhatsApp",
+    "plan": "Plan een kennismaking"
   }
 }

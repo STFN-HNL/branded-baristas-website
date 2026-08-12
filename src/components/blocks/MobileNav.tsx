@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Link, asHref } from "@/lib/i18n/routing";
 import type { AppPathname } from "@/lib/i18n/routing";
+import { PHONE_DISPLAY, PHONE_TEL } from "@/lib/contactInfo";
 
 export type MobileNavItem = {
   href: string;
@@ -106,7 +107,7 @@ export function MobileNav({ items, quoteCta, siteName, openLabel, closeLabel }: 
           </nav>
 
           {/* CTA at bottom */}
-          <div className="px-6 pb-12">
+          <div className="flex flex-col gap-4 px-6 pb-12">
             <Link
               href={"/offerte" satisfies AppPathname}
               onClick={() => setIsOpen(false)}
@@ -114,6 +115,12 @@ export function MobileNav({ items, quoteCta, siteName, openLabel, closeLabel }: 
             >
               {quoteCta}
             </Link>
+            <a
+              href={`tel:${PHONE_TEL}`}
+              className="text-cream focus-visible:ring-copper block w-full text-center text-[16px] leading-none underline-offset-4 hover:underline focus-visible:ring-2 focus-visible:outline-none"
+            >
+              {PHONE_DISPLAY}
+            </a>
           </div>
         </div>
       )}

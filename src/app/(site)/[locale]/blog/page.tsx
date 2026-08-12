@@ -5,6 +5,8 @@ import { Footer } from "@/components/blocks/Footer";
 import { Link } from "@/lib/i18n/routing";
 import { getBlogContent } from "@/content/blog";
 import type { BlogPost } from "@/content/blog";
+import { getBlogPosts } from "@/lib/content/posts";
+import { hasPublishedPosts } from "@/lib/content/publishedContent";
 import type { Locale } from "@/lib/i18n/routing";
 import { buildMetadata } from "@/lib/seo";
 
@@ -14,12 +16,17 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "pages.blog" });
+  const [t, hasPosts] = await Promise.all([
+    getTranslations({ locale, namespace: "pages.blog" }),
+    hasPublishedPosts(),
+  ]);
   return buildMetadata({
     locale,
     path: "/blog",
     title: t("metaTitle"),
     description: t("metaDescription"),
+    // Stay out of the index until there are real posts.
+    noIndex: !hasPosts,
   });
 }
 
@@ -58,13 +65,19 @@ function PostCard({
       </Link>
       <div className="bg-cream flex flex-1 flex-col gap-3 rounded-b-[20px] px-8 py-6">
         <div className="flex items-center gap-3 text-[12px] leading-[27px]">
-          <span className="text-copper">{post.category}</span>
-          <span className="text-forest/40">·</span>
-          <span className="text-forest/60">{formatDate(post.date, locale)}</span>
-          <span className="text-forest/40">·</span>
-          <span className="text-forest/60">
-            {post.readingTime} {readingTimeSuffix}
-          </span>
+          {post.category ? <span className="text-copper">{post.category}</span> : null}
+          {post.category && post.date ? <span className="text-forest/40">·</span> : null}
+          {post.date ? (
+            <span className="text-forest/60">{formatDate(post.date, locale)}</span>
+          ) : null}
+          {post.readingTime ? (
+            <>
+              <span className="text-forest/40">·</span>
+              <span className="text-forest/60">
+                {post.readingTime} {readingTimeSuffix}
+              </span>
+            </>
+          ) : null}
         </div>
         <h3 className="font-display text-pine text-[24px] leading-[33px] tracking-[-0.02em]">
           {post.title}
@@ -85,8 +98,12 @@ function PostCard({
 export default async function BlogPage({ params }: Props) {
   const { locale } = await params;
   const content = getBlogContent(locale);
-  const featured = content.posts.find((p) => p.featured);
-  const rest = content.posts.filter((p) => !p.featured);
+  const [posts, tBlog] = await Promise.all([
+    getBlogPosts(locale),
+    getTranslations({ locale, namespace: "pages.blog" }),
+  ]);
+  const featured = posts.find((p) => p.featured);
+  const rest = posts.filter((p) => !p.featured);
 
   return (
     <>
@@ -132,13 +149,23 @@ export default async function BlogPage({ params }: Props) {
                   {content.featuredLabel}
                 </span>
                 <div className="flex flex-wrap items-center gap-3 text-[12px] leading-[27px]">
-                  <span className="text-forest/80">{featured.category}</span>
-                  <span className="text-forest/40">·</span>
-                  <span className="text-forest/60">{formatDate(featured.date, locale)}</span>
-                  <span className="text-forest/40">·</span>
-                  <span className="text-forest/60">
-                    {featured.readingTime} {content.readingTimeSuffix}
-                  </span>
+                  {featured.category ? (
+                    <span className="text-forest/80">{featured.category}</span>
+                  ) : null}
+                  {featured.category && featured.date ? (
+                    <span className="text-forest/40">·</span>
+                  ) : null}
+                  {featured.date ? (
+                    <span className="text-forest/60">{formatDate(featured.date, locale)}</span>
+                  ) : null}
+                  {featured.readingTime ? (
+                    <>
+                      <span className="text-forest/40">·</span>
+                      <span className="text-forest/60">
+                        {featured.readingTime} {content.readingTimeSuffix}
+                      </span>
+                    </>
+                  ) : null}
                 </div>
                 <h2 className="font-display text-pine text-[50px] leading-[55px]">
                   {featured.title}
@@ -156,18 +183,24 @@ export default async function BlogPage({ params }: Props) {
 
       <section className="bg-cream px-10 py-24 lg:py-32">
         <div className="mx-auto max-w-[1360px]">
-          <ul className="grid grid-cols-1 gap-[30px] sm:grid-cols-2 lg:grid-cols-3">
-            {rest.map((post) => (
-              <li key={post.slug}>
-                <PostCard
-                  post={post}
-                  locale={locale}
-                  readingTimeSuffix={content.readingTimeSuffix}
-                  readMoreLabel={content.readMoreLabel}
-                />
-              </li>
-            ))}
-          </ul>
+          {posts.length > 0 ? (
+            <ul className="grid grid-cols-1 gap-[30px] sm:grid-cols-2 lg:grid-cols-3">
+              {rest.map((post) => (
+                <li key={post.slug}>
+                  <PostCard
+                    post={post}
+                    locale={locale}
+                    readingTimeSuffix={content.readingTimeSuffix}
+                    readMoreLabel={content.readMoreLabel}
+                  />
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="text-forest mx-auto max-w-[660px] text-center text-[18px] leading-[27px]">
+              {tBlog("emptyState")}
+            </p>
+          )}
         </div>
       </section>
 
