@@ -16,10 +16,10 @@
   --color-oat: #dac9b5;
   --color-sand: #e1d2c1;
 
-  /* Fonts — Questrial + Fraunces loaded via next/font (Roie stays unlicensed;
-     Fraunces is the deliberate display face as of 2026-07-10) */
+  /* Fonts — Questrial, Roie and Fraunces loaded via next/font (Roie is now
+     licensed; Fraunces stays as the CSS fallback) */
   --font-sans: var(--font-questrial), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-fraunces), "Instrument Serif", Georgia, serif;
+  --font-display: var(--font-roie), var(--font-fraunces), "Instrument Serif", Georgia, serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
   --font-heading: var(--font-display);
 

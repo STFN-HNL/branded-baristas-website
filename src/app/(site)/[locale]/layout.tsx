@@ -4,6 +4,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { Fraunces, Questrial } from "next/font/google";
+import localFont from "next/font/local";
 import { routing, type Locale } from "@/lib/i18n/routing";
 import { CookieBanner } from "@/components/blocks/CookieBanner";
 import { Header } from "@/components/blocks/Header";
@@ -22,9 +23,17 @@ const questrial = Questrial({
   display: "swap",
 });
 
-// Display face. Roie (the original Figma pick) is unlicensed; Fraunces was the
-// first fallback in the stack and is now loaded deliberately (ADR-worthy if we
-// ever license Roie after all).
+// Display face. Roie is now licensed (files in public/fonts/roie); Fraunces
+// stays loaded as the CSS fallback in --font-display.
+const roie = localFont({
+  src: [
+    { path: "../../../../public/fonts/roie/Roie.woff2", weight: "400", style: "normal" },
+    { path: "../../../../public/fonts/roie/Roie.woff", weight: "400", style: "normal" },
+  ],
+  variable: "--font-roie",
+  display: "swap",
+});
+
 const fraunces = Fraunces({
   subsets: ["latin"],
   weight: "400",
@@ -62,7 +71,10 @@ export default async function LocaleLayout({ children, params }: Props) {
   const tCommon = await getTranslations({ locale: typedLocale, namespace: "common" });
 
   return (
-    <html lang={typedLocale} className={`${questrial.variable} ${fraunces.variable}`}>
+    <html
+      lang={typedLocale}
+      className={`${questrial.variable} ${roie.variable} ${fraunces.variable}`}
+    >
       <body>
         <a
           href="#main-content"
