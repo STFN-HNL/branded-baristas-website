@@ -199,7 +199,8 @@ const nl: HomeContent = {
     ctaHref: "/offerte",
   },
   tagline: {
-    title: "De beste manier om mensen\nen bedrijven met elkaar te verbinden\nis door kwaliteitskoffie te serveren.",
+    title:
+      "De beste manier om mensen\nen bedrijven met elkaar te verbinden\nis door kwaliteitskoffie te serveren.",
     image: "/images/home/tagline-tamping.jpg",
   },
   pillars: {

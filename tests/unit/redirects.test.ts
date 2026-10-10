@@ -37,9 +37,7 @@ describe("redirects", () => {
   });
 
   it("destinations are locale-prefixed (/nl, /en or a path below them)", () => {
-    const bad = redirects.filter(
-      (r) => !/^\/(nl|en)(\/|$)/.test(r.destination),
-    );
+    const bad = redirects.filter((r) => !/^\/(nl|en)(\/|$)/.test(r.destination));
     expect(bad).toEqual([]);
   });
 });

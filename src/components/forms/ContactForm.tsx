@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import { useTranslations } from "next-intl";
+import { HoneypotField } from "./HoneypotField";
+import { useLeadSubmit } from "./useLeadSubmit";
 
 type Fields = {
   name: string;
@@ -26,28 +27,11 @@ const labelClass = "text-cream text-[12px] leading-[27px] mb-1 block";
 
 export function ContactForm({ fields, placeholders, submitLabel, disclaimer }: Props) {
   const t = useTranslations("forms.contact");
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const { status, submit } = useLeadSubmit();
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setStatus("submitting");
-    const formData = new FormData(event.currentTarget);
-    const payload: Record<string, string> = { source: "contact" };
-    formData.forEach((value, key) => {
-      if (typeof value === "string") payload[key] = value;
-    });
-    try {
-      const res = await fetch("/api/quote", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      setStatus("success");
-    } catch (error) {
-      console.error("[ContactForm]", error);
-      setStatus("error");
-    }
+    void submit(event.currentTarget, { source: "contact" });
   };
 
   if (status === "success") {
@@ -63,6 +47,7 @@ export function ContactForm({ fields, placeholders, submitLabel, disclaimer }: P
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+      <HoneypotField />
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div>
           <label className={labelClass} htmlFor="name">

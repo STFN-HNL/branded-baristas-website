@@ -1,13 +1,15 @@
 import Script from "next/script";
+import { CONSENT_STORAGE_KEY } from "@/lib/analytics";
 
 /**
  * GA4 loader. No-ops when `NEXT_PUBLIC_GA_ID` is unset, so local development
  * and preview environments never ship a tracker. Uses Next's <Script> with
  * `afterInteractive` so the tag does not block first paint or TTI.
  *
- * Consent handling is intentionally minimal: we set `anonymize_ip` and rely on
- * a (future) cookie banner to flip `gtag('consent', 'update', ...)`. Until the
- * banner ships, GA4 defaults to the denied-by-default consent model.
+ * Consent mode v2, denied by default. The stored cookie-banner choice is read
+ * here, in the consent default itself, so returning visitors who accepted are
+ * counted from the first hit — the banner only sends `consent update` when the
+ * visitor makes (or changes) a choice.
  */
 export function GoogleAnalytics() {
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
@@ -24,11 +26,15 @@ export function GoogleAnalytics() {
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           window.gtag = gtag;
+          var analyticsGranted = false;
+          try {
+            analyticsGranted = localStorage.getItem('${CONSENT_STORAGE_KEY}') === 'granted';
+          } catch (e) {}
           gtag('consent', 'default', {
             ad_storage: 'denied',
             ad_user_data: 'denied',
             ad_personalization: 'denied',
-            analytics_storage: 'denied',
+            analytics_storage: analyticsGranted ? 'granted' : 'denied',
             wait_for_update: 500
           });
           gtag('js', new Date());

@@ -1,14 +1,7 @@
 "use client";
 
 import { useReportWebVitals } from "next/web-vitals";
-
-type GtagFn = (command: "event", eventName: string, params: Record<string, unknown>) => void;
-
-declare global {
-  interface Window {
-    gtag?: GtagFn;
-  }
-}
+import { trackEvent } from "@/lib/analytics";
 
 /**
  * Core Web Vitals reporter. Forwards LCP/CLS/INP/FCP/TTFB/FID to GA4 as custom
@@ -27,7 +20,7 @@ export function WebVitals() {
     const value =
       metric.name === "CLS" ? Math.round(metric.value * 1000) : Math.round(metric.value);
 
-    window.gtag("event", metric.name, {
+    trackEvent(metric.name, {
       value,
       metric_id: metric.id,
       metric_value: metric.value,

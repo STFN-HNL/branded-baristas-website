@@ -1,6 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useTranslations } from "next-intl";
+import { HoneypotField } from "./HoneypotField";
+import { useLeadSubmit } from "./useLeadSubmit";
 
 type Fields = {
   name: string;
@@ -36,28 +38,13 @@ function ArrowRight() {
 }
 
 export function HomeContactForm({ labels, placeholders, submitLabel, thankYou }: Props) {
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  // Same status copy as the contact page form.
+  const t = useTranslations("forms.contact");
+  const { status, submit } = useLeadSubmit();
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setStatus("submitting");
-    const formData = new FormData(event.currentTarget);
-    const payload: Record<string, string> = { source: "home" };
-    formData.forEach((value, key) => {
-      if (typeof value === "string") payload[key] = value;
-    });
-    try {
-      const res = await fetch("/api/quote", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      setStatus("success");
-    } catch (error) {
-      console.error("[HomeContactForm]", error);
-      setStatus("error");
-    }
+    void submit(event.currentTarget, { source: "home" });
   };
 
   if (status === "success") {
@@ -73,6 +60,7 @@ export function HomeContactForm({ labels, placeholders, submitLabel, thankYou }:
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+      <HoneypotField />
       <div>
         <label className={labelClass} htmlFor="home-name">
           {labels.name}
@@ -124,11 +112,17 @@ export function HomeContactForm({ labels, placeholders, submitLabel, thankYou }:
           className="bg-cream/60 text-ink placeholder:text-ink/35 focus:bg-cream focus:border-copper/40 w-full resize-none rounded-[20px] border border-transparent px-6 py-4 text-[16px] leading-[22px] transition-colors focus:outline-none"
         />
       </div>
+      {status === "error" ? (
+        <p role="alert" className="text-copper text-[14px] leading-[20px]">
+          {t("error")}
+        </p>
+      ) : null}
       <button
         type="submit"
-        className="bg-ink text-cream mt-2 inline-flex w-full items-center justify-between rounded-full py-[5px] pr-[5px] pl-6 text-[16px] leading-[20.8px] transition-opacity hover:opacity-90"
+        disabled={status === "submitting"}
+        className="bg-ink text-cream mt-2 inline-flex w-full items-center justify-between rounded-full py-[5px] pr-[5px] pl-6 text-[16px] leading-[20.8px] transition-opacity hover:opacity-90 disabled:opacity-60"
       >
-        <span>{submitLabel}</span>
+        <span>{status === "submitting" ? t("submitting") : submitLabel}</span>
         <span className="bg-amber text-ink grid h-[44px] w-[44px] place-items-center rounded-full">
           <ArrowRight />
         </span>

@@ -3,15 +3,12 @@
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/lib/i18n/routing";
+import { CONSENT_STORAGE_KEY, gtag } from "@/lib/analytics";
 
-const STORAGE_KEY = "cookie_consent";
-
+// A stored choice is applied by the GA init script itself (consent default),
+// so this only has to report choices made in the banner.
 function updateConsent(value: "granted" | "denied") {
-  if (typeof window !== "undefined" && typeof window.gtag === "function") {
-    (window.gtag as (...args: unknown[]) => void)("consent", "update", {
-      analytics_storage: value,
-    });
-  }
+  gtag("consent", "update", { analytics_storage: value });
 }
 
 export function CookieBanner() {
@@ -19,10 +16,8 @@ export function CookieBanner() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored === "granted") {
-      updateConsent("granted");
-    } else if (!stored) {
+    const stored = localStorage.getItem(CONSENT_STORAGE_KEY);
+    if (!stored) {
       // Defer the state update out of the effect's synchronous phase to avoid
       // a cascading re-render (eslint react-hooks/set-state-in-effect).
       const id = requestAnimationFrame(() => setVisible(true));
@@ -32,13 +27,14 @@ export function CookieBanner() {
   }, []);
 
   function accept() {
-    localStorage.setItem(STORAGE_KEY, "granted");
+    localStorage.setItem(CONSENT_STORAGE_KEY, "granted");
     updateConsent("granted");
     setVisible(false);
   }
 
   function decline() {
-    localStorage.setItem(STORAGE_KEY, "denied");
+    localStorage.setItem(CONSENT_STORAGE_KEY, "denied");
+    updateConsent("denied");
     setVisible(false);
   }
 

@@ -7,3 +7,5 @@ playwright-report/
 test-results/
 .sanity/
 .tmp-*
+# Raw Sanity export — keep byte-identical to what was exported
+docs/superpowers/sanity-backup-*.json

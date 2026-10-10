@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { readUtm } from "@/components/UtmCapture";
 import type { QuoteContent } from "@/content/quote";
+import { HoneypotField } from "./HoneypotField";
+import { useLeadSubmit } from "./useLeadSubmit";
 
 type Props = {
   form: QuoteContent["form"];
@@ -17,7 +18,7 @@ const labelClass = "text-cream text-[12px] leading-[27px] mb-1 block";
 
 export function QuoteForm({ form, concepts }: Props) {
   const t = useTranslations("forms.quote");
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const { status, submit } = useLeadSubmit();
   const [service, setService] = useState<string>("events");
   const [selectedConcepts, setSelectedConcepts] = useState<Set<string>>(new Set());
 
@@ -30,31 +31,13 @@ export function QuoteForm({ form, concepts }: Props) {
     });
   };
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setStatus("submitting");
-    const formData = new FormData(event.currentTarget);
-    const payload: Record<string, unknown> = {
+    void submit(event.currentTarget, {
       source: "quote",
       service,
       concepts: Array.from(selectedConcepts),
-      ...readUtm(),
-    };
-    formData.forEach((value, key) => {
-      if (typeof value === "string" && !(key in payload)) payload[key] = value;
     });
-    try {
-      const res = await fetch("/api/quote", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      setStatus("success");
-    } catch (error) {
-      console.error("[QuoteForm]", error);
-      setStatus("error");
-    }
   };
 
   if (status === "success") {
@@ -70,6 +53,7 @@ export function QuoteForm({ form, concepts }: Props) {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-10">
+      <HoneypotField />
       <fieldset className="flex flex-col gap-4">
         <legend className="font-display text-cream text-[24px] leading-[33px] tracking-[-0.02em]">
           {form.sections.service.title}
