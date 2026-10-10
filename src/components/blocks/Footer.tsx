@@ -20,8 +20,7 @@ export async function Footer({ locale, wrapperBg = "cream", flush = false }: Foo
   ]);
   const { footer } = getHomeContent(locale);
   const columns = footer.columns.filter(
-    (column) =>
-      (showCases || column.href !== "/cases") && (showBlog || column.href !== "/blog"),
+    (column) => (showCases || column.href !== "/cases") && (showBlog || column.href !== "/blog"),
   );
 
   const topPadding = flush ? "pt-0" : wrapperBg === "mocha" ? "pt-8" : "pt-24";

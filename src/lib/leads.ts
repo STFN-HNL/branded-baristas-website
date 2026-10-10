@@ -179,16 +179,20 @@ export type SubmitLeadResult = {
   id: string | null;
   stored: boolean;
   emailed: boolean;
+  /** At least one backend (Supabase or Resend) is configured. */
+  configured: boolean;
 };
 
 export async function submitLead(lead: Lead): Promise<SubmitLeadResult> {
   let id: string | null = null;
   let stored = false;
   let emailed = false;
+  const supabaseConfigured = !!env.NEXT_PUBLIC_SUPABASE_URL && !!env.SUPABASE_SERVICE_ROLE_KEY;
+  const resendConfigured = !!env.RESEND_API_KEY && !!env.RESEND_FROM_EMAIL;
 
   try {
     id = await insertIntoSupabase(lead);
-    stored = id !== null || (!!env.NEXT_PUBLIC_SUPABASE_URL && !!env.SUPABASE_SERVICE_ROLE_KEY);
+    stored = id !== null || supabaseConfigured;
   } catch (error) {
     console.error("[submitLead] Supabase insert failed", error);
   }
@@ -204,5 +208,5 @@ export async function submitLead(lead: Lead): Promise<SubmitLeadResult> {
     console.warn("[submitLead] no backend configured; lead not persisted", lead);
   }
 
-  return { id, stored, emailed };
+  return { id, stored, emailed, configured: supabaseConfigured || resendConfigured };
 }

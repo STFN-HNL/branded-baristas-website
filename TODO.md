@@ -70,8 +70,9 @@ fallback still in place (`src/content/*.ts`). Fetcher layer at `src/lib/content/
 
 ## 6. Developer ergonomics / ops
 
-- [ ] Hook `pnpm i18n:check` and `pnpm typecheck` into GitHub Actions CI as
-      required checks for PRs (scripts exist; the workflow doesn't yet).
+- [x] Hook `pnpm i18n:check` and `pnpm typecheck` into GitHub Actions CI —
+      both run in `.github/workflows/ci.yml` (verified 2026-10-10). Marking
+      them _required_ is a GitHub branch-protection setting.
 - [x] Set up the Sanity webhook to ping `/api/revalidate` on publish so
       ISR tags actually flush — `SANITY_WEBHOOK_SECRET` set in Railway,
       webhook configured in Sanity dashboard 2026-04-28.
@@ -154,7 +155,24 @@ hero-foto. Openstaand voor Stefan:
       Rotterdam/…") — de oude site rankte op zulke termen; vergt echte
       lokale content.
 
+## 11. Lead-veiligheid 2026-10-10
+
+Gedaan: `/api/quote` geeft 502 als een lead in géén backend landt (formulier
+toont dan de foutmelding i.p.v. een valse "bedankt"); honeypot + min. invultijd
+
+- rate limit (5/IP/10 min, in-memory) via `src/lib/leadGuard.ts`; alle drie de
+  formulieren delen `useLeadSubmit` (UTM overal, GA4 `generate_lead`); de
+  homepage-form heeft nu fout- en verzendstatus; opgeslagen cookie-consent wordt
+  direct in de GA consent-default gelezen (terugkerende bezoekers werden niet
+  geteld). Open voor Stefan:
+
+* [ ] **GA4: markeer `generate_lead` als key event** (Admin → Events), zodat
+      leads als conversie tellen. Parameters: `lead_source`
+      (quote/contact/home) en `service`.
+* [ ] Bij meerdere Railway-replica's: rate limit naar een gedeelde store
+      verhuizen (nu per container).
+
 ---
 
-_Last updated: 2026-07-10 (verbeterronde). Eerder gegenereerd vanuit_
+_Last updated: 2026-10-10 (lead-veiligheid). Eerder gegenereerd vanuit_
 _`.cursor/plans/audit_+_seo_llm_conversion_roadmap_38a721a5.plan.md`._
