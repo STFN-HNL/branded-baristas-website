@@ -112,7 +112,8 @@ function groupLists(
   blocks: Block[],
 ): (Block | { _type: "list"; level: number; kind: "bullet" | "number"; items: Block[] })[] {
   const out: (
-    Block | { _type: "list"; level: number; kind: "bullet" | "number"; items: Block[] }
+    | Block
+    | { _type: "list"; level: number; kind: "bullet" | "number"; items: Block[] }
   )[] = [];
   let buffer: Block[] = [];
   let currentKind: "bullet" | "number" | null = null;
@@ -282,7 +283,8 @@ export function PortableText({ value, locale = "nl", className }: Props) {
   // Group consecutive list items only among standard text blocks; custom
   // blocks (images, callouts, CTAs) pass through inline at their position.
   const sequence: (
-    PortableBlock | { _type: "list"; level: number; kind: "bullet" | "number"; items: Block[] }
+    | PortableBlock
+    | { _type: "list"; level: number; kind: "bullet" | "number"; items: Block[] }
   )[] = [];
   let textRun: Block[] = [];
   const flushTextRun = () => {

@@ -18,11 +18,10 @@ function ls(obj: unknown, locale: Locale): string {
 
 export async function getBrandingPageContent(locale: Locale): Promise<BrandingContent | null> {
   const raw = await sanityClient
-    .fetch<Record<string, unknown> | null>(
-      BRANDING_PAGE_QUERY,
-      {},
-      { next: { tags: ["brandingPage"] } },
-    )
+    .fetch<Record<
+      string,
+      unknown
+    > | null>(BRANDING_PAGE_QUERY, {}, { next: { tags: ["brandingPage"] } })
     .catch(() => null);
 
   if (raw) {
